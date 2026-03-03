@@ -2,6 +2,7 @@ const hotels = [
   {
     city: 'Hanói',
     name: 'Anatole Hotel Hanoi',
+    url: 'https://anatolehotelhanoi.com/',
     stars: '★★★★',
     room: 'Habitación Executive',
     emoji: '🏙️',
@@ -9,6 +10,7 @@ const hotels = [
   {
     city: 'Bahía de Halong',
     name: 'Crucero Indochine Premium',
+    url: 'https://www.indochinasails.com/en/indochine-premium-ha-long.html',
     stars: '★★★★★',
     room: 'Camarote Junior Suite',
     emoji: '🚢',
@@ -16,6 +18,7 @@ const hotels = [
   {
     city: 'Hue',
     name: 'White Lotus Hue Hotel',
+    url: 'https://whitelotus.com.vn/',
     stars: '★★★★',
     room: 'Deluxe con vista al río',
     emoji: '🏯',
@@ -23,6 +26,7 @@ const hotels = [
   {
     city: 'Da Nang',
     name: 'À La Carte Da Nang',
+    url: 'https://alacartedanangbeach.com/en/',
     stars: '★★★★',
     room: 'Frente al mar',
     emoji: '🌊',
@@ -30,6 +34,7 @@ const hotels = [
   {
     city: 'Hoi An',
     name: 'Hoi An Delicacy Hotel',
+    url: 'https://hoiandelicacyhotel.com/',
     stars: '★★★★',
     room: 'Balcón y vista a la piscina',
     emoji: '🌸',
@@ -37,6 +42,7 @@ const hotels = [
   {
     city: 'Siem Reap',
     name: 'Metta Residence & Spa',
+    url: 'https://www.mettaresidence.com/',
     stars: '★★★★',
     room: 'Premier Deluxe Pool View',
     emoji: '🛕',
@@ -66,9 +72,14 @@ export default function Hotels() {
               <p className="text-xs tracking-[0.15em] uppercase text-[var(--color-accent)] mb-2">
                 {h.city}
               </p>
-              <p className="text-base font-bold uppercase text-[var(--color-text)] mb-1">
+              <a
+                href={h.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-base font-bold uppercase text-[var(--color-text)] mb-1 block hover:text-[var(--color-accent)] transition-colors duration-300"
+              >
                 {h.name}
-              </p>
+              </a>
               <p className="text-xs text-[var(--color-accent)] mb-2">{h.stars}</p>
               <p className="text-xs text-[var(--color-secondary)] uppercase tracking-wide">
                 {h.room}
