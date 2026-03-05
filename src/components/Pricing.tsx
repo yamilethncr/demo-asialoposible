@@ -92,6 +92,13 @@ export default function Pricing() {
         <p className="text-xs text-[var(--color-secondary)] mt-6 italic">
           &iquest;Viajas solo/a? Escr&iacute;benos para indicarte el precio en acomodaci&oacute;n individual.
         </p>
+
+        <p className="text-xs text-[var(--color-secondary)] mt-4">
+          Al reservar, aceptas nuestros{' '}
+          <a href="/terminos-viaje" className="text-[var(--color-accent)] underline hover:no-underline transition-colors">
+            t&eacute;rminos y condiciones del viaje
+          </a>.
+        </p>
       </div>
     </section>
   )
