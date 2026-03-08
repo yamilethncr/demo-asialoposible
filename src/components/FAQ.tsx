@@ -37,7 +37,7 @@ const faqs = [
   },
   {
     q: '¿Necesito comprar una SIM local o hay WiFi?',
-    a: 'Los hoteles tienen WiFi. Te recomendamos comprar una eSIM o SIM local al llegar (cuesta ~$5-10 USD) para tener datos móviles. Te enviamos instrucciones antes del viaje.',
+    a: 'Los hoteles tienen WiFi. Además, te regalamos una tarjeta eSIM con datos móviles para Vietnam y Camboya (incluida en tu cupo, con un límite de uso razonable para todo el viaje). Te enviamos las instrucciones de activación antes de salir.',
   },
   {
     q: '¿Es seguro viajar a Vietnam y Camboya?',

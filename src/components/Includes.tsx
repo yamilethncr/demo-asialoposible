@@ -1,16 +1,17 @@
-const items = [
-  { label: 'HOSPEDAJE 4★ TODAS LAS NOCHES + CRUCERO HALONG', icon: '🏨' },
+const items: { label: string; icon: string; highlight?: boolean }[] = [
+  { label: 'HOSPEDAJE 4 O 5 ESTRELLAS + CRUCERO DE LUJO EN HALONG BAY', icon: '🏨' },
   { label: 'TODOS LOS DESAYUNOS (14 DÍAS)', icon: '🍳' },
-  { label: 'ALMUERZOS Y CENAS SELECCIONADOS', icon: '🍜' },
+  { label: 'ALGUNOS ALMUERZOS Y CENAS INCLUIDOS', icon: '🍜' },
   { label: 'VUELOS INTERNOS + VUELO A CAMBOYA', icon: '✈️' },
   { label: 'TRANSPORTE DE LUJO CLIMATIZADO', icon: '🚐' },
   { label: 'ENTRADAS A TODAS LAS ACTIVIDADES', icon: '🎟️' },
   { label: 'GUÍA VIETNAMITA EN ESPAÑOL', icon: '🧭' },
-  { label: 'ACOMPAÑAMIENTO DE KATHERINE', icon: '🤝' },
+  { label: 'KATHERINE MOLINARES COMO TU ANFITRIONA DURANTE TODO EL VIAJE', icon: '🤝', highlight: true },
   { label: 'OPERADOR TURÍSTICO LICENCIADO', icon: '🏢' },
   { label: 'HIDRATACIÓN EN TODAS LAS ACTIVIDADES', icon: '💧' },
   { label: 'KIT DE SOUVENIRS DE BIENVENIDA', icon: '🎁' },
   { label: 'FOTOGRAFÍA PROFESIONAL EN DA NANG (2H)', icon: '📸' },
+  { label: 'TARJETA E-SIM PARA VIETNAM Y CAMBOYA', icon: '📱' },
 ]
 
 export default function Includes() {
@@ -24,9 +25,9 @@ export default function Includes() {
               LA PROPUESTA DE VALOR
             </span>
             <h2 className="text-2xl md:text-[2.5rem] leading-tight uppercase font-bold text-[var(--color-text)] mb-4">
-              UNA SOLA CUOTA.
+              UN SOLO PAGO.
               <br />
-              TODO ESTO ADENTRO.
+              TODO INCLUIDO.
             </h2>
             <p className="text-[0.85rem] leading-relaxed text-[var(--color-secondary)] max-w-[380px]">
               No tienes que calcular extras, comparar hoteles, coordinar traslados ni buscar entradas. Todo lo que ves a continuaci&oacute;n ya est&aacute; incluido en tu cupo.
@@ -39,12 +40,13 @@ export default function Includes() {
               {items.map((item, i) => (
                 <li
                   key={i}
-                  className="flex justify-between items-center py-4 md:py-5 transition-colors duration-300 hover:bg-[rgba(212,168,83,0.05)]"
+                  className={`flex justify-between items-center py-4 md:py-5 transition-colors duration-300 hover:bg-[rgba(212,168,83,0.05)] ${item.highlight ? 'bg-[rgba(212,168,83,0.08)]' : ''}`}
                   style={{
                     borderBottom: '1px solid rgba(212,168,83,0.15)',
+                    ...(item.highlight ? { borderLeft: '2px solid var(--color-accent)', paddingLeft: '16px' } : {}),
                   }}
                 >
-                  <span className="text-[var(--color-text)] text-xs md:text-sm tracking-wide uppercase">
+                  <span className={`text-xs md:text-sm tracking-wide uppercase ${item.highlight ? 'text-[var(--color-accent)] font-bold' : 'text-[var(--color-text)]'}`}>
                     {item.label}
                   </span>
                   <span className="text-[var(--color-accent)] ml-4 shrink-0">✓</span>

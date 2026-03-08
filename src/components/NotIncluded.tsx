@@ -19,6 +19,10 @@ const items = [
     label: 'Gastos personales',
     note: null,
   },
+  {
+    label: 'Otros servicios no especificados en el apartado de lo que se incluye',
+    note: null,
+  },
 ]
 
 export default function NotIncluded() {

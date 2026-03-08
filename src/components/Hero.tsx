@@ -95,7 +95,7 @@ export default function Hero() {
                 textAlign: 'justify',
               }}
             >
-              14 d&iacute;as. 6 destinos. Un grupo exclusivo de solo 10 personas. Hoteles 4 estrellas, crucero de lujo en Halong, todo incluido. Dise&ntilde;ado por una venezolana que vive en Vietnam.
+              14 d&iacute;as. 6 destinos. Un grupo exclusivo de solo 10 personas. Hoteles 4 y 5 estrellas, crucero de lujo en Halong Bay, todo incluido. Dise&ntilde;ado y acompa&ntilde;ado por Katherine Molinares, venezolana que vive en Vietnam.
             </p>
           </div>
           <div className="md:col-span-2 flex md:justify-end items-start">

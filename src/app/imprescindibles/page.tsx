@@ -1,131 +1,388 @@
 import Link from 'next/link'
+import SafetyWingCallout from '@/components/imprescindibles/SafetyWingCallout'
+import LiveVndRate from '@/components/imprescindibles/LiveVndRate'
+import LiveKhrRate from '@/components/imprescindibles/LiveKhrRate'
+import TimezoneSelector from '@/components/imprescindibles/TimezoneSelector'
 
 export const metadata = {
   title: 'Los Imprescindibles — Asia Lo Posible',
   description: 'Guía de preparación para tu viaje a Vietnam y Camboya con Asia Lo Posible',
 }
 
+/* ── SVG Icons ── */
+
+function PassportIcon() {
+  return (
+    <svg width="40" height="40" viewBox="0 0 40 40" fill="none" stroke="var(--color-accent)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+      <rect x="8" y="4" width="24" height="32" rx="2" />
+      <circle cx="20" cy="18" r="5" />
+      <path d="M15 18c0-2.8 2.2-5 5-5s5 2.2 5 5" strokeDasharray="2 2" />
+      <line x1="13" y1="28" x2="27" y2="28" />
+      <line x1="15" y1="31" x2="25" y2="31" />
+    </svg>
+  )
+}
+
+function PlugIcon() {
+  return (
+    <svg width="40" height="40" viewBox="0 0 40 40" fill="none" stroke="var(--color-accent)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+      <rect x="10" y="6" width="20" height="14" rx="3" />
+      <line x1="17" y1="10" x2="17" y2="16" />
+      <line x1="23" y1="10" x2="23" y2="16" />
+      <line x1="20" y1="20" x2="20" y2="26" />
+      <path d="M14 26h12v4a2 2 0 01-2 2H16a2 2 0 01-2-2v-4z" />
+      <circle cx="31" cy="10" r="3" strokeDasharray="2 1.5" opacity="0.5" />
+      <path d="M30 8.5v3M29.5 10h3" opacity="0.5" />
+    </svg>
+  )
+}
+
+function LuggageIcon() {
+  return (
+    <svg width="40" height="40" viewBox="0 0 40 40" fill="none" stroke="var(--color-accent)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+      <rect x="10" y="10" width="20" height="24" rx="2" />
+      <path d="M15 10V7a2 2 0 012-2h6a2 2 0 012 2v3" />
+      <line x1="10" y1="18" x2="30" y2="18" />
+      <line x1="18" y1="22" x2="22" y2="22" />
+      <circle cx="14" cy="36" r="1.5" />
+      <circle cx="26" cy="36" r="1.5" />
+    </svg>
+  )
+}
+
+function HealthIcon() {
+  return (
+    <svg width="40" height="40" viewBox="0 0 40 40" fill="none" stroke="var(--color-accent)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M20 36s-12-7.2-12-16.8C8 12.9 11.6 8 16 8c2.5 0 4 1.5 4 1.5S22.5 8 24 8c4.4 0 8 4.9 8 11.2C32 28.8 20 36 20 36z" />
+      <line x1="20" y1="16" x2="20" y2="26" />
+      <line x1="15" y1="21" x2="25" y2="21" />
+    </svg>
+  )
+}
+
+function MoneyIcon() {
+  return (
+    <svg width="40" height="40" viewBox="0 0 40 40" fill="none" stroke="var(--color-accent)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+      <rect x="4" y="10" width="32" height="20" rx="2" />
+      <circle cx="20" cy="20" r="5" />
+      <line x1="20" y1="16" x2="20" y2="24" />
+      <path d="M17.5 18.5c0-1.1 1.1-2 2.5-2s2.5.9 2.5 2-1.1 2-2.5 2-2.5.9-2.5 2 1.1 2 2.5 2 2.5-.9 2.5-2" />
+      <circle cx="9" cy="20" r="1.5" opacity="0.4" />
+      <circle cx="31" cy="20" r="1.5" opacity="0.4" />
+    </svg>
+  )
+}
+
+function ClockIcon() {
+  return (
+    <svg width="40" height="40" viewBox="0 0 40 40" fill="none" stroke="var(--color-accent)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+      <circle cx="20" cy="20" r="14" />
+      <line x1="20" y1="10" x2="20" y2="20" />
+      <line x1="20" y1="20" x2="27" y2="24" />
+      <line x1="20" y1="6" x2="20" y2="8" opacity="0.4" />
+      <line x1="20" y1="32" x2="20" y2="34" opacity="0.4" />
+      <line x1="6" y1="20" x2="8" y2="20" opacity="0.4" />
+      <line x1="32" y1="20" x2="34" y2="20" opacity="0.4" />
+    </svg>
+  )
+}
+
+function ShieldIcon() {
+  return (
+    <svg width="40" height="40" viewBox="0 0 40 40" fill="none" stroke="var(--color-accent)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M20 4L6 10v10c0 9.3 6 17.3 14 20 8-2.7 14-10.7 14-20V10L20 4z" />
+      <line x1="20" y1="16" x2="20" y2="24" />
+      <line x1="16" y1="20" x2="24" y2="20" />
+    </svg>
+  )
+}
+
+/* ── Data ── */
+
+interface InfoItem {
+  label: string
+  text: string | React.ReactNode
+}
+
+interface Section {
+  id: string
+  title: string
+  subtitle: string
+  icon: React.ComponentType
+  items: InfoItem[]
+  highlight?: string
+  customContent?: React.ReactNode
+}
+
+const sections: Section[] = [
+  {
+    id: 'docs',
+    title: 'Documentación y Visados',
+    subtitle: 'Lo primero que necesitas resolver',
+    icon: PassportIcon,
+    highlight: 'Nosotros te asesoramos en todo el proceso de visas',
+    items: [
+      { label: 'Pasaporte', text: 'Mínimo 6 meses de vigencia y 4 páginas en blanco' },
+      { label: 'Visa Vietnam', text: '$50 USD multi-entry (depende de tu nacionalidad) — e-visa' },
+      { label: 'Visa Camboya', text: '$30 USD' },
+      { label: 'Copias digitales', text: 'Guarda copias de tu pasaporte, visas y seguro en tu email y en la nube' },
+    ],
+  },
+  {
+    id: 'conectividad',
+    title: 'Conectividad y Energía',
+    subtitle: 'Mantente conectado desde el primer día',
+    icon: PlugIcon,
+    items: [
+      { label: 'WiFi', text: 'Disponible en todos los hoteles y la mayoría de restaurantes' },
+      { label: 'eSIM', text: 'Incluida en tu paquete — la recibirás antes del viaje con instrucciones de activación' },
+      { label: 'Apps útiles', text: 'Google Maps (offline), Google Translate (vietnamita y khmer), Grab (el Uber de Asia)' },
+      { label: 'Enchufes', text: <>Tipo A, C y G — lleva un <a href="https://www.power-plugs-sockets.com/vietnam/" target="_blank" rel="noopener noreferrer" className="text-[var(--color-accent)] underline hover:no-underline transition-colors">adaptador universal</a> (<a href="https://www.worldstandards.eu/electricity/plugs-and-sockets/a/" target="_blank" rel="noopener noreferrer" className="text-[var(--color-accent)] underline hover:no-underline transition-colors">ver fotos de enchufes</a>)</> },
+      { label: 'Voltaje', text: '220V — verifica que tus cargadores sean dual voltage (la mayoría lo son)' },
+    ],
+  },
+  {
+    id: 'equipaje',
+    title: 'Equipaje y Ropa',
+    subtitle: 'Agosto: cálido y húmedo (28-35°C)',
+    icon: LuggageIcon,
+    items: [
+      { label: 'Maleta', text: 'Equipaje facturado: 20kg máximo + equipaje de mano: 7kg' },
+      { label: 'Ropa', text: 'Ligera, cómoda y transpirable — algodón, lino, telas técnicas' },
+      { label: 'Imprescindibles', text: 'Camisetas, pantalones ligeros, traje de baño, ropa para cubrir hombros y rodillas (templos)' },
+      { label: 'Calzado', text: 'Zapatillas cómodas + sandalias' },
+      { label: 'Abrigo', text: 'Suéter o chaqueta ligera para el aire acondicionado en buses y restaurantes' },
+      { label: 'Lluvia', text: 'Impermeable ligero o poncho — las lluvias son breves pero intensas' },
+      { label: 'Accesorios', text: 'Sombrero/gorra y gafas de sol' },
+    ],
+  },
+  {
+    id: 'salud',
+    title: 'Salud',
+    subtitle: 'Prevención y bienestar durante el viaje',
+    icon: HealthIcon,
+    items: [
+      { label: 'Botiquín', text: 'Protector solar 50+, repelente con DEET, antidiarreicos, analgésicos, Band-Aids' },
+      { label: 'Hidratación', text: 'Beber solo agua embotellada — nunca del grifo' },
+      { label: 'Comida callejera', text: 'Segura en general, elige puestos con alta rotación de clientes' },
+      { label: 'Medicamentos', text: 'Lleva tus medicamentos con receta en su empaque original' },
+    ],
+  },
+  {
+    id: 'dinero',
+    title: 'Dinero y Pagos',
+    subtitle: 'Efectivo es rey en el sudeste asiático',
+    icon: MoneyIcon,
+    highlight: 'Presupuesto recomendado para gastos personales: $20-40 USD/día',
+    items: [
+      { label: 'Vietnam', text: <LiveVndRate /> },
+      { label: 'Camboya', text: <LiveKhrRate /> },
+      { label: 'Efectivo', text: 'Dólares americanos en billetes nuevos, sin arrugas ni marcas — los rechazan' },
+      { label: 'Tarjetas', text: 'Visa/Mastercard funcionan en hoteles y restaurantes grandes' },
+      { label: 'Digital', text: 'Apple Pay/Google Pay con cobertura limitada' },
+      { label: 'ATM', text: 'Disponibles en ciudades principales (comisión ~$2-5 por retiro)' },
+    ],
+  },
+  {
+    id: 'horario',
+    title: 'Zona Horaria',
+    subtitle: 'GMT+7 — Indochina Time',
+    icon: ClockIcon,
+    highlight: 'Empieza a ajustar tu horario de sueño 3-4 días antes del viaje',
+    customContent: <TimezoneSelector />,
+    items: [],
+  },
+  {
+    id: 'vacunas',
+    title: 'Vacunas y Seguro',
+    subtitle: 'Seguro médico de viaje: OBLIGATORIO',
+    icon: ShieldIcon,
+    highlight: 'Si decides contratar con SafetyWing, te podemos ayudar con el proceso de contratación sin ningún costo adicional',
+    items: [
+      { label: 'Vacunas recomendadas', text: 'Hepatitis A y B, Tétanos, Fiebre tifoidea (consulta con tu médico)' },
+      { label: 'Obligatorias', text: 'No se requieren vacunas obligatorias para entrar a Vietnam o Camboya' },
+      { label: 'Malaria', text: 'Riesgo bajo en las zonas del itinerario, pero consulta profilaxis con tu médico' },
+    ],
+  },
+]
+
+/* ── Component ── */
+
 export default function Imprescindibles() {
   return (
-    <main className="min-h-screen py-20 px-5 md:px-10">
-      <div className="max-w-[800px] mx-auto">
-        <Link href="/" className="text-xs tracking-[0.2em] uppercase text-[var(--color-accent)] no-underline hover:underline mb-10 block">&larr; Volver al inicio</Link>
-        <h1 className="text-2xl md:text-4xl font-bold mb-8 uppercase">LOS IMPRESCINDIBLES</h1>
-        <p className="text-xs text-[var(--color-secondary)] mb-2">Guía de preparación para tu viaje</p>
-        <p className="text-xs text-[var(--color-secondary)] mb-10">Última actualización: Marzo 2026</p>
-        <div className="space-y-10 text-[0.9rem] leading-relaxed text-[var(--color-secondary)]">
+    <main className="min-h-screen relative">
+      {/* Hero header */}
+      <div className="relative overflow-hidden pt-24 pb-16 md:pt-32 md:pb-20">
+        <div
+          className="absolute top-0 left-1/4 w-[500px] h-[500px] pointer-events-none"
+          style={{ background: 'var(--color-accent)', filter: 'blur(180px)', opacity: 0.04 }}
+        />
+        <div className="max-w-[1200px] mx-auto px-5 md:px-10 relative z-10">
+          <Link
+            href="/"
+            className="inline-flex items-center gap-2 text-xs tracking-[0.2em] uppercase text-[var(--color-accent)] no-underline hover:underline mb-10"
+          >
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+              <line x1="12" y1="8" x2="4" y2="8" />
+              <polyline points="8 4 4 8 8 12" />
+            </svg>
+            Volver al inicio
+          </Link>
 
-          {/* 1. Documentación y Visados */}
-          <section>
-            <h2 className="text-lg font-bold text-[var(--color-text)] mb-3">1. Documentación y Visados</h2>
-            <ul className="list-disc pl-5 space-y-3">
-              <li><span className="text-[var(--color-text)] font-bold">Pasaporte</span> con mínimo 6 meses de vigencia y 4 páginas en blanco</li>
-              <li><span className="text-[var(--color-text)] font-bold">Visa Vietnam:</span> ~$50 USD — e-visa (25 días hábiles) o visa on arrival</li>
-              <li><span className="text-[var(--color-text)] font-bold">Visa Camboya:</span> ~$30 USD — e-visa o visa on arrival</li>
-              <li>Lleva <span className="text-[var(--color-text)] font-bold">2 fotos tamaño pasaporte</span> por si las necesitas en inmigración</li>
-              <li>Guarda <span className="text-[var(--color-text)] font-bold">copias digitales</span> de tu pasaporte, visas y seguro en tu email y en la nube</li>
-              <li>Nosotros te asesoramos en todo el proceso de visas</li>
-            </ul>
-          </section>
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-end">
+            <div className="md:col-span-7">
+              <span className="block text-xs tracking-[0.2em] uppercase text-[var(--color-secondary)] mb-4">
+                GU&Iacute;A DE PREPARACI&Oacute;N
+              </span>
+              <h1 className="text-3xl md:text-[3.5rem] leading-[0.9] font-bold uppercase text-[var(--color-text)]">
+                LOS
+                <br />
+                IMPRESCINDIBLES
+              </h1>
+            </div>
+            <div className="md:col-span-5">
+              <p className="text-[0.9rem] leading-relaxed text-[var(--color-secondary)] max-w-[400px]">
+                Todo lo que necesitas saber antes de hacer tu maleta. De visas a voltaje, de dinero a zona horaria.
+              </p>
+              <p className="text-xs text-[var(--color-secondary)] mt-3 opacity-50">
+                &Uacute;ltima actualizaci&oacute;n: Marzo 2026
+              </p>
+            </div>
+          </div>
 
-          {/* 2. Conectividad y Energía */}
-          <section>
-            <h2 className="text-lg font-bold text-[var(--color-text)] mb-3">2. Conectividad y Energía</h2>
-            <ul className="list-disc pl-5 space-y-3">
-              <li><span className="text-[var(--color-text)] font-bold">WiFi</span> disponible en todos los hoteles y la mayoría de restaurantes</li>
-              <li>Recomendamos comprar una <span className="text-[var(--color-text)] font-bold">eSIM</span> antes de viajar o SIM local al llegar (~$5-10 USD para 15-30 días de datos)</li>
-              <li><span className="text-[var(--color-text)] font-bold">Apps útiles:</span> Google Maps (descarga mapas offline), Google Translate (descarga vietnamita y khmer), Grab (el Uber de Asia)</li>
-              <li><span className="text-[var(--color-text)] font-bold">Enchufes:</span> Vietnam y Camboya usan tipo A, C y G. Lleva un adaptador universal</li>
-              <li><span className="text-[var(--color-text)] font-bold">Voltaje:</span> 220V — si vienes de América (110V), verifica que tus cargadores sean dual voltage (la mayoría lo son)</li>
-            </ul>
-          </section>
+          {/* Section quick nav */}
+          <div className="flex flex-wrap gap-2 mt-10">
+            {sections.map((s) => (
+              <a
+                key={s.id}
+                href={`#${s.id}`}
+                className="text-[11px] tracking-[0.1em] uppercase px-3 py-1.5 border border-[rgba(212,168,83,0.15)] text-[var(--color-secondary)] no-underline transition-all duration-300 hover:border-[var(--color-accent)] hover:text-[var(--color-accent)]"
+              >
+                {s.title}
+              </a>
+            ))}
+          </div>
+        </div>
+      </div>
 
-          {/* 3. Equipaje y Ropa */}
-          <section>
-            <h2 className="text-lg font-bold text-[var(--color-text)] mb-3">3. Equipaje y Ropa</h2>
-            <ul className="list-disc pl-5 space-y-3">
-              <li><span className="text-[var(--color-text)] font-bold">Maleta de 23kg máximo</span> + equipaje de mano</li>
-              <li>Ropa ligera, cómoda y transpirable (algodón, lino, telas técnicas)</li>
-              <li><span className="text-[var(--color-text)] font-bold">Agosto:</span> temporada cálida y húmeda (28-35°C), posibles lluvias tropicales cortas</li>
-              <li><span className="text-[var(--color-text)] font-bold">Imprescindibles:</span> camisetas, pantalones ligeros, vestido/falda fresca, traje de baño, ropa para cubrir hombros y rodillas (templos)</li>
-              <li><span className="text-[var(--color-text)] font-bold">Calzado:</span> zapatillas cómodas para caminar + sandalias. No zapatos nuevos sin estrenar</li>
-              <li>Un <span className="text-[var(--color-text)] font-bold">suéter o chaqueta ligera</span> para aire acondicionado en buses y restaurantes</li>
-              <li><span className="text-[var(--color-text)] font-bold">Impermeable ligero o poncho</span> (las lluvias son breves pero intensas)</li>
-              <li>Sombrero/gorra y gafas de sol</li>
-            </ul>
-          </section>
+      {/* Divider */}
+      <div className="max-w-[1200px] mx-auto px-5 md:px-10">
+        <div className="h-px w-full" style={{ background: 'linear-gradient(to right, var(--color-accent), transparent 60%)' }} />
+      </div>
 
-          {/* 4. Salud */}
-          <section>
-            <h2 className="text-lg font-bold text-[var(--color-text)] mb-3">4. Salud</h2>
-            <ul className="list-disc pl-5 space-y-3">
-              <li><span className="text-[var(--color-text)] font-bold">Botiquín personal:</span> protector solar alto (50+), repelente de mosquitos con DEET, antidiarreicos, analgésicos, Band-Aids, medicamentos personales</li>
-              <li><span className="text-[var(--color-text)] font-bold">Hidratación constante:</span> beber solo agua embotellada (nunca del grifo)</li>
-              <li><span className="text-[var(--color-text)] font-bold">Comida callejera:</span> segura en general, pero elige puestos con alta rotación de clientes</li>
-              <li>Lleva tus <span className="text-[var(--color-text)] font-bold">medicamentos con receta</span> en su empaque original</li>
-            </ul>
-          </section>
+      {/* Sections */}
+      <div className="max-w-[1200px] mx-auto px-5 md:px-10 py-16 md:py-20">
+        <div className="space-y-16 md:space-y-20">
+          {sections.map((section, sectionIdx) => {
+            const Icon = section.icon
+            const isEven = sectionIdx % 2 === 0
 
-          {/* 5. Dinero y Pagos */}
-          <section>
-            <h2 className="text-lg font-bold text-[var(--color-text)] mb-3">5. Dinero y Pagos</h2>
-            <ul className="list-disc pl-5 space-y-3">
-              <li><span className="text-[var(--color-text)] font-bold">Moneda Vietnam:</span> Dong (VND). 1 USD ≈ 25,000 VND</li>
-              <li><span className="text-[var(--color-text)] font-bold">Moneda Camboya:</span> Riel (KHR), pero el dólar americano se acepta en todas partes</li>
-              <li>Lleva <span className="text-[var(--color-text)] font-bold">dólares americanos en efectivo</span> (billetes nuevos, sin arrugas ni marcas — los rechazan)</li>
-              <li><span className="text-[var(--color-text)] font-bold">Tarjetas Visa/Mastercard</span> funcionan en hoteles y restaurantes grandes</li>
-              <li><span className="text-[var(--color-text)] font-bold">Apple Pay/Google Pay:</span> cobertura limitada</li>
-              <li><span className="text-[var(--color-text)] font-bold">Cajeros ATM</span> disponibles en ciudades principales (comisión ~$2-5 por retiro)</li>
-              <li>Para mercados, street food y compras locales: <span className="text-[var(--color-text)] font-bold">efectivo es rey</span></li>
-              <li><span className="text-[var(--color-text)] font-bold">Presupuesto recomendado</span> para gastos personales: $20-40 USD/día</li>
-            </ul>
-          </section>
+            return (
+              <section key={section.id} id={section.id}>
+                {/* Section header */}
+                <div className={`grid grid-cols-1 md:grid-cols-12 gap-6 mb-8 items-start ${!isEven ? 'md:text-right' : ''}`}>
+                  <div className={`md:col-span-5 ${!isEven ? 'md:order-2' : ''}`}>
+                    <div className={`flex items-start gap-4 ${!isEven ? 'md:flex-row-reverse' : ''}`}>
+                      <div
+                        className="shrink-0 w-16 h-16 flex items-center justify-center border border-[rgba(212,168,83,0.2)] relative"
+                        style={{ background: 'rgba(212,168,83,0.04)' }}
+                      >
+                        <Icon />
+                        {/* Number badge */}
+                        <span
+                          className="absolute -top-2 -right-2 w-5 h-5 flex items-center justify-center text-[9px] font-bold font-mono"
+                          style={{
+                            background: 'var(--color-bg)',
+                            border: '1px solid var(--color-accent)',
+                            color: 'var(--color-accent)',
+                          }}
+                        >
+                          {sectionIdx + 1}
+                        </span>
+                      </div>
+                      <div>
+                        <h2 className="text-xl md:text-2xl font-bold uppercase text-[var(--color-text)] leading-tight">
+                          {section.title}
+                        </h2>
+                        <p className="text-xs tracking-[0.1em] uppercase text-[var(--color-accent)] mt-1">
+                          {section.subtitle}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
 
-          {/* 6. Propinas */}
-          <section>
-            <h2 className="text-lg font-bold text-[var(--color-text)] mb-3">6. Propinas</h2>
-            <ul className="list-disc pl-5 space-y-3">
-              <li>Las propinas <span className="text-[var(--color-text)] font-bold">no son obligatorias</span> pero sí apreciadas</li>
-              <li><span className="text-[var(--color-text)] font-bold">Guía:</span> $5-10 USD por día por grupo</li>
-              <li><span className="text-[var(--color-text)] font-bold">Conductor:</span> $3-5 USD por día</li>
-              <li><span className="text-[var(--color-text)] font-bold">Restaurantes:</span> 5-10% si no está incluido</li>
-              <li><span className="text-[var(--color-text)] font-bold">Masajes/spa:</span> 10-15%</li>
-              <li><span className="text-[var(--color-text)] font-bold">Porteros de hotel:</span> $1-2 USD</li>
-              <li>Nosotros organizaremos una <span className="text-[var(--color-text)] font-bold">colecta grupal</span> para guías y conductores al final del viaje</li>
-            </ul>
-          </section>
+                {/* Custom content or Items grid */}
+                {section.customContent ? (
+                  section.customContent
+                ) : (
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px" style={{ background: 'rgba(212,168,83,0.08)' }}>
+                    {section.items.map((item, i) => (
+                      <div
+                        key={i}
+                        className="p-5 md:p-6 transition-all duration-300 group"
+                        style={{ background: 'var(--color-bg)' }}
+                      >
+                        <span className="block text-xs font-bold uppercase tracking-[0.1em] text-[var(--color-accent)] mb-2 transition-colors duration-300">
+                          {item.label}
+                        </span>
+                        <p className="text-[0.85rem] leading-relaxed text-[var(--color-secondary)]">
+                          {item.text}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
+                )}
 
-          {/* 7. Zona Horaria */}
-          <section>
-            <h2 className="text-lg font-bold text-[var(--color-text)] mb-3">7. Zona Horaria</h2>
-            <ul className="list-disc pl-5 space-y-3">
-              <li><span className="text-[var(--color-text)] font-bold">Vietnam y Camboya:</span> GMT+7 (Indochina Time)</li>
-              <li><span className="text-[var(--color-text)] font-bold">Diferencia con Latinoamérica:</span> +11 a +14 horas según el país
-                <ul className="list-disc pl-5 space-y-2 mt-2">
-                  <li>Venezuela: +11 horas</li>
-                  <li>Colombia/Perú/Ecuador: +12 horas</li>
-                  <li>Chile/Argentina: +14 horas (verano) / +10 horas (invierno)</li>
-                  <li>México (CDMX): +13 horas</li>
-                  <li>Miami/Nueva York: +11 horas (verano) / +12 horas (invierno)</li>
-                </ul>
-              </li>
-              <li><span className="text-[var(--color-text)] font-bold">Consejo:</span> empieza a ajustar tu horario de sueño 3-4 días antes del viaje</li>
-            </ul>
-          </section>
+                {/* SafetyWing callout for health and insurance sections */}
+                {(section.id === 'salud' || section.id === 'vacunas') && (
+                  <SafetyWingCallout />
+                )}
 
-          {/* 8. Vacunas y Seguro */}
-          <section>
-            <h2 className="text-lg font-bold text-[var(--color-text)] mb-3">8. Vacunas y Seguro</h2>
-            <ul className="list-disc pl-5 space-y-3">
-              <li><span className="text-[var(--color-text)] font-bold">Vacunas recomendadas</span> (consulta con tu médico): Hepatitis A y B, Tétanos, Fiebre tifoidea</li>
-              <li>No se requieren vacunas obligatorias para entrar a Vietnam o Camboya</li>
-              <li>Consulta si necesitas <span className="text-[var(--color-text)] font-bold">profilaxis contra malaria</span> (riesgo bajo en las zonas del itinerario, pero consulta)</li>
-              <li><span className="text-[var(--color-text)] font-bold">Seguro médico de viaje: OBLIGATORIO.</span> Cobertura mínima recomendada: $50,000 USD</li>
-              <li>El seguro debe incluir: <span className="text-[var(--color-text)] font-bold">emergencias médicas, evacuación, repatriación, pérdida de equipaje</span></li>
-              <li>Nosotros facilitamos la gestión del seguro a través de la operadora certificada</li>
-            </ul>
-          </section>
+                {/* Highlight callout */}
+                {section.highlight && (
+                  <div
+                    className="mt-4 px-5 py-3 flex items-center gap-3"
+                    style={{
+                      borderLeft: '2px solid var(--color-accent)',
+                      background: 'rgba(212,168,83,0.04)',
+                    }}
+                  >
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="var(--color-accent)" strokeWidth="1.5" strokeLinecap="round" className="shrink-0">
+                      <circle cx="8" cy="8" r="6" />
+                      <line x1="8" y1="5" x2="8" y2="8" />
+                      <circle cx="8" cy="11" r="0.5" fill="var(--color-accent)" />
+                    </svg>
+                    <p className="text-[0.85rem] text-[var(--color-accent)]">
+                      {section.highlight}
+                    </p>
+                  </div>
+                )}
+              </section>
+            )
+          })}
+        </div>
+      </div>
 
+      {/* Bottom CTA */}
+      <div className="max-w-[1200px] mx-auto px-5 md:px-10 pb-20">
+        <div className="h-px w-full mb-12" style={{ background: 'linear-gradient(to right, var(--color-accent), transparent 60%)' }} />
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
+          <div className="md:col-span-7">
+            <p className="text-[0.95rem] text-[var(--color-secondary)]">
+              &iquest;Tienes dudas sobre algo que no est&aacute; en esta gu&iacute;a? Escr&iacute;benos directamente.
+            </p>
+          </div>
+          <div className="md:col-span-5 md:text-right">
+            <a
+              href="https://wa.me/584248455010"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block border border-[var(--color-accent)] bg-[var(--color-accent)] text-[var(--color-bg)] px-8 py-4 text-sm uppercase tracking-[0.1em] font-bold no-underline transition-all duration-500 hover:shadow-[0_0_20px_rgba(212,168,83,0.4)] hover:bg-transparent hover:text-[var(--color-accent)]"
+            >
+              Preguntar por WhatsApp
+            </a>
+          </div>
         </div>
       </div>
     </main>
