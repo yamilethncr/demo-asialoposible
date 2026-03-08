@@ -22,11 +22,11 @@ export default function Home() {
       <Hero />
       <Problem />
       <Promise />
+      <Hotels />
       <Host />
       <RouteMap />
       <Itinerary />
       <Includes />
-      <Hotels />
       <Pricing />
       <NotIncluded />
       <FAQ />
