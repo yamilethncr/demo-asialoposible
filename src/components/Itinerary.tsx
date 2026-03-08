@@ -7,6 +7,8 @@ interface Day {
   title: string
   location: string
   description: string
+  meals?: string
+  hotel?: string
   highlight?: boolean
 }
 
@@ -15,92 +17,113 @@ const itinerary: Day[] = [
     days: 'DÍA 01',
     title: 'Llegada a Hanói',
     location: 'VIETNAM',
-    description:
-      'Tu guía te espera en el aeropuerto desde el primer momento. Traslado al hotel, distribución de habitaciones y tiempo libre para descansar. Por la noche, cena de bienvenida con vista panorámica desde la azotea.',
+    meals: 'C',
+    hotel: 'Anatole Hotel',
+    description: 'Tu guía te espera en el aeropuerto desde el primer momento. Traslado al hotel Anatole en el corazón del Barrio Antiguo, distribución de habitaciones y tiempo libre para descansar del vuelo. Por la noche, cena de bienvenida con el grupo completo para conocerse y brindar por la aventura que comienza.',
   },
   {
     days: 'DÍA 02',
-    title: 'Hanói + Vespa Tour Nocturno',
+    title: 'Hanói — Capital de Vietnam',
     location: 'VIETNAM',
-    description:
-      'Mausoleo de Ho Chi Minh, Templo de la Literatura, paseo en rickshaw. Y lo mejor: tour nocturno en Vespa por el Barrio Antiguo, paradas gastronómicas y música en vivo.',
+    meals: 'D',
+    hotel: 'Anatole Hotel',
+    description: 'Día completo explorando la capital milenaria. Visita al Mausoleo de Ho Chi Minh, el Templo de la Literatura (la primera universidad de Vietnam, siglo XI), paseo en rickshaw por el Barrio Antiguo de las 36 calles, y la pagoda Tran Quoc junto al lago. Al caer la noche, lo mejor: Vespa Night Tour — recorrido nocturno en moto por los callejones de Hanói con paradas gastronómicas y música en vivo.',
   },
   {
-    days: 'DÍA 03-04',
-    title: 'Crucero Bahía de Halong',
+    days: 'DÍA 03',
+    title: 'Hanói — Bahía de Halong',
     location: 'CRUCERO',
-    description:
-      '1.969 islas, agua color esmeralda, Patrimonio UNESCO. Noche a bordo de un crucero premium. Al amanecer, tai chi en cubierta y brunch con vista. Luego vuelo interno a Hue.',
+    meals: 'D, A, C',
+    hotel: 'Indochine Premium Cruise',
+    description: 'Salida hacia la Bahía de Halong, Patrimonio UNESCO con 1.969 islas de piedra caliza emergiendo del agua color esmeralda. Embarque en el crucero Indochine Premium. Almuerzo a bordo con mariscos frescos, kayak entre formaciones rocosas, cueva de estalactitas, y cena gourmet bajo las estrellas. Noche a bordo del crucero.',
+  },
+  {
+    days: 'DÍA 04',
+    title: 'Halong — Hanói — Vuelo a Hue',
+    location: 'VIETNAM',
+    meals: 'D',
+    hotel: 'White Lotus Hotel',
+    description: 'Amanecer en la bahía. Sesión de tai chi en cubierta al amanecer, brunch panorámico mientras el crucero navega de regreso. Desembarque y traslado a Hanói para tomar el vuelo interno a Hue, la antigua capital imperial. Llegada al hotel White Lotus y noche libre.',
   },
   {
     days: 'DÍA 05',
-    title: 'Hue — Capital Imperial',
+    title: 'Hue — Antigua Capital Imperial',
     location: 'VIETNAM',
-    description:
-      'Ciudad Imperial amurallada, pagoda Thien Mu, fábrica de inciensos artesanales, tumba del emperador Tu Duc. Un día caminando dentro de la historia.',
+    meals: 'D',
+    hotel: 'White Lotus Hotel',
+    description: 'Un día caminando dentro de la historia. Visita a la Ciudad Imperial amurallada (Patrimonio UNESCO), la pagoda Thien Mu a orillas del Río del Perfume, la Tumba del emperador Tu Duc entre jardines y estanques, y el vibrante mercado Dong Ba para descubrir los sabores locales de Hue, considerada la capital gastronómica de Vietnam.',
   },
   {
     days: 'DÍA 06',
-    title: 'Ba Na Hills + Puente Dorado',
+    title: 'Hue — Ba Na Hills — Danang',
     location: 'DA NANG',
-    description:
-      'Subida a 1.487 metros de altura. El Puente Dorado sostenido por dos manos gigantes. Almuerzo de buffet en la cima. Llegada a Da Nang y tarde libre en la playa de My Khe.',
+    meals: 'D, A',
+    hotel: 'A La Carte Hotel',
+    description: 'Cruce del legendario Paso de las Nubes (Hai Van Pass) con vistas espectaculares al mar. Subida en teleférico a Ba Na Hills a 1.487 metros de altura. El famoso Puente Dorado sostenido por dos manos gigantes de piedra. Almuerzo buffet en la cima con vista panorámica. Descenso y llegada a Danang, check-in en el hotel A La Carte frente a la playa de My Khe.',
   },
   {
     days: 'DÍA 07',
-    title: 'Día Libre en la Playa',
+    title: 'Día Libre en Playa My Khe',
     location: 'DA NANG',
-    description:
-      'Un día sin agenda. Playa, sol, descanso. El ritmo de un viaje diseñado para que llegues a cada nuevo destino descansado y con ganas de más.',
+    meals: 'D',
+    hotel: 'A La Carte Hotel',
+    description: 'Un día sin agenda. Playa, sol, piscina del hotel, spa, o simplemente descanso. My Khe fue nombrada una de las playas más hermosas del planeta. El ritmo del viaje está diseñado para que llegues a cada nuevo destino descansado y con ganas de más. Día libre sin guía — explora a tu ritmo.',
   },
   {
     days: 'DÍA 08',
-    title: 'Da Nang + Fotografía + Hoi An',
+    title: 'Danang — City Tour — Hoi An',
     location: 'HOI AN',
-    description:
-      'Montañas de Mármol, Puente del Dragón, Pagoda Linh Ung. Sesión de fotografía profesional incluida: 2 horas. Por la tarde, llegada a Hoi An y paseo en barco con linternas al atardecer.',
+    meals: 'D',
+    hotel: 'Hoi An Delicacy Hotel',
+    description: 'Mañana visitando las Montañas de Mármol (cinco colinas con cuevas y templos budistas), el imponente Puente del Dragón, y la Pagoda Linh Ung con su Lady Buddha de 67 metros mirando al mar. Por la tarde, traslado a Hoi An y paseo en barco por el río Hoai al atardecer, soltando linternas de colores flotantes — uno de los momentos más mágicos del viaje.',
   },
   {
     days: 'DÍA 09',
-    title: 'Clase de Cocina + Barrio Antiguo',
+    title: 'Hoi An — Clase de Cocina y Cam Thanh',
     location: 'HOI AN',
-    description:
-      'Clase de cocina completa: mercado local, barca de bambú por la Jungla de Cocos, cuatro platos con chef. Por la tarde, Barrio Antiguo Patrimonio UNESCO, Puente Japonés de 400 años.',
+    meals: 'D, A',
+    hotel: 'Hoi An Delicacy Hotel',
+    description: 'Mañana en el mercado local seleccionando ingredientes frescos. Paseo en barca de bambú por la Jungla de Cocos de Cam Thanh. Clase de cocina vietnamita completa: preparación de cuatro platos tradicionales con chef local. Por la tarde, tiempo libre en el Barrio Antiguo Patrimonio UNESCO: Puente Japonés de 400 años, casas de mercaderes, sastrería artesanal, y la mejor comida callejera de Vietnam.',
   },
   {
     days: 'DÍA 10',
-    title: 'Vuelo a Camboya',
+    title: 'Hoi An — Danang — Vuelo a Siem Reap',
     location: 'SIEM REAP',
-    description:
-      'Mañana libre en Hoi An. Vuelo a Siem Reap, cuna del Imperio Khmer y más de 100 templos entre los siglos IX y XIII. Bienvenida del guía local.',
+    meals: 'D',
+    hotel: 'Metta Residence & Spa',
+    description: 'Mañana libre en Hoi An para últimas compras o paseo. Traslado al aeropuerto de Danang para el vuelo a Siem Reap, Camboya — cuna del Imperio Khmer y hogar de más de 100 templos construidos entre los siglos IX y XIII. Bienvenida del guía local camboyano. Check-in en Metta Residence & Spa.',
   },
   {
     days: 'DÍA 11',
-    title: 'Angkor Thom & Angkor Wat',
+    title: 'Angkor Thom y Angkor Wat',
     location: 'CAMBOYA',
-    description:
-      'Día completo: Angkor Thom, Bayón con sus 200 rostros sonrientes, Ta Prohm cubierto de raíces (Tomb Raider), y Angkor Wat — el templo más grande del mundo en su época. Atardecer desde Phnom Bakheng.',
+    meals: 'D',
+    hotel: 'Metta Residence & Spa',
+    description: 'El día más épico del viaje. Angkor Thom: la gran ciudad amurallada con el templo Bayón y sus 200 rostros sonrientes tallados en piedra. Ta Prohm: el templo devorado por las raíces de árboles gigantes (escenario de Tomb Raider). Y el gran Angkor Wat — el monumento religioso más grande del mundo, símbolo de Camboya. Atardecer desde la colina de Phnom Bakheng con vista panorámica de todo el complejo.',
   },
   {
     days: 'DÍA 12',
-    title: 'Circuito Largo — Banteay Srei',
+    title: 'Circuito Largo — Banteay Srei y Samre',
     location: 'CAMBOYA',
-    description:
-      'Pre Rup, Banteay Samre, Banteay Srei (la joya del arte angkoriano), East Mebon, Ta Som, Neak Pean y Preah Khan — el segundo templo más grande tras Angkor Wat.',
+    meals: 'A',
+    hotel: 'Metta Residence & Spa',
+    description: 'Exploración del circuito lejano de Angkor. Pre Rup (templo-montaña del siglo X), Banteay Samre, y la joya del arte angkoriano: Banteay Srei, con los bajorrelieves más detallados y mejor conservados de todo el complejo. East Mebon, y Preah Khan — el segundo templo más grande tras Angkor Wat, laberinto de corredores y galerías. Almuerzo incluido.',
   },
   {
     days: 'DÍA 13',
-    title: 'Roluos + Lago Tonle Sap',
+    title: 'Grupo Roluos — Lago Tonle Sap',
     location: 'CAMBOYA',
-    description:
-      'Templos preangkorianos de Roluos. Paseo en barco por el lago más grande del sudeste asiático. Visita al pueblo flotante de Kompong Phluk: casas, escuelas, vida entera sobre el agua.',
+    meals: 'D',
+    hotel: 'Metta Residence & Spa',
+    description: 'Visita a los templos preangkorianos de Roluos, los más antiguos del complejo de Angkor (siglo IX). Luego, paseo en barco por el Tonle Sap, el lago más grande del sudeste asiático. Visita al pueblo flotante de Kompong Phluk: casas, escuelas, mercados — una comunidad entera viviendo sobre el agua. Una experiencia humana única.',
   },
   {
     days: 'DÍA 14',
-    title: 'Despedida & Regreso',
-    location: 'GLOBAL',
-    description:
-      'Desayuno, tiempo libre y traslado al aeropuerto de Siem Reap. Fin de la experiencia.',
+    title: 'Despedida y Regreso',
+    location: 'CAMBOYA',
+    meals: 'D',
+    hotel: '',
+    description: 'Último desayuno juntos. Tiempo libre para compras de último momento o simplemente disfrutar la piscina del hotel. Traslado al aeropuerto de Siem Reap. Fin de la experiencia — pero el comienzo de una conexión que dura para siempre.',
     highlight: true,
   },
 ]
@@ -170,6 +193,18 @@ export default function Itinerary() {
                     <p className="text-[0.9rem] leading-relaxed text-[var(--color-secondary)] max-w-[600px]">
                       {day.description}
                     </p>
+                    <div className="flex flex-wrap gap-4 mt-3">
+                      {day.meals && (
+                        <span className="text-xs uppercase tracking-wide text-[var(--color-accent)]">
+                          {day.meals.split(', ').map(m => m === 'D' ? 'Desayuno' : m === 'A' ? 'Almuerzo' : 'Cena').join(' · ')}
+                        </span>
+                      )}
+                      {day.hotel && (
+                        <span className="text-xs uppercase tracking-wide text-[var(--color-secondary)]">
+                          🏨 {day.hotel}
+                        </span>
+                      )}
+                    </div>
                   </div>
                 )}
               </div>

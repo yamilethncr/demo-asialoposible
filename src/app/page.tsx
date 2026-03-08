@@ -1,9 +1,10 @@
-import PasswordGate from '@/components/PasswordGate'
+import PromoBanner from '@/components/PromoBanner'
 import Navbar from '@/components/Navbar'
 import Hero from '@/components/Hero'
 import Problem from '@/components/Problem'
 import Promise from '@/components/Promise'
 import Host from '@/components/Host'
+import RouteMap from '@/components/RouteMap'
 import Itinerary from '@/components/Itinerary'
 import Includes from '@/components/Includes'
 import Hotels from '@/components/Hotels'
@@ -15,12 +16,14 @@ import Footer from '@/components/Footer'
 
 export default function Home() {
   return (
-    <PasswordGate>
+    <>
+      <PromoBanner />
       <Navbar />
       <Hero />
       <Problem />
       <Promise />
       <Host />
+      <RouteMap />
       <Itinerary />
       <Includes />
       <Hotels />
@@ -29,6 +32,6 @@ export default function Home() {
       <FAQ />
       <CTAFinal />
       <Footer />
-    </PasswordGate>
+    </>
   )
 }

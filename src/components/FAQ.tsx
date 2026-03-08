@@ -4,32 +4,60 @@ import { useState } from 'react'
 
 const faqs = [
   {
+    q: '¿Qué hace diferente a este viaje de un tour convencional?',
+    a: 'No es un tour. Es una experiencia curada por Katherine, quien vive en Vietnam y conoce cada rincón. Grupo máximo de 10 personas, guía en español, hoteles boutique 4 estrellas, y un itinerario diseñado para vivir Asia, no solo visitarla.',
+  },
+  {
     q: '¿Necesito saber inglés?',
-    a: 'No. El viaje está diseñado para funcionar completamente en español. Tienes guía en español todo el recorrido y el acompañamiento de Katherine como anfitriona.',
+    a: 'No. Todo el viaje está diseñado para funcionar completamente en español. Tienes guía profesional en español durante todo el recorrido y el acompañamiento personal de Katherine.',
   },
   {
-    q: '¿Puedo ir solo/a?',
-    a: 'Sí. El viaje es para parejas, amigos, familias y personas que viajan solas. Si viajas solo/a, escríbenos para el precio en acomodación individual.',
+    q: '¿Es obligatorio el seguro de viaje?',
+    a: 'Sí, es obligatorio contar con un seguro médico de viaje con cobertura internacional amplia. Nosotros te facilitamos la gestión y emisión a través de la operadora certificada.',
   },
   {
-    q: '¿Para qué edades es el viaje?',
-    a: 'Para todas las edades. El ritmo está balanceado entre actividad y descanso, y el grupo pequeño permite adaptarlo a las necesidades de cada persona.',
+    q: '¿El boleto de avión está incluido?',
+    a: 'No. Los vuelos internacionales no están incluidos para darte flexibilidad de salir desde tu ciudad. Los vuelos internos dentro de Vietnam y Camboya sí están incluidos.',
   },
   {
-    q: '¿Qué pasa con el visado?',
-    a: 'No está incluido en el precio, pero te asesoramos en todo el proceso y te conectamos con un agente. Costo estimado: USD 70 Vietnam + USD 30 Camboya.',
+    q: '¿Qué tipo de ropa debo llevar?',
+    a: 'Ropa ligera, cómoda y transpirable. Agosto es temporada cálida y húmeda en el sudeste asiático (28-35°C). Incluye un suéter ligero para interiores con aire acondicionado y calzado cómodo para caminar.',
   },
   {
-    q: '¿Necesito seguro de viaje?',
-    a: 'Sí, recomendamos contratarlo. Tenemos un proveedor recomendado con excelente cobertura médica y de viaje para el sudeste asiático.',
+    q: '¿Puedo pagar con QR o transferencia?',
+    a: 'Sí. Aceptamos transferencias bancarias, Zelle, PayPal y pagos QR. Katherine te indicará las opciones disponibles según tu país de residencia.',
   },
   {
-    q: '¿Cuántas personas viajan?',
-    a: 'El grupo es de máximo 10 personas. Grupo pequeño y selecto. No es un tour masivo.',
+    q: '¿Funcionan las tarjetas de crédito y Apple Pay en Vietnam y Camboya?',
+    a: 'Las tarjetas Visa y Mastercard funcionan en hoteles, restaurantes grandes y tiendas. Apple Pay tiene cobertura limitada. Para mercados, street food y compras locales necesitarás efectivo (dólares o moneda local). Te asesoramos sobre cuánto llevar.',
   },
   {
-    q: '¿Cómo reservo mi cupo?',
-    a: 'Escríbenos por WhatsApp o Instagram. Te enviamos el itinerario detallado, condiciones de pago y resolvemos cualquier duda antes de confirmar.',
+    q: '¿Cómo funciona el transporte dentro del viaje?',
+    a: 'Todo el transporte está incluido: vehículos privados con aire acondicionado, vuelos internos, crucero en Halong Bay, barcas, rickshaws y Vespa tour. No necesitas gestionar nada.',
+  },
+  {
+    q: '¿Necesito comprar una SIM local o hay WiFi?',
+    a: 'Los hoteles tienen WiFi. Te recomendamos comprar una eSIM o SIM local al llegar (cuesta ~$5-10 USD) para tener datos móviles. Te enviamos instrucciones antes del viaje.',
+  },
+  {
+    q: '¿Es seguro viajar a Vietnam y Camboya?',
+    a: 'Sí. Vietnam y Camboya son destinos muy seguros para turistas. El crimen violento es extremadamente raro. Las precauciones son las mismas que en cualquier ciudad: cuidar pertenencias y estar atento en zonas concurridas.',
+  },
+  {
+    q: '¿Cuánto cuesta el suplemento de habitación individual?',
+    a: 'El suplemento por habitación privada es de $655 USD adicionales al precio del viaje. Si viajas solo/a y prefieres no compartir habitación, esta opción te garantiza tu propio espacio.',
+  },
+  {
+    q: '¿El viaje requiere mucha exigencia física?',
+    a: 'No. El itinerario está diseñado con un ritmo balanceado entre actividad y descanso. Incluye caminatas moderadas en templos y ciudades, pero no excursiones extremas. Hay días libres para recuperar energía.',
+  },
+  {
+    q: '¿Puedo organizar un viaje privado para mi grupo?',
+    a: 'Sí. Si tienes un grupo de 6 o más personas, podemos diseñar una experiencia privada con fechas personalizadas. Escríbenos para cotización.',
+  },
+  {
+    q: '¿Puedo extender mi estadía antes o después del viaje?',
+    a: 'Sí. Muchos viajeros llegan antes o se quedan después para explorar por su cuenta. Te asesoramos con recomendaciones de destinos, hoteles y logística para tu extensión.',
   },
 ]
 

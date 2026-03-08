@@ -21,8 +21,9 @@ export default function Navbar() {
 
   return (
     <nav
-      className="fixed top-0 w-full z-[100] transition-all duration-500"
+      className="fixed w-full z-[100] transition-all duration-500"
       style={{
+        top: 'var(--banner-offset, 0px)',
         padding: scrolled ? '20px 0' : '40px 0',
         background: scrolled
           ? 'rgba(10,15,30,0.95)'
