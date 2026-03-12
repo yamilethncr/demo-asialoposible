@@ -7,6 +7,7 @@ import Host from '@/components/Host'
 import RouteMap from '@/components/RouteMap'
 import Itinerary from '@/components/Itinerary'
 import Includes from '@/components/Includes'
+import VideoShowcase from '@/components/VideoShowcase'
 import Hotels from '@/components/Hotels'
 import Pricing from '@/components/Pricing'
 import NotIncluded from '@/components/NotIncluded'
@@ -27,6 +28,7 @@ export default function Home() {
       <RouteMap />
       <Itinerary />
       <Includes />
+      <VideoShowcase />
       <Pricing />
       <NotIncluded />
       <FAQ />
