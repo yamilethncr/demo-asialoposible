@@ -1,36 +1,39 @@
 'use client'
 
 import { useEffect } from 'react'
-import { setup } from 'meta-pixel'
 import { usePathname } from 'next/navigation'
 
-const PIXEL_ID = '1808011489910343'
+declare global {
+  interface Window {
+    fbq?: (...args: any[]) => void
+  }
+}
 
-let initialized = false
-let $fbq: ReturnType<typeof setup>['$fbq'] | null = null
+function fbq(...args: any[]) {
+  if (typeof window !== 'undefined' && typeof window.fbq === 'function') {
+    window.fbq(...args)
+  }
+}
 
-export function getPixel() {
-  return $fbq
+export function trackEvent(event: string, data?: Record<string, any>) {
+  fbq('track', event, data)
 }
 
 export default function MetaPixel() {
   const pathname = usePathname()
 
-  // Initialize pixel once
+  // Track PageView on client-side route changes (initial PageView is in <head>)
   useEffect(() => {
-    if (initialized) return
-    initialized = true
-    const pixel = setup().init(PIXEL_ID).pageView()
-    $fbq = pixel.$fbq
+    // Skip first render — the inline script in <head> already fired PageView
+    let isFirst = true
+    return () => { isFirst = false }
   }, [])
 
-  // Track PageView on route changes
   useEffect(() => {
-    if (!$fbq) return
-    $fbq('track', 'PageView')
+    fbq('track', 'PageView')
 
     if (pathname === '/imprescindibles') {
-      $fbq('track', 'ViewContent', {
+      fbq('track', 'ViewContent', {
         content_name: 'Guía Imprescindibles Vietnam & Camboya',
         content_type: 'travel_guide',
       })
@@ -41,11 +44,11 @@ export default function MetaPixel() {
   useEffect(() => {
     function handleClick(e: MouseEvent) {
       const link = (e.target as HTMLElement).closest('a[href]') as HTMLAnchorElement | null
-      if (!link || !$fbq) return
+      if (!link) return
       const href = link.getAttribute('href') || ''
 
       if (href.includes('wa.me')) {
-        $fbq('track', 'Lead', {
+        fbq('track', 'Lead', {
           content_name: 'WhatsApp Click',
           content_category: link.closest('#reservar')
             ? 'CTA Final'
@@ -56,7 +59,7 @@ export default function MetaPixel() {
       }
 
       if (href.includes('instagram.com')) {
-        $fbq('track', 'Contact', {
+        fbq('track', 'Contact', {
           content_name: 'Instagram DM Click',
         })
       }
@@ -69,14 +72,14 @@ export default function MetaPixel() {
   // IntersectionObserver for pricing section
   useEffect(() => {
     const precioEl = document.getElementById('precio')
-    if (!precioEl || !$fbq) return
+    if (!precioEl) return
 
     let tracked = false
     const obs = new IntersectionObserver(
       (entries) => {
         if (entries[0].isIntersecting && !tracked) {
           tracked = true
-          $fbq!('track', 'ViewContent', {
+          fbq('track', 'ViewContent', {
             content_name: 'Pricing Calculator',
             content_type: 'pricing',
           })

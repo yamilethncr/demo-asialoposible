@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { getPixel } from './MetaPixel'
+import { trackEvent } from './MetaPixel'
 
 type Etapa = 'marzo' | 'abril'
 type Metodo = 'contado' | 'cuotas'
@@ -89,18 +89,18 @@ export default function Pricing() {
   const handleEtapa = (e: Etapa) => {
     setEtapa(e)
     setStep(prev => Math.max(prev, 2))
-    getPixel()?.('track', 'CustomizeProduct', { content_name: 'Etapa', content_type: e })
+    trackEvent('CustomizeProduct', { content_name: 'Etapa', content_type: e })
   }
 
   const handleMetodo = (m: Metodo) => {
     setMetodo(m)
     setStep(prev => Math.max(prev, 3))
-    getPixel()?.('track', 'CustomizeProduct', { content_name: 'Método de pago', content_type: m })
+    trackEvent('CustomizeProduct', { content_name: 'Método de pago', content_type: m })
   }
 
   const handleHabitacion = (h: Habitacion) => {
     setHabitacion(h)
-    getPixel()?.('track', 'CustomizeProduct', { content_name: 'Habitación', content_type: h })
+    trackEvent('CustomizeProduct', { content_name: 'Habitación', content_type: h })
   }
 
   const stepDone = (s: number) => step > s
@@ -460,7 +460,7 @@ export default function Pricing() {
                   href={`https://wa.me/584248455010?text=${waMessage}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  onClick={() => getPixel()?.('track', 'InitiateCheckout', {
+                  onClick={() => trackEvent('InitiateCheckout', {
                     value: totalPrice,
                     currency: 'USD',
                     num_items: 1,
