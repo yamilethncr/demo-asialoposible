@@ -38,6 +38,58 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               'https://connect.facebook.net/en_US/fbevents.js');
               fbq('init', '1808011489910343');
               fbq('track', 'PageView');
+              if (window.location.pathname === '/imprescindibles') {
+                fbq('track', 'ViewContent', {
+                  content_name: 'Guía Imprescindibles Vietnam & Camboya',
+                  content_type: 'travel_guide'
+                });
+              }
+            `,
+          }}
+        />
+        <Script
+          id="meta-pixel-events"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              document.addEventListener('click', function(e) {
+                var link = e.target.closest('a[href]');
+                if (!link || typeof fbq === 'undefined') return;
+                var href = link.getAttribute('href') || '';
+
+                // WhatsApp clicks → Lead
+                if (href.indexOf('wa.me') !== -1) {
+                  fbq('track', 'Lead', {
+                    content_name: 'WhatsApp Click',
+                    content_category: link.closest('#reservar') ? 'CTA Final' :
+                      link.closest('#precio') ? 'Pricing' : 'General'
+                  });
+                }
+
+                // Instagram clicks → Contact
+                if (href.indexOf('instagram.com') !== -1) {
+                  fbq('track', 'Contact', {
+                    content_name: 'Instagram DM Click'
+                  });
+                }
+              });
+
+              // Track when pricing section becomes visible (high intent signal)
+              var pricingTracked = false;
+              var precioEl = document.getElementById('precio');
+              if (precioEl && typeof IntersectionObserver !== 'undefined') {
+                var obs = new IntersectionObserver(function(entries) {
+                  if (entries[0].isIntersecting && !pricingTracked) {
+                    pricingTracked = true;
+                    fbq('track', 'ViewContent', {
+                      content_name: 'Pricing Calculator',
+                      content_type: 'pricing'
+                    });
+                    obs.disconnect();
+                  }
+                }, { threshold: 0.3 });
+                obs.observe(precioEl);
+              }
             `,
           }}
         />
