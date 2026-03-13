@@ -13,7 +13,20 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="es">
       <head>
-        <script
+        <noscript>
+          <img
+            height="1"
+            width="1"
+            style={{ display: 'none' }}
+            src="https://www.facebook.com/tr?id=1808011489910343&ev=PageView&noscript=1"
+            alt=""
+          />
+        </noscript>
+      </head>
+      <body>
+        <Script
+          id="fb-pixel-init"
+          strategy="beforeInteractive"
           dangerouslySetInnerHTML={{
             __html: `
               !function(f,b,e,v,n,t,s)
@@ -29,17 +42,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             `,
           }}
         />
-        <noscript>
-          <img
-            height="1"
-            width="1"
-            style={{ display: 'none' }}
-            src="https://www.facebook.com/tr?id=1808011489910343&ev=PageView&noscript=1"
-            alt=""
-          />
-        </noscript>
-      </head>
-      <body>
         <MetaPixel />
         {children}
         {process.env.NODE_ENV === 'development' && <Agentation />}

@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect } from 'react'
+import { useEffect, useRef } from 'react'
 import { usePathname } from 'next/navigation'
 
 declare global {
@@ -21,15 +21,14 @@ export function trackEvent(event: string, data?: Record<string, any>) {
 
 export default function MetaPixel() {
   const pathname = usePathname()
+  const isFirstRender = useRef(true)
 
-  // Track PageView on client-side route changes (initial PageView is in <head>)
+  // Track PageView on client-side route changes (skip first — inline script handles it)
   useEffect(() => {
-    // Skip first render — the inline script in <head> already fired PageView
-    let isFirst = true
-    return () => { isFirst = false }
-  }, [])
-
-  useEffect(() => {
+    if (isFirstRender.current) {
+      isFirstRender.current = false
+      return
+    }
     fbq('track', 'PageView')
 
     if (pathname === '/imprescindibles') {
