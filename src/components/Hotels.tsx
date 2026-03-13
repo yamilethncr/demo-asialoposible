@@ -5,7 +5,7 @@ const hotels = [
     url: 'https://anatolehotelhanoi.com/',
     stars: '★★★★',
     room: 'Habitación Executive',
-    image: 'https://anatolehotelhanoi.com/UploadFile/Gallery-2024/Pool/4.jpg',
+    image: '/hotels/anatole-hanoi.jpg',
   },
   {
     city: 'Bahía de Halong',
@@ -13,7 +13,7 @@ const hotels = [
     url: 'https://www.indochinasails.com/en/indochine-premium-ha-long.html',
     stars: '★★★★★',
     room: 'Camarote Junior Suite',
-    image: 'https://www.indochinasails.com/DataUpload/Tau/1201017561._Overview_Indochine_Premium_Luxury_Cruise_Ha_Long_Bay_(7)_(3)_(2).jpg',
+    image: '/hotels/indochine-cruise.jpg',
   },
   {
     city: 'Hue',
@@ -21,7 +21,7 @@ const hotels = [
     url: 'https://whitelotus.com.vn/',
     stars: '★★★★',
     room: 'Deluxe con vista al río',
-    image: 'https://whitelotus.com.vn/wp-content/uploads/2018/12/WhiteLotus-157-of-437.jpg',
+    image: '/hotels/white-lotus-hue.jpg',
   },
   {
     city: 'Da Nang',
@@ -29,7 +29,7 @@ const hotels = [
     url: 'https://alacartedanangbeach.com/en/',
     stars: '★★★★',
     room: 'Frente al mar',
-    image: 'https://alacartebeach.hoteldanang.net/data/Pics/OriginalPhoto/16747/1674730/1674730852/a-la-carte-da-nang-beach-da-nang-pic-1.JPEG',
+    image: '/hotels/alacarte-danang.jpg',
   },
   {
     city: 'Hoi An',
@@ -37,7 +37,7 @@ const hotels = [
     url: 'https://hoiandelicacyhotel.com/',
     stars: '★★★★',
     room: 'Balcón y vista a la piscina',
-    image: 'https://hoiandelicacyhotel.com/wp-content/uploads/2022/12/Swimming-Pool.jpg',
+    image: '/hotels/hoian-delicacy.jpg',
   },
   {
     city: 'Siem Reap',
@@ -45,7 +45,7 @@ const hotels = [
     url: 'https://www.mettaresidence.com/',
     stars: '★★★★',
     room: 'Premier Deluxe Pool View',
-    image: 'https://www.mettaresidence.com/api/media/file/Swimming%20Pool%20Side%20-%20Metta%20Residence%20%26%20Spa%20-%20Siem%20Reap%20Hotel%20in%20Cambodia-1920x1080.jpg',
+    image: '/hotels/metta-siemreap.jpg',
   },
 ]
 
