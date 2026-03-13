@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+import { getPixel } from './MetaPixel'
 
 type Etapa = 'marzo' | 'abril'
 type Metodo = 'contado' | 'cuotas'
@@ -85,27 +86,21 @@ export default function Pricing() {
     `Hola Katherine, usé la calculadora y me interesa el viaje. Mi selección: ${etapaLabel} + ${metodoLabel} + ${habitacionLabel} = $${formatUSD(totalPrice)} USD. ¿Podemos hablar?`
   )
 
-  const fbTrack = (event: string, params?: Record<string, unknown>) => {
-    if (typeof window !== 'undefined' && typeof (window as any).fbq === 'function') {
-      (window as any).fbq('track', event, params)
-    }
-  }
-
   const handleEtapa = (e: Etapa) => {
     setEtapa(e)
     setStep(prev => Math.max(prev, 2))
-    fbTrack('CustomizeProduct', { content_name: 'Etapa', content_type: e })
+    getPixel()?.('track', 'CustomizeProduct', { content_name: 'Etapa', content_type: e })
   }
 
   const handleMetodo = (m: Metodo) => {
     setMetodo(m)
     setStep(prev => Math.max(prev, 3))
-    fbTrack('CustomizeProduct', { content_name: 'Método de pago', content_type: m })
+    getPixel()?.('track', 'CustomizeProduct', { content_name: 'Método de pago', content_type: m })
   }
 
   const handleHabitacion = (h: Habitacion) => {
     setHabitacion(h)
-    fbTrack('CustomizeProduct', { content_name: 'Habitación', content_type: h })
+    getPixel()?.('track', 'CustomizeProduct', { content_name: 'Habitación', content_type: h })
   }
 
   const stepDone = (s: number) => step > s
@@ -465,10 +460,9 @@ export default function Pricing() {
                   href={`https://wa.me/584248455010?text=${waMessage}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  onClick={() => fbTrack('InitiateCheckout', {
+                  onClick={() => getPixel()?.('track', 'InitiateCheckout', {
                     value: totalPrice,
                     currency: 'USD',
-                    content_name: `${etapaLabel} + ${metodoLabel} + ${habitacionLabel}`,
                     num_items: 1,
                   })}
                   className="inline-block w-full md:w-auto text-center px-10 py-4 text-sm font-bold uppercase tracking-[0.15em] transition-all duration-300 hover:brightness-110 mb-6"
