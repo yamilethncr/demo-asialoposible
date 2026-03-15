@@ -1,3 +1,5 @@
+import Image from 'next/image'
+
 const hotels = [
   {
     city: 'Hanói',
@@ -69,10 +71,12 @@ export default function Hotels() {
               className="border border-[rgba(212,168,83,0.15)] overflow-hidden transition-all duration-400 hover:border-[var(--color-accent)] group"
             >
               <div className="relative h-48 overflow-hidden">
-                <img
+                <Image
                   src={h.image}
                   alt={`${h.name} — ${h.city}`}
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  fill
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  className="object-cover transition-transform duration-700 group-hover:scale-110"
                   style={{ filter: 'saturate(0.85) brightness(0.9)' }}
                   loading="lazy"
                 />
