@@ -4,6 +4,7 @@ import Navbar from '@/components/Navbar'
 import Hero from '@/components/Hero'
 import Problem from '@/components/Problem'
 import Promise from '@/components/Promise'
+import VideoWidget from '@/components/VideoWidget'
 
 // Below-fold components — loaded on demand for faster initial page load
 const Hotels = dynamic(() => import('@/components/Hotels'))
@@ -23,6 +24,7 @@ export default function Home() {
     <>
       <PromoBanner />
       <Navbar />
+      <VideoWidget />
       <Hero />
       <Problem />
       <Promise />
