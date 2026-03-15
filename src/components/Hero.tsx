@@ -1,43 +1,55 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import SprayPaint from './SprayPaint'
 
 const bgImages = [
-  'https://images.unsplash.com/photo-1528127269322-539801943592?q=80&w=2940&auto=format&fit=crop', // Halong Bay
-  'https://images.unsplash.com/photo-1557750255-c76072a7aad1?q=80&w=2940&auto=format&fit=crop', // Hoi An lanterns
-  'https://images.unsplash.com/photo-1569309986620-4face6ad4739?q=80&w=2940&auto=format&fit=crop', // Angkor Wat temple
-  'https://images.unsplash.com/photo-1504457047772-27faf1c00561?q=80&w=2940&auto=format&fit=crop', // Vietnam rice fields
-  'https://images.unsplash.com/photo-1559592413-7cec4d0cae2b?q=80&w=2940&auto=format&fit=crop', // Vietnam boats river
+  'https://images.unsplash.com/photo-1528127269322-539801943592?q=80&w=1200&auto=format&fit=crop', // Halong Bay
+  'https://images.unsplash.com/photo-1557750255-c76072a7aad1?q=80&w=1200&auto=format&fit=crop', // Hoi An lanterns
+  'https://images.unsplash.com/photo-1569309986620-4face6ad4739?q=80&w=1200&auto=format&fit=crop', // Angkor Wat temple
+  'https://images.unsplash.com/photo-1504457047772-27faf1c00561?q=80&w=1200&auto=format&fit=crop', // Vietnam rice fields
+  'https://images.unsplash.com/photo-1559592413-7cec4d0cae2b?q=80&w=1200&auto=format&fit=crop', // Vietnam boats river
 ]
 
 export default function Hero() {
   const [current, setCurrent] = useState(0)
+  const [loadedImages, setLoadedImages] = useState<Set<number>>(new Set([0]))
+  const prevRef = useRef(0)
 
   useEffect(() => {
     const timer = setInterval(() => {
-      setCurrent((prev) => (prev + 1) % bgImages.length)
+      setCurrent((prev) => {
+        const next = (prev + 1) % bgImages.length
+        // Preload next image
+        const upcoming = (next + 1) % bgImages.length
+        setLoadedImages((loaded) => new Set([...loaded, next, upcoming]))
+        prevRef.current = prev
+        return next
+      })
     }, 6000)
     return () => clearInterval(timer)
   }, [])
 
   return (
     <header className="h-screen flex items-center relative overflow-hidden">
-      {/* Background image carousel with Ken Burns */}
-      {bgImages.map((img, i) => (
-        <div
-          key={i}
-          className="absolute top-0 left-0 w-full h-full z-0 transition-opacity duration-[2000ms]"
-          style={{
-            backgroundImage: `url('${img}')`,
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-            opacity: i === current ? 0.7 : 0,
-            filter: 'saturate(0.8)',
-            animation: i === current ? 'kenburns 12s ease-in-out forwards' : 'none',
-          }}
-        />
-      ))}
+      {/* Background image carousel with Ken Burns — only render loaded images */}
+      {bgImages.map((img, i) => {
+        if (!loadedImages.has(i)) return null
+        return (
+          <div
+            key={i}
+            className="absolute top-0 left-0 w-full h-full z-0 transition-opacity duration-[2000ms]"
+            style={{
+              backgroundImage: `url('${img}')`,
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+              opacity: i === current ? 0.7 : 0,
+              filter: 'saturate(0.8)',
+              animation: i === current ? 'kenburns 12s ease-in-out forwards' : 'none',
+            }}
+          />
+        )
+      })}
       {/* Overlay gradient */}
       <div
         className="absolute top-0 left-0 w-full h-full z-[1]"
