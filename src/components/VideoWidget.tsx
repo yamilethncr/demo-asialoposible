@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect, useCallback } from 'react'
+import { useState, useEffect, useCallback, useRef } from 'react'
 
 const YOUTUBE_ID = 'ALipFoUcmXI'
 const THUMBNAIL_URL = `https://img.youtube.com/vi/${YOUTUBE_ID}/maxresdefault.jpg`
@@ -35,6 +35,7 @@ export default function VideoWidget() {
   const [dismissed, setDismissed] = useState(false)
   const [isMobile, setIsMobile] = useState(false)
   const [sectionVisible, setSectionVisible] = useState(false)
+  const ioRef = useRef<IntersectionObserver | null>(null)
 
   useEffect(() => {
     const check = () => setIsMobile(window.innerWidth < 768)
@@ -49,33 +50,34 @@ export default function VideoWidget() {
     return () => clearTimeout(timer)
   }, [])
 
-  // Watch for video section visibility
+  // Watch for video section visibility using polling + IntersectionObserver
   useEffect(() => {
-    const observer = new MutationObserver(() => {
+    function tryObserve() {
       const section = document.getElementById('video-showcase')
-      if (section) {
-        const io = new IntersectionObserver(
-          ([entry]) => setSectionVisible(entry.isIntersecting),
-          { threshold: 0.15 }
-        )
-        io.observe(section)
-        observer.disconnect()
-        return () => io.disconnect()
-      }
-    })
-    // Check immediately
-    const section = document.getElementById('video-showcase')
-    if (section) {
-      const io = new IntersectionObserver(
+      if (!section) return false
+
+      if (ioRef.current) ioRef.current.disconnect()
+
+      ioRef.current = new IntersectionObserver(
         ([entry]) => setSectionVisible(entry.isIntersecting),
         { threshold: 0.15 }
       )
-      io.observe(section)
-      return () => io.disconnect()
+      ioRef.current.observe(section)
+      return true
     }
-    // If section not yet in DOM (dynamic import), watch for it
-    observer.observe(document.body, { childList: true, subtree: true })
-    return () => observer.disconnect()
+
+    // Try immediately
+    if (tryObserve()) return () => ioRef.current?.disconnect()
+
+    // Poll until section appears (dynamic import may delay it)
+    const interval = setInterval(() => {
+      if (tryObserve()) clearInterval(interval)
+    }, 500)
+
+    return () => {
+      clearInterval(interval)
+      ioRef.current?.disconnect()
+    }
   }, [])
 
   const handleDismiss = useCallback((e: React.MouseEvent) => {
@@ -95,20 +97,19 @@ export default function VideoWidget() {
   const thumbWidth = isMobile ? 56 : 72
   const thumbHeight = isMobile ? 100 : 128
 
+  if (!show) return null
+
   return (
     <div
       className="fixed z-50 cursor-pointer"
       style={{
         bottom: isMobile ? '80px' : '100px',
         right: isMobile ? '16px' : '24px',
-        opacity: show ? 1 : 0,
-        pointerEvents: show ? 'auto' : 'none',
-        animation: show ? 'slide-up-in 0.6s ease-out forwards' : 'none',
-        transition: 'opacity 0.4s ease',
+        animation: 'slide-up-in 0.6s ease-out forwards',
       }}
       onClick={scrollToSection}
       role="button"
-      tabIndex={show ? 0 : -1}
+      tabIndex={0}
       aria-label="Ver video de Katherine en Asia"
       onKeyDown={(e) => {
         if (e.key === 'Enter' || e.key === ' ') scrollToSection()
@@ -129,12 +130,10 @@ export default function VideoWidget() {
           src={THUMBNAIL_URL}
           alt="Video de Katherine en Asia"
           className="w-full h-full object-cover"
-          loading="lazy"
         />
         <div className="absolute inset-0 flex items-center justify-center bg-[rgba(10,15,30,0.3)]">
           <GoldPlayButton size={isMobile ? 22 : 28} />
         </div>
-        {/* Dismiss button */}
         <button
           onClick={handleDismiss}
           className="absolute flex items-center justify-center text-[var(--color-accent)] hover:text-white transition-colors z-10"
