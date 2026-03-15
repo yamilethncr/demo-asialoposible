@@ -143,7 +143,7 @@ export default function RouteMap() {
               <svg
                 viewBox="60 40 300 380"
                 className="w-full h-auto"
-                style={{ maxHeight: '70vh' }}
+                style={{ maxHeight: '80vh' }}
               >
                 {/* Vietnam outline (simplified) */}
                 <path
@@ -389,13 +389,14 @@ export default function RouteMap() {
 
           {/* City details sidebar */}
           <div className="lg:col-span-5">
-            {/* Active city detail card */}
+            {/* Active city detail card — hidden on mobile when no city selected */}
             <div
-              className="border border-[rgba(212,168,83,0.2)] p-6 md:p-8 mb-6 transition-all duration-500 min-h-[180px] relative overflow-hidden"
+              className={`border border-[rgba(212,168,83,0.2)] p-6 md:p-8 mb-6 transition-all duration-500 relative overflow-hidden ${activeCityData ? '' : 'hidden lg:block'}`}
               style={{
                 background: activeCityData
                   ? 'rgba(212,168,83,0.05)'
                   : 'rgba(10,15,30,0.4)',
+                minHeight: activeCityData ? undefined : '180px',
               }}
             >
               {activeCityData && (
@@ -433,58 +434,70 @@ export default function RouteMap() {
               )}
             </div>
 
-            {/* City list */}
+            {/* City list — expandable on mobile */}
             <div className="space-y-0">
               {cities.map((city, i) => {
                 const isActive = activeCity === city.id
                 return (
-                  <button
-                    key={city.id}
-                    className="w-full text-left flex items-center gap-4 py-4 px-4 transition-all duration-300 cursor-pointer border-b border-[rgba(212,168,83,0.08)]"
-                    style={{
-                      background: isActive ? 'rgba(212,168,83,0.08)' : 'transparent',
-                      borderLeft: isActive
-                        ? '2px solid var(--color-accent)'
-                        : '2px solid transparent',
-                    }}
-                    onClick={() => setActiveCity(isActive ? null : city.id)}
-                    onMouseEnter={() => setActiveCity(city.id)}
-                    onMouseLeave={() => setActiveCity(null)}
-                  >
-                    <span
-                      className="flex items-center justify-center w-7 h-7 text-[11px] font-bold font-mono shrink-0 transition-all duration-300"
+                  <div key={city.id}>
+                    <button
+                      className="w-full text-left flex items-center gap-4 py-4 px-4 transition-all duration-300 cursor-pointer border-b border-[rgba(212,168,83,0.08)]"
                       style={{
-                        border: '1px solid',
-                        borderColor: isActive ? 'var(--color-accent)' : 'rgba(212,168,83,0.2)',
-                        background: isActive ? 'var(--color-accent)' : 'transparent',
-                        color: isActive ? 'var(--color-bg)' : 'var(--color-secondary)',
+                        background: isActive ? 'rgba(212,168,83,0.08)' : 'transparent',
+                        borderLeft: isActive
+                          ? '2px solid var(--color-accent)'
+                          : '2px solid transparent',
                       }}
+                      onClick={() => setActiveCity(isActive ? null : city.id)}
+                      onMouseEnter={() => setActiveCity(city.id)}
+                      onMouseLeave={() => setActiveCity(null)}
                     >
-                      {i + 1}
-                    </span>
-                    <div className="flex-1 min-w-0">
                       <span
-                        className="block text-sm font-bold uppercase tracking-wide transition-colors duration-300"
+                        className="flex items-center justify-center w-7 h-7 text-[11px] font-bold font-mono shrink-0 transition-all duration-300"
                         style={{
-                          color: isActive ? 'var(--color-accent)' : 'var(--color-text)',
+                          border: '1px solid',
+                          borderColor: isActive ? 'var(--color-accent)' : 'rgba(212,168,83,0.2)',
+                          background: isActive ? 'var(--color-accent)' : 'transparent',
+                          color: isActive ? 'var(--color-bg)' : 'var(--color-secondary)',
                         }}
                       >
-                        {city.name}
+                        {i + 1}
                       </span>
-                      <span className="block text-[11px] text-[var(--color-secondary)] uppercase tracking-wide mt-0.5">
-                        {city.days}
+                      <div className="flex-1 min-w-0">
+                        <span
+                          className="block text-sm font-bold uppercase tracking-wide transition-colors duration-300"
+                          style={{
+                            color: isActive ? 'var(--color-accent)' : 'var(--color-text)',
+                          }}
+                        >
+                          {city.name}
+                        </span>
+                        <span className="block text-[11px] text-[var(--color-secondary)] uppercase tracking-wide mt-0.5">
+                          {city.days}
+                        </span>
+                      </div>
+                      <span
+                        className="text-[10px] uppercase tracking-[0.1em] shrink-0 transition-colors duration-300"
+                        style={{
+                          color: isActive ? 'var(--color-accent)' : 'var(--color-secondary)',
+                          opacity: 0.7,
+                        }}
+                      >
+                        {city.country}
                       </span>
-                    </div>
-                    <span
-                      className="text-[10px] uppercase tracking-[0.1em] shrink-0 transition-colors duration-300"
-                      style={{
-                        color: isActive ? 'var(--color-accent)' : 'var(--color-secondary)',
-                        opacity: 0.7,
-                      }}
-                    >
-                      {city.country}
-                    </span>
-                  </button>
+                    </button>
+                    {/* Inline description on mobile when tapped */}
+                    {isActive && (
+                      <div
+                        className="lg:hidden px-4 pb-4 pl-[60px]"
+                        style={{ animation: 'expandContent 0.3s ease-out forwards' }}
+                      >
+                        <p className="text-[0.85rem] leading-relaxed text-[var(--color-secondary)]">
+                          {city.description}
+                        </p>
+                      </div>
+                    )}
+                  </div>
                 )
               })}
             </div>
