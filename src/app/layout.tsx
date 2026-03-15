@@ -26,7 +26,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body>
         <Script
           id="fb-pixel-init"
-          strategy="afterInteractive"
+          strategy="beforeInteractive"
           dangerouslySetInnerHTML={{
             __html: `
               !function(f,b,e,v,n,t,s)
