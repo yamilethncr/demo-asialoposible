@@ -2,7 +2,7 @@ import SprayPaint from './SprayPaint'
 
 export default function Host() {
   return (
-    <section id="katherine" className="py-20 md:py-28 relative z-10">
+    <section id="katherine" className="pt-10 md:pt-14 pb-24 md:pb-36 relative z-10">
       <div className="max-w-[1200px] mx-auto px-5 md:px-10">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-center">
           {/* Image */}
@@ -32,10 +32,10 @@ export default function Host() {
               <br />
               MOLINARES
             </h2>
-            <p className="text-[0.95rem] leading-relaxed text-[var(--color-text)] mb-6 max-w-[440px]">
+            <p className="text-base md:text-lg leading-relaxed text-[var(--color-text)] mb-6 max-w-[440px]">
               Periodista venezolana y creadora de contenido con casi dos a&ntilde;os viviendo en Vietnam y recorriendo Asia de punta a punta. Lleg&oacute; a este continente sin saber el idioma, sin conocer a nadie, y con la misma incertidumbre que siente cualquier latinoamericano que mira el mapa del sudeste asi&aacute;tico por primera vez.
             </p>
-            <p className="text-[0.85rem] leading-relaxed text-[var(--color-secondary)] max-w-[440px] mb-8">
+            <p className="text-sm md:text-base leading-relaxed text-[var(--color-secondary)] max-w-[440px] mb-8">
               Este viaje no es un tour de cat&aacute;logo. Es el viaje que yo le har&iacute;a a alguien que quiero que tenga la mejor experiencia posible en Asia. Con un equipo local: gu&iacute;a vietnamita en espa&ntilde;ol, operador tur&iacute;stico licenciado y todo resuelto antes de que hagas tu maleta.
             </p>
             <div

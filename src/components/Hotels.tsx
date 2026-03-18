@@ -53,7 +53,7 @@ const hotels = [
 
 export default function Hotels() {
   return (
-    <section className="py-20 md:py-28 relative z-10">
+    <section className="pt-20 md:pt-28 pb-10 md:pb-14 relative z-10">
       <div className="max-w-[1200px] mx-auto px-5 md:px-10">
         <span className="block text-xs tracking-[0.2em] uppercase text-[var(--color-secondary)] mb-4">
           ALOJAMIENTO

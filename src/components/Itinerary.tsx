@@ -132,7 +132,7 @@ export default function Itinerary() {
   const [openIndex, setOpenIndex] = useState<number | null>(null)
 
   return (
-    <section id="recorrido" className="py-20 md:py-28 relative z-10">
+    <section id="recorrido" className="pt-8 md:pt-12 pb-10 md:pb-14 relative z-10">
       <div className="max-w-[1200px] mx-auto px-5 md:px-10">
         <span className="block text-xs tracking-[0.2em] uppercase text-[var(--color-secondary)] mb-4">
           LA RUTA &mdash; AGOSTO 2026
@@ -163,7 +163,7 @@ export default function Itinerary() {
                 }}
                 onClick={() => setOpenIndex(isOpen ? null : i)}
               >
-                <div className="flex justify-between items-baseline py-6 md:py-8 px-0 md:hover:pl-5 transition-all duration-400">
+                <div className="flex justify-between items-baseline py-6 md:py-8 px-4 md:px-6 md:hover:pl-8 transition-all duration-400">
                   <span
                     className="font-mono text-[0.8rem] w-[80px] md:w-[100px] shrink-0 transition-colors"
                     style={{
@@ -185,12 +185,12 @@ export default function Itinerary() {
 
                 {isOpen && (
                   <div
-                    className="overflow-hidden px-0 md:px-[100px] pb-6"
+                    className="overflow-hidden px-4 md:px-[100px] pb-6"
                     style={{
                       animation: 'expandContent 0.3s ease forwards',
                     }}
                   >
-                    <p className="text-[0.9rem] leading-relaxed text-[var(--color-secondary)] max-w-[600px]">
+                    <p className="text-sm md:text-base leading-relaxed text-[var(--color-secondary)] max-w-[600px]">
                       {day.description}
                     </p>
                     <div className="flex flex-wrap gap-4 mt-3">

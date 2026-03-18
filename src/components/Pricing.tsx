@@ -107,7 +107,7 @@ export default function Pricing() {
   const stepActive = (s: number) => step >= s
 
   return (
-    <section id="precio" className="py-20 md:py-28 relative z-10">
+    <section id="precio" className="pt-20 md:pt-28 pb-8 md:pb-10 relative z-10">
       <div className="max-w-[1200px] mx-auto px-5 md:px-10">
         <span className="block text-xs tracking-[0.2em] uppercase text-[var(--color-secondary)] mb-4">
           INVERSI&Oacute;N
@@ -117,7 +117,7 @@ export default function Pricing() {
           <br />
           TODO INCLUIDO.
         </h2>
-        <p className="text-[0.95rem] leading-relaxed text-[var(--color-secondary)] max-w-[600px] mb-12">
+        <p className="text-base md:text-lg leading-relaxed text-[var(--color-secondary)] max-w-[600px] mb-12">
           Hoteles 4 estrellas, crucero de lujo, vuelos internos, transporte premium, gu&iacute;a en espa&ntilde;ol, fotograf&iacute;a profesional, todas las entradas y el acompa&ntilde;amiento personal de Katherine. Si lo organizas por tu cuenta &mdash;si es que puedes hacerlo en espa&ntilde;ol&mdash; gastas m&aacute;s.
         </p>
 

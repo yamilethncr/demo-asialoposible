@@ -132,7 +132,7 @@ export default function VideoShowcase() {
         <p
           className="mt-10 text-xs md:text-sm text-center"
           style={{
-            fontFamily: 'monospace',
+            fontFamily: 'var(--font-monospace)',
             color: 'var(--color-secondary)',
             letterSpacing: '0.1em',
           }}

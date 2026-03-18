@@ -16,7 +16,7 @@ const items: { label: string; icon: string; highlight?: boolean }[] = [
 
 export default function Includes() {
   return (
-    <section id="incluye" className="py-20 md:py-28 relative z-10">
+    <section id="incluye" className="pt-10 md:pt-14 pb-20 md:pb-28 relative z-10">
       <div className="max-w-[1200px] mx-auto px-5 md:px-10">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-10">
           {/* Left column */}
@@ -29,7 +29,7 @@ export default function Includes() {
               <br />
               TODO INCLUIDO.
             </h2>
-            <p className="text-[0.85rem] leading-relaxed text-[var(--color-secondary)] max-w-[380px]">
+            <p className="text-sm md:text-base leading-relaxed text-[var(--color-secondary)] max-w-[380px]">
               No tienes que calcular extras, comparar hoteles, coordinar traslados ni buscar entradas. Todo lo que ves a continuaci&oacute;n ya est&aacute; incluido en tu cupo.
             </p>
           </div>
@@ -40,10 +40,10 @@ export default function Includes() {
               {items.map((item, i) => (
                 <li
                   key={i}
-                  className={`flex justify-between items-center py-4 md:py-5 transition-colors duration-300 hover:bg-[rgba(212,168,83,0.05)] ${item.highlight ? 'bg-[rgba(212,168,83,0.08)]' : ''}`}
+                  className={`flex justify-between items-center py-4 md:py-5 px-4 md:px-5 transition-colors duration-300 hover:bg-[rgba(212,168,83,0.05)] ${item.highlight ? 'bg-[rgba(212,168,83,0.08)]' : ''}`}
                   style={{
                     borderBottom: '1px solid rgba(212,168,83,0.15)',
-                    ...(item.highlight ? { borderLeft: '2px solid var(--color-accent)', paddingLeft: '16px' } : {}),
+                    ...(item.highlight ? { borderLeft: '2px solid var(--color-accent)' } : {}),
                   }}
                 >
                   <span className={`text-xs md:text-sm tracking-wide uppercase ${item.highlight ? 'text-[var(--color-accent)] font-bold' : 'text-[var(--color-text)]'}`}>

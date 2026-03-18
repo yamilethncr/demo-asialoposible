@@ -1,32 +1,43 @@
 @import "tailwindcss";
 
+@theme {
+  --font-mono: var(--ff-mono), 'Space Mono', 'Courier New', monospace;
+  --font-sans: var(--ff-body), 'DM Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --font-serif: var(--ff-heading), 'Playfair Display', Georgia, 'Times New Roman', serif;
+}
+
 @layer base {
   :root {
     --color-bg: #0A0F1E;
     --color-text: #FFFFFF;
     --color-accent: #D4A853;
     --color-secondary: #8E94A5;
-    --font-main: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    --font-main: var(--ff-body), 'DM Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    --font-display: var(--ff-heading), 'Playfair Display', Georgia, 'Times New Roman', serif;
+    --font-monospace: var(--ff-mono), 'Space Mono', 'Courier New', monospace;
   }
 
   html {
     scroll-behavior: smooth;
+    overflow-x: clip;
   }
 
   body {
     background-color: var(--color-bg);
     color: var(--color-text);
     font-family: var(--font-main);
-    overflow-x: hidden;
-    font-size: 16px;
-    line-height: 1.5;
+    overflow-x: clip;
+    font-size: 1rem;
+    line-height: 1.6;
     -webkit-font-smoothing: antialiased;
   }
 
   h1, h2, h3 {
+    font-family: var(--font-display);
     text-transform: uppercase;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.08em;
     font-weight: 700;
+    line-height: 1.1;
   }
 }
 

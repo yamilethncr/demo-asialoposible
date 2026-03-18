@@ -2,7 +2,7 @@ import SprayPaint from './SprayPaint'
 
 export default function CTAFinal() {
   return (
-    <section id="reservar" className="py-20 md:py-28 pb-32 md:pb-40 relative z-10">
+    <section id="reservar" className="pt-8 md:pt-12 pb-32 md:pb-40 relative z-10">
       <div className="max-w-[1200px] mx-auto px-5 md:px-10">
         <div
           className="border border-[rgba(212,168,83,0.3)] p-10 md:p-20 text-center relative overflow-hidden"
@@ -28,7 +28,7 @@ export default function CTAFinal() {
             &iquest;EST&Aacute;S DENTRO?
           </h2>
 
-          <p className="text-[0.85rem] leading-relaxed text-[var(--color-secondary)] max-w-[440px] mx-auto mb-8 relative z-10">
+          <p className="text-sm md:text-base leading-relaxed text-[var(--color-secondary)] max-w-[440px] mx-auto mb-8 relative z-10">
             Escr&iacute;benos hoy. Sin compromiso. Te mandamos el itinerario completo, los detalles de precio y resolvemos tus dudas.
           </p>
 

@@ -65,7 +65,7 @@ export default function FAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(null)
 
   return (
-    <section className="py-20 md:py-28 relative z-10">
+    <section className="pt-16 md:pt-20 pb-10 md:pb-14 relative z-10">
       <div className="max-w-[1200px] mx-auto px-5 md:px-10">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-10">
           <div className="md:col-span-4">

@@ -113,7 +113,7 @@ export default function RouteMap() {
   const activeCityData = cities.find((c) => c.id === activeCity)
 
   return (
-    <section ref={sectionRef} id="mapa" className="py-20 md:py-28 relative z-10 overflow-hidden">
+    <section ref={sectionRef} id="mapa" className="pt-20 md:pt-28 pb-10 md:pb-14 relative z-10 overflow-hidden">
       {/* Background glow */}
       <div
         className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] pointer-events-none"
@@ -129,7 +129,7 @@ export default function RouteMap() {
           <br />
           <span className="text-[var(--color-accent)]">2 PA&Iacute;SES.</span>
         </h2>
-        <p className="text-[0.95rem] leading-relaxed text-[var(--color-secondary)] max-w-[500px] mb-12">
+        <p className="text-base md:text-lg leading-relaxed text-[var(--color-secondary)] max-w-[500px] mb-12">
           De Hano&iacute; a Siem Reap. Cada punto del mapa es una experiencia que ya est&aacute; organizada para ti.
         </p>
 
@@ -417,7 +417,7 @@ export default function RouteMap() {
                   <span className="block text-xs tracking-[0.15em] uppercase text-[var(--color-secondary)] mb-4">
                     {activeCityData.country}
                   </span>
-                  <p className="text-[0.9rem] leading-relaxed text-[var(--color-secondary)]">
+                  <p className="text-sm md:text-base leading-relaxed text-[var(--color-secondary)]">
                     {activeCityData.description}
                   </p>
                 </div>
@@ -492,7 +492,7 @@ export default function RouteMap() {
                         className="lg:hidden px-4 pb-4 pl-[60px]"
                         style={{ animation: 'expandContent 0.3s ease-out forwards' }}
                       >
-                        <p className="text-[0.85rem] leading-relaxed text-[var(--color-secondary)]">
+                        <p className="text-sm md:text-base leading-relaxed text-[var(--color-secondary)]">
                           {city.description}
                         </p>
                       </div>

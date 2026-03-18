@@ -78,7 +78,7 @@ export default function Hero() {
           <br />
           <span
             className="text-[var(--color-accent)] italic"
-            style={{ fontFamily: "'Courier New', monospace" }}
+            style={{ fontFamily: 'var(--font-monospace)' }}
           >
             &amp;
           </span>{' '}

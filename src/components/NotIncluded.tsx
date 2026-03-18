@@ -27,7 +27,7 @@ const items = [
 
 export default function NotIncluded() {
   return (
-    <section className="py-16 md:py-20 relative z-10">
+    <section className="pt-6 md:pt-8 pb-16 md:pb-20 relative z-10">
       <div className="max-w-[1200px] mx-auto px-5 md:px-10">
         <span className="block text-xs tracking-[0.2em] uppercase text-[var(--color-secondary)] mb-4">
           TRANSPARENCIA
