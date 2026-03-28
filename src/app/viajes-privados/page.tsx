@@ -442,15 +442,6 @@ export default function ViajesPrivadosPage() {
               <ContactForm />
             </div>
 
-            <p className="text-xs text-[var(--color-secondary)] mt-8 italic relative z-10 max-w-[500px] mx-auto">
-              &ldquo;Cada viaje privado lo dise&ntilde;o como si fuera para
-              alguien de mi familia. Porque as&iacute; es como me lo
-              tomo.&rdquo;
-              <br />
-              <span className="text-[var(--color-accent)] not-italic">
-                &mdash; Katherine Molinares
-              </span>
-            </p>
           </div>
         </div>
 
