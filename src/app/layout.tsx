@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import Script from 'next/script'
 import { Playfair_Display, DM_Sans, Space_Mono } from 'next/font/google'
 import { Agentation } from 'agentation'
+import PageLoader from '@/components/PageLoader'
 import './globals.css'
 
 const playfair = Playfair_Display({
@@ -47,6 +48,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         </Script>
       </head>
       <body>
+        <PageLoader />
         <noscript>
           <iframe
             src="https://www.googletagmanager.com/ns.html?id=GTM-59VR7PF3"

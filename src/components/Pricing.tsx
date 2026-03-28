@@ -118,7 +118,7 @@ export default function Pricing() {
         <span className="block text-xs tracking-[0.2em] uppercase text-[var(--color-secondary)] mb-4">
           INVERSI&Oacute;N
         </span>
-        <h2 className="text-2xl md:text-[2.5rem] leading-tight uppercase font-bold text-[var(--color-text)] mb-2">
+        <h2 className="text-2xl md:text-[2.5rem] leading-tight uppercase font-bold text-[var(--color-text)] mb-2 animate-initial:opacity-0 animate-initial:y-20 animate-inview:opacity-100 animate-inview:y-0 animate-duration-600 animate-ease-out animate-once">
           PRECIO DEL VIAJE A VIETNAM Y CAMBOYA
         </h2>
         <p className="text-base md:text-lg tracking-wide uppercase text-[var(--color-accent)] mb-6">

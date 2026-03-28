@@ -7,7 +7,7 @@ export default function Problem() {
             <span className="block text-xs tracking-[0.2em] uppercase text-[var(--color-secondary)] mb-4">
               EL PUNTO DE PARTIDA
             </span>
-            <h2 className="text-2xl md:text-[2.5rem] leading-tight uppercase font-bold text-[var(--color-text)]">
+            <h2 className="text-2xl md:text-[2.5rem] leading-tight uppercase font-bold text-[var(--color-text)] animate-initial:opacity-0 animate-initial:x--30 animate-inview:opacity-100 animate-inview:x-0 animate-duration-600 animate-ease-out animate-once">
               ASIA SIEMPRE
               <br />
               ESTUVO EN
@@ -16,7 +16,7 @@ export default function Problem() {
             </h2>
           </div>
           <div className="md:col-span-1" />
-          <div className="md:col-span-6 flex flex-col justify-center">
+          <div className="md:col-span-6 flex flex-col justify-center animate-initial:opacity-0 animate-initial:x-30 animate-inview:opacity-100 animate-inview:x-0 animate-duration-600 animate-ease-out animate-once">
             <p className="text-base md:text-lg leading-relaxed text-[var(--color-secondary)] mb-6">
               Y no era falta de ganas. Era no saber por d&oacute;nde empezar.
             </p>
