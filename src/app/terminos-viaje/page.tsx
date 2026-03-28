@@ -17,7 +17,7 @@ export default function TerminosViaje() {
             <h2 className="text-lg font-bold text-[var(--color-text)] mb-3">1. Estructura de Responsabilidad</h2>
             <ul className="list-disc pl-5 space-y-3">
               <li><strong className="text-[var(--color-text)]">Operadora Certificada:</strong> La logística, operación técnica, seguros y contratación de servicios locales están a cargo de una Operadora de Viajes Certificada con todas las licencias y avales legales requeridos.</li>
-              <li><strong className="text-[var(--color-text)]">Rol de la Host:</strong> Katherine Molinares actúa como Host (Anfitriona) y organizadora del concepto del viaje. Su función es la curaduría de la experiencia, acompañamiento del grupo y enlace con la operadora. No es legalmente responsable por interrupciones de servicios de terceros.</li>
+              <li><strong className="text-[var(--color-text)]">Rol del organizador:</strong> Asialoposible.net act&uacute;a como organizador del concepto del viaje. Su funci&oacute;n es la curadur&iacute;a de la experiencia, acompa&ntilde;amiento del grupo y enlace con la operadora. No es legalmente responsable por interrupciones de servicios de terceros.</li>
             </ul>
           </section>
 

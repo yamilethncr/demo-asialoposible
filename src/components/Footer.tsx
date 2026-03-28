@@ -8,8 +8,7 @@ export default function Footer() {
     >
       <div className="max-w-[1200px] mx-auto px-5 md:px-10 grid grid-cols-1 md:grid-cols-2 gap-6">
         <div className="text-[0.7rem] text-[var(--color-secondary)] uppercase tracking-[0.05em]">
-          <p>&copy; 2026 ASIA LO POSIBLE.</p>
-          <p>EXPERIENCIA DISE&Ntilde;ADA POR KATHERINE MOLINARES.</p>
+          <p>&copy; 2026 ASIALOPOSIBLE.NET</p>
         </div>
         <div className="text-[0.7rem] text-[var(--color-secondary)] uppercase tracking-[0.05em] md:text-right">
           <a href="/terminos" className="block no-underline text-[var(--color-secondary)] hover:text-[var(--color-accent)] transition-colors">T&Eacute;RMINOS DE LA WEB</a>

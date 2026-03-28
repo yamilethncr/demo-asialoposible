@@ -1,7 +1,7 @@
 const items = [
   {
     label: 'Vuelos internacionales y tasas de aeropuerto',
-    note: null,
+    note: 'Te ayudamos a buscar las mejores opciones de vuelo sin costo adicional.',
   },
   {
     label: 'Visado para Vietnam y Camboya',

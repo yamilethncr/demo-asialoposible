@@ -25,7 +25,7 @@ export default function Promise() {
           </h2>
 
           <p className="text-base md:text-lg leading-relaxed text-[var(--color-secondary)] max-w-[600px] relative z-10 mb-4">
-            Probar la sopa en el mercado. Sacar la foto en el Puente Dorado. Despertar en un crucero en medio de la Bah&iacute;a de Halong y entender por qu&eacute; la llaman la octava maravilla del mundo.
+            Probar por primera vez un pho en el mercado. Sacar la foto en el Puente Dorado. Despertar en un crucero en medio de la Bah&iacute;a de Halong y entender por qu&eacute; la llaman la octava maravilla del mundo.
           </p>
           <p className="text-base md:text-lg leading-relaxed text-[var(--color-text)] max-w-[600px] relative z-10">
             Todo lo dem&aacute;s ya est&aacute; resuelto. Nosotros ya buscamos la informaci&oacute;n. T&uacute; solo vienes y disfrutas.

@@ -20,8 +20,15 @@ export default function CTAFinal() {
             }}
           />
 
-          <span className="block text-xs tracking-[0.2em] uppercase text-[var(--color-accent)] mb-6 relative z-10">
-            10 CUPOS POR SALIDA &middot; AGOSTO 2026 &amp; ABRIL 2027
+          <span
+            className="inline-block text-xs tracking-[0.2em] uppercase px-4 py-2 font-bold mb-6 relative z-10"
+            style={{
+              background: 'rgba(212,168,83,0.15)',
+              border: '1px solid rgba(212,168,83,0.4)',
+              color: 'var(--color-accent)',
+            }}
+          >
+            AGOSTO 2026: <strong>6 CUPOS</strong> &middot; ABRIL 2027: <strong>8 CUPOS</strong>
           </span>
 
           <h2
@@ -53,12 +60,6 @@ export default function CTAFinal() {
               CONT&Aacute;CTAME POR INSTAGRAM
             </a>
           </div>
-
-          <p className="text-xs text-[var(--color-secondary)] mb-10 italic relative z-10 max-w-[500px] mx-auto">
-            &ldquo;No busques m&aacute;s informaci&oacute;n en internet. Nosotros ya lo hicimos por ti. Solo ven y disfruta.&rdquo;
-            <br />
-            <span className="text-[var(--color-accent)] not-italic">&mdash; Katherine Molinares</span>
-          </p>
 
           {/* Contact Form */}
           <div className="relative z-10 max-w-[480px] mx-auto">

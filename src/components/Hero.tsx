@@ -66,7 +66,15 @@ export default function Hero() {
       />
 
       <div className="max-w-[1200px] mx-auto px-5 md:px-10 z-10 w-full">
-        <span className="block text-xs tracking-[0.2em] uppercase mb-4 text-[var(--color-accent)]" style={{ textShadow: '0 1px 8px rgba(0,0,0,0.4)' }}>
+        <span
+          className="inline-block text-xs tracking-[0.2em] uppercase mb-4 px-4 py-2 font-bold"
+          style={{
+            background: 'rgba(212,168,83,0.15)',
+            border: '1px solid rgba(212,168,83,0.4)',
+            color: 'var(--color-accent)',
+            textShadow: '0 1px 8px rgba(0,0,0,0.4)',
+          }}
+        >
           PR&Oacute;XIMAS SALIDAS &mdash; AGOSTO 2026 &amp; ABRIL 2027
         </span>
 

@@ -44,7 +44,7 @@ export default function AvisoLegal() {
 
           <section>
             <h2 className="text-lg font-semibold text-[var(--color-primary)] mb-3">6. Limitación de Responsabilidad</h2>
-            <p className="mb-3">Asia Lo Posible y Katherine Molinares actúan como intermediarios entre el viajero y los proveedores de servicios turísticos locales. No se hacen responsables por:</p>
+            <p className="mb-3">Asialoposible.net act&uacute;a como intermediario entre el viajero y los proveedores de servicios tur&iacute;sticos locales. No se hace responsable por:</p>
             <ul className="list-disc pl-5 space-y-2">
               <li>Daños, pérdidas o accidentes causados por terceros</li>
               <li>Retrasos o cancelaciones de vuelos comerciales</li>

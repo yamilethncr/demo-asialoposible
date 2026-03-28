@@ -15,7 +15,7 @@ export default function Terminos() {
         <div className="space-y-8 text-[0.9rem] leading-relaxed text-[var(--color-secondary)]">
           <section>
             <h2 className="text-lg font-bold text-[var(--color-text)] mb-3">1. Informaci&oacute;n General</h2>
-            <p>Este sitio web es propiedad y est&aacute; operado por Asia Lo Posible, un proyecto de Katherine Molinares. Al acceder y utilizar este sitio web, aceptas cumplir con los presentes t&eacute;rminos y condiciones de uso. Si no est&aacute;s de acuerdo con alguno de estos t&eacute;rminos, te rogamos que no utilices el sitio.</p>
+            <p>Este sitio web es propiedad y est&aacute; operado por Asialoposible.net. Al acceder y utilizar este sitio web, aceptas cumplir con los presentes t&eacute;rminos y condiciones de uso. Si no est&aacute;s de acuerdo con alguno de estos t&eacute;rminos, te rogamos que no utilices el sitio.</p>
           </section>
 
           <section>

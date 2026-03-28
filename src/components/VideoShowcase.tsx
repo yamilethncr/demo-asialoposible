@@ -133,11 +133,11 @@ export default function VideoShowcase() {
           className="mt-10 text-xs md:text-sm text-center"
           style={{
             fontFamily: 'var(--font-monospace)',
-            color: 'var(--color-secondary)',
             letterSpacing: '0.1em',
+            color: 'var(--color-accent)',
           }}
         >
-          10 cupos por salida &middot; Agosto 2026 &amp; Abril 2027
+          Agosto 2026: <strong>6 cupos</strong> &middot; Abril 2027: <strong>8 cupos</strong>
         </p>
 
         {/* Mini CTA */}

@@ -40,16 +40,16 @@ export default function ViajesPrivados() {
         />
 
         <div
-          className="border border-[rgba(212,168,83,0.2)] p-8 md:p-16 relative overflow-hidden"
-          style={{ background: 'rgba(212,168,83,0.03)' }}
+          className="border border-[rgba(212,168,83,0.35)] p-8 md:p-16 relative overflow-hidden"
+          style={{ background: 'rgba(212,168,83,0.08)' }}
         >
           {/* Glow */}
           <div
-            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] pointer-events-none"
+            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] pointer-events-none"
             style={{
               background: 'var(--color-accent)',
-              filter: 'blur(140px)',
-              opacity: 0.06,
+              filter: 'blur(120px)',
+              opacity: 0.12,
             }}
           />
 
@@ -74,11 +74,11 @@ export default function ViajesPrivados() {
               </p>
 
               <p className="text-sm md:text-base leading-relaxed text-[var(--color-secondary)] mb-10 max-w-[440px]">
-                Si ya tienes un grupo de 5 o m&aacute;s personas y quieren vivir
-                Asia a su manera, dise&ntilde;amos una experiencia completamente
-                privada. Gu&iacute;a en espa&ntilde;ol, coordinaci&oacute;n en
-                espa&ntilde;ol, todo resuelto en tu idioma &mdash; para que la
-                barrera del idioma no sea excusa para perderte Asia.
+                Imagina recorrer Asia con tus amigos o tu familia, en un viaje
+                exclusivo dise&ntilde;ado solo para ustedes. Gu&iacute;a en
+                espa&ntilde;ol, coordinaci&oacute;n personalizada, hoteles que
+                elegimos juntos &mdash; una experiencia privada desde 5 personas
+                donde todo est&aacute; resuelto en tu idioma.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 mb-6">

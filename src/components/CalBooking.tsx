@@ -44,6 +44,7 @@ export default function CalBooking({ className = '' }: { className?: string }) {
       cssVarsPerTheme: { dark: { 'cal-brand': '#D4A853' } },
       hideEventTypeDetails: false,
       layout: 'month_view',
+      locale: 'es',
     })
   }, [])
 
@@ -51,7 +52,7 @@ export default function CalBooking({ className = '' }: { className?: string }) {
     <button
       data-cal-namespace="asialoposible"
       data-cal-link={CAL_LINK}
-      data-cal-config='{"layout":"month_view","theme":"dark"}'
+      data-cal-config='{"layout":"month_view","theme":"dark","locale":"es"}'
       className={`inline-block border border-[var(--color-accent)] bg-transparent text-[var(--color-accent)] px-8 py-4 text-sm uppercase tracking-[0.1em] font-bold no-underline transition-all duration-500 hover:bg-[var(--color-accent)] hover:text-[var(--color-bg)] hover:shadow-[0_0_20px_rgba(212,168,83,0.4)] cursor-pointer text-center ${className}`}
     >
       AGENDA UNA LLAMADA CONMIGO
