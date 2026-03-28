@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import CalBooking from '@/components/CalBooking'
 import SafetyWingCallout from '@/components/imprescindibles/SafetyWingCallout'
 import LiveVndRate from '@/components/imprescindibles/LiveVndRate'
 import LiveKhrRate from '@/components/imprescindibles/LiveKhrRate'
@@ -366,21 +367,39 @@ export default function Imprescindibles() {
 
       {/* Bottom CTA */}
       <div className="max-w-[1200px] mx-auto px-5 md:px-10 pb-20">
-        <div className="h-px w-full mb-12" style={{ background: 'linear-gradient(to right, var(--color-accent), transparent 60%)' }} />
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
-          <div className="md:col-span-7">
-            <p className="text-[0.95rem] text-[var(--color-secondary)]">
-              &iquest;Tienes dudas sobre algo que no est&aacute; en esta gu&iacute;a? Escr&iacute;benos directamente.
-            </p>
-          </div>
-          <div className="md:col-span-5 md:text-right">
+        <div
+          className="border border-[rgba(212,168,83,0.3)] p-10 md:p-16 text-center relative overflow-hidden"
+          style={{ background: 'rgba(212,168,83,0.04)' }}
+        >
+          <div
+            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] pointer-events-none"
+            style={{ background: 'var(--color-accent)', filter: 'blur(100px)', opacity: 0.08 }}
+          />
+
+          <h3 className="text-xl md:text-2xl uppercase font-bold text-[var(--color-text)] mb-4 relative z-10">
+            &iquest;TIENES DUDAS?
+          </h3>
+          <p className="text-sm md:text-base text-[var(--color-secondary)] mb-8 max-w-[440px] mx-auto relative z-10">
+            Si algo no est&aacute; en esta gu&iacute;a, cont&aacute;ctanos directamente. Estamos para ayudarte.
+          </p>
+
+          <div className="flex flex-col sm:flex-row gap-4 justify-center relative z-10">
             <a
               href="https://wa.me/584248455010"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-block border border-[var(--color-accent)] bg-[var(--color-accent)] text-[var(--color-bg)] px-8 py-4 text-sm uppercase tracking-[0.1em] font-bold no-underline transition-all duration-500 hover:shadow-[0_0_20px_rgba(212,168,83,0.4)] hover:bg-transparent hover:text-[var(--color-accent)]"
             >
-              Preguntar por WhatsApp
+              ESCR&Iacute;BEME POR WHATSAPP
+            </a>
+            <CalBooking />
+            <a
+              href="https://www.instagram.com/kathmolinares"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block border border-[var(--color-accent)] bg-transparent text-[var(--color-accent)] px-8 py-4 text-sm uppercase tracking-[0.1em] font-bold no-underline transition-all duration-500 hover:bg-[var(--color-accent)] hover:text-[var(--color-bg)] hover:shadow-[0_0_20px_rgba(212,168,83,0.4)]"
+            >
+              CONT&Aacute;CTAME POR INSTAGRAM
             </a>
           </div>
         </div>
