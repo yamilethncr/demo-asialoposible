@@ -69,9 +69,9 @@ const includes = [
 
 const trustCards = [
   {
-    stat: '+30',
-    title: 'VIAJEROS ACOMPAÑADOS',
-    desc: 'Latinoamericanos que confiaron en nosotros y vivieron Asia como nunca imaginaron.',
+    stat: '100%',
+    title: 'HECHO A TU MEDIDA',
+    desc: 'Cada viaje se dise\u00f1a desde cero para tu grupo. Nada de paquetes gen\u00e9ricos \u2014 destinos, hoteles y ritmo elegidos por ustedes.',
   },
   {
     stat: '2',
