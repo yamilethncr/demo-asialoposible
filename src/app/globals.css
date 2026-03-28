@@ -101,9 +101,17 @@
 }
 
 /* Phone input dark theme overrides */
+.phone-input-dark,
+.phone-input-dark .react-international-phone-input-container {
+  width: 100% !important;
+}
 .phone-input-dark .react-international-phone-input-container {
   border: 1px solid rgba(212, 168, 83, 0.2) !important;
   transition: border-color 0.2s;
+}
+.phone-input-dark .react-international-phone-input {
+  width: 100% !important;
+  flex: 1 !important;
 }
 .phone-input-dark .react-international-phone-input-container:focus-within {
   border-color: var(--color-accent) !important;

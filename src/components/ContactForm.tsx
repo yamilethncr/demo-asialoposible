@@ -72,7 +72,7 @@ export default function ContactForm() {
       <input type="text" name="nombre" autoComplete="name" placeholder="Nombre" required value={nombre} onChange={(e) => setNombre(e.target.value)} className={inputClass} />
 
       <div
-        className="phone-input-dark"
+        className="phone-input-dark w-full"
         style={{
           '--react-international-phone-background-color': 'transparent',
           '--react-international-phone-text-color': 'var(--color-text)',
