@@ -113,7 +113,7 @@ export default function ContactForm() {
         disabled={status === 'sending'}
         className="w-full px-6 py-3 text-sm uppercase tracking-[0.1em] font-bold cursor-pointer border border-[var(--color-accent)] bg-[var(--color-accent)] text-[var(--color-bg)] transition-all duration-500 hover:shadow-[0_0_20px_rgba(212,168,83,0.4)] hover:bg-transparent hover:text-[var(--color-accent)] disabled:opacity-50"
       >
-        {status === 'sending' ? 'ENVIANDO...' : 'QUE ME CONTACTEN'}
+        {status === 'sending' ? 'ENVIANDO...' : 'M\u00c1NDAME TODA LA INFORMACI\u00d3N'}
       </button>
 
       {status === 'error' && (

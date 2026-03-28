@@ -115,6 +115,20 @@ export default function FAQ() {
             })}
           </div>
         </div>
+
+        {/* CTA below FAQ */}
+        <div className="mt-12 md:mt-16 text-center">
+          <a
+            href="#reservar"
+            onClick={(e) => {
+              e.preventDefault()
+              document.getElementById('reservar')?.scrollIntoView({ behavior: 'smooth' })
+            }}
+            className="inline-block border border-[var(--color-accent)] bg-[var(--color-accent)] text-[var(--color-bg)] px-10 py-4 text-sm uppercase tracking-[0.1em] font-bold no-underline transition-all duration-500 hover:shadow-[0_0_20px_rgba(212,168,83,0.4)] hover:bg-transparent hover:text-[var(--color-accent)]"
+          >
+            M&Aacute;NDAME TODA LA INFORMACI&Oacute;N
+          </a>
+        </div>
       </div>
     </section>
   )

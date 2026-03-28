@@ -138,6 +138,106 @@ const eventSchema = {
   inLanguage: 'es',
 }
 
+const organizationSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'TravelAgency',
+  name: 'Asia Lo Posible',
+  url: 'https://asialoposible.net',
+  description: 'Viajes organizados al Sudeste Asiático en español para latinoamericanos. Vietnam, Camboya y Tailandia con guía en español.',
+  founder: {
+    '@type': 'Person',
+    name: 'Katherine Molinares',
+    jobTitle: 'Organizadora de viajes',
+    sameAs: [
+      'https://www.instagram.com/kathmolinares',
+      'https://www.instagram.com/asialoposible',
+    ],
+  },
+  areaServed: {
+    '@type': 'GeoCircle',
+    geoMidpoint: {
+      '@type': 'GeoCoordinates',
+      latitude: 21.0285,
+      longitude: 105.8542,
+    },
+    description: 'Vietnam, Camboya, Sudeste Asiático',
+  },
+  knowsLanguage: 'es',
+  contactPoint: {
+    '@type': 'ContactPoint',
+    contactType: 'reservations',
+    url: 'https://wa.me/584248455010',
+    availableLanguage: 'Spanish',
+  },
+}
+
+const productSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'TouristTrip',
+  name: 'Viaje a Vietnam y Camboya en Español — 14 Días Todo Incluido',
+  description: 'Viaje guiado de 14 días por Vietnam y Camboya en español. Hanói, Bahía de Halong, Hue, Hoi An, Da Nang y Siem Reap (Angkor Wat). Grupo exclusivo de 10 personas. Hoteles 4-5 estrellas. Todo incluido.',
+  touristType: 'Spanish-speaking travelers',
+  itinerary: {
+    '@type': 'ItemList',
+    numberOfItems: 6,
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Hanói, Vietnam' },
+      { '@type': 'ListItem', position: 2, name: 'Bahía de Halong, Vietnam' },
+      { '@type': 'ListItem', position: 3, name: 'Hue, Vietnam' },
+      { '@type': 'ListItem', position: 4, name: 'Da Nang & Hoi An, Vietnam' },
+      { '@type': 'ListItem', position: 5, name: 'Hoi An, Vietnam' },
+      { '@type': 'ListItem', position: 6, name: 'Siem Reap & Angkor Wat, Camboya' },
+    ],
+  },
+  offers: {
+    '@type': 'AggregateOffer',
+    lowPrice: '3500',
+    highPrice: '4455',
+    priceCurrency: 'USD',
+    offerCount: 2,
+    availability: 'https://schema.org/LimitedAvailability',
+    offers: [
+      {
+        '@type': 'Offer',
+        name: 'Agosto 2026 — Habitación compartida, pago de contado',
+        price: '3500',
+        priceCurrency: 'USD',
+        availability: 'https://schema.org/LimitedAvailability',
+        inventoryLevel: { '@type': 'QuantitativeValue', value: 6 },
+        validFrom: '2026-01-01',
+      },
+      {
+        '@type': 'Offer',
+        name: 'Abril 2027 — Habitación compartida, pago de contado',
+        price: '3500',
+        priceCurrency: 'USD',
+        availability: 'https://schema.org/LimitedAvailability',
+        inventoryLevel: { '@type': 'QuantitativeValue', value: 8 },
+        validFrom: '2026-01-01',
+      },
+    ],
+  },
+  provider: {
+    '@type': 'TravelAgency',
+    name: 'Asia Lo Posible',
+    url: 'https://asialoposible.net',
+  },
+  inLanguage: 'es',
+}
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    {
+      '@type': 'ListItem',
+      position: 1,
+      name: 'Inicio',
+      item: 'https://asialoposible.net',
+    },
+  ],
+}
+
 export default function Home() {
   return (
     <>
@@ -148,6 +248,18 @@ export default function Home() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(eventSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
       <PromoBanner />
       <Navbar />

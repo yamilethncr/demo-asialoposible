@@ -32,3 +32,31 @@ Spanish-speaking travelers (primarily Latin American) who dream of visiting Sout
 3. **Personal over corporate** — Katherine's voice, photo, and story are the brand. Design should feel like a personal invitation, not a travel agency brochure.
 4. **Progressive disclosure** — Reveal information in a deliberate funnel: hook with emotion, build with details, convert with pricing. The stepped pricing calculator is the model pattern.
 5. **Spanish-first, culturally aware** — All copy, UI labels, and microcopy in Spanish. Design for Latin American cultural context (WhatsApp over email, payment flexibility, trust through personal connection).
+
+## SEO Keyword Strategy
+
+**CRITICAL: Preserve SEO keywords when editing any copy.** The site's headings, titles, and descriptions have been optimized based on keyword research (DataForSEO, March 2026). Before modifying any text, verify you are not removing high-value search terms.
+
+### Protected Keywords (DO NOT remove from headings/titles/descriptions)
+These keywords drive organic traffic. They must remain present in at least one H1/H2 heading or meta tag:
+
+| Keyword | Monthly Searches (Spain) | Where it lives |
+|---------|-------------------------|----------------|
+| viaje a vietnam y camboya | 1,000 | Hero H1, meta title, multiple headings |
+| viaje a vietnam | 5,400 | Meta title, Hero H1 |
+| bahía de halong | 6,600 | Hero description, Includes, Promise |
+| angkor wat | 14,800 | Meta description, Itinerary |
+| itinerario vietnam | 170 | Itinerary section heading |
+| viaje organizado | 260 | Meta description, Host bio |
+| todo incluido | 110 | Meta title, Pricing heading |
+| viaje vietnam precio | 390 | Pricing section heading |
+| hoteles vietnam | — | Hotels section heading |
+| sudeste asiático | 210 | ViajesPrivados heading |
+| en español | — | Hero subheading, meta title |
+
+### Rules for Copy Edits
+1. **Never replace a keyword-rich heading with a generic one.** If changing a heading, keep the target keywords or replace them with equal/higher-volume alternatives.
+2. **Use Spanish destination names** — "Bahía de Halong" not "Halong Bay", "Angkor Wat" stays as-is (it's the search term).
+3. **Meta titles must stay under 60 characters** and include the primary keyword for that page.
+4. **Meta descriptions must stay under 155 characters** and include 2-3 keywords naturally.
+5. **The full keyword research is documented in `docs/seo-keyword-research.md`** — consult it before making copy changes to understand search volume and intent behind existing wording choices.
