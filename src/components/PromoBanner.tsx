@@ -42,16 +42,19 @@ export default function PromoBanner() {
         borderBottom: '1px solid rgba(212, 168, 83, 0.25)',
       }}
     >
-      <div className="flex items-center gap-2 px-4">
+      <div className="flex items-center gap-2 px-10 md:px-4">
         <span
-          className="text-[11px] md:text-xs uppercase tracking-[0.2em] text-center"
+          className="text-[10px] md:text-xs uppercase tracking-[0.15em] md:tracking-[0.2em] text-center"
           style={{ color: '#D4A853' }}
         >
           <span className="hidden md:inline">🔥 </span>
-          Solo quedan <strong className="font-black">4 cupos</strong> disponibles
-          <span className="hidden md:inline">
-            {' '}— Reserva antes del 31 de marzo para precio Etapa 1
-          </span>
+          <span className="hidden md:inline">Agosto 2026: </span>
+          <span className="md:hidden">Ago 26: </span>
+          <strong className="font-black">6</strong> cupos
+          {' '}&middot;{' '}
+          <span className="hidden md:inline">Abril 2027: </span>
+          <span className="md:hidden">Abr 27: </span>
+          <strong className="font-black">8</strong> cupos
         </span>
       </div>
 

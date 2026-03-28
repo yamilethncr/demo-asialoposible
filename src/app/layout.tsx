@@ -26,8 +26,8 @@ const spaceMono = Space_Mono({
 })
 
 export const metadata: Metadata = {
-  title: 'Asia Lo Posible — Vietnam & Camboya | Julio 2026',
-  description: 'Viaje guiado en español a Vietnam y Camboya. 14 días, 6 destinos, grupo exclusivo de 10 personas. Todo incluido. By Katherine Molinares.',
+  title: 'Asia Lo Posible — Vietnam & Camboya | Agosto 2026 & Abril 2027',
+  description: 'Viaje guiado en español a Vietnam y Camboya. 14 días, 6 destinos, grupo exclusivo de 10 personas. Todo incluido. Próximas salidas: agosto 2026 y abril 2027. By Katherine Molinares.',
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

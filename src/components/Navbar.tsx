@@ -7,6 +7,7 @@ const links = [
   { href: '#katherine', label: 'Katherine' },
   { href: '#incluye', label: 'Detalles' },
   { href: '#precio', label: 'Precio' },
+  { href: '/viajes-privados', label: 'Viaje Privado' },
   { href: '/imprescindibles', label: 'Imprescindibles' },
 ]
 

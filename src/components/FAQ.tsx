@@ -1,8 +1,8 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, type ReactNode } from 'react'
 
-const faqs = [
+const faqs: { q: string; a: ReactNode }[] = [
   {
     q: '¿Qué hace diferente a este viaje de un tour convencional?',
     a: 'No es un tour. Es una experiencia curada por Katherine, quien vive en Vietnam y conoce cada rincón. Grupo máximo de 10 personas, guía en español, hoteles boutique 4 estrellas, y un itinerario diseñado para vivir Asia, no solo visitarla.',
@@ -21,11 +21,11 @@ const faqs = [
   },
   {
     q: '¿Qué tipo de ropa debo llevar?',
-    a: 'Ropa ligera, cómoda y transpirable. Agosto es temporada cálida y húmeda en el sudeste asiático (28-35°C). Incluye un suéter ligero para interiores con aire acondicionado y calzado cómodo para caminar.',
+    a: 'Ropa ligera, cómoda y transpirable. El sudeste asiático es cálido todo el año (25-35°C). En agosto es temporada húmeda; en abril es temporada seca y más calurosa. Incluye un suéter ligero para interiores con aire acondicionado y calzado cómodo para caminar.',
   },
   {
-    q: '¿Puedo pagar con QR o transferencia?',
-    a: 'Sí. Aceptamos transferencias bancarias, Zelle, PayPal y pagos QR. Katherine te indicará las opciones disponibles según tu país de residencia.',
+    q: '¿Qué formas de pago aceptan?',
+    a: 'Transferencias bancarias en dólares y en euros, criptomonedas, bolívares a la tasa Kontigo, y pago con tarjeta de débito/crédito. Katherine te indicará las opciones disponibles según tu país de residencia.',
   },
   {
     q: '¿Funcionan las tarjetas de crédito y Apple Pay en Vietnam y Camboya?',
@@ -53,7 +53,7 @@ const faqs = [
   },
   {
     q: '¿Puedo organizar un viaje privado para mi grupo?',
-    a: 'Sí. Si tienes un grupo de 6 o más personas, podemos diseñar una experiencia privada con fechas personalizadas. Escríbenos para cotización.',
+    a: <>Sí. Si tienes un grupo de 5 o más personas, podemos diseñar una experiencia completamente privada con destinos, fechas y actividades a medida. Visita nuestra página de{' '}<a href="/viajes-privados" className="text-[var(--color-accent)] underline hover:no-underline">Viajes Privados</a>{' '}o escríbenos directamente por WhatsApp para cotización.</>,
   },
   {
     q: '¿Puedo extender mi estadía antes o después del viaje?',

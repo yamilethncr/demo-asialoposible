@@ -135,7 +135,7 @@ export default function Itinerary() {
     <section id="recorrido" className="pt-8 md:pt-12 pb-10 md:pb-14 relative z-10">
       <div className="max-w-[1200px] mx-auto px-5 md:px-10">
         <span className="block text-xs tracking-[0.2em] uppercase text-[var(--color-secondary)] mb-4">
-          LA RUTA &mdash; AGOSTO 2026
+          LA RUTA &mdash; 14 D&Iacute;AS
         </span>
         <h2 className="text-2xl md:text-[2.5rem] leading-tight uppercase font-bold text-[var(--color-text)] mb-10">
           14 D&Iacute;AS. 6 DESTINOS.

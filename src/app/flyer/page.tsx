@@ -124,7 +124,7 @@ function Portada() {
           marginBottom: 50,
         }}>
           <span style={{ fontSize: 14, letterSpacing: '0.2em', textTransform: 'uppercase', color: colors.gold, fontWeight: 600 }}>
-            EDICI&Oacute;N LIMITADA — AGOSTO 2026
+            PR&Oacute;XIMAS SALIDAS — AGOSTO 2026 &amp; ABRIL 2027
           </span>
         </div>
 
@@ -139,7 +139,7 @@ function Portada() {
             { icon: '★', label: 'Hoteles 4★' },
             { icon: '⚓', label: 'Crucero 5★' },
             { icon: '🗣', label: 'Guía en español' },
-            { icon: '👥', label: 'Solo 10 cupos' },
+            { icon: '👥', label: '10 cupos por salida' },
           ].map((item, i) => (
             <div key={i} style={{ textAlign: 'center' }}>
               <span style={{ fontSize: 24, display: 'block', marginBottom: 8, opacity: 0.8 }}>{item.icon}</span>
@@ -395,7 +395,7 @@ function CambodiaPrecio() {
             background: 'rgba(212,168,83,0.06)',
           }}>
             <p style={{ fontSize: 16, color: colors.gold, fontWeight: 600, margin: '0 0 4px 0', textTransform: 'uppercase', letterSpacing: '0.1em' }}>
-              Reserva en marzo y ahorra $300
+              Reserva temprano y ahorra $300
             </p>
             <p style={{ fontSize: 13, color: colors.muted, margin: 0 }}>
               Precio early bird: $2,900 USD

@@ -1,4 +1,6 @@
 import SprayPaint from './SprayPaint'
+import CalBooking from './CalBooking'
+import ContactForm from './ContactForm'
 
 export default function CTAFinal() {
   return (
@@ -19,7 +21,7 @@ export default function CTAFinal() {
           />
 
           <span className="block text-xs tracking-[0.2em] uppercase text-[var(--color-accent)] mb-6 relative z-10">
-            SOLO 10 CUPOS &middot; PRIMEROS 5 AL PRECIO EARLY BIRD
+            10 CUPOS POR SALIDA &middot; AGOSTO 2026 &amp; ABRIL 2027
           </span>
 
           <h2
@@ -32,30 +34,36 @@ export default function CTAFinal() {
             Escr&iacute;benos hoy. Sin compromiso. Te mandamos el itinerario completo, los detalles de precio y resolvemos tus dudas.
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center relative z-10">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center relative z-10 mb-6">
             <a
               href="https://wa.me/584248455010"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-block border border-[var(--color-accent)] bg-[var(--color-accent)] text-[var(--color-bg)] px-8 py-4 text-sm uppercase tracking-[0.1em] font-bold no-underline transition-all duration-500 hover:shadow-[0_0_20px_rgba(212,168,83,0.4)] hover:bg-transparent hover:text-[var(--color-accent)]"
             >
-              WHATSAPP DIRECTO
+              ESCR&Iacute;BEME POR WHATSAPP
             </a>
+            <CalBooking />
             <a
               href="https://www.instagram.com/kathmolinares"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-block border border-[var(--color-accent)] bg-transparent text-[var(--color-accent)] px-8 py-4 text-sm uppercase tracking-[0.1em] font-bold no-underline transition-all duration-500 hover:bg-[var(--color-accent)] hover:text-[var(--color-bg)] hover:shadow-[0_0_20px_rgba(212,168,83,0.4)]"
             >
-              DM INSTAGRAM
+              CONT&Aacute;CTAME POR INSTAGRAM
             </a>
           </div>
 
-          <p className="text-xs text-[var(--color-secondary)] mt-8 italic relative z-10 max-w-[500px] mx-auto">
+          <p className="text-xs text-[var(--color-secondary)] mb-10 italic relative z-10 max-w-[500px] mx-auto">
             &ldquo;No busques m&aacute;s informaci&oacute;n en internet. Nosotros ya lo hicimos por ti. Solo ven y disfruta.&rdquo;
             <br />
             <span className="text-[var(--color-accent)] not-italic">&mdash; Katherine Molinares</span>
           </p>
+
+          {/* Contact Form */}
+          <div className="relative z-10 max-w-[480px] mx-auto">
+            <ContactForm />
+          </div>
         </div>
       </div>
     </section>

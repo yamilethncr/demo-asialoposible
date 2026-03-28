@@ -3,13 +3,19 @@
 import { useState, useEffect } from 'react'
 import { trackEvent } from './MetaPixel'
 
-type Etapa = 'marzo' | 'abril'
+type Viaje = 'agosto2026' | 'abril2027'
+type Etapa = 'temprana' | 'regular'
 type Metodo = 'contado' | 'cuotas'
 type Habitacion = 'compartida' | 'privada'
 
+const VIAJE_INFO: Record<Viaje, { label: string; fechas: string; cupos: number }> = {
+  agosto2026: { label: 'Agosto 2026', fechas: '1 – 14 de agosto, 2026', cupos: 6 },
+  abril2027: { label: 'Abril 2027', fechas: '1 – 14 de abril, 2027', cupos: 8 },
+}
+
 const PRICES: Record<Etapa, Record<Metodo, number>> = {
-  marzo: { contado: 3200, cuotas: 3500 },
-  abril: { contado: 3500, cuotas: 3800 },
+  temprana: { contado: 3200, cuotas: 3500 },
+  regular: { contado: 3500, cuotas: 3800 },
 }
 
 const HABITACION_EXTRA = 655
@@ -21,29 +27,53 @@ interface CuotaRow {
   nota?: string
 }
 
-function getCronograma(etapa: Etapa, totalPrice: number): CuotaRow[] {
+function getCronograma(viaje: Viaje, etapa: Etapa, totalPrice: number): CuotaRow[] {
   const reserva = totalPrice * 0.30
   const saldo = totalPrice * 0.70
 
-  if (etapa === 'marzo') {
-    const cuota = saldo / 5
-    return [
-      { mes: 'Marzo', concepto: 'Reserva (30%)', monto: reserva, nota: 'No reembolsable' },
-      { mes: 'Abril', concepto: 'Cuota 1', monto: cuota },
-      { mes: 'Mayo', concepto: 'Cuota 2', monto: cuota },
-      { mes: 'Junio', concepto: 'Cuota 3', monto: cuota },
-      { mes: 'Julio (Inicios)', concepto: 'Cuota 4', monto: cuota },
-      { mes: 'Julio (Antes del 15)', concepto: 'Cuota 5', monto: cuota, nota: 'Liquidación total' },
-    ]
+  if (viaje === 'agosto2026') {
+    if (etapa === 'temprana') {
+      const cuota = saldo / 5
+      return [
+        { mes: 'Marzo 2026', concepto: 'Reserva (30%)', monto: reserva, nota: 'No reembolsable' },
+        { mes: 'Abril', concepto: 'Cuota 1', monto: cuota },
+        { mes: 'Mayo', concepto: 'Cuota 2', monto: cuota },
+        { mes: 'Junio', concepto: 'Cuota 3', monto: cuota },
+        { mes: 'Julio (Inicios)', concepto: 'Cuota 4', monto: cuota },
+        { mes: 'Julio (Antes del 15)', concepto: 'Cuota 5', monto: cuota, nota: 'Liquidación total' },
+      ]
+    } else {
+      const cuota = saldo / 4
+      return [
+        { mes: 'Abril 2026', concepto: 'Reserva (30%)', monto: reserva, nota: 'No reembolsable' },
+        { mes: 'Mayo', concepto: 'Cuota 1', monto: cuota },
+        { mes: 'Junio', concepto: 'Cuota 2', monto: cuota },
+        { mes: 'Julio (Inicios)', concepto: 'Cuota 3', monto: cuota },
+        { mes: 'Julio (Antes del 15)', concepto: 'Cuota 4', monto: cuota, nota: 'Liquidación total' },
+      ]
+    }
   } else {
-    const cuota = saldo / 4
-    return [
-      { mes: 'Abril (Inicio)', concepto: 'Reserva (30%)', monto: reserva, nota: 'No reembolsable' },
-      { mes: 'Abril (Fin)', concepto: 'Cuota 1', monto: cuota },
-      { mes: 'Mayo', concepto: 'Cuota 2', monto: cuota },
-      { mes: 'Junio', concepto: 'Cuota 3', monto: cuota },
-      { mes: 'Julio', concepto: 'Cuota 4', monto: cuota, nota: 'Liquidación final' },
-    ]
+    // abril2027
+    if (etapa === 'temprana') {
+      const cuota = saldo / 5
+      return [
+        { mes: 'Septiembre 2026', concepto: 'Reserva (30%)', monto: reserva, nota: 'No reembolsable' },
+        { mes: 'Octubre', concepto: 'Cuota 1', monto: cuota },
+        { mes: 'Noviembre', concepto: 'Cuota 2', monto: cuota },
+        { mes: 'Diciembre', concepto: 'Cuota 3', monto: cuota },
+        { mes: 'Enero 2027', concepto: 'Cuota 4', monto: cuota },
+        { mes: 'Febrero (Antes del 15)', concepto: 'Cuota 5', monto: cuota, nota: 'Liquidación total' },
+      ]
+    } else {
+      const cuota = saldo / 4
+      return [
+        { mes: 'Noviembre 2026', concepto: 'Reserva (30%)', monto: reserva, nota: 'No reembolsable' },
+        { mes: 'Diciembre', concepto: 'Cuota 1', monto: cuota },
+        { mes: 'Enero 2027', concepto: 'Cuota 2', monto: cuota },
+        { mes: 'Febrero', concepto: 'Cuota 3', monto: cuota },
+        { mes: 'Marzo (Antes del 15)', concepto: 'Cuota 4', monto: cuota, nota: 'Liquidación total' },
+      ]
+    }
   }
 }
 
@@ -52,7 +82,8 @@ function formatUSD(n: number): string {
 }
 
 export default function Pricing() {
-  const [etapa, setEtapa] = useState<Etapa>('marzo')
+  const [viaje, setViaje] = useState<Viaje>('agosto2026')
+  const [etapa, setEtapa] = useState<Etapa>('temprana')
   const [metodo, setMetodo] = useState<Metodo>('contado')
   const [habitacion, setHabitacion] = useState<Habitacion>('compartida')
   const [step, setStep] = useState(1)
@@ -60,7 +91,7 @@ export default function Pricing() {
   const [visible, setVisible] = useState(true)
 
   useEffect(() => {
-    if (step < 3) return
+    if (step < 4) return
     setVisible(false)
     setCalculating(true)
     const t1 = setTimeout(() => {
@@ -68,7 +99,7 @@ export default function Pricing() {
       setVisible(true)
     }, 500)
     return () => clearTimeout(t1)
-  }, [etapa, metodo, habitacion, step])
+  }, [viaje, etapa, metodo, habitacion, step])
 
   const basePrice = PRICES[etapa][metodo]
   const totalPrice = basePrice + (habitacion === 'privada' ? HABITACION_EXTRA : 0)
@@ -76,25 +107,33 @@ export default function Pricing() {
   const remaining = totalPrice * 0.70
   const contadoTotal = PRICES[etapa].contado + (habitacion === 'privada' ? HABITACION_EXTRA : 0)
   const ahorroContado = totalPrice - contadoTotal
-  const cronograma = getCronograma(etapa, totalPrice)
+  const cronograma = getCronograma(viaje, etapa, totalPrice)
 
-  const etapaLabel = etapa === 'marzo' ? 'Marzo' : 'Abril'
+  const viajeLabel = VIAJE_INFO[viaje].label
+  const etapaLabel = etapa === 'temprana' ? 'Temprana' : 'Regular'
   const metodoLabel = metodo === 'contado' ? 'Contado' : 'Cuotas'
   const habitacionLabel = habitacion === 'compartida' ? 'Compartida' : 'Privada'
+  const numCuotas = (viaje === 'agosto2026' && etapa === 'temprana') || (viaje === 'abril2027' && etapa === 'temprana') ? 5 : 4
 
   const waMessage = encodeURIComponent(
-    `Hola Katherine, usé la calculadora y me interesa el viaje. Mi selección: ${etapaLabel} + ${metodoLabel} + ${habitacionLabel} = $${formatUSD(totalPrice)} USD. ¿Podemos hablar?`
+    `Hola Katherine, usé la calculadora y me interesa el viaje de ${viajeLabel}. Mi selección: ${etapaLabel} + ${metodoLabel} + ${habitacionLabel} = $${formatUSD(totalPrice)} USD. ¿Podemos hablar?`
   )
+
+  const handleViaje = (v: Viaje) => {
+    setViaje(v)
+    setStep(prev => Math.max(prev, 2))
+    trackEvent('CustomizeProduct', { content_name: 'Viaje', content_type: v })
+  }
 
   const handleEtapa = (e: Etapa) => {
     setEtapa(e)
-    setStep(prev => Math.max(prev, 2))
+    setStep(prev => Math.max(prev, 3))
     trackEvent('CustomizeProduct', { content_name: 'Etapa', content_type: e })
   }
 
   const handleMetodo = (m: Metodo) => {
     setMetodo(m)
-    setStep(prev => Math.max(prev, 3))
+    setStep(prev => Math.max(prev, 4))
     trackEvent('CustomizeProduct', { content_name: 'Método de pago', content_type: m })
   }
 
@@ -123,7 +162,7 @@ export default function Pricing() {
 
         <div className="max-w-[860px]">
 
-          {/* ── PASO 1: Etapa ── */}
+          {/* ── PASO 1: Viaje ── */}
           <div className="mb-8">
             <div className="flex items-center gap-3 mb-4">
               <span
@@ -138,42 +177,42 @@ export default function Pricing() {
                 {stepDone(1) ? '✓' : '1'}
               </span>
               <p className="text-xs tracking-[0.2em] uppercase" style={{ color: stepActive(1) ? 'var(--color-accent)' : 'var(--color-secondary)' }}>
-                &iquest;Cu&aacute;ndo reservas?
+                &iquest;Qu&eacute; fecha de viaje?
               </p>
               {stepDone(1) && (
-                <span className="text-xs text-[var(--color-secondary)] ml-auto">{etapaLabel}</span>
+                <span className="text-xs text-[var(--color-secondary)] ml-auto">{viajeLabel}</span>
               )}
             </div>
 
             <div className="grid grid-cols-2 gap-3 pl-11">
               <button
-                onClick={() => handleEtapa('marzo')}
+                onClick={() => handleViaje('agosto2026')}
                 className="px-4 py-4 text-left transition-all duration-300 cursor-pointer"
                 style={{
-                  border: etapa === 'marzo' ? '1px solid var(--color-accent)' : '1px solid rgba(212,168,83,0.15)',
-                  background: etapa === 'marzo' ? 'rgba(212,168,83,0.1)' : 'transparent',
-                  color: etapa === 'marzo' ? 'var(--color-accent)' : 'var(--color-secondary)',
+                  border: viaje === 'agosto2026' ? '1px solid var(--color-accent)' : '1px solid rgba(212,168,83,0.15)',
+                  background: viaje === 'agosto2026' ? 'rgba(212,168,83,0.1)' : 'transparent',
+                  color: viaje === 'agosto2026' ? 'var(--color-accent)' : 'var(--color-secondary)',
                 }}
               >
-                <span className="block text-sm font-bold uppercase tracking-wide">Marzo</span>
-                <span className="block text-[11px] mt-1 opacity-70">Etapa 1 &middot; Mejor precio</span>
+                <span className="block text-sm font-bold uppercase tracking-wide">Agosto 2026</span>
+                <span className="block text-[11px] mt-1 opacity-70">1 &ndash; 14 de agosto &middot; {VIAJE_INFO.agosto2026.cupos} cupos</span>
               </button>
               <button
-                onClick={() => handleEtapa('abril')}
+                onClick={() => handleViaje('abril2027')}
                 className="px-4 py-4 text-left transition-all duration-300 cursor-pointer"
                 style={{
-                  border: etapa === 'abril' ? '1px solid var(--color-accent)' : '1px solid rgba(212,168,83,0.15)',
-                  background: etapa === 'abril' ? 'rgba(212,168,83,0.1)' : 'transparent',
-                  color: etapa === 'abril' ? 'var(--color-accent)' : 'var(--color-secondary)',
+                  border: viaje === 'abril2027' ? '1px solid var(--color-accent)' : '1px solid rgba(212,168,83,0.15)',
+                  background: viaje === 'abril2027' ? 'rgba(212,168,83,0.1)' : 'transparent',
+                  color: viaje === 'abril2027' ? 'var(--color-accent)' : 'var(--color-secondary)',
                 }}
               >
-                <span className="block text-sm font-bold uppercase tracking-wide">Abril</span>
-                <span className="block text-[11px] mt-1 opacity-70">Etapa 2</span>
+                <span className="block text-sm font-bold uppercase tracking-wide">Abril 2027</span>
+                <span className="block text-[11px] mt-1 opacity-70">1 &ndash; 14 de abril &middot; {VIAJE_INFO.abril2027.cupos} cupos</span>
               </button>
             </div>
           </div>
 
-          {/* ── PASO 2: Método de pago ── */}
+          {/* ── PASO 2: Etapa ── */}
           <div
             className="mb-8 transition-all duration-500"
             style={{ opacity: stepActive(2) ? 1 : 0.3, pointerEvents: stepActive(2) ? 'auto' : 'none' }}
@@ -191,9 +230,62 @@ export default function Pricing() {
                 {stepDone(2) ? '✓' : '2'}
               </span>
               <p className="text-xs tracking-[0.2em] uppercase" style={{ color: stepActive(2) ? 'var(--color-accent)' : 'var(--color-secondary)' }}>
-                &iquest;C&oacute;mo prefieres pagar?
+                &iquest;Cu&aacute;ndo reservas?
               </p>
               {stepDone(2) && (
+                <span className="text-xs text-[var(--color-secondary)] ml-auto">{etapaLabel}</span>
+              )}
+            </div>
+
+            <div className="grid grid-cols-2 gap-3 pl-11">
+              <button
+                onClick={() => handleEtapa('temprana')}
+                className="px-4 py-4 text-left transition-all duration-300 cursor-pointer"
+                style={{
+                  border: etapa === 'temprana' ? '1px solid var(--color-accent)' : '1px solid rgba(212,168,83,0.15)',
+                  background: etapa === 'temprana' ? 'rgba(212,168,83,0.1)' : 'transparent',
+                  color: etapa === 'temprana' ? 'var(--color-accent)' : 'var(--color-secondary)',
+                }}
+              >
+                <span className="block text-sm font-bold uppercase tracking-wide">Temprana</span>
+                <span className="block text-[11px] mt-1 opacity-70">Mejor precio &middot; Ahorras $300</span>
+              </button>
+              <button
+                onClick={() => handleEtapa('regular')}
+                className="px-4 py-4 text-left transition-all duration-300 cursor-pointer"
+                style={{
+                  border: etapa === 'regular' ? '1px solid var(--color-accent)' : '1px solid rgba(212,168,83,0.15)',
+                  background: etapa === 'regular' ? 'rgba(212,168,83,0.1)' : 'transparent',
+                  color: etapa === 'regular' ? 'var(--color-accent)' : 'var(--color-secondary)',
+                }}
+              >
+                <span className="block text-sm font-bold uppercase tracking-wide">Regular</span>
+                <span className="block text-[11px] mt-1 opacity-70">Precio est&aacute;ndar</span>
+              </button>
+            </div>
+          </div>
+
+          {/* ── PASO 3: Método de pago ── */}
+          <div
+            className="mb-8 transition-all duration-500"
+            style={{ opacity: stepActive(3) ? 1 : 0.3, pointerEvents: stepActive(3) ? 'auto' : 'none' }}
+          >
+            <div className="flex items-center gap-3 mb-4">
+              <span
+                className="flex items-center justify-center w-8 h-8 text-xs font-bold shrink-0 transition-all duration-300"
+                style={{
+                  border: '1px solid',
+                  borderColor: stepActive(3) ? 'var(--color-accent)' : 'rgba(212,168,83,0.2)',
+                  background: stepDone(3) ? 'var(--color-accent)' : 'transparent',
+                  color: stepDone(3) ? 'var(--color-bg)' : stepActive(3) ? 'var(--color-accent)' : 'var(--color-secondary)',
+                }}
+              >
+                {stepDone(3) ? '✓' : '3'}
+              </span>
+              <p className="text-xs tracking-[0.2em] uppercase" style={{ color: stepActive(3) ? 'var(--color-accent)' : 'var(--color-secondary)' }}>
+                &iquest;C&oacute;mo prefieres pagar?
+              </p>
+              {stepDone(3) && (
                 <span className="text-xs text-[var(--color-secondary)] ml-auto">{metodoLabel}</span>
               )}
             </div>
@@ -222,30 +314,30 @@ export default function Pricing() {
               >
                 <span className="block text-sm font-bold uppercase tracking-wide">Cuotas</span>
                 <span className="block text-[11px] mt-1 opacity-70">
-                  {etapa === 'marzo' ? '5 cuotas mensuales' : '4 cuotas mensuales'}
+                  {numCuotas} cuotas mensuales
                 </span>
               </button>
             </div>
           </div>
 
-          {/* ── PASO 3: Habitación ── */}
+          {/* ── PASO 4: Habitación ── */}
           <div
             className="mb-10 transition-all duration-500"
-            style={{ opacity: stepActive(3) ? 1 : 0.3, pointerEvents: stepActive(3) ? 'auto' : 'none' }}
+            style={{ opacity: stepActive(4) ? 1 : 0.3, pointerEvents: stepActive(4) ? 'auto' : 'none' }}
           >
             <div className="flex items-center gap-3 mb-4">
               <span
                 className="flex items-center justify-center w-8 h-8 text-xs font-bold shrink-0 transition-all duration-300"
                 style={{
                   border: '1px solid',
-                  borderColor: stepActive(3) ? 'var(--color-accent)' : 'rgba(212,168,83,0.2)',
-                  background: stepDone(3) ? 'var(--color-accent)' : 'transparent',
-                  color: stepDone(3) ? 'var(--color-bg)' : stepActive(3) ? 'var(--color-accent)' : 'var(--color-secondary)',
+                  borderColor: stepActive(4) ? 'var(--color-accent)' : 'rgba(212,168,83,0.2)',
+                  background: stepDone(4) ? 'var(--color-accent)' : 'transparent',
+                  color: stepDone(4) ? 'var(--color-bg)' : stepActive(4) ? 'var(--color-accent)' : 'var(--color-secondary)',
                 }}
               >
-                3
+                4
               </span>
-              <p className="text-xs tracking-[0.2em] uppercase" style={{ color: stepActive(3) ? 'var(--color-accent)' : 'var(--color-secondary)' }}>
+              <p className="text-xs tracking-[0.2em] uppercase" style={{ color: stepActive(4) ? 'var(--color-accent)' : 'var(--color-secondary)' }}>
                 Tipo de habitaci&oacute;n
               </p>
             </div>
@@ -279,7 +371,7 @@ export default function Pricing() {
           </div>
 
           {/* ── RESULTADOS ── */}
-          {stepActive(3) && (
+          {stepActive(4) && (
             <div className="relative">
               {/* Divider */}
               <div className="h-px w-full mb-8" style={{ background: 'linear-gradient(to right, var(--color-accent), transparent)' }} />
@@ -308,7 +400,7 @@ export default function Pricing() {
                       style={{ background: 'var(--color-accent)', filter: 'blur(80px)', opacity: 0.08 }}
                     />
                     <span className="block text-xs tracking-[0.2em] uppercase text-[var(--color-accent)] mb-4 relative z-10">
-                      Inversi&oacute;n Total
+                      Inversi&oacute;n Total &middot; {viajeLabel}
                     </span>
                     <div className="flex items-baseline gap-2 mb-3 relative z-10">
                       <span className="text-4xl md:text-5xl font-bold text-[var(--color-text)] font-mono">
@@ -317,14 +409,14 @@ export default function Pricing() {
                       <span className="text-sm text-[var(--color-secondary)] uppercase">USD</span>
                     </div>
                     <p className="text-xs text-[var(--color-secondary)] relative z-10">
-                      {etapaLabel} &middot; {metodoLabel} &middot; Hab. {habitacionLabel}
+                      {viajeLabel} &middot; {etapaLabel} &middot; {metodoLabel} &middot; Hab. {habitacionLabel}
                     </p>
-                    {etapa === 'marzo' && (
+                    {etapa === 'temprana' && (
                       <span
                         className="inline-block text-[11px] uppercase tracking-wide px-3 py-1 mt-3 relative z-10"
                         style={{ background: 'rgba(74,103,65,0.2)', color: '#4A6741', border: '1px solid rgba(74,103,65,0.3)' }}
                       >
-                        Ahorras $300 vs. Abril
+                        Ahorras $300 vs. precio regular
                       </span>
                     )}
                     {metodo === 'contado' && (
@@ -353,7 +445,7 @@ export default function Pricing() {
                         <div className="h-px w-full" style={{ background: 'rgba(212,168,83,0.1)' }} />
                         <div className="flex justify-between items-baseline">
                           <span className="text-sm text-[var(--color-secondary)]">
-                            Saldo restante ({etapa === 'marzo' ? '5' : '4'} cuotas)
+                            Saldo restante ({numCuotas} cuotas)
                           </span>
                           <span className="text-lg font-bold text-[var(--color-text)] font-mono">${formatUSD(remaining)}</span>
                         </div>
@@ -378,7 +470,7 @@ export default function Pricing() {
                     style={{ background: 'rgba(212,168,83,0.03)' }}
                   >
                     <span className="block text-xs tracking-[0.2em] uppercase text-[var(--color-accent)] mb-5">
-                      Cronograma de Pagos
+                      Cronograma de Pagos &middot; {viajeLabel}
                     </span>
 
                     {/* Header */}
@@ -489,29 +581,30 @@ export default function Pricing() {
                           <circle cx="20" cy="10" r="6" fill="currentColor" opacity="0.5"/>
                         </svg>
                       )},
-                      { label: 'Transferencia SEPA', icon: (
+                      { label: 'Transfer. USD', icon: (
                         <svg viewBox="0 0 24 24" className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="1.5">
                           <rect x="2" y="3" width="20" height="18" rx="2"/>
                           <path d="M2 8h20"/>
                           <path d="M6 13h4M6 16h8"/>
                         </svg>
                       )},
-                      { label: 'Transferencia ACH', icon: (
+                      { label: 'Transfer. EUR', icon: (
                         <svg viewBox="0 0 24 24" className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="1.5">
-                          <path d="M3 7h18M3 7l4-4M3 7l4 4"/>
-                          <path d="M21 17H3M21 17l-4-4M21 17l-4 4"/>
+                          <rect x="2" y="3" width="20" height="18" rx="2"/>
+                          <path d="M2 8h20"/>
+                          <path d="M6 13h4M6 16h8"/>
+                        </svg>
+                      )},
+                      { label: 'Cripto', icon: (
+                        <svg viewBox="0 0 24 24" className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="1.5">
+                          <circle cx="12" cy="12" r="9"/>
+                          <path d="M8 9h8M12 9v9" strokeWidth="1.5"/>
                         </svg>
                       )},
                       { label: 'Bol\u00edvares', sublabel: 'Tasa Kontigo', icon: (
                         <svg viewBox="0 0 24 24" className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="1.5">
                           <circle cx="12" cy="12" r="9"/>
                           <path d="M10 6v12M10 8h3.5a2.5 2.5 0 010 5H10m0 0h4a2.5 2.5 0 010 5H10" strokeWidth="1.3"/>
-                        </svg>
-                      )},
-                      { label: 'USDt', icon: (
-                        <svg viewBox="0 0 24 24" className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="1.5">
-                          <circle cx="12" cy="12" r="9"/>
-                          <path d="M8 9h8M12 9v9" strokeWidth="1.5"/>
                         </svg>
                       )},
                     ].map((method) => (

@@ -137,7 +137,7 @@ export default function VideoShowcase() {
             letterSpacing: '0.1em',
           }}
         >
-          4 de 10 cupos disponibles
+          10 cupos por salida &middot; Agosto 2026 &amp; Abril 2027
         </p>
 
         {/* Mini CTA */}

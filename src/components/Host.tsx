@@ -1,4 +1,5 @@
 import SprayPaint from './SprayPaint'
+import CalBooking from './CalBooking'
 
 export default function Host() {
   return (
@@ -49,6 +50,8 @@ export default function Host() {
                 Periodista &middot; Organizadora de eventos &middot; Creadora de contenido
               </p>
             </div>
+
+            <CalBooking className="mt-6 w-full md:w-auto" />
           </div>
         </div>
       </div>

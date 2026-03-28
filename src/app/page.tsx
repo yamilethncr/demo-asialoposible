@@ -16,6 +16,7 @@ const VideoShowcase = dynamic(() => import('@/components/VideoShowcase'))
 const Pricing = dynamic(() => import('@/components/Pricing'))
 const NotIncluded = dynamic(() => import('@/components/NotIncluded'))
 const FAQ = dynamic(() => import('@/components/FAQ'))
+const ViajesPrivados = dynamic(() => import('@/components/ViajesPrivados'))
 const CTAFinal = dynamic(() => import('@/components/CTAFinal'))
 const Footer = dynamic(() => import('@/components/Footer'))
 
@@ -37,6 +38,7 @@ export default function Home() {
       <Pricing />
       <NotIncluded />
       <FAQ />
+      <ViajesPrivados />
       <CTAFinal />
       <Footer />
     </>

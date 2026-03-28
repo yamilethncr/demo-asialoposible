@@ -67,7 +67,7 @@ export default function Hero() {
 
       <div className="max-w-[1200px] mx-auto px-5 md:px-10 z-10 w-full">
         <span className="block text-xs tracking-[0.2em] uppercase mb-4 text-[var(--color-accent)]" style={{ textShadow: '0 1px 8px rgba(0,0,0,0.4)' }}>
-          EDICI&Oacute;N LIMITADA &mdash; AGOSTO 2026
+          PR&Oacute;XIMAS SALIDAS &mdash; AGOSTO 2026 &amp; ABRIL 2027
         </span>
 
         <h1
@@ -76,6 +76,7 @@ export default function Hero() {
         >
           VIETNAM
           <br />
+          {' '}
           <span
             className="text-[var(--color-accent)] italic"
             style={{ fontFamily: 'var(--font-monospace)' }}

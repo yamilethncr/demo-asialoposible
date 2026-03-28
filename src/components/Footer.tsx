@@ -15,6 +15,7 @@ export default function Footer() {
           <a href="/terminos" className="block no-underline text-[var(--color-secondary)] hover:text-[var(--color-accent)] transition-colors">T&Eacute;RMINOS DE LA WEB</a>
           <a href="/terminos-viaje" className="block no-underline text-[var(--color-secondary)] hover:text-[var(--color-accent)] transition-colors">T&Eacute;RMINOS DEL VIAJE</a>
           <a href="/aviso-legal" className="block no-underline text-[var(--color-secondary)] hover:text-[var(--color-accent)] transition-colors">AVISO LEGAL</a>
+          <a href="/viajes-privados" className="block no-underline text-[var(--color-secondary)] hover:text-[var(--color-accent)] transition-colors">VIAJES PRIVADOS</a>
           <a href="/imprescindibles" className="block no-underline text-[var(--color-secondary)] hover:text-[var(--color-accent)] transition-colors">LOS IMPRESCINDIBLES</a>
           <a href="/privacidad" className="block no-underline text-[var(--color-secondary)] hover:text-[var(--color-accent)] transition-colors">POL&Iacute;TICA DE PRIVACIDAD</a>
           <p className="mt-4 opacity-60">
