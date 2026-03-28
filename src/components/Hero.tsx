@@ -82,7 +82,7 @@ export default function Hero() {
           className="text-[3rem] sm:text-[4.5rem] md:text-[6rem] leading-[0.85] tracking-tight relative z-[2] text-white"
           style={{ textShadow: '0 2px 40px rgba(0,0,0,0.8)' }}
         >
-          VIETNAM
+          VIAJE A VIETNAM
           <br />
           {' '}
           <span
@@ -116,7 +116,7 @@ export default function Hero() {
                 textAlign: 'justify',
               }}
             >
-              14 d&iacute;as. 6 destinos. Un grupo exclusivo de solo 10 personas. Hoteles 4 y 5 estrellas, crucero de lujo en Halong Bay, todo incluido. Dise&ntilde;ado y acompa&ntilde;ado por Katherine Molinares, venezolana que vive en Vietnam.
+              14 d&iacute;as. 6 destinos. Un grupo exclusivo de solo 10 personas. Hoteles 4 y 5 estrellas, crucero de lujo en la Bah&iacute;a de Halong, todo incluido. Dise&ntilde;ado y acompa&ntilde;ado por Katherine Molinares, venezolana que vive en Vietnam.
             </p>
           </div>
           <div className="md:col-span-2 flex md:justify-end items-start">

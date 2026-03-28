@@ -24,7 +24,7 @@ export default function Problem() {
               &iquest;C&oacute;mo me muevo si nadie habla espa&ntilde;ol? &iquest;C&oacute;mo s&eacute; que el hotel es bueno de verdad? &iquest;Qu&eacute; actividades valen la pena y cu&aacute;les son trampa para turistas? &iquest;C&oacute;mo organizo 14 d&iacute;as en un continente que no conozco?
             </p>
             <p className="text-base md:text-lg leading-relaxed text-[var(--color-text)]">
-              Googlear Vietnam da 400 millones de resultados. Ninguno te dice lo que de verdad necesita saber alguien que viene de Latinoam&eacute;rica, que no habla ingl&eacute;s fluido, y que quiere vivir el viaje&thinsp;&mdash;&thinsp;no sobrevivirlo.
+              Organizar un viaje a Vietnam y Camboya por tu cuenta da 400 millones de resultados. Ninguno te dice lo que de verdad necesita saber alguien que viene de Latinoam&eacute;rica, que no habla ingl&eacute;s fluido, y que quiere vivir el viaje&thinsp;&mdash;&thinsp;no sobrevivirlo.
             </p>
           </div>
         </div>

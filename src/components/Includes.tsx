@@ -1,5 +1,5 @@
 const items: { label: string; icon: string; highlight?: boolean }[] = [
-  { label: 'HOSPEDAJE 4 O 5 ESTRELLAS + CRUCERO DE LUJO EN HALONG BAY', icon: '🏨' },
+  { label: 'HOSPEDAJE 4 O 5 ESTRELLAS + CRUCERO DE LUJO EN LA BAHÍA DE HALONG', icon: '🏨' },
   { label: 'TODOS LOS DESAYUNOS (14 DÍAS)', icon: '🍳' },
   { label: 'ALGUNOS ALMUERZOS Y CENAS INCLUIDOS', icon: '🍜' },
   { label: 'VUELOS INTERNOS + VUELO A CAMBOYA', icon: '✈️' },
@@ -25,9 +25,9 @@ export default function Includes() {
               LA PROPUESTA DE VALOR
             </span>
             <h2 className="text-2xl md:text-[2.5rem] leading-tight uppercase font-bold text-[var(--color-text)] mb-4">
-              UN SOLO PAGO.
+              QU&Eacute; INCLUYE EL VIAJE
               <br />
-              TODO INCLUIDO.
+              A VIETNAM Y CAMBOYA
             </h2>
             <p className="text-sm md:text-base leading-relaxed text-[var(--color-secondary)] max-w-[380px]">
               No tienes que calcular extras, comparar hoteles, coordinar traslados ni buscar entradas. Todo lo que ves a continuaci&oacute;n ya est&aacute; incluido en tu cupo.

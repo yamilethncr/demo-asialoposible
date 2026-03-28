@@ -59,9 +59,9 @@ export default function Hotels() {
           ALOJAMIENTO
         </span>
         <h2 className="text-2xl md:text-[2.5rem] leading-tight uppercase font-bold text-[var(--color-text)] mb-10">
-          NOCHE A NOCHE,
+          HOTELES EN VIETNAM Y CAMBOYA
           <br />
-          AS&Iacute; VAS A DORMIR.
+          &mdash; NOCHE A NOCHE
         </h2>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">

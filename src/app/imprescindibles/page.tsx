@@ -6,8 +6,8 @@ import LiveKhrRate from '@/components/imprescindibles/LiveKhrRate'
 import TimezoneSelector from '@/components/imprescindibles/TimezoneSelector'
 
 export const metadata = {
-  title: 'Los Imprescindibles — Asia Lo Posible',
-  description: 'Guía de preparación para tu viaje a Vietnam y Camboya con Asia Lo Posible',
+  title: 'Guía de Viaje a Vietnam y Camboya | Qué Llevar, Visas y Consejos | Asia Lo Posible',
+  description: 'Todo lo que necesitas saber antes de viajar a Vietnam y Camboya: visados, vacunas, dinero, equipaje, zona horaria y seguro de viaje. Guía completa en español actualizada a 2026.',
 }
 
 /* ── SVG Icons ── */

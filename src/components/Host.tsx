@@ -37,7 +37,7 @@ export default function Host() {
               Periodista venezolana y creadora de contenido con casi dos a&ntilde;os viviendo en Vietnam y recorriendo Asia de punta a punta. Lleg&oacute; a este continente sin saber el idioma, sin conocer a nadie, y con la misma incertidumbre que siente cualquier latinoamericano que mira el mapa del sudeste asi&aacute;tico por primera vez.
             </p>
             <p className="text-sm md:text-base leading-relaxed text-[var(--color-secondary)] max-w-[440px] mb-8">
-              Este viaje no es un tour de cat&aacute;logo. Es el viaje que yo le har&iacute;a a alguien que quiero que tenga la mejor experiencia posible en Asia. Con un equipo local: gu&iacute;a vietnamita en espa&ntilde;ol, operador tur&iacute;stico licenciado y todo resuelto antes de que hagas tu maleta.
+              Este viaje organizado a Vietnam y Camboya no es un tour de cat&aacute;logo. Es el viaje que yo le har&iacute;a a alguien que quiero que tenga la mejor experiencia posible en el Sudeste Asi&aacute;tico. Con un equipo local: gu&iacute;a vietnamita en espa&ntilde;ol, operador tur&iacute;stico licenciado y todo resuelto antes de que hagas tu maleta.
             </p>
             <div
               className="pl-5"

@@ -8,11 +8,11 @@ import ContactForm from '@/components/ContactForm'
 
 export const metadata: Metadata = {
   title:
-    'Viajes Privados al Sudeste Asiático en Español | Grupos desde 5 personas | Asia Lo Posible',
+    'Viaje Privado a Vietnam, Camboya y Tailandia en Español | Grupos desde 5 | Asia Lo Posible',
   description:
-    'Viajes privados a medida al Sudeste Asiático para grupos de 5+, completamente en español. Vietnam, Camboya, Tailandia. Guía en español, coordinación en español, todo resuelto por Katherine Molinares.',
+    'Viaje a medida al Sudeste Asiático para grupos de 5+. Vietnam, Camboya, Tailandia — itinerario personalizado, guía en español, hoteles 4-5 estrellas, todo resuelto. Cotización en 48h por Katherine Molinares.',
   openGraph: {
-    title: 'Viajes Privados al Sudeste Asiático en Español | Asia Lo Posible',
+    title: 'Viaje Privado a Vietnam, Camboya y Tailandia en Español | Asia Lo Posible',
     description:
       'Tu grupo. Tus fechas. Tu ritmo. Todo en español. Viajes privados diseñados por quien vive en Asia.',
     url: 'https://asialoposible.com/viajes-privados',

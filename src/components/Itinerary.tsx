@@ -137,11 +137,12 @@ export default function Itinerary() {
         <span className="block text-xs tracking-[0.2em] uppercase text-[var(--color-secondary)] mb-4">
           LA RUTA &mdash; 14 D&Iacute;AS
         </span>
-        <h2 className="text-2xl md:text-[2.5rem] leading-tight uppercase font-bold text-[var(--color-text)] mb-10">
-          14 D&Iacute;AS. 6 DESTINOS.
-          <br className="hidden md:block" />
-          <span className="text-[var(--color-accent)]">0 GESTIONES POR TU CUENTA.</span>
+        <h2 className="text-2xl md:text-[2.5rem] leading-tight uppercase font-bold text-[var(--color-text)] mb-2">
+          ITINERARIO VIETNAM Y CAMBOYA &mdash; 14 D&Iacute;AS, 6 DESTINOS
         </h2>
+        <p className="text-base md:text-lg tracking-wide uppercase text-[var(--color-accent)] mb-10">
+          Todo resuelto. 0 gestiones por tu cuenta.
+        </p>
 
         <div className="border-t border-[rgba(212,168,83,0.1)]">
           {itinerary.map((day, i) => {

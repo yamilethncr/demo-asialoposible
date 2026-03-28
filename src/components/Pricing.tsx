@@ -118,11 +118,12 @@ export default function Pricing() {
         <span className="block text-xs tracking-[0.2em] uppercase text-[var(--color-secondary)] mb-4">
           INVERSI&Oacute;N
         </span>
-        <h2 className="text-2xl md:text-[2.5rem] leading-tight uppercase font-bold text-[var(--color-text)] mb-6">
-          14 D&Iacute;AS EN ASIA.
-          <br />
-          TODO INCLUIDO.
+        <h2 className="text-2xl md:text-[2.5rem] leading-tight uppercase font-bold text-[var(--color-text)] mb-2">
+          PRECIO DEL VIAJE A VIETNAM Y CAMBOYA
         </h2>
+        <p className="text-base md:text-lg tracking-wide uppercase text-[var(--color-accent)] mb-6">
+          TODO INCLUIDO.
+        </p>
         <p className="text-base md:text-lg leading-relaxed text-[var(--color-secondary)] max-w-[600px] mb-12">
           Hoteles 4 estrellas, crucero de lujo, vuelos internos, transporte premium, gu&iacute;a en espa&ntilde;ol, fotograf&iacute;a profesional, todas las entradas y el acompa&ntilde;amiento personal de Katherine. Si lo organizas por tu cuenta &mdash;si es que puedes hacerlo en espa&ntilde;ol&mdash; gastas m&aacute;s.
         </p>

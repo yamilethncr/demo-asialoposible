@@ -73,9 +73,7 @@ export default function FAQ() {
               FAQ
             </span>
             <h2 className="text-2xl md:text-[2.5rem] leading-tight uppercase font-bold text-[var(--color-text)]">
-              PREGUNTAS
-              <br />
-              FRECUENTES
+              PREGUNTAS FRECUENTES SOBRE EL VIAJE A VIETNAM Y CAMBOYA
             </h2>
           </div>
 

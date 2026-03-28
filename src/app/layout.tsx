@@ -26,8 +26,16 @@ const spaceMono = Space_Mono({
 })
 
 export const metadata: Metadata = {
-  title: 'Asia Lo Posible — Vietnam & Camboya | Agosto 2026 & Abril 2027',
-  description: 'Viaje guiado en español a Vietnam y Camboya. 14 días, 6 destinos, grupo exclusivo de 10 personas. Todo incluido. Próximas salidas: agosto 2026 y abril 2027. By Katherine Molinares.',
+  title: 'Viaje a Vietnam y Camboya en Español | 14 Días Todo Incluido | Asia Lo Posible',
+  description: 'Viaje organizado a Vietnam y Camboya en español. 14 días, 6 destinos, grupo exclusivo de 10 personas. Hoteles 4-5 estrellas, crucero en la Bahía de Halong, Angkor Wat y más. Todo incluido. Próximas salidas: agosto 2026 y abril 2027.',
+  openGraph: {
+    title: 'Viaje a Vietnam y Camboya en Español | Asia Lo Posible',
+    description: 'Viaje organizado a Vietnam y Camboya. 14 días, 6 destinos, grupo exclusivo de 10 personas. Hoteles 4-5 estrellas, crucero en la Bahía de Halong, Angkor Wat. Todo incluido.',
+    url: 'https://asialoposible.net',
+    siteName: 'Asia Lo Posible',
+    locale: 'es_LA',
+    type: 'website',
+  },
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

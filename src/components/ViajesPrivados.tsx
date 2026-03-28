@@ -61,9 +61,9 @@ export default function ViajesPrivados() {
               </span>
 
               <h2 className="text-2xl sm:text-3xl md:text-[2.5rem] leading-tight uppercase font-bold text-[var(--color-text)] mb-6">
-                TU PROPIO VIAJE
+                TU VIAJE PRIVADO AL
                 <br />
-                A ASIA.
+                SUDESTE ASI&Aacute;TICO
               </h2>
 
               <p className="text-base md:text-lg leading-relaxed text-[var(--color-text)] mb-4 max-w-[440px]">
