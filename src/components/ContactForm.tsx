@@ -1,6 +1,8 @@
 'use client'
 
 import { useState, type FormEvent } from 'react'
+import { PhoneInput } from 'react-international-phone'
+import 'react-international-phone/style.css'
 
 const WEB3FORMS_KEY = '5fe64ee2-20aa-4bc1-a66f-78015b8881d4'
 
@@ -68,7 +70,42 @@ export default function ContactForm() {
       </p>
 
       <input type="text" name="nombre" autoComplete="name" placeholder="Nombre" required value={nombre} onChange={(e) => setNombre(e.target.value)} className={inputClass} />
-      <input type="tel" name="telefono" autoComplete="tel" placeholder="WhatsApp / Teléfono" required value={telefono} onChange={(e) => setTelefono(e.target.value)} className={inputClass} />
+
+      <div
+        className="phone-input-dark"
+        style={{
+          '--react-international-phone-background-color': 'transparent',
+          '--react-international-phone-text-color': 'var(--color-text)',
+          '--react-international-phone-border-color': 'rgba(212,168,83,0.2)',
+          '--react-international-phone-height': '44px',
+          '--react-international-phone-font-size': '14px',
+          '--react-international-phone-border-radius': '0px',
+          '--react-international-phone-country-selector-background-color-hover': 'rgba(212,168,83,0.1)',
+          '--react-international-phone-dropdown-item-background-color-hover': 'rgba(212,168,83,0.1)',
+          '--react-international-phone-selected-dropdown-item-background-color': 'rgba(212,168,83,0.15)',
+          '--react-international-phone-dropdown-background-color': '#0A0F1E',
+          '--react-international-phone-dropdown-item-text-color': 'var(--color-text)',
+          '--react-international-phone-dropdown-item-dial-code-color': 'var(--color-secondary)',
+        } as React.CSSProperties}
+      >
+        <PhoneInput
+          defaultCountry="ve"
+          value={telefono}
+          onChange={(phone) => setTelefono(phone)}
+          placeholder="WhatsApp / Teléfono"
+          inputProps={{
+            name: 'telefono',
+            autoComplete: 'tel',
+            required: true,
+          }}
+          countrySelectorStyleProps={{
+            buttonClassName: 'phone-country-btn',
+          }}
+          inputClassName="phone-number-input"
+          style={{ width: '100%' }}
+        />
+      </div>
+
       <input type="email" name="email" autoComplete="email" placeholder="Correo electrónico" required value={email} onChange={(e) => setEmail(e.target.value)} className={inputClass} />
 
       <button
