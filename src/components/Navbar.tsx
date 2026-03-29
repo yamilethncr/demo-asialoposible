@@ -34,7 +34,7 @@ export default function Navbar() {
       }}
     >
       <div className="max-w-[1200px] mx-auto px-5 md:px-10 flex justify-between items-center">
-        <a href="#" className="font-black tracking-[0.1em] uppercase text-[var(--color-accent)]">
+        <a href="/" className="font-black tracking-[0.1em] uppercase text-[var(--color-accent)]">
           Asia Lo Posible{' '}
           <sup className="text-[var(--color-secondary)]">26</sup>
         </a>
