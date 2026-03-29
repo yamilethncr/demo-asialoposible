@@ -6,6 +6,9 @@ const shorts = [
   { id: '2FRn93zCKdw', label: 'Hanoi de noche' },
   { id: 'bGwJDZ98r_4', label: 'Street food' },
   { id: 'CKM4oRbH5jQ', label: 'Vietnam real' },
+  { id: 'UgYEZXAa0bE', label: 'Descubre Asia' },
+  { id: '7zpBHV5xNps', label: 'La aventura' },
+  { id: 'hTOrKuj8eT0', label: 'Momentos únicos' },
 ]
 
 function PlayButton() {
