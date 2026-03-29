@@ -68,7 +68,7 @@ export default function Hotels() {
           {hotels.map((h, i) => (
             <div
               key={i}
-              className="border border-[rgba(212,168,83,0.15)] overflow-hidden transition-all duration-400 hover:border-[var(--color-accent)] group animate-hover:scale-[1.02] animate-hover:y--2 animate-spring animate-stiffness-300 animate-damping-25"
+              className="border border-[rgba(212,168,83,0.15)] overflow-hidden transition-all duration-400 hover:border-[var(--color-accent)] group"
             >
               <div className="relative h-48 overflow-hidden">
                 <Image
