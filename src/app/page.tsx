@@ -6,6 +6,7 @@ import Hero from '@/components/Hero'
 import Problem from '@/components/Problem'
 import Promise from '@/components/Promise'
 import VideoWidget from '@/components/VideoWidget'
+import ShortsCarousel from '@/components/ShortsCarousel'
 
 export const metadata: Metadata = {
   title: 'Viaje a Vietnam y Camboya en Español | 14 Días Todo Incluido | Asia Lo Posible',
@@ -265,6 +266,7 @@ export default function Home() {
       <Navbar />
       <VideoWidget />
       <Hero />
+      <ShortsCarousel />
       <Problem />
       <Promise />
       <Hotels />
