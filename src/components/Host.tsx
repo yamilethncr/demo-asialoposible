@@ -7,12 +7,12 @@ export default function Host() {
       <div className="max-w-[1200px] mx-auto px-5 md:px-10">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-center">
           {/* Image */}
-          <div className="relative border border-[rgba(212,168,83,0.2)] overflow-hidden">
+          <a href="https://www.instagram.com/kathmolinares" target="_blank" rel="noopener noreferrer" className="relative border border-[rgba(212,168,83,0.2)] overflow-hidden block cursor-pointer group">
             <div className="aspect-[3/4] bg-[#161C2D] relative">
               <img
                 src="https://katherinemolinares.com/_next/image?url=%2Fkatherine-molinares.jpg&w=640&q=75"
                 alt="Katherine Molinares"
-                className="w-full h-full object-cover block"
+                className="w-full h-full object-cover block transition-all duration-700 group-hover:brightness-100"
                 style={{ filter: 'grayscale(0.3) contrast(110%) brightness(0.8)' }}
               />
             </div>
@@ -21,7 +21,7 @@ export default function Host() {
               style={{ bottom: '-80px', left: '-80px', opacity: 0.2 }}
               shape="circle"
             />
-          </div>
+          </a>
 
           {/* Bio */}
           <div>
