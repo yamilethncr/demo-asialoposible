@@ -9,6 +9,7 @@ const links = [
   { href: '#precio', label: 'Precio' },
   { href: '/viajes-privados', label: 'Viaje Privado' },
   { href: '/imprescindibles', label: 'Imprescindibles' },
+  { href: '/blog', label: 'Blog' },
 ]
 
 export default function Navbar() {

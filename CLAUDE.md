@@ -2,8 +2,30 @@
 
 ## Tech Stack
 - Next.js 16, React 19, TypeScript, Tailwind CSS v4
+- Payload CMS v3.80 (blog CMS) — admin at `/admin`
+- PostgreSQL via Neon (unpooled connection required)
 - No UI library — custom components with inline styles + Tailwind utilities
 - Deployed on Vercel
+
+## Payload CMS / Neon Database Setup
+
+### Connection
+- **Use the UNPOOLED Neon connection string** (without `-pooler` in the hostname). The pooler endpoint breaks Drizzle-kit's parameterized schema introspection queries.
+- Set `push: false` in the Postgres adapter config. Drizzle-kit's `push` (which pulls schema first) fails with Neon due to a bug sending `$1`/`$2` params as empty arrays.
+- Tables were created manually via a Node.js `pg` client script (not via Payload migrations or push), because both the CLI (`npx payload migrate`) and the push mechanism fail with Neon's Postgres.
+
+### Node.js Version
+- Payload v3.80 CLI commands (`npx payload migrate:create`, etc.) require **Node 22+** (Node 20 crashes with `undici` CacheStorage error). Use `fnm use 22` before running Payload CLI.
+- The Next.js dev server works fine on Node 20 (Turbopack handles compilation differently).
+
+### Route Structure
+- Frontend routes live in `src/app/(frontend)/` — has its own `layout.tsx` with `<html>`, fonts, GTM, PageLoader.
+- Payload admin lives in `src/app/(payload)/` — has its own `layout.tsx` with Payload's `RootLayout`.
+- Root `src/app/layout.tsx` is a bare passthrough (`return children`) to avoid nested `<html>` hydration errors.
+- This separation is required because Payload's `RootLayout` renders its own `<html>` tag.
+
+### Adding New Tables / Schema Changes
+Since `push: false`, any new collections or field changes require manually creating/altering tables in Neon. Use a Node.js script with the `pg` package against the unpooled connection string.
 
 ## Design Context
 

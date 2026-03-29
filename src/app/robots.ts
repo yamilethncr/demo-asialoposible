@@ -5,7 +5,7 @@ export default function robots(): MetadataRoute.Robots {
     rules: {
       userAgent: '*',
       allow: '/',
-      disallow: ['/flyer'],
+      disallow: ['/flyer', '/admin'],
     },
     sitemap: 'https://asialoposible.net/sitemap.xml',
   }

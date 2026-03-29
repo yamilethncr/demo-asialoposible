@@ -1,7 +1,11 @@
 import type { NextConfig } from 'next'
+import { withPayload } from '@payloadcms/next/withPayload'
 import withMotionwind from 'motionwind-react/next'
 
 const nextConfig: NextConfig = {
+  turbopack: {
+    root: process.cwd(),
+  },
   images: {
     remotePatterns: [
       { protocol: 'https', hostname: 'images.unsplash.com' },
@@ -18,4 +22,4 @@ const nextConfig: NextConfig = {
 }
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export default withMotionwind(nextConfig as any)
+export default withPayload(withMotionwind(nextConfig as any) as any)
