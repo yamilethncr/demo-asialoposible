@@ -5,7 +5,6 @@ import { useState, useRef, useCallback } from 'react'
 const shorts = [
   { id: '2FRn93zCKdw', label: 'Hanoi de noche' },
   { id: 'bGwJDZ98r_4', label: 'Street food' },
-  { id: '5D6dJpMtaaQ', label: 'La experiencia' },
   { id: 'CKM4oRbH5jQ', label: 'Vietnam real' },
 ]
 
@@ -29,11 +28,18 @@ function PlayButton() {
   )
 }
 
-function ShortCard({ id, label }: { id: string; label: string }) {
-  const [playing, setPlaying] = useState(false)
+function ShortCard({
+  id,
+  label,
+  isPlaying,
+  onPlay,
+}: {
+  id: string
+  label: string
+  isPlaying: boolean
+  onPlay: () => void
+}) {
   const thumbnail = `https://img.youtube.com/vi/${id}/oar2.jpg`
-
-  const handlePlay = useCallback(() => setPlaying(true), [])
 
   return (
     <div className="shrink-0 w-[200px] sm:w-[220px] md:w-[240px] animate-initial:opacity-0 animate-initial:y-20 animate-inview:opacity-100 animate-inview:y-0 animate-duration-600 animate-ease-out animate-once">
@@ -44,17 +50,16 @@ function ShortCard({ id, label }: { id: string; label: string }) {
           border: '1px solid rgba(212,168,83,0.2)',
         }}
       >
-        {playing ? (
+        {isPlaying ? (
           <iframe
-            src={`https://www.youtube.com/embed/${id}?autoplay=1&controls=1&modestbranding=1&rel=0&playsinline=1&loop=1&playlist=${id}`}
+            src={`https://www.youtube.com/embed/${id}?autoplay=1&controls=1&modestbranding=1&rel=0&playsinline=1&loop=1&playlist=${id}&showinfo=0&iv_load_policy=3&fs=0&disablekb=1`}
             className="absolute inset-0 w-full h-full"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen
             title={label}
           />
         ) : (
           <button
-            onClick={handlePlay}
+            onClick={onPlay}
             className="relative w-full h-full cursor-pointer"
             aria-label={`Reproducir: ${label}`}
           >
@@ -87,6 +92,11 @@ function ShortCard({ id, label }: { id: string; label: string }) {
 
 export default function ShortsCarousel() {
   const scrollRef = useRef<HTMLDivElement>(null)
+  const [activeId, setActiveId] = useState<string | null>(null)
+
+  const handlePlay = useCallback((id: string) => {
+    setActiveId(id)
+  }, [])
 
   const scroll = useCallback((dir: 'left' | 'right') => {
     if (!scrollRef.current) return
@@ -142,7 +152,13 @@ export default function ShortsCarousel() {
         }}
       >
         {shorts.map((s) => (
-          <ShortCard key={s.id} id={s.id} label={s.label} />
+          <ShortCard
+            key={s.id}
+            id={s.id}
+            label={s.label}
+            isPlaying={activeId === s.id}
+            onPlay={() => handlePlay(s.id)}
+          />
         ))}
       </div>
 
