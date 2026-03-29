@@ -2,6 +2,7 @@ import Link from 'next/link'
 
 export const metadata = {
   title: 'Aviso Legal — Asia Lo Posible',
+  description: 'Aviso legal de Asia Lo Posible. Información sobre el responsable del sitio web, condiciones de uso y limitación de responsabilidad.',
 }
 
 export default function AvisoLegal() {

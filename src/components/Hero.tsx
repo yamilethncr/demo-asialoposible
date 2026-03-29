@@ -121,9 +121,7 @@ export default function Hero() {
           </div>
           <div className="md:col-span-2 flex md:justify-end items-start">
             <a
-              href="https://wa.me/584248455010"
-              target="_blank"
-              rel="noopener noreferrer"
+              href="#reservar"
               className="inline-block border border-[var(--color-accent)] bg-[var(--color-accent)] text-[var(--color-bg)] px-8 py-4 text-sm uppercase tracking-[0.1em] font-bold no-underline transition-all duration-500 hover:shadow-[0_0_20px_rgba(212,168,83,0.4)] hover:bg-transparent hover:text-[var(--color-accent)] animate-hover:scale-105 animate-tap:scale-95 animate-spring animate-stiffness-400 animate-damping-20"
             >
               RESERVAR

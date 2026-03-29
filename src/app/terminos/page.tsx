@@ -2,6 +2,7 @@ import Link from 'next/link'
 
 export const metadata = {
   title: 'Términos y Condiciones de la Web — Asia Lo Posible',
+  description: 'Términos y condiciones de uso del sitio web asialoposible.net. Propiedad intelectual, protección de datos y legislación aplicable.',
 }
 
 export default function Terminos() {

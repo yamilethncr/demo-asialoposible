@@ -8,6 +8,14 @@ import TimezoneSelector from '@/components/imprescindibles/TimezoneSelector'
 export const metadata = {
   title: 'Guía de Viaje a Vietnam y Camboya | Qué Llevar, Visas y Consejos | Asia Lo Posible',
   description: 'Todo lo que necesitas saber antes de viajar a Vietnam y Camboya: visados, vacunas, dinero, equipaje, zona horaria y seguro de viaje. Guía completa en español actualizada a 2026.',
+  openGraph: {
+    title: 'Guía de Viaje a Vietnam y Camboya | Asia Lo Posible',
+    description: 'Todo lo que necesitas saber antes de viajar a Vietnam y Camboya: visados, vacunas, dinero, equipaje y seguro de viaje.',
+    url: 'https://asialoposible.net/imprescindibles',
+    siteName: 'Asia Lo Posible',
+    locale: 'es_LA',
+    type: 'website',
+  },
 }
 
 /* ── SVG Icons ── */

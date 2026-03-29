@@ -2,6 +2,7 @@ import Link from 'next/link'
 
 export const metadata = {
   title: 'Términos y Condiciones del Viaje — Asia Lo Posible',
+  description: 'Términos y condiciones del viaje organizado a Vietnam y Camboya con Asia Lo Posible. Reservas, pagos, cancelaciones y responsabilidades.',
 }
 
 export default function TerminosViaje() {

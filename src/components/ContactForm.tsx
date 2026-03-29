@@ -76,7 +76,7 @@ export default function ContactForm() {
   return (
     <form onSubmit={handleSubmit} className="flex flex-col gap-3">
       <p className="text-xs tracking-[0.2em] uppercase text-[var(--color-accent)] mb-1">
-        O D&Eacute;JANOS TUS DATOS
+        O D&Eacute;JANOS TUS DATOS Y TE CONTACTAMOS
       </p>
 
       <input type="text" name="nombre" autoComplete="name" placeholder="Nombre" required value={nombre} onChange={(e) => setNombre(e.target.value)} className={inputClass} />

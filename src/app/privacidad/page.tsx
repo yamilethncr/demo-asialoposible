@@ -2,6 +2,7 @@ import Link from 'next/link'
 
 export const metadata = {
   title: 'Política de Privacidad — Asia Lo Posible',
+  description: 'Política de privacidad de Asia Lo Posible. Cómo recopilamos, usamos y protegemos tus datos personales.',
 }
 
 export default function Privacidad() {
