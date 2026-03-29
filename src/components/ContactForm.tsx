@@ -92,6 +92,7 @@ export default function ContactForm() {
           defaultCountry="ve"
           value={telefono}
           onChange={(phone) => setTelefono(phone)}
+          forceDialCode
           placeholder="WhatsApp / Teléfono"
           inputProps={{
             name: 'telefono',
