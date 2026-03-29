@@ -6,32 +6,36 @@ import 'react-international-phone/style.css'
 
 const WEB3FORMS_KEY = '5fe64ee2-20aa-4bc1-a66f-78015b8881d4'
 
-export default function ContactForm() {
+export default function PrivateContactForm() {
   const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle')
   const [nombre, setNombre] = useState('')
   const [telefono, setTelefono] = useState('')
   const [email, setEmail] = useState('')
   const [personas, setPersonas] = useState('')
-  const [fecha, setFecha] = useState('')
+  const [destinos, setDestinos] = useState('')
+  const [fechas, setFechas] = useState('')
+  const [mensaje, setMensaje] = useState('')
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault()
     setStatus('sending')
 
     try {
-      const fechaLabel = fecha === 'agosto2026' ? 'Agosto 2026' : fecha === 'abril2027' ? 'Abril 2027' : 'Ambas fechas'
       const res = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           access_key: WEB3FORMS_KEY,
-          subject: `Nuevo lead viaje grupal: ${nombre}`,
+          subject: `Lead viaje privado: ${nombre} (${personas || '?'} personas)`,
           from_name: nombre,
           name: nombre,
           email,
           phone: telefono,
           personas: personas || 'No indicó',
-          fecha_interes: fechaLabel,
+          destinos_interes: destinos || 'No indicó',
+          fechas_tentativas: fechas || 'No indicó',
+          mensaje: mensaje || 'Sin mensaje adicional',
+          tipo: 'Viaje Privado',
         }),
       })
 
@@ -42,7 +46,9 @@ export default function ContactForm() {
         setTelefono('')
         setEmail('')
         setPersonas('')
-        setFecha('')
+        setDestinos('')
+        setFechas('')
+        setMensaje('')
       } else {
         setStatus('error')
       }
@@ -58,10 +64,10 @@ export default function ContactForm() {
         style={{ background: 'rgba(74,103,65,0.08)' }}
       >
         <p className="text-sm uppercase tracking-[0.2em] font-bold mb-2" style={{ color: '#4A6741' }}>
-          &#10003; LISTO
+          &#10003; SOLICITUD RECIBIDA
         </p>
         <p className="text-sm text-[var(--color-secondary)]">
-          Katherine te contactar&aacute; en menos de 24 horas.
+          Katherine revisar&aacute; tu solicitud y te enviar&aacute; una propuesta personalizada en menos de 48 horas.
         </p>
       </div>
     )
@@ -70,13 +76,10 @@ export default function ContactForm() {
   const inputClass =
     'w-full px-4 py-3 text-sm bg-transparent border border-[rgba(212,168,83,0.2)] text-[var(--color-text)] placeholder:text-[var(--color-secondary)] placeholder:opacity-50 outline-none transition-colors focus:border-[var(--color-accent)]'
 
-  const selectClass =
-    'w-full px-4 py-3 text-sm bg-transparent border border-[rgba(212,168,83,0.2)] text-[var(--color-text)] outline-none transition-colors focus:border-[var(--color-accent)] appearance-none cursor-pointer'
-
   return (
     <form onSubmit={handleSubmit} className="flex flex-col gap-3">
       <p className="text-xs tracking-[0.2em] uppercase text-[var(--color-accent)] mb-1">
-        O D&Eacute;JANOS TUS DATOS
+        SOLICITA TU COTIZACI&Oacute;N
       </p>
 
       <input type="text" name="nombre" autoComplete="name" placeholder="Nombre" required value={nombre} onChange={(e) => setNombre(e.target.value)} className={inputClass} />
@@ -124,35 +127,46 @@ export default function ContactForm() {
           type="number"
           name="personas"
           placeholder="N.º de personas"
-          min="1"
-          max="10"
+          min="5"
           value={personas}
           onChange={(e) => setPersonas(e.target.value)}
           className={inputClass}
+          required
         />
-        <div className="relative">
-          <select
-            name="fecha"
-            value={fecha}
-            onChange={(e) => setFecha(e.target.value)}
-            className={selectClass}
-            style={{ color: fecha ? 'var(--color-text)' : 'var(--color-secondary)', opacity: fecha ? 1 : 0.5 }}
-          >
-            <option value="" disabled>Fecha de inter&eacute;s</option>
-            <option value="agosto2026">Agosto 2026</option>
-            <option value="abril2027">Abril 2027</option>
-            <option value="ambas">Ambas fechas</option>
-          </select>
-          <span className="absolute right-3 top-1/2 -translate-y-1/2 text-[var(--color-secondary)] pointer-events-none text-xs">&#9660;</span>
-        </div>
+        <input
+          type="text"
+          name="fechas"
+          placeholder="Fechas tentativas"
+          value={fechas}
+          onChange={(e) => setFechas(e.target.value)}
+          className={inputClass}
+        />
       </div>
+
+      <input
+        type="text"
+        name="destinos"
+        placeholder="Destinos de interés (ej: Vietnam, Camboya, Tailandia)"
+        value={destinos}
+        onChange={(e) => setDestinos(e.target.value)}
+        className={inputClass}
+      />
+
+      <textarea
+        name="mensaje"
+        placeholder="Cuéntanos brevemente qué tipo de experiencia buscan"
+        value={mensaje}
+        onChange={(e) => setMensaje(e.target.value)}
+        rows={3}
+        className={`${inputClass} resize-none`}
+      />
 
       <button
         type="submit"
         disabled={status === 'sending'}
         className="w-full px-6 py-3 text-sm uppercase tracking-[0.1em] font-bold cursor-pointer border border-[var(--color-accent)] bg-[var(--color-accent)] text-[var(--color-bg)] transition-all duration-500 hover:shadow-[0_0_20px_rgba(212,168,83,0.4)] hover:bg-transparent hover:text-[var(--color-accent)] disabled:opacity-50 animate-hover:scale-[1.03] animate-tap:scale-95 animate-spring animate-stiffness-400 animate-damping-20"
       >
-        {status === 'sending' ? 'ENVIANDO...' : 'M\u00c1NDAME TODA LA INFORMACI\u00d3N'}
+        {status === 'sending' ? 'ENVIANDO...' : 'SOLICITAR COTIZACI\u00d3N'}
       </button>
 
       {status === 'error' && (

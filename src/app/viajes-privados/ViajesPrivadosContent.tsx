@@ -5,7 +5,7 @@ import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import SprayPaint from '@/components/SprayPaint'
 import CalBooking from '@/components/CalBooking'
-import ContactForm from '@/components/ContactForm'
+import PrivateContactForm from '@/components/PrivateContactForm'
 
 const WA_MESSAGE_HERO = encodeURIComponent(
   'Hola Katherine, quiero cotizar un viaje privado a Asia para mi grupo. ¿Podemos hablar de los detalles?'
@@ -424,7 +424,7 @@ export default function ViajesPrivadosContent() {
 
             {/* Contact Form */}
             <div className="relative z-10 max-w-[480px] mx-auto mt-10">
-              <ContactForm />
+              <PrivateContactForm />
             </div>
 
           </div>
