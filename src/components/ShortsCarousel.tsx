@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useRef, useCallback } from 'react'
+import { useState, useRef, useCallback, useEffect } from 'react'
 
 const shorts = [
   { id: '2FRn93zCKdw', label: 'Hanoi de noche' },
@@ -93,6 +93,19 @@ function ShortCard({
 export default function ShortsCarousel() {
   const scrollRef = useRef<HTMLDivElement>(null)
   const [activeId, setActiveId] = useState<string | null>(null)
+  const [canScroll, setCanScroll] = useState(false)
+
+  const checkOverflow = useCallback(() => {
+    const el = scrollRef.current
+    if (!el) return
+    setCanScroll(el.scrollWidth > el.clientWidth + 8)
+  }, [])
+
+  useEffect(() => {
+    checkOverflow()
+    window.addEventListener('resize', checkOverflow)
+    return () => window.removeEventListener('resize', checkOverflow)
+  }, [checkOverflow])
 
   const handlePlay = useCallback((id: string) => {
     setActiveId(id)
@@ -121,8 +134,8 @@ export default function ShortsCarousel() {
             </h2>
           </div>
 
-          {/* Navigation arrows — desktop only */}
-          <div className="hidden md:flex gap-3">
+          {/* Navigation arrows — only when content overflows */}
+          <div className={`hidden gap-3 ${canScroll ? 'md:flex' : ''}`}>
             <button
               onClick={() => scroll('left')}
               className="w-10 h-10 flex items-center justify-center border border-[rgba(212,168,83,0.3)] text-[var(--color-accent)] transition-all duration-300 hover:bg-[var(--color-accent)] hover:text-[var(--color-bg)] cursor-pointer bg-transparent"
