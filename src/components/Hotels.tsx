@@ -66,9 +66,12 @@ export default function Hotels() {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
           {hotels.map((h, i) => (
-            <div
+            <a
               key={i}
-              className="border border-[rgba(212,168,83,0.15)] overflow-hidden transition-all duration-400 hover:border-[var(--color-accent)] group"
+              href={h.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="border border-[rgba(212,168,83,0.15)] overflow-hidden transition-all duration-400 hover:border-[var(--color-accent)] group block no-underline cursor-pointer"
             >
               <div className="relative h-48 overflow-hidden">
                 <Image
@@ -89,20 +92,15 @@ export default function Hotels() {
                 </span>
               </div>
               <div className="p-6">
-                <a
-                  href={h.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-base font-bold uppercase text-[var(--color-text)] mb-1 block hover:text-[var(--color-accent)] transition-colors duration-300"
-                >
+                <p className="text-base font-bold uppercase text-[var(--color-text)] mb-1 group-hover:text-[var(--color-accent)] transition-colors duration-300">
                   {h.name}
-                </a>
+                </p>
                 <p className="text-xs text-[var(--color-accent)] mb-2">{h.stars}</p>
                 <p className="text-xs text-[var(--color-secondary)] uppercase tracking-wide">
                   {h.room}
                 </p>
               </div>
-            </div>
+            </a>
           ))}
         </div>
 
