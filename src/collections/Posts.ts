@@ -87,7 +87,6 @@ export const Posts: CollectionConfig = {
       name: 'featuredImage',
       type: 'upload',
       relationTo: 'media',
-      required: true,
       label: 'Imagen destacada',
     },
     {
