@@ -23,6 +23,15 @@ export const Posts: CollectionConfig = {
     singular: 'Artículo',
     plural: 'Artículos',
   },
+  access: {
+    read: ({ req }) => {
+      if (req.user) return true
+      return { status: { equals: 'published' } }
+    },
+    create: ({ req }) => !!req.user,
+    update: ({ req }) => !!req.user,
+    delete: ({ req }) => !!req.user,
+  },
   admin: {
     useAsTitle: 'title',
     defaultColumns: ['title', 'category', 'status', 'publishedDate'],

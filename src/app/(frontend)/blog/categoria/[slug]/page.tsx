@@ -2,9 +2,12 @@ import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import { getPayload } from 'payload'
 import config from '@payload-config'
+import Script from 'next/script'
 import BlogCard from '@/components/blog/BlogCard'
 import CategoryFilter from '@/components/blog/CategoryFilter'
 import Pagination from '@/components/blog/Pagination'
+
+export const revalidate = 60
 
 type Params = Promise<{ slug: string }>
 type SearchParams = Promise<{ page?: string }>
@@ -28,21 +31,41 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: { params: Params }): Promise<Metadata> {
   const { slug } = await params
   const payload = await getPayload({ config })
-  const result = await payload.find({
-    collection: 'categories',
-    where: { slug: { equals: slug } },
-    limit: 1,
-  })
+  const [catResult, postsResult] = await Promise.all([
+    payload.find({
+      collection: 'categories',
+      where: { slug: { equals: slug } },
+      limit: 1,
+    }),
+    payload.find({
+      collection: 'posts',
+      where: { status: { equals: 'published' } },
+      limit: 0,
+    }),
+  ])
 
-  const category = result.docs[0] as any
+  const category = catResult.docs[0] as any
   if (!category) return { title: 'Categoría no encontrada' }
 
-  const metaTitle = category.metaTitle || `${category.name} — Blog de Viajes`
+  // Count posts in this category
+  const categoryPosts = await payload.find({
+    collection: 'posts',
+    where: {
+      status: { equals: 'published' },
+      category: { equals: category.id },
+    },
+    limit: 0,
+  })
+  const postCount = categoryPosts.totalDocs
+
+  const metaTitle = category.metaTitle || `${category.name} — Guías de Viaje en Español`
   const metaDescription = category.metaDescription || `Artículos sobre ${category.name}. Guías, consejos y experiencias de viaje en español.`
 
   return {
     title: `${metaTitle} | Asia Lo Posible`,
     description: metaDescription,
+    // Noindex categories with fewer than 2 posts to avoid thin content
+    ...(postCount < 2 ? { robots: { index: false, follow: true } } : {}),
     openGraph: {
       title: metaTitle,
       description: metaDescription,
@@ -104,8 +127,34 @@ export default async function CategoryPage({
   const posts = postsResult.docs
   const totalPages = postsResult.totalPages
 
+  const collectionSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'CollectionPage',
+    name: `${category.name} — Guías de Viaje en Español`,
+    description: category.description || `Artículos sobre ${category.name}`,
+    url: `https://asialoposible.net/blog/categoria/${slug}`,
+    mainEntity: {
+      '@type': 'ItemList',
+      itemListElement: posts.map((post: any, i: number) => ({
+        '@type': 'ListItem',
+        position: i + 1,
+        url: `https://asialoposible.net/blog/${post.slug}`,
+        name: post.title,
+      })),
+    },
+  }
+
   return (
-    <div className="max-w-[1200px] mx-auto px-5 md:px-10 py-12 md:py-20">
+    <>
+      {posts.length > 0 && (
+        <Script
+          id="category-collection-schema"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(collectionSchema) }}
+        />
+      )}
+
+      <div className="max-w-[1200px] mx-auto px-5 md:px-10 py-12 md:py-20">
       {/* Header */}
       <div className="text-center mb-16">
         <span
@@ -168,5 +217,6 @@ export default async function CategoryPage({
 
       <Pagination currentPage={currentPage} totalPages={totalPages} basePath={`/blog/categoria/${slug}`} />
     </div>
+    </>
   )
 }

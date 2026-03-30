@@ -1,20 +1,31 @@
 import type { Metadata } from 'next'
 import { getPayload } from 'payload'
 import config from '@payload-config'
+import Script from 'next/script'
 import BlogCard from '@/components/blog/BlogCard'
 import CategoryFilter from '@/components/blog/CategoryFilter'
 import Pagination from '@/components/blog/Pagination'
+
+export const revalidate = 60
 
 export const metadata: Metadata = {
   title: 'Blog de Viajes a Asia en Español | Asia Lo Posible',
   description: 'Guías, consejos y experiencias de viaje por Vietnam, Camboya y el Sudeste Asiático. Todo en español, por viajeros que conocen Asia de verdad.',
   openGraph: {
-    title: 'Blog de Viajes a Asia en Español | Asia Lo Posible',
+    title: 'Blog de Viajes a Asia en Español',
     description: 'Guías, consejos y experiencias de viaje por Vietnam, Camboya y el Sudeste Asiático.',
     url: 'https://asialoposible.net/blog',
     siteName: 'Asia Lo Posible',
     locale: 'es_LA',
     type: 'website',
+    images: [
+      {
+        url: 'https://asialoposible.net/api/media/file/hoi-an-1200x630.png',
+        width: 1200,
+        height: 630,
+        alt: 'Blog de viajes por Asia en español — Asia Lo Posible',
+      },
+    ],
   },
   alternates: {
     canonical: '/blog',
@@ -50,8 +61,32 @@ export default async function BlogPage({ searchParams }: { searchParams: SearchP
   const totalPages = postsResult.totalPages
   const categories = categoriesResult.docs
 
+  const collectionSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'CollectionPage',
+    name: 'Blog de Viajes a Asia en Español',
+    description: 'Guías, consejos y experiencias de viaje por Vietnam, Camboya y el Sudeste Asiático.',
+    url: 'https://asialoposible.net/blog',
+    mainEntity: {
+      '@type': 'ItemList',
+      itemListElement: posts.map((post: any, i: number) => ({
+        '@type': 'ListItem',
+        position: i + 1,
+        url: `https://asialoposible.net/blog/${post.slug}`,
+        name: post.title,
+      })),
+    },
+  }
+
   return (
-    <div className="max-w-[1200px] mx-auto px-5 md:px-10 py-12 md:py-20">
+    <>
+      <Script
+        id="collection-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(collectionSchema) }}
+      />
+
+      <div className="max-w-[1200px] mx-auto px-5 md:px-10 py-12 md:py-20">
       {/* Header */}
       <div className="text-center mb-16">
         <span
@@ -69,7 +104,7 @@ export default async function BlogPage({ searchParams }: { searchParams: SearchP
           className="text-3xl sm:text-4xl md:text-5xl uppercase mb-4"
           style={{ fontFamily: 'var(--font-display)', letterSpacing: '0.06em' }}
         >
-          VIAJES POR ASIA
+          VIAJES POR ASIA EN ESPA&Ntilde;OL
         </h1>
 
         <p className="text-sm md:text-base text-[var(--color-secondary)] max-w-[500px] mx-auto">
@@ -123,5 +158,6 @@ export default async function BlogPage({ searchParams }: { searchParams: SearchP
 
       <Pagination currentPage={currentPage} totalPages={totalPages} basePath="/blog" />
     </div>
+    </>
   )
 }

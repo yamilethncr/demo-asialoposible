@@ -77,19 +77,31 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.7,
     }))
 
-    // Categories
+    // Categories — only include those with 2+ published posts
     const categories = await payload.find({
       collection: 'categories',
       limit: 100,
       select: { slug: true },
     })
 
-    const categoryPages: MetadataRoute.Sitemap = categories.docs.map((cat: any) => ({
-      url: `${baseUrl}/blog/categoria/${cat.slug}`,
-      lastModified: new Date(),
-      changeFrequency: 'weekly' as const,
-      priority: 0.6,
-    }))
+    const categoryPages: MetadataRoute.Sitemap = []
+    for (const cat of categories.docs as any[]) {
+      const postCount = await payload.count({
+        collection: 'posts',
+        where: {
+          status: { equals: 'published' },
+          category: { equals: cat.id },
+        },
+      })
+      if (postCount.totalDocs >= 2) {
+        categoryPages.push({
+          url: `${baseUrl}/blog/categoria/${cat.slug}`,
+          lastModified: new Date(),
+          changeFrequency: 'weekly' as const,
+          priority: 0.6,
+        })
+      }
+    }
 
     return [...staticPages, ...postPages, ...categoryPages]
   } catch {

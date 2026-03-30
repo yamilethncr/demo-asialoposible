@@ -14,6 +14,41 @@ type Params = Promise<{ slug: string }>
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
+function extractFaqFromContent(content: any): { question: string; answer: string }[] {
+  const faqs: { question: string; answer: string }[] = []
+  const root = content?.root
+  if (!root) return faqs
+
+  const children = root.children || []
+  let inFaq = false
+  let currentQuestion = ''
+
+  for (const child of children) {
+    const text = (child.children || []).map((c: any) => c.text || '').join('')
+
+    if (child.type === 'heading' && (text.includes('Preguntas Frecuentes') || text.includes('FAQ'))) {
+      inFaq = true
+      continue
+    }
+
+    if (!inFaq) continue
+
+    if (child.type === 'heading' && child.tag === 'h3' && text.includes('?')) {
+      if (currentQuestion) continue
+      currentQuestion = text
+    } else if (child.type === 'paragraph' && currentQuestion) {
+      if (text.trim()) {
+        faqs.push({ question: currentQuestion, answer: text.trim() })
+        currentQuestion = ''
+      }
+    } else if (child.type === 'heading' && child.tag === 'h2' && inFaq) {
+      break // End of FAQ section
+    }
+  }
+
+  return faqs
+}
+
 export async function generateStaticParams() {
   try {
     const payload = await getPayload({ config })
@@ -50,7 +85,7 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
   const imageUrl = post.featuredImage?.sizes?.hero?.url || post.featuredImage?.url
 
   return {
-    title: `${metaTitle} | Asia Lo Posible`,
+    title: metaTitle,
     description: metaDescription,
     openGraph: {
       title: metaTitle,
@@ -117,6 +152,8 @@ export default async function BlogPostPage({ params }: { params: Params }) {
   const imageUrl = post.featuredImage?.sizes?.hero?.url || post.featuredImage?.url
   const postUrl = `https://asialoposible.net/blog/${slug}`
 
+  const faqs = extractFaqFromContent(post.content)
+
   const blogPostingSchema = {
     '@context': 'https://schema.org',
     '@type': 'BlogPosting',
@@ -150,6 +187,27 @@ export default async function BlogPostPage({ params }: { params: Params }) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(blogPostingSchema) }}
       />
+
+      {faqs.length > 0 && (
+        <Script
+          id="faq-schema"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'FAQPage',
+              mainEntity: faqs.map((faq) => ({
+                '@type': 'Question',
+                name: faq.question,
+                acceptedAnswer: {
+                  '@type': 'Answer',
+                  text: faq.answer,
+                },
+              })),
+            }),
+          }}
+        />
+      )}
 
       <BlogHero
         title={post.title}

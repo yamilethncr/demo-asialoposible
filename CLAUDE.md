@@ -79,6 +79,69 @@ These keywords drive organic traffic. They must remain present in at least one H
 ### Rules for Copy Edits
 1. **Never replace a keyword-rich heading with a generic one.** If changing a heading, keep the target keywords or replace them with equal/higher-volume alternatives.
 2. **Use Spanish destination names** — "Bahía de Halong" not "Halong Bay", "Angkor Wat" stays as-is (it's the search term).
-3. **Meta titles must stay under 60 characters** and include the primary keyword for that page.
+3. **Meta titles must stay under 60 characters** and include the primary keyword for that page. **Do NOT append "| Asia Lo Posible"** to article meta titles — Google shows the site name separately.
 4. **Meta descriptions must stay under 155 characters** and include 2-3 keywords naturally.
 5. **The full keyword research is documented in `docs/seo-keyword-research.md`** — consult it before making copy changes to understand search volume and intent behind existing wording choices.
+
+## Publishing Blog Articles to Payload CMS
+
+### Upload Workflow (Images + Content)
+
+**Always upload via the local dev server** (`localhost:3000`), not production. The local server has native sharp for image processing. Images are automatically stored in Vercel Blob and accessible on production.
+
+```bash
+# 1. Start the dev server
+npm run dev
+
+# 2. Authenticate
+TOKEN=$(curl -s 'http://localhost:3000/api/users/login' \
+  -H 'Content-Type: application/json' \
+  -d '{"email":"weare@innovaly.services","password":"AsiaLoPosible2026!"}' \
+  | python3 -c "import sys,json; print(json.load(sys.stdin)['token'])")
+
+# 3. Upload featured image (sharp auto-converts to WebP + generates sizes)
+curl -s 'http://localhost:3000/api/media' \
+  -H "Authorization: JWT $TOKEN" \
+  -F "file=@/path/to/image.png;type=image/png;filename=image-name.png" \
+  -F '_payload={"alt":"descriptive alt text with keyword"}'
+# Returns: { "doc": { "id": <MEDIA_ID>, ... } }
+
+# 4. Create/update post (link image via featuredImage: <MEDIA_ID>)
+curl -s -X PATCH 'http://localhost:3000/api/posts/<POST_ID>' \
+  -H "Authorization: JWT $TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{"featuredImage": <MEDIA_ID>}'
+```
+
+### Why Local, Not Production
+- Production uses Vercel serverless which has limited sharp binary support
+- The local dev server has native sharp for generating all 3 image sizes (thumbnail 400x300, card 768x512, hero 1200x630)
+- The Vercel Blob storage plugin uploads processed images to the CDN — they're accessible from production immediately
+- Admin panel at `/admin` also works for manual uploads
+
+### Image Format
+- Media collection is configured with `formatOptions: { format: 'webp' }` — sharp auto-converts all uploads to WebP
+- WebP is ~60-70% smaller than PNG at equivalent quality
+- All 3 responsive sizes are also generated as WebP
+
+### Access Control
+- Posts, Categories, Tags, Users, Media all have explicit access control
+- **Read**: Public (posts filtered to `status: published` for unauthenticated requests)
+- **Create/Update/Delete**: Requires authenticated user (JWT)
+- Admin credentials: `weare@innovaly.services` / `AsiaLoPosible2026!`
+
+### Auto-Generated SEO Features
+These are generated automatically from the content — no manual setup needed:
+- **BlogPosting JSON-LD** on each article (from post metadata)
+- **FAQPage JSON-LD** on articles with a "Preguntas Frecuentes" H2 section (extracts H3 questions + paragraph answers)
+- **BreadcrumbList JSON-LD** on articles (Home → Blog → Category → Article)
+- **CollectionPage + ItemList JSON-LD** on blog listing and category pages
+- **Sitemap** at `/sitemap.xml` — auto-includes published posts, excludes empty categories
+- **RSS feed** at `/feed.xml`
+- **Noindex** on category pages with < 2 published articles (prevents thin content indexing)
+
+### Staggering Publish Dates
+Never publish multiple articles on the same date — it looks like bulk content to search engines. Space articles at least 3-5 days apart. If writing multiple in one session, set `publishedDate` to spread over 2-3 weeks.
+
+### Content Creation Workflow
+Use the `/seo-blog-writer` skill for the full 10-step workflow: keyword research → competitive analysis → article planning → brand voice writing → humanizer pass → SEO optimization → GEO optimization → quality checklist → image generation → CMS publishing.

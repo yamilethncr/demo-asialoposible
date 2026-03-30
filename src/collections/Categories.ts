@@ -6,6 +6,12 @@ export const Categories: CollectionConfig = {
     singular: 'Categoría',
     plural: 'Categorías',
   },
+  access: {
+    read: () => true,
+    create: ({ req }) => !!req.user,
+    update: ({ req }) => !!req.user,
+    delete: ({ req }) => !!req.user,
+  },
   admin: {
     useAsTitle: 'name',
     group: 'Contenido',

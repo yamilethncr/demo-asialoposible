@@ -11,6 +11,12 @@ export const Users: CollectionConfig = {
     maxLoginAttempts: 5,
     lockTime: 600000,
   },
+  access: {
+    read: () => true,
+    create: ({ req }) => !!req.user,
+    update: ({ req }) => !!req.user,
+    delete: ({ req }) => !!req.user,
+  },
   admin: {
     useAsTitle: 'email',
     group: 'Admin',
