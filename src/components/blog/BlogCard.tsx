@@ -5,13 +5,13 @@ type BlogCardProps = {
   title: string
   slug: string
   excerpt: string
-  featuredImage: {
+  featuredImage?: {
     url: string
     alt: string
     sizes?: {
       card?: { url: string }
     }
-  }
+  } | null
   category: {
     name: string
     slug: string
@@ -29,7 +29,7 @@ export default function BlogCard({
   publishedDate,
   readingTime,
 }: BlogCardProps) {
-  const imageUrl = featuredImage.sizes?.card?.url || featuredImage.url
+  const imageUrl = featuredImage?.sizes?.card?.url || featuredImage?.url
   const date = new Date(publishedDate).toLocaleDateString('es-ES', {
     year: 'numeric',
     month: 'long',
@@ -41,13 +41,17 @@ export default function BlogCard({
       <Link href={`/blog/${slug}`} className="no-underline block">
         {/* Image */}
         <div className="relative aspect-[3/2] overflow-hidden">
-          <Image
-            src={imageUrl}
-            alt={featuredImage.alt}
-            fill
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-            className="object-cover transition-transform duration-700 group-hover:scale-105"
-          />
+          {imageUrl ? (
+            <Image
+              src={imageUrl}
+              alt={featuredImage?.alt || ''}
+              fill
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+              className="object-cover transition-transform duration-700 group-hover:scale-105"
+            />
+          ) : (
+            <div className="w-full h-full bg-gradient-to-br from-[#0A0F1E] to-[#1a1f3e]" />
+          )}
           <div className="absolute inset-0 bg-gradient-to-t from-[var(--color-bg)] via-transparent to-transparent opacity-60" />
 
           {/* Category badge */}

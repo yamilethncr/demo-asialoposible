@@ -2,13 +2,13 @@ import Image from 'next/image'
 
 type BlogHeroProps = {
   title: string
-  featuredImage: {
+  featuredImage?: {
     url: string
     alt: string
     sizes?: {
       hero?: { url: string }
     }
-  }
+  } | null
   category: {
     name: string
     slug: string
@@ -28,7 +28,7 @@ export default function BlogHero({
   readingTime,
   author,
 }: BlogHeroProps) {
-  const imageUrl = featuredImage.sizes?.hero?.url || featuredImage.url
+  const imageUrl = featuredImage?.sizes?.hero?.url || featuredImage?.url
   const date = new Date(publishedDate).toLocaleDateString('es-ES', {
     year: 'numeric',
     month: 'long',
@@ -39,15 +39,19 @@ export default function BlogHero({
     <header className="relative w-full min-h-[60vh] md:min-h-[70vh] flex items-end overflow-hidden">
       {/* Background image with Ken Burns */}
       <div className="absolute inset-0">
-        <Image
-          src={imageUrl}
-          alt={featuredImage.alt}
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover"
-          style={{ animation: 'kenburns 20s ease-in-out infinite alternate' }}
-        />
+        {imageUrl ? (
+          <Image
+            src={imageUrl}
+            alt={featuredImage?.alt || ''}
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover"
+            style={{ animation: 'kenburns 20s ease-in-out infinite alternate' }}
+          />
+        ) : (
+          <div className="w-full h-full bg-gradient-to-br from-[#0A0F1E] to-[#1a1f3e]" />
+        )}
         <div className="absolute inset-0 bg-gradient-to-t from-[var(--color-bg)] via-[rgba(10,15,30,0.5)] to-transparent" />
       </div>
 
