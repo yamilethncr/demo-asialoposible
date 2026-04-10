@@ -111,10 +111,24 @@ const eventSchema = {
   '@type': 'Event',
   name: 'Viaje Organizado a Vietnam y Camboya en Español',
   description: 'Viaje guiado de 14 días por Vietnam y Camboya en español. Grupo exclusivo de 10 personas. Hoteles 4-5 estrellas, crucero de lujo en la Bahía de Halong, templos de Angkor Wat. Todo incluido.',
+  image: [
+    'https://images.unsplash.com/photo-1528127269322-539801943592?q=80&w=1200&auto=format&fit=crop',
+    'https://images.unsplash.com/photo-1569309986620-4face6ad4739?q=80&w=1200&auto=format&fit=crop',
+    'https://images.unsplash.com/photo-1557750255-c76072a7aad1?q=80&w=1200&auto=format&fit=crop',
+  ],
   startDate: '2026-08-01',
   endDate: '2026-08-14',
   eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
   eventStatus: 'https://schema.org/EventScheduled',
+  performer: {
+    '@type': 'Person',
+    name: 'Katherine Molinares',
+    url: 'https://asialoposible.net',
+    sameAs: [
+      'https://www.instagram.com/kathmolinares',
+      'https://www.instagram.com/asialoposible',
+    ],
+  },
   location: {
     '@type': 'Place',
     name: 'Vietnam y Camboya',
