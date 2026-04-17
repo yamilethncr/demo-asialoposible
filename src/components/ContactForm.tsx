@@ -3,6 +3,7 @@
 import { useState, type FormEvent } from 'react'
 import { PhoneInput } from 'react-international-phone'
 import 'react-international-phone/style.css'
+import { trackEvent } from './MetaPixel'
 
 const WEB3FORMS_KEY = '5fe64ee2-20aa-4bc1-a66f-78015b8881d4'
 
@@ -37,6 +38,7 @@ export default function ContactForm() {
 
       const data = await res.json()
       if (data.success) {
+        trackEvent('Lead', { content_name: 'Contact Form', content_category: 'Viaje Grupal' })
         setStatus('success')
         setNombre('')
         setTelefono('')
@@ -150,7 +152,7 @@ export default function ContactForm() {
       <button
         type="submit"
         disabled={status === 'sending'}
-        className="w-full px-6 py-3 text-sm uppercase tracking-[0.1em] font-bold cursor-pointer border border-[var(--color-accent)] bg-[var(--color-accent)] text-[var(--color-bg)] transition-all duration-500 hover:shadow-[0_0_20px_rgba(212,168,83,0.4)] hover:bg-transparent hover:text-[var(--color-accent)] disabled:opacity-50 animate-hover:scale-[1.03] animate-tap:scale-95 animate-spring animate-stiffness-400 animate-damping-20"
+        className="w-full min-h-[52px] px-6 py-3 text-sm uppercase tracking-[0.1em] font-bold cursor-pointer border border-[var(--color-accent)] bg-[var(--color-accent)] text-[var(--color-bg)] transition-all duration-300 hover:shadow-[0_0_20px_rgba(212,168,83,0.4)] hover:bg-transparent hover:text-[var(--color-accent)] disabled:opacity-50 flex items-center justify-center"
       >
         {status === 'sending' ? 'ENVIANDO...' : 'M\u00c1NDAME TODA LA INFORMACI\u00d3N'}
       </button>
