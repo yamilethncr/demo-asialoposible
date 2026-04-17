@@ -66,6 +66,14 @@ export default function CalBooking({
       layout: 'month_view',
       locale: 'es',
     })
+
+    // Client-side redirect after booking (Cal free plan doesn't allow server redirect)
+    win.Cal.ns.asialoposible('on', {
+      action: 'bookingSuccessful',
+      callback: () => {
+        window.location.href = '/gracias'
+      },
+    })
   }, [])
 
   return (
