@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, type ReactNode } from 'react'
+import CalBooking from './CalBooking'
 
 const faqs: { q: string; a: ReactNode }[] = [
   {
@@ -61,7 +62,7 @@ const faqs: { q: string; a: ReactNode }[] = [
   },
 ]
 
-export default function FAQ() {
+export default function FAQ({ variant = 'call' }: { variant?: 'call' | 'form' } = {}) {
   const [openIndex, setOpenIndex] = useState<number | null>(null)
 
   return (
@@ -118,16 +119,22 @@ export default function FAQ() {
 
         {/* CTA below FAQ */}
         <div className="mt-12 md:mt-16 text-center">
-          <a
-            href="#reservar"
-            onClick={(e) => {
-              e.preventDefault()
-              document.getElementById('reservar')?.scrollIntoView({ behavior: 'smooth' })
-            }}
-            className="inline-block border border-[var(--color-accent)] bg-[var(--color-accent)] text-[var(--color-bg)] px-10 py-4 text-sm uppercase tracking-[0.1em] font-bold no-underline transition-all duration-500 hover:shadow-[0_0_20px_rgba(212,168,83,0.4)] hover:bg-transparent hover:text-[var(--color-accent)] animate-hover:scale-105 animate-tap:scale-95 animate-spring animate-stiffness-400 animate-damping-20"
-          >
-            M&Aacute;NDAME TODA LA INFORMACI&Oacute;N
-          </a>
+          <h3 className="text-xl md:text-2xl uppercase font-bold text-[var(--color-text)] mb-4 tracking-wide">
+            &iquest;TIENES M&Aacute;S PREGUNTAS?
+          </h3>
+          <p className="text-sm md:text-base text-[var(--color-secondary)] max-w-[440px] mx-auto mb-6">
+            Katherine est&aacute; a una llamada de distancia. Resolvemos tus dudas personalmente.
+          </p>
+          {variant === 'call' ? (
+            <CalBooking variant="primary" label="AGENDA TU LLAMADA" />
+          ) : (
+            <a
+              href="#reservar"
+              className="inline-block border border-[var(--color-accent)] bg-[var(--color-accent)] text-[var(--color-bg)] px-8 py-4 text-sm uppercase tracking-[0.1em] font-bold no-underline transition-all duration-500 hover:shadow-[0_0_20px_rgba(212,168,83,0.4)] hover:bg-transparent hover:text-[var(--color-accent)]"
+            >
+              D&Eacute;JANOS TUS DATOS
+            </a>
+          )}
         </div>
       </div>
     </section>
