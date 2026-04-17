@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react'
 import SprayPaint from './SprayPaint'
+import CalBooking from './CalBooking'
 
 const bgImages = [
   'https://images.unsplash.com/photo-1528127269322-539801943592?q=80&w=1200&auto=format&fit=crop', // Halong Bay
@@ -11,7 +12,7 @@ const bgImages = [
   'https://images.unsplash.com/photo-1559592413-7cec4d0cae2b?q=80&w=1200&auto=format&fit=crop', // Vietnam boats river
 ]
 
-export default function Hero() {
+export default function Hero({ variant = 'call' }: { variant?: 'call' | 'form' } = {}) {
   const [current, setCurrent] = useState(0)
   const [loadedImages, setLoadedImages] = useState<Set<number>>(new Set([0]))
   const prevRef = useRef(0)
@@ -120,12 +121,16 @@ export default function Hero() {
             </p>
           </div>
           <div className="md:col-span-2 flex md:justify-end items-start">
-            <a
-              href="#reservar"
-              className="inline-block border border-[var(--color-accent)] bg-[var(--color-accent)] text-[var(--color-bg)] px-8 py-4 text-sm uppercase tracking-[0.1em] font-bold no-underline transition-all duration-500 hover:shadow-[0_0_20px_rgba(212,168,83,0.4)] hover:bg-transparent hover:text-[var(--color-accent)] animate-hover:scale-105 animate-tap:scale-95 animate-spring animate-stiffness-400 animate-damping-20"
-            >
-              RESERVAR
-            </a>
+            {variant === 'call' ? (
+              <CalBooking variant="primary" label="AGENDA TU LLAMADA" />
+            ) : (
+              <a
+                href="#reservar"
+                className="inline-block border border-[var(--color-accent)] bg-[var(--color-accent)] text-[var(--color-bg)] px-8 py-4 text-sm uppercase tracking-[0.1em] font-bold no-underline transition-all duration-500 hover:shadow-[0_0_20px_rgba(212,168,83,0.4)] hover:bg-transparent hover:text-[var(--color-accent)]"
+              >
+                D&Eacute;JANOS TUS DATOS
+              </a>
+            )}
           </div>
         </div>
 
