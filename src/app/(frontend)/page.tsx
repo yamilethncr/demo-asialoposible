@@ -18,6 +18,20 @@ export const metadata: Metadata = {
     siteName: 'Asia Lo Posible',
     locale: 'es_LA',
     type: 'website',
+    images: [
+      {
+        url: '/og-asialoposible.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Viaje a Vietnam y Camboya en Español — Asia Lo Posible',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Viaje a Vietnam y Camboya en Español | Asia Lo Posible',
+    description: 'Viaje organizado a Vietnam y Camboya. 14 días, 6 destinos, grupo exclusivo. Todo incluido.',
+    images: ['/og-asialoposible.jpg'],
   },
 }
 

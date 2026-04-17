@@ -8,12 +8,13 @@ import { trackEvent } from './MetaPixel'
 const WEB3FORMS_KEY = '5fe64ee2-20aa-4bc1-a66f-78015b8881d4'
 
 export default function ContactForm() {
-  const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle')
+  const [status, setStatus] = useState<'idle' | 'sending' | 'error'>('idle')
   const [nombre, setNombre] = useState('')
   const [telefono, setTelefono] = useState('')
   const [email, setEmail] = useState('')
   const [personas, setPersonas] = useState('')
   const [fecha, setFecha] = useState('')
+  const [comentarios, setComentarios] = useState('')
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault()
@@ -33,40 +34,20 @@ export default function ContactForm() {
           phone: telefono,
           personas: personas || 'No indicó',
           fecha_interes: fechaLabel,
+          comentarios: comentarios || 'Sin comentarios',
         }),
       })
 
       const data = await res.json()
       if (data.success) {
         trackEvent('Lead', { content_name: 'Contact Form', content_category: 'Viaje Grupal' })
-        setStatus('success')
-        setNombre('')
-        setTelefono('')
-        setEmail('')
-        setPersonas('')
-        setFecha('')
+        window.location.href = '/gracias-datos'
       } else {
         setStatus('error')
       }
     } catch {
       setStatus('error')
     }
-  }
-
-  if (status === 'success') {
-    return (
-      <div
-        className="border border-[rgba(74,103,65,0.4)] p-8 text-center"
-        style={{ background: 'rgba(74,103,65,0.08)' }}
-      >
-        <p className="text-sm uppercase tracking-[0.2em] font-bold mb-2" style={{ color: '#4A6741' }}>
-          &#10003; LISTO
-        </p>
-        <p className="text-sm text-[var(--color-secondary)]">
-          Katherine te contactar&aacute; en menos de 24 horas.
-        </p>
-      </div>
-    )
   }
 
   const inputClass =
@@ -78,7 +59,7 @@ export default function ContactForm() {
   return (
     <form onSubmit={handleSubmit} className="flex flex-col gap-3">
       <p className="text-xs tracking-[0.2em] uppercase text-[var(--color-accent)] mb-1">
-        O D&Eacute;JANOS TUS DATOS Y TE CONTACTAMOS
+        COMPLETA TUS DATOS
       </p>
 
       <input type="text" name="nombre" autoComplete="name" placeholder="Nombre" required value={nombre} onChange={(e) => setNombre(e.target.value)} className={inputClass} />
@@ -148,6 +129,15 @@ export default function ContactForm() {
           <span className="absolute right-3 top-1/2 -translate-y-1/2 text-[var(--color-secondary)] pointer-events-none text-xs">&#9660;</span>
         </div>
       </div>
+
+      <textarea
+        name="comentarios"
+        placeholder="Comentarios o preguntas (opcional)"
+        rows={3}
+        value={comentarios}
+        onChange={(e) => setComentarios(e.target.value)}
+        className={`${inputClass} resize-none`}
+      />
 
       <button
         type="submit"
