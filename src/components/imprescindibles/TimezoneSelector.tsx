@@ -51,15 +51,16 @@ function formatTime(date: Date, utcOffset: number): string {
 
 export default function TimezoneSelector() {
   const [selected, setSelected] = useState(0)
-  const [now, setNow] = useState(() => new Date())
+  const [now, setNow] = useState<Date | null>(null)
 
   useEffect(() => {
+    setNow(new Date())
     const interval = setInterval(() => setNow(new Date()), 60000)
     return () => clearInterval(interval)
   }, [])
 
   const country = countries[selected]
-  const currentMonth = now.getMonth() + 1
+  const currentMonth = now ? now.getMonth() + 1 : 1
 
   const getActiveOffset = useCallback(
     (tz: CountryTz) => {
@@ -72,8 +73,8 @@ export default function TimezoneSelector() {
   const activeOffset = getActiveOffset(country)
   const diff = VIETNAM_OFFSET - activeOffset.value
 
-  const localTime = formatTime(now, activeOffset.value)
-  const vietnamTime = formatTime(now, VIETNAM_OFFSET)
+  const localTime = now ? formatTime(now, activeOffset.value) : '--:--'
+  const vietnamTime = now ? formatTime(now, VIETNAM_OFFSET) : '--:--'
 
   return (
     <div>

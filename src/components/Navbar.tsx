@@ -3,10 +3,10 @@
 import { useState, useEffect } from 'react'
 
 const links = [
-  { href: '#recorrido', label: 'Itinerario' },
-  { href: '#katherine', label: 'Katherine' },
-  { href: '#incluye', label: 'Detalles' },
-  { href: '#precio', label: 'Precio' },
+  { href: '/#recorrido', label: 'Itinerario' },
+  { href: '/#katherine', label: 'Katherine' },
+  { href: '/#incluye', label: 'Detalles' },
+  { href: '/#precio', label: 'Precio' },
   { href: '/viajes-privados', label: 'Viaje Privado' },
   { href: '/imprescindibles', label: 'Imprescindibles' },
   { href: '/blog', label: 'Blog' },
@@ -52,7 +52,7 @@ export default function Navbar() {
             </a>
           ))}
           <a
-            href="#reservar"
+            href="/#reservar"
             className="text-[var(--color-accent)] no-underline text-xs uppercase tracking-[0.1em] font-black"
           >
             Reservar
@@ -99,7 +99,7 @@ export default function Navbar() {
               </a>
             ))}
             <a
-              href="#reservar"
+              href="/#reservar"
               onClick={() => setMenuOpen(false)}
               className="text-[var(--color-accent)] no-underline text-sm uppercase tracking-[0.15em] font-black"
             >

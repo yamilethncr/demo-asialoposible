@@ -2,11 +2,11 @@
 
 import { useState, useRef, useCallback } from 'react'
 import SprayPaint from './SprayPaint'
+import CalBooking from './CalBooking'
 
 const YOUTUBE_ID = 'ALipFoUcmXI'
 const YOUTUBE_EMBED_URL = `https://www.youtube.com/embed/${YOUTUBE_ID}?controls=0&modestbranding=1&rel=0&playsinline=1&loop=1&playlist=${YOUTUBE_ID}&autoplay=1`
 const THUMBNAIL_URL = `https://img.youtube.com/vi/${YOUTUBE_ID}/maxresdefault.jpg`
-const WHATSAPP_URL = 'https://wa.me/584248455010'
 
 function GoldPlayButton({ size = 48 }: { size?: number }) {
   return (
@@ -141,19 +141,9 @@ export default function VideoShowcase() {
         </p>
 
         {/* Mini CTA */}
-        <a
-          href={WHATSAPP_URL}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="mt-6 inline-block px-8 py-3 text-xs font-bold uppercase tracking-[0.2em] transition-all duration-300 hover:bg-[var(--color-accent)] hover:text-[var(--color-bg)]"
-          style={{
-            border: '1px solid var(--color-accent)',
-            color: 'var(--color-accent)',
-            background: 'transparent',
-          }}
-        >
-          RESERVAR MI CUPO
-        </a>
+        <div className="mt-6">
+          <CalBooking variant="outline" label="RESERVAR MI CUPO" />
+        </div>
       </div>
 
       {/* Bottom gold divider */}

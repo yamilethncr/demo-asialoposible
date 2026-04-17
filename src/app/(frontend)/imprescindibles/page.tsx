@@ -391,24 +391,8 @@ export default function Imprescindibles() {
             Si algo no est&aacute; en esta gu&iacute;a, cont&aacute;ctanos directamente. Estamos para ayudarte.
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center relative z-10">
-            <a
-              href="https://wa.me/584248455010"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-block border border-[var(--color-accent)] bg-[var(--color-accent)] text-[var(--color-bg)] px-8 py-4 text-sm uppercase tracking-[0.1em] font-bold no-underline transition-all duration-500 hover:shadow-[0_0_20px_rgba(212,168,83,0.4)] hover:bg-transparent hover:text-[var(--color-accent)]"
-            >
-              ESCR&Iacute;BEME POR WHATSAPP
-            </a>
-            <CalBooking />
-            <a
-              href="https://www.instagram.com/kathmolinares"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-block border border-[var(--color-accent)] bg-transparent text-[var(--color-accent)] px-8 py-4 text-sm uppercase tracking-[0.1em] font-bold no-underline transition-all duration-500 hover:bg-[var(--color-accent)] hover:text-[var(--color-bg)] hover:shadow-[0_0_20px_rgba(212,168,83,0.4)]"
-            >
-              CONT&Aacute;CTAME POR INSTAGRAM
-            </a>
+          <div className="flex justify-center relative z-10">
+            <CalBooking variant="primary" label="AGENDA TU LLAMADA" />
           </div>
         </div>
       </div>

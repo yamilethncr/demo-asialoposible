@@ -1,20 +1,9 @@
 'use client'
 
-import Link from 'next/link'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import SprayPaint from '@/components/SprayPaint'
 import CalBooking from '@/components/CalBooking'
-import PrivateContactForm from '@/components/PrivateContactForm'
-
-const WA_MESSAGE_HERO = encodeURIComponent(
-  'Hola Katherine, quiero cotizar un viaje privado a Asia para mi grupo. ¿Podemos hablar de los detalles?'
-)
-const WA_MESSAGE_FINAL = encodeURIComponent(
-  'Hola Katherine, vi la página de viajes privados y me interesa. ¿Qué opciones hay para mi grupo?'
-)
-const WA_URL_HERO = `https://wa.me/584248455010?text=${WA_MESSAGE_HERO}`
-const WA_URL_FINAL = `https://wa.me/584248455010?text=${WA_MESSAGE_FINAL}`
 
 const steps = [
   {
@@ -134,14 +123,9 @@ export default function ViajesPrivadosContent() {
             disfrutes sin perderte nada.
           </p>
 
-          <a
-            href={WA_URL_HERO}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-block border border-[var(--color-accent)] bg-[var(--color-accent)] text-[var(--color-bg)] px-10 py-4 text-sm uppercase tracking-[0.1em] font-bold no-underline transition-all duration-500 hover:shadow-[0_0_30px_rgba(212,168,83,0.5)] hover:bg-transparent hover:text-[var(--color-accent)] animate-hover:scale-105 animate-tap:scale-95 animate-spring animate-stiffness-400 animate-damping-20 animate-initial:opacity-0 animate-initial:y-10 animate-enter:opacity-100 animate-enter:y-0 animate-duration-600 animate-delay-600"
-          >
-            COTIZAR MI VIAJE PRIVADO
-          </a>
+          <div className="animate-initial:opacity-0 animate-initial:y-10 animate-enter:opacity-100 animate-enter:y-0 animate-duration-600 animate-delay-600">
+            <CalBooking variant="primary" label="AGENDA TU LLAMADA" />
+          </div>
 
           <p className="text-xs tracking-[0.1em] uppercase text-[var(--color-secondary)] mt-6">
             Disponibilidad limitada por temporada
@@ -404,27 +388,8 @@ export default function ViajesPrivadosContent() {
               <span>&#10003; Sin compromiso</span>
             </div>
 
-            <div className="flex flex-col sm:flex-row gap-4 justify-center relative z-10">
-              <a
-                href={WA_URL_FINAL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-block border border-[var(--color-accent)] bg-[var(--color-accent)] text-[var(--color-bg)] px-10 py-4 text-sm uppercase tracking-[0.1em] font-bold no-underline transition-all duration-500 hover:shadow-[0_0_20px_rgba(212,168,83,0.4)] hover:bg-transparent hover:text-[var(--color-accent)] animate-hover:scale-105 animate-tap:scale-95 animate-spring animate-stiffness-400 animate-damping-20"
-              >
-                COTIZAR MI VIAJE PRIVADO
-              </a>
-              <CalBooking />
-              <Link
-                href="/"
-                className="inline-block border border-[var(--color-accent)] bg-transparent text-[var(--color-accent)] px-10 py-4 text-sm uppercase tracking-[0.1em] font-bold no-underline transition-all duration-500 hover:bg-[var(--color-accent)] hover:text-[var(--color-bg)] hover:shadow-[0_0_20px_rgba(212,168,83,0.4)]"
-              >
-                VER VIAJE GRUPAL
-              </Link>
-            </div>
-
-            {/* Contact Form */}
-            <div className="relative z-10 max-w-[480px] mx-auto mt-10">
-              <PrivateContactForm />
+            <div className="flex justify-center relative z-10">
+              <CalBooking variant="primary" label="AGENDA TU LLAMADA" />
             </div>
 
           </div>
