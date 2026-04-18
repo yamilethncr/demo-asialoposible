@@ -1,7 +1,7 @@
 import SprayPaint from './SprayPaint'
 import CalBooking from './CalBooking'
 
-export default function Host() {
+export default function Host({ variant = 'call' }: { variant?: 'call' | 'form' } = {}) {
   return (
     <section id="katherine" className="pt-10 md:pt-14 pb-24 md:pb-36 relative z-10">
       <div className="max-w-[1200px] mx-auto px-5 md:px-10">
@@ -51,7 +51,16 @@ export default function Host() {
               </p>
             </div>
 
-            <CalBooking className="mt-6 w-full md:w-auto" />
+            {variant === 'call' ? (
+              <CalBooking className="mt-6 w-full md:w-auto" />
+            ) : (
+              <a
+                href="#reservar"
+                className="mt-6 w-full md:w-auto inline-block border border-[var(--color-accent)] bg-transparent text-[var(--color-accent)] px-8 py-4 text-sm uppercase tracking-[0.1em] font-bold no-underline transition-all duration-500 hover:bg-[var(--color-accent)] hover:text-[var(--color-bg)] hover:shadow-[0_0_20px_rgba(212,168,83,0.4)] text-center"
+              >
+                QUIERO M&Aacute;S INFORMACI&Oacute;N
+              </a>
+            )}
           </div>
         </div>
       </div>

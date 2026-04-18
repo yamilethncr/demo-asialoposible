@@ -33,7 +33,7 @@ function GoldPlayButton({ size = 48 }: { size?: number }) {
   )
 }
 
-export default function VideoShowcase() {
+export default function VideoShowcase({ variant = 'call' }: { variant?: 'call' | 'form' } = {}) {
   const [isPlaying, setIsPlaying] = useState(false)
   const sectionRef = useRef<HTMLElement>(null)
 
@@ -142,7 +142,16 @@ export default function VideoShowcase() {
 
         {/* Mini CTA */}
         <div className="mt-6">
-          <CalBooking variant="outline" label="RESERVAR MI CUPO" />
+          {variant === 'call' ? (
+            <CalBooking variant="outline" label="RESERVAR MI CUPO" />
+          ) : (
+            <a
+              href="#reservar"
+              className="inline-block px-8 py-4 text-sm uppercase tracking-[0.1em] font-bold no-underline transition-all duration-500 hover:shadow-[0_0_20px_rgba(212,168,83,0.4)] text-center border border-[var(--color-accent)] bg-transparent text-[var(--color-accent)] hover:bg-[var(--color-accent)] hover:text-[var(--color-bg)]"
+            >
+              RESERVAR MI CUPO
+            </a>
+          )}
         </div>
       </div>
 

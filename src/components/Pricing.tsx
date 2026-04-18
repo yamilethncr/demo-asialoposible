@@ -56,7 +56,7 @@ function formatUSD(n: number): string {
   return n.toLocaleString('en-US', { minimumFractionDigits: n % 1 === 0 ? 0 : 2, maximumFractionDigits: 2 })
 }
 
-export default function Pricing() {
+export default function Pricing({ variant = 'call' }: { variant?: 'call' | 'form' } = {}) {
   const [viaje, setViaje] = useState<Viaje>('agosto2026')
   const [metodo, setMetodo] = useState<Metodo>('contado')
   const [habitacion, setHabitacion] = useState<Habitacion>('compartida')
@@ -444,20 +444,35 @@ export default function Pricing() {
                   </div>
                 )}
 
-                <a
-                  href={`https://wa.me/584248455010?text=${waMessage}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={() => trackEvent('InitiateCheckout', {
-                    value: totalPrice,
-                    currency: 'USD',
-                    num_items: 1,
-                  })}
-                  className="inline-block w-full md:w-auto text-center px-10 py-4 text-sm font-bold uppercase tracking-[0.15em] transition-all duration-300 hover:brightness-110 mb-6"
-                  style={{ background: 'var(--color-accent)', color: 'var(--color-bg)' }}
-                >
-                  Reservar por WhatsApp
-                </a>
+                {variant === 'call' ? (
+                  <a
+                    href={`https://wa.me/584248455010?text=${waMessage}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={() => trackEvent('InitiateCheckout', {
+                      value: totalPrice,
+                      currency: 'USD',
+                      num_items: 1,
+                    })}
+                    className="inline-block w-full md:w-auto text-center px-10 py-4 text-sm font-bold uppercase tracking-[0.15em] transition-all duration-300 hover:brightness-110 mb-6"
+                    style={{ background: 'var(--color-accent)', color: 'var(--color-bg)' }}
+                  >
+                    Reservar por WhatsApp
+                  </a>
+                ) : (
+                  <a
+                    href="#reservar"
+                    onClick={() => trackEvent('InitiateCheckout', {
+                      value: totalPrice,
+                      currency: 'USD',
+                      num_items: 1,
+                    })}
+                    className="inline-block w-full md:w-auto text-center px-10 py-4 text-sm font-bold uppercase tracking-[0.15em] transition-all duration-300 hover:brightness-110 mb-6"
+                    style={{ background: 'var(--color-accent)', color: 'var(--color-bg)' }}
+                  >
+                    Reservar mi cupo
+                  </a>
+                )}
 
                 <div className="mb-6">
                   <p className="text-[11px] tracking-[0.15em] uppercase text-[var(--color-secondary)] mb-3">

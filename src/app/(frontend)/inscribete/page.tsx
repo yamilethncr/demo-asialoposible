@@ -278,12 +278,12 @@ export default function Inscribete() {
       <Problem />
       <Promise />
       <Hotels />
-      <Host />
+      <Host variant="form" />
       <RouteMap />
       <Itinerary />
       <Includes />
-      <VideoShowcase />
-      <Pricing />
+      <VideoShowcase variant="form" />
+      <Pricing variant="form" />
       <NotIncluded />
       <FAQ variant="form" />
       <ViajesPrivados />

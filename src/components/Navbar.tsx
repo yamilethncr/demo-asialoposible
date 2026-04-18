@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+import { usePathname } from 'next/navigation'
 
 const links = [
   { href: '/#recorrido', label: 'Itinerario' },
@@ -15,6 +16,8 @@ const links = [
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
+  const pathname = usePathname()
+  const reservarHref = pathname === '/inscribete' ? '#reservar' : '/#reservar'
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 50)
@@ -52,7 +55,7 @@ export default function Navbar() {
             </a>
           ))}
           <a
-            href="/#reservar"
+            href={reservarHref}
             className="text-[var(--color-accent)] no-underline text-xs uppercase tracking-[0.1em] font-black"
           >
             Reservar
@@ -99,7 +102,7 @@ export default function Navbar() {
               </a>
             ))}
             <a
-              href="/#reservar"
+              href={reservarHref}
               onClick={() => setMenuOpen(false)}
               className="text-[var(--color-accent)] no-underline text-sm uppercase tracking-[0.15em] font-black"
             >
