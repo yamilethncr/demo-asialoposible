@@ -126,6 +126,7 @@ export default function ContactForm() {
           placeholder="N.º de personas"
           min="1"
           max="10"
+          required
           value={personas}
           onChange={(e) => setPersonas(e.target.value)}
           className={inputClass}
@@ -136,6 +137,7 @@ export default function ContactForm() {
             value={fecha}
             onChange={(e) => setFecha(e.target.value)}
             className={selectClass}
+            required
             style={{ color: fecha ? 'var(--color-text)' : 'var(--color-secondary)', opacity: fecha ? 1 : 0.5 }}
           >
             <option value="" disabled>Fecha de inter&eacute;s</option>
