@@ -15,9 +15,17 @@ export default function PrivateContactForm() {
   const [destinos, setDestinos] = useState('')
   const [fechas, setFechas] = useState('')
   const [mensaje, setMensaje] = useState('')
+  const [phoneError, setPhoneError] = useState(false)
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault()
+
+    const digits = telefono.replace(/\D/g, '')
+    if (digits.length < 8) {
+      setPhoneError(true)
+      return
+    }
+    setPhoneError(false)
     setStatus('sending')
 
     try {
@@ -104,13 +112,17 @@ export default function PrivateContactForm() {
         <PhoneInput
           defaultCountry="ve"
           value={telefono}
-          onChange={(phone) => setTelefono(phone)}
+          onChange={(phone) => {
+            setTelefono(phone)
+            if (phoneError) setPhoneError(false)
+          }}
           forceDialCode
-          placeholder="WhatsApp / Teléfono"
+          placeholder="WhatsApp (obligatorio)"
           inputProps={{
             name: 'telefono',
             autoComplete: 'tel',
             required: true,
+            'aria-invalid': phoneError,
           }}
           countrySelectorStyleProps={{
             buttonClassName: 'phone-country-btn',
@@ -119,6 +131,11 @@ export default function PrivateContactForm() {
           style={{ width: '100%' }}
         />
       </div>
+      {phoneError && (
+        <p className="text-xs -mt-1" style={{ color: '#B85C5C' }}>
+          Ingresa tu n&uacute;mero de WhatsApp completo para que Katherine pueda contactarte.
+        </p>
+      )}
 
       <input type="email" name="email" autoComplete="email" placeholder="Correo electrónico" required value={email} onChange={(e) => setEmail(e.target.value)} className={inputClass} />
 
