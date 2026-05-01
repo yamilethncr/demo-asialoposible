@@ -1,7 +1,12 @@
 import { NextResponse } from 'next/server'
 import { z } from 'zod'
 import { createLead } from '@/lib/notion'
-import { addToFormLeadsAudience, fireFormSubmittedEvent } from '@/lib/resend'
+import {
+  addToFormLeadsAudience,
+  addToPrivateLeadsAudience,
+  fireFormSubmittedEvent,
+  firePrivateLeadEvent,
+} from '@/lib/resend'
 import { sendLeadFallbackAlert } from '@/lib/fallback-alert'
 
 export const runtime = 'nodejs'
@@ -58,21 +63,27 @@ export async function POST(req: Request) {
     comentarios: data.comentarios ?? null,
   }
 
-  const skipNurture = source === 'PrivateForm'
-
   const [notionResult, resendResult] = await Promise.allSettled([
     createLead(leadInput),
-    skipNurture
-      ? Promise.resolve('skipped')
-      : (async () => {
-          await addToFormLeadsAudience({ email: data.email, firstName, lastName })
-          await fireFormSubmittedEvent({
-            email: data.email,
-            source: 'Form',
-            viaje: data.fechaLabel,
-            personas,
-          })
-        })(),
+    (async () => {
+      if (source === 'PrivateForm') {
+        await addToPrivateLeadsAudience({ email: data.email, firstName, lastName })
+        await firePrivateLeadEvent({
+          email: data.email,
+          source: 'PrivateForm',
+          viaje: data.fechaLabel,
+          personas,
+        })
+      } else {
+        await addToFormLeadsAudience({ email: data.email, firstName, lastName })
+        await fireFormSubmittedEvent({
+          email: data.email,
+          source: 'Form',
+          viaje: data.fechaLabel,
+          personas,
+        })
+      }
+    })(),
   ])
 
   if (notionResult.status === 'rejected') {
@@ -103,6 +114,6 @@ export async function POST(req: Request) {
     ok: true,
     source,
     notion: notionResult.status === 'fulfilled' ? 'ok' : 'failed',
-    resend: skipNurture ? 'skipped' : resendResult.status === 'fulfilled' ? 'ok' : 'failed',
+    resend: resendResult.status === 'fulfilled' ? 'ok' : 'failed',
   })
 }
