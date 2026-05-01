@@ -25,11 +25,11 @@ export async function POST(req: Request) {
   }
 
   const payload = await req.text()
-  const svixHeaders = new Headers({
-    'svix-id': req.headers.get('svix-id') ?? '',
-    'svix-timestamp': req.headers.get('svix-timestamp') ?? '',
-    'svix-signature': req.headers.get('svix-signature') ?? '',
-  })
+  const svixHeaders = {
+    id: req.headers.get('svix-id') ?? '',
+    timestamp: req.headers.get('svix-timestamp') ?? '',
+    signature: req.headers.get('svix-signature') ?? '',
+  }
 
   let event: InboundEvent
   if (RESEND_WEBHOOK_SECRET) {
