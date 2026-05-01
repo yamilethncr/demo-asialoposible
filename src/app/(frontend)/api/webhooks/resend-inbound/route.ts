@@ -55,17 +55,26 @@ export async function POST(req: Request) {
 
   const emailId = event.data.email_id
   try {
-    const forwarded = await resend.emails.receiving.forward({
-      emailId,
-      to: KATHERINE_GMAIL,
-      from: 'Asia Lo Posible Inbox <inbox@emails.asialoposible.net>',
-      passthrough: true,
-    })
-    if (forwarded.error) {
-      console.error('[/api/webhooks/resend-inbound] forward failed:', forwarded.error)
-      return NextResponse.json({ ok: false, error: forwarded.error.message }, { status: 500 })
+    const original = await resend.emails.receiving.get(emailId)
+    if (original.error || !original.data) {
+      console.error('[/api/webhooks/resend-inbound] fetch inbound failed:', original.error)
+      return NextResponse.json({ ok: false, error: 'Could not fetch inbound email' }, { status: 500 })
     }
-    return NextResponse.json({ ok: true, forwardedId: forwarded.data?.id })
+
+    const sent = await resend.emails.send({
+      from: 'Asia Lo Posible Inbox <inbox@emails.asialoposible.net>',
+      to: KATHERINE_GMAIL,
+      replyTo: original.data.from,
+      subject: original.data.subject,
+      html: original.data.html ?? undefined,
+      text: original.data.text ?? undefined,
+    })
+
+    if (sent.error) {
+      console.error('[/api/webhooks/resend-inbound] send failed:', sent.error)
+      return NextResponse.json({ ok: false, error: sent.error.message }, { status: 500 })
+    }
+    return NextResponse.json({ ok: true, forwardedId: sent.data?.id })
   } catch (err) {
     console.error('[/api/webhooks/resend-inbound] unexpected error:', err)
     return NextResponse.json({ ok: false, error: 'Forward failed' }, { status: 500 })
