@@ -25,18 +25,20 @@ export async function POST(req: Request) {
   }
 
   const payload = await req.text()
-  const headers = {
+  const svixHeaders = new Headers({
     'svix-id': req.headers.get('svix-id') ?? '',
     'svix-timestamp': req.headers.get('svix-timestamp') ?? '',
     'svix-signature': req.headers.get('svix-signature') ?? '',
-  }
+  })
 
   let event: InboundEvent
   if (RESEND_WEBHOOK_SECRET) {
     try {
-      const verified = (resend as unknown as {
-        webhooks: { verify: (opts: { payload: string; headers: Record<string, string>; secret: string }) => InboundEvent }
-      }).webhooks.verify({ payload, headers, secret: RESEND_WEBHOOK_SECRET })
+      const verified = resend.webhooks.verify({
+        payload,
+        headers: svixHeaders,
+        webhookSecret: RESEND_WEBHOOK_SECRET,
+      }) as unknown as InboundEvent
       event = verified
     } catch (err) {
       console.error('[/api/webhooks/resend-inbound] signature verify failed:', err)
