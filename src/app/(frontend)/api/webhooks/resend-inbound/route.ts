@@ -66,8 +66,8 @@ export async function POST(req: Request) {
       to: KATHERINE_GMAIL,
       replyTo: original.data.from,
       subject: original.data.subject,
-      html: original.data.html ?? undefined,
-      text: original.data.text ?? undefined,
+      html: original.data.html || '<p>(empty body)</p>',
+      text: original.data.text || undefined,
     })
 
     if (sent.error) {
