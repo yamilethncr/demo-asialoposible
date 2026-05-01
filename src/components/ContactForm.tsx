@@ -5,8 +5,6 @@ import { PhoneInput } from 'react-international-phone'
 import 'react-international-phone/style.css'
 import { trackEvent } from './MetaPixel'
 
-const WEB3FORMS_KEY = '5fe64ee2-20aa-4bc1-a66f-78015b8881d4'
-
 export default function ContactForm() {
   const [status, setStatus] = useState<'idle' | 'sending' | 'error'>('idle')
   const [nombre, setNombre] = useState('')
@@ -30,24 +28,21 @@ export default function ContactForm() {
 
     try {
       const fechaLabel = fecha === 'agosto2026' ? 'Agosto 2026' : fecha === 'abril2027' ? 'Abril 2027' : 'Ambas fechas'
-      const res = await fetch('https://api.web3forms.com/submit', {
+      const res = await fetch('/api/leads/form', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          access_key: WEB3FORMS_KEY,
-          subject: `Nuevo lead viaje grupal: ${nombre}`,
-          from_name: nombre,
-          name: nombre,
+          nombre,
           email,
-          phone: telefono,
-          personas: personas || 'No indicó',
-          fecha_interes: fechaLabel,
-          comentarios: comentarios || 'Sin comentarios',
+          telefono,
+          personas,
+          fechaLabel,
+          comentarios,
         }),
       })
 
       const data = await res.json()
-      if (data.success) {
+      if (data.ok) {
         trackEvent('Lead', { content_name: 'Contact Form', content_category: 'Viaje Grupal' })
         window.location.href = '/gracias-datos'
       } else {

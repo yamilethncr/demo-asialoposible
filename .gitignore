@@ -15,6 +15,7 @@ dist/
 .DS_Store
 *.pem
 *.pdf
+!public/brochure-asia-lo-posible.pdf
 
 # Debug
 npm-debug.log*

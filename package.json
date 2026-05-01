@@ -12,6 +12,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@notionhq/client": "^5.20.0",
     "@payloadcms/db-postgres": "^3.80.0",
     "@payloadcms/next": "^3.80.0",
     "@payloadcms/richtext-lexical": "^3.80.0",
@@ -28,9 +29,11 @@
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
     "react-international-phone": "^4.8.0",
+    "resend": "^6.12.2",
     "sharp": "^0.34.5",
     "tailwindcss": "^4.2.1",
-    "typescript": "^5.9.3"
+    "typescript": "^5.9.3",
+    "zod": "^4.4.1"
   },
   "devDependencies": {
     "agentation": "^2.3.0"
