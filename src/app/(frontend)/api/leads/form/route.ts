@@ -11,7 +11,7 @@ const FormLeadSchema = z.object({
   email: z.string().email().max(200),
   telefono: z.string().trim().min(8).max(50),
   personas: z.union([z.string(), z.number()]).optional(),
-  fechaLabel: z.enum(['Agosto 2026', 'Abril 2027', 'Ambas fechas']).optional(),
+  fechaLabel: z.enum(['Agosto 2026', 'Abril 2027', 'Ambas fechas', 'Viaje privado', 'Otro']).optional(),
   comentarios: z.string().trim().max(2000).optional(),
 })
 
@@ -46,9 +46,10 @@ export async function POST(req: Request) {
   const data = parsed.data
   const personas = parsePersonas(data.personas)
   const { firstName, lastName } = splitName(data.nombre)
+  const source: 'Form' | 'PrivateForm' = data.fechaLabel === 'Viaje privado' ? 'PrivateForm' : 'Form'
 
   const leadInput = {
-    source: 'Form' as const,
+    source,
     nombre: data.nombre,
     email: data.email,
     telefono: data.telefono,
@@ -57,24 +58,28 @@ export async function POST(req: Request) {
     comentarios: data.comentarios ?? null,
   }
 
+  const skipNurture = source === 'PrivateForm'
+
   const [notionResult, resendResult] = await Promise.allSettled([
     createLead(leadInput),
-    (async () => {
-      await addToFormLeadsAudience({ email: data.email, firstName, lastName })
-      await fireFormSubmittedEvent({
-        email: data.email,
-        source: 'Form',
-        viaje: data.fechaLabel,
-        personas,
-      })
-    })(),
+    skipNurture
+      ? Promise.resolve('skipped')
+      : (async () => {
+          await addToFormLeadsAudience({ email: data.email, firstName, lastName })
+          await fireFormSubmittedEvent({
+            email: data.email,
+            source: 'Form',
+            viaje: data.fechaLabel,
+            personas,
+          })
+        })(),
   ])
 
   if (notionResult.status === 'rejected') {
     console.error('[/api/leads/form] Notion failed:', notionResult.reason)
     try {
       await sendLeadFallbackAlert({
-        context: 'Notion (form /inscribete)',
+        context: `Notion (form /inscribete, source=${source})`,
         lead: {
           nombre: data.nombre,
           email: data.email,
@@ -96,7 +101,8 @@ export async function POST(req: Request) {
 
   return NextResponse.json({
     ok: true,
+    source,
     notion: notionResult.status === 'fulfilled' ? 'ok' : 'failed',
-    resend: resendResult.status === 'fulfilled' ? 'ok' : 'failed',
+    resend: skipNurture ? 'skipped' : resendResult.status === 'fulfilled' ? 'ok' : 'failed',
   })
 }

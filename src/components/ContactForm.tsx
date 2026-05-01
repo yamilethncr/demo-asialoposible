@@ -27,7 +27,14 @@ export default function ContactForm() {
     setStatus('sending')
 
     try {
-      const fechaLabel = fecha === 'agosto2026' ? 'Agosto 2026' : fecha === 'abril2027' ? 'Abril 2027' : 'Ambas fechas'
+      const fechaLabelMap: Record<string, string> = {
+        agosto2026: 'Agosto 2026',
+        abril2027: 'Abril 2027',
+        ambas: 'Ambas fechas',
+        privado: 'Viaje privado',
+        otro: 'Otro',
+      }
+      const fechaLabel = fechaLabelMap[fecha] ?? 'Otro'
       const res = await fetch('/api/leads/form', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -139,6 +146,8 @@ export default function ContactForm() {
             <option value="agosto2026">Agosto 2026</option>
             <option value="abril2027">Abril 2027</option>
             <option value="ambas">Ambas fechas</option>
+            <option value="privado">Viaje privado (a tu medida)</option>
+            <option value="otro">Otro</option>
           </select>
           <span className="absolute right-3 top-1/2 -translate-y-1/2 text-[var(--color-secondary)] pointer-events-none text-xs">&#9660;</span>
         </div>

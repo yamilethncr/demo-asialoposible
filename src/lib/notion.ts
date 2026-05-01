@@ -9,7 +9,9 @@ if (!NOTION_TOKEN) {
 
 const notion = NOTION_TOKEN ? new Client({ auth: NOTION_TOKEN }) : null
 
-export type LeadSource = 'Form' | 'PrivateForm' | 'Cal'
+export type LeadSource = 'Form' | 'PrivateForm' | 'Cal' | 'PrivateCal'
+
+export type ViajeOption = 'Agosto 2026' | 'Abril 2027' | 'Ambas fechas' | 'Viaje privado' | 'Otro'
 
 export type FormLeadInput = {
   source: 'Form' | 'PrivateForm'
@@ -17,12 +19,12 @@ export type FormLeadInput = {
   email: string
   telefono: string
   personas?: number | null
-  viaje?: 'Agosto 2026' | 'Abril 2027' | 'Ambas fechas' | null
+  viaje?: ViajeOption | null
   comentarios?: string | null
 }
 
 export type CalLeadInput = {
-  source: 'Cal'
+  source: 'Cal' | 'PrivateCal'
   nombre: string
   email: string
   telefono?: string | null
@@ -38,6 +40,10 @@ function richText(value: string | null | undefined) {
   return [{ type: 'text' as const, text: { content: value.slice(0, 2000) } }]
 }
 
+function isCalInput(input: LeadInput): input is CalLeadInput {
+  return input.source === 'Cal' || input.source === 'PrivateCal'
+}
+
 export async function createLead(input: LeadInput): Promise<{ id: string }> {
   if (!notion || !NOTION_LEADS_DATABASE_ID) {
     throw new Error('Notion client not configured')
@@ -47,13 +53,13 @@ export async function createLead(input: LeadInput): Promise<{ id: string }> {
     Name: { title: richText(input.nombre) },
     Email: { email: input.email },
     Source: { select: { name: input.source } },
-    Status: { status: { name: input.source === 'Cal' ? 'Meeting' : 'Lead' } },
+    Status: { status: { name: isCalInput(input) ? 'Meeting' : 'Lead' } },
   }
 
   if (input.telefono) properties.Phone = { phone_number: input.telefono }
   if (input.comentarios) properties.Comentarios = { rich_text: richText(input.comentarios) }
 
-  if (input.source === 'Cal') {
+  if (isCalInput(input)) {
     properties['Cal Booking UID'] = { rich_text: richText(input.bookingUid) }
     properties['Cal Booking Start'] = { date: { start: input.startTime } }
   } else {
