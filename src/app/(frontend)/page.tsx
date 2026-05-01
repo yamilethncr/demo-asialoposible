@@ -127,7 +127,7 @@ const eventSchema = {
   description: 'Viaje guiado de 14 días por Vietnam y Camboya en español. Grupo exclusivo de 10 personas. Hoteles 4-5 estrellas, crucero de lujo en la Bahía de Halong, templos de Angkor Wat. Todo incluido.',
   image: [
     'https://images.unsplash.com/photo-1528127269322-539801943592?q=80&w=1200&auto=format&fit=crop',
-    'https://images.unsplash.com/photo-1569309986620-4face6ad4739?q=80&w=1200&auto=format&fit=crop',
+    'https://images.unsplash.com/photo-1760442936485-b26b087c2030?q=80&w=1200&auto=format&fit=crop',
     'https://images.unsplash.com/photo-1557750255-c76072a7aad1?q=80&w=1200&auto=format&fit=crop',
   ],
   startDate: '2026-08-01',

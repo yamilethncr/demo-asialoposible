@@ -7,7 +7,7 @@ import CalBooking from './CalBooking'
 const bgImages = [
   'https://images.unsplash.com/photo-1528127269322-539801943592?q=80&w=1200&auto=format&fit=crop', // Halong Bay
   'https://images.unsplash.com/photo-1557750255-c76072a7aad1?q=80&w=1200&auto=format&fit=crop', // Hoi An lanterns
-  'https://images.unsplash.com/photo-1569309986620-4face6ad4739?q=80&w=1200&auto=format&fit=crop', // Angkor Wat temple
+  'https://images.unsplash.com/photo-1760442936485-b26b087c2030?q=80&w=1200&auto=format&fit=crop', // Angkor Wat temple
   'https://images.unsplash.com/photo-1504457047772-27faf1c00561?q=80&w=1200&auto=format&fit=crop', // Vietnam rice fields
   'https://images.unsplash.com/photo-1559592413-7cec4d0cae2b?q=80&w=1200&auto=format&fit=crop', // Vietnam boats river
 ]
