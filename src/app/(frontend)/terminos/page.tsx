@@ -16,7 +16,7 @@ export default function Terminos() {
         <div className="space-y-8 text-[0.9rem] leading-relaxed text-[var(--color-secondary)]">
           <section>
             <h2 className="text-lg font-bold text-[var(--color-text)] mb-3">1. Informaci&oacute;n General</h2>
-            <p>Este sitio web es propiedad y est&aacute; operado por Asialoposible.net. Al acceder y utilizar este sitio web, aceptas cumplir con los presentes t&eacute;rminos y condiciones de uso. Si no est&aacute;s de acuerdo con alguno de estos t&eacute;rminos, te rogamos que no utilices el sitio.</p>
+            <p>Asia Lo Posible es una marca operada por <a href="https://pondhorizons.xyz/" target="_blank" rel="noopener noreferrer" className="text-[var(--color-accent)] underline hover:no-underline">Pond Horizons LLC</a>, sociedad titular del sitio web asialoposible.net. Al acceder y utilizar este sitio web, aceptas cumplir con los presentes t&eacute;rminos y condiciones de uso. Si no est&aacute;s de acuerdo con alguno de estos t&eacute;rminos, te rogamos que no utilices el sitio.</p>
           </section>
 
           <section>
@@ -63,7 +63,7 @@ export default function Terminos() {
 
           <section>
             <h2 className="text-lg font-bold text-[var(--color-text)] mb-3">10. Contacto</h2>
-            <p>Para consultas sobre estos t&eacute;rminos, escr&iacute;benos por WhatsApp al +58 424 845 5010 o por Instagram a @kathmolinares.</p>
+            <p>Para consultas sobre estos t&eacute;rminos, escr&iacute;benos a <a href="mailto:katherine@emails.asialoposible.net" className="text-[var(--color-accent)] underline hover:no-underline">katherine@emails.asialoposible.net</a>, por WhatsApp al +58 424 845 5010 o por Instagram a @kathmolinares.</p>
           </section>
         </div>
       </div>

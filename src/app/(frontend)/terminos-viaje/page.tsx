@@ -80,7 +80,7 @@ export default function TerminosViaje() {
           <section className="border-t border-[var(--color-secondary)]/20 pt-8">
             <h2 className="text-lg font-bold text-[var(--color-text)] mb-3">Aceptación</h2>
             <p className="mb-4">Al realizar tu reserva y efectuar el pago del depósito, confirmas que has leído, comprendido y aceptado estos términos y condiciones en su totalidad.</p>
-            <p>Contacto: WhatsApp +58 424 845 5010 o Instagram @kathmolinares.</p>
+            <p>Contacto: <a href="mailto:katherine@emails.asialoposible.net" className="text-[var(--color-accent)] underline hover:no-underline">katherine@emails.asialoposible.net</a> · WhatsApp +58 424 845 5010 · Instagram @kathmolinares.</p>
           </section>
         </div>
       </div>

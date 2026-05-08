@@ -161,3 +161,23 @@ select option {
 textarea {
   font-family: inherit;
 }
+
+/* Promo banner subtle yellow shimmer */
+@keyframes promoBannerShimmer {
+  0%   { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+.promo-banner-shimmer {
+  animation: promoBannerShimmer 6s linear infinite;
+}
+@keyframes promoBannerPulse {
+  0%, 100% { box-shadow: 0 0 24px rgba(245, 200, 80, 0.15); }
+  50%      { box-shadow: 0 0 32px rgba(245, 200, 80, 0.32); }
+}
+.promo-banner {
+  animation: promoBannerPulse 3.5s ease-in-out infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .promo-banner-shimmer,
+  .promo-banner { animation: none; }
+}

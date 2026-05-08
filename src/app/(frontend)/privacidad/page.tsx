@@ -36,7 +36,7 @@ export default function Privacidad() {
 
           <section>
             <h2 className="text-lg font-bold text-[var(--color-text)] mb-3">5. Tus Derechos</h2>
-            <p>Tienes derecho a acceder, rectificar, eliminar o limitar el tratamiento de tus datos personales. Para ejercer estos derechos, contáctanos por WhatsApp al +58 424 845 5010 o por Instagram a @kathmolinares.</p>
+            <p>Tienes derecho a acceder, rectificar, eliminar o limitar el tratamiento de tus datos personales. Para ejercer estos derechos, contáctanos a <a href="mailto:katherine@emails.asialoposible.net" className="text-[var(--color-accent)] underline hover:no-underline">katherine@emails.asialoposible.net</a>, por WhatsApp al +58 424 845 5010 o por Instagram a @kathmolinares.</p>
           </section>
 
           <section>

@@ -34,23 +34,33 @@ export default function PromoBanner() {
 
   return (
     <div
-      className="fixed top-0 left-0 w-full z-[110] flex items-center justify-center transition-all duration-400 overflow-hidden"
+      className="fixed top-0 left-0 w-full z-[110] flex items-center justify-center transition-all duration-400 overflow-hidden promo-banner"
       style={{
         height: animatingOut ? 0 : BANNER_HEIGHT,
         opacity: animatingOut ? 0 : 1,
-        background: 'linear-gradient(90deg, #0A0F1E 0%, #141B2E 50%, #0A0F1E 100%)',
-        borderBottom: '1px solid rgba(212, 168, 83, 0.25)',
+        background: 'linear-gradient(90deg, #1a1405 0%, #2a2110 50%, #1a1405 100%)',
+        borderBottom: '1px solid rgba(245, 200, 80, 0.45)',
+        boxShadow: '0 0 24px rgba(245, 200, 80, 0.15)',
       }}
     >
-      <div className="flex items-center gap-2 px-10 md:px-4">
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 pointer-events-none promo-banner-shimmer"
+        style={{
+          background:
+            'linear-gradient(90deg, transparent 0%, rgba(245, 220, 120, 0.18) 50%, transparent 100%)',
+          backgroundSize: '200% 100%',
+        }}
+      />
+      <div className="flex items-center gap-2 px-10 md:px-4 relative">
         <span
           className="text-[10px] md:text-xs uppercase tracking-[0.15em] md:tracking-[0.2em] text-center"
-          style={{ color: '#D4A853' }}
+          style={{ color: '#F5DC78', textShadow: '0 0 8px rgba(245, 220, 120, 0.35)' }}
         >
           <span className="hidden md:inline">🔥 </span>
           <span className="hidden md:inline">Agosto 2026: </span>
           <span className="md:hidden">Ago 26: </span>
-          <strong className="font-black">6</strong> cupos
+          <strong className="font-black">4</strong> cupos
           {' '}&middot;{' '}
           <span className="hidden md:inline">Abril 2027: </span>
           <span className="md:hidden">Abr 27: </span>
