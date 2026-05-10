@@ -1,10 +1,10 @@
-import CalBooking from './CalBooking'
+import ChatwootButton from './ChatwootButton'
 import ContactForm from './ContactForm'
 
 export default function CTAFinal({ variant = 'call' }: { variant?: 'call' | 'form' } = {}) {
   const paragraph =
     variant === 'call'
-      ? 'Agenda una llamada con Katherine. 15 minutos. Sin compromiso. Resolvemos tus dudas y te enviamos el itinerario completo.'
+      ? 'Habla con Katherine ahora mismo. Resolvemos tus dudas en español, sin compromiso, y te enviamos el itinerario completo.'
       : 'Déjanos tus datos y Katherine te contacta en menos de 24 horas con el itinerario completo y todos los detalles.'
 
   return (
@@ -32,7 +32,7 @@ export default function CTAFinal({ variant = 'call' }: { variant?: 'call' | 'for
               color: 'var(--color-accent)',
             }}
           >
-            AGOSTO 2026: <strong>6 CUPOS</strong> &middot; ABRIL 2027: <strong>8 CUPOS</strong>
+            AGOSTO 2026: <strong>4 CUPOS</strong> &middot; ABRIL 2027: <strong>8 CUPOS</strong>
           </span>
 
           <h2
@@ -47,7 +47,7 @@ export default function CTAFinal({ variant = 'call' }: { variant?: 'call' | 'for
 
           {variant === 'call' ? (
             <div className="flex justify-center relative z-10">
-              <CalBooking variant="primary" label="AGENDA TU LLAMADA CONMIGO" />
+              <ChatwootButton variant="primary" label="ESCRÍBEME Y TE COMPARTO TODO" />
             </div>
           ) : (
             <div className="relative z-10 max-w-[480px] mx-auto">

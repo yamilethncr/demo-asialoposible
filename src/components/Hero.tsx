@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react'
 import SprayPaint from './SprayPaint'
-import CalBooking from './CalBooking'
+import ChatwootButton from './ChatwootButton'
 
 const bgImages = [
   'https://images.unsplash.com/photo-1528127269322-539801943592?q=80&w=1200&auto=format&fit=crop', // Halong Bay
@@ -121,16 +121,10 @@ export default function Hero({ variant = 'call' }: { variant?: 'call' | 'form' }
             </p>
           </div>
           <div className="md:col-span-2 flex md:justify-end items-start">
-            {variant === 'call' ? (
-              <CalBooking variant="primary" label="AGENDA TU LLAMADA" />
-            ) : (
-              <a
-                href="#reservar"
-                className="inline-block border border-[var(--color-accent)] bg-[var(--color-accent)] text-[var(--color-bg)] px-8 py-4 text-sm uppercase tracking-[0.1em] font-bold no-underline transition-all duration-500 hover:shadow-[0_0_20px_rgba(212,168,83,0.4)] hover:bg-transparent hover:text-[var(--color-accent)]"
-              >
-                QUIERO M&Aacute;S INFORMACI&Oacute;N
-              </a>
-            )}
+            <ChatwootButton
+              variant="primary"
+              label={variant === 'call' ? 'ESCRÍBEME' : 'QUIERO MÁS INFORMACIÓN'}
+            />
           </div>
         </div>
 

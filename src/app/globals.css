@@ -171,8 +171,8 @@ textarea {
   animation: promoBannerShimmer 6s linear infinite;
 }
 @keyframes promoBannerPulse {
-  0%, 100% { box-shadow: 0 0 24px rgba(245, 200, 80, 0.15); }
-  50%      { box-shadow: 0 0 32px rgba(245, 200, 80, 0.32); }
+  0%, 100% { box-shadow: 0 2px 18px rgba(245, 200, 80, 0.45); }
+  50%      { box-shadow: 0 2px 28px rgba(245, 200, 80, 0.75); }
 }
 .promo-banner {
   animation: promoBannerPulse 3.5s ease-in-out infinite;

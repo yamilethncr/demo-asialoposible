@@ -158,7 +158,7 @@ const eventSchema = {
   },
   offers: {
     '@type': 'Offer',
-    price: '3500',
+    price: '3199',
     priceCurrency: 'USD',
     availability: 'https://schema.org/LimitedAvailability',
     validFrom: '2026-01-01',
@@ -220,8 +220,8 @@ const productSchema = {
   },
   offers: {
     '@type': 'AggregateOffer',
-    lowPrice: '3500',
-    highPrice: '4455',
+    lowPrice: '3199',
+    highPrice: '4154',
     priceCurrency: 'USD',
     offerCount: 2,
     availability: 'https://schema.org/LimitedAvailability',
@@ -229,7 +229,7 @@ const productSchema = {
       {
         '@type': 'Offer',
         name: 'Agosto 2026 — Habitación compartida, pago de contado',
-        price: '3500',
+        price: '3199',
         priceCurrency: 'USD',
         availability: 'https://schema.org/LimitedAvailability',
         inventoryLevel: { '@type': 'QuantitativeValue', value: 6 },
@@ -238,7 +238,7 @@ const productSchema = {
       {
         '@type': 'Offer',
         name: 'Abril 2027 — Habitación compartida, pago de contado',
-        price: '3500',
+        price: '3199',
         priceCurrency: 'USD',
         availability: 'https://schema.org/LimitedAvailability',
         inventoryLevel: { '@type': 'QuantitativeValue', value: 8 },

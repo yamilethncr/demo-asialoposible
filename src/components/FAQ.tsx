@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, type ReactNode } from 'react'
-import CalBooking from './CalBooking'
+import ChatwootButton from './ChatwootButton'
 
 const faqs: { q: string; a: ReactNode }[] = [
   {
@@ -125,16 +125,10 @@ export default function FAQ({ variant = 'call' }: { variant?: 'call' | 'form' } 
           <p className="text-sm md:text-base text-[var(--color-secondary)] max-w-[440px] mx-auto mb-6">
             Katherine est&aacute; a una llamada de distancia. Resolvemos tus dudas personalmente.
           </p>
-          {variant === 'call' ? (
-            <CalBooking variant="primary" label="AGENDA TU LLAMADA" />
-          ) : (
-            <a
-              href="#reservar"
-              className="inline-block border border-[var(--color-accent)] bg-[var(--color-accent)] text-[var(--color-bg)] px-8 py-4 text-sm uppercase tracking-[0.1em] font-bold no-underline transition-all duration-500 hover:shadow-[0_0_20px_rgba(212,168,83,0.4)] hover:bg-transparent hover:text-[var(--color-accent)]"
-            >
-              CU&Eacute;NTAME M&Aacute;S
-            </a>
-          )}
+          <ChatwootButton
+            variant="primary"
+            label={variant === 'call' ? 'ESCRÍBEME TUS DUDAS' : 'CUÉNTAME MÁS'}
+          />
         </div>
       </div>
     </section>

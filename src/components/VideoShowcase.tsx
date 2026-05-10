@@ -2,7 +2,7 @@
 
 import { useState, useRef, useCallback } from 'react'
 import SprayPaint from './SprayPaint'
-import CalBooking from './CalBooking'
+import ChatwootButton from './ChatwootButton'
 
 const YOUTUBE_ID = 'ALipFoUcmXI'
 const YOUTUBE_EMBED_URL = `https://www.youtube.com/embed/${YOUTUBE_ID}?controls=0&modestbranding=1&rel=0&playsinline=1&loop=1&playlist=${YOUTUBE_ID}&autoplay=1`
@@ -137,21 +137,12 @@ export default function VideoShowcase({ variant = 'call' }: { variant?: 'call' |
             color: 'var(--color-accent)',
           }}
         >
-          Agosto 2026: <strong>6 cupos</strong> &middot; Abril 2027: <strong>8 cupos</strong>
+          Agosto 2026: <strong>4 cupos</strong> &middot; Abril 2027: <strong>8 cupos</strong>
         </p>
 
         {/* Mini CTA */}
         <div className="mt-6">
-          {variant === 'call' ? (
-            <CalBooking variant="outline" label="RESERVAR MI CUPO" />
-          ) : (
-            <a
-              href="#reservar"
-              className="inline-block px-8 py-4 text-sm uppercase tracking-[0.1em] font-bold no-underline transition-all duration-500 hover:shadow-[0_0_20px_rgba(212,168,83,0.4)] text-center border border-[var(--color-accent)] bg-transparent text-[var(--color-accent)] hover:bg-[var(--color-accent)] hover:text-[var(--color-bg)]"
-            >
-              RESERVAR MI CUPO
-            </a>
-          )}
+          <ChatwootButton variant="outline" label="RESERVAR MI CUPO" />
         </div>
       </div>
 

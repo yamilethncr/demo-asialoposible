@@ -38,9 +38,9 @@ export default function PromoBanner() {
       style={{
         height: animatingOut ? 0 : BANNER_HEIGHT,
         opacity: animatingOut ? 0 : 1,
-        background: 'linear-gradient(90deg, #1a1405 0%, #2a2110 50%, #1a1405 100%)',
-        borderBottom: '1px solid rgba(245, 200, 80, 0.45)',
-        boxShadow: '0 0 24px rgba(245, 200, 80, 0.15)',
+        background: 'linear-gradient(90deg, #E8B83D 0%, #F5C84F 50%, #E8B83D 100%)',
+        borderBottom: '1px solid rgba(10, 15, 30, 0.25)',
+        boxShadow: '0 2px 18px rgba(245, 200, 80, 0.45)',
       }}
     >
       <div
@@ -48,14 +48,14 @@ export default function PromoBanner() {
         className="absolute inset-0 pointer-events-none promo-banner-shimmer"
         style={{
           background:
-            'linear-gradient(90deg, transparent 0%, rgba(245, 220, 120, 0.18) 50%, transparent 100%)',
+            'linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.35) 50%, transparent 100%)',
           backgroundSize: '200% 100%',
         }}
       />
       <div className="flex items-center gap-2 px-10 md:px-4 relative">
         <span
-          className="text-[10px] md:text-xs uppercase tracking-[0.15em] md:tracking-[0.2em] text-center"
-          style={{ color: '#F5DC78', textShadow: '0 0 8px rgba(245, 220, 120, 0.35)' }}
+          className="text-[10px] md:text-xs uppercase tracking-[0.15em] md:tracking-[0.2em] text-center font-bold"
+          style={{ color: '#0A0F1E' }}
         >
           <span className="hidden md:inline">🔥 </span>
           <span className="hidden md:inline">Agosto 2026: </span>
@@ -82,7 +82,7 @@ export default function PromoBanner() {
         >
           <path
             d="M1 1L13 13M13 1L1 13"
-            stroke="#8E94A5"
+            stroke="#0A0F1E"
             strokeWidth="1.5"
             strokeLinecap="round"
           />

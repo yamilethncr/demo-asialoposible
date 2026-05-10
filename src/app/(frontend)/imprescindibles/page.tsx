@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import CalBooking from '@/components/CalBooking'
+import ChatwootButton from '@/components/ChatwootButton'
 import SafetyWingCallout from '@/components/imprescindibles/SafetyWingCallout'
 import LiveVndRate from '@/components/imprescindibles/LiveVndRate'
 import LiveKhrRate from '@/components/imprescindibles/LiveKhrRate'
@@ -392,7 +392,7 @@ export default function Imprescindibles() {
           </p>
 
           <div className="flex justify-center relative z-10">
-            <CalBooking variant="primary" label="AGENDA TU LLAMADA" />
+            <ChatwootButton variant="primary" label="PREGÚNTAME LO QUE QUIERAS" />
           </div>
         </div>
       </div>

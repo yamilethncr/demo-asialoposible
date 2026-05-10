@@ -1,3 +1,5 @@
+import ChatwootButton from '../ChatwootButton'
+
 export default function BlogCTA() {
   return (
     <section
@@ -36,12 +38,9 @@ export default function BlogCTA() {
         14 d&iacute;as por Vietnam y Camboya. Todo organizado, todo en espa&ntilde;ol. Sin complicaciones.
       </p>
 
-      <a
-        href="/#reservar"
-        className="inline-block border border-[var(--color-accent)] bg-[var(--color-accent)] text-[var(--color-bg)] px-8 py-3.5 text-xs uppercase tracking-[0.15em] font-bold no-underline transition-all duration-500 hover:bg-transparent hover:text-[var(--color-accent)] hover:shadow-[0_0_20px_rgba(212,168,83,0.3)] relative z-10"
-      >
-        VER ITINERARIO COMPLETO
-      </a>
+      <div className="relative z-10 inline-block">
+        <ChatwootButton variant="primary" label="VER ITINERARIO COMPLETO" />
+      </div>
     </section>
   )
 }

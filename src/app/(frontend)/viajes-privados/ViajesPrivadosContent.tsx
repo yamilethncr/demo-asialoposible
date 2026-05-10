@@ -3,7 +3,7 @@
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import SprayPaint from '@/components/SprayPaint'
-import CalBooking from '@/components/CalBooking'
+import ChatwootButton from '@/components/ChatwootButton'
 
 const steps = [
   {
@@ -124,7 +124,7 @@ export default function ViajesPrivadosContent() {
           </p>
 
           <div className="animate-initial:opacity-0 animate-initial:y-10 animate-enter:opacity-100 animate-enter:y-0 animate-duration-600 animate-delay-600">
-            <CalBooking variant="primary" label="AGENDA TU LLAMADA" />
+            <ChatwootButton variant="primary" label="ESCRÍBEME PARA DISEÑARLO" />
           </div>
 
           <p className="text-xs tracking-[0.1em] uppercase text-[var(--color-secondary)] mt-6">
@@ -389,7 +389,7 @@ export default function ViajesPrivadosContent() {
             </div>
 
             <div className="flex justify-center relative z-10">
-              <CalBooking variant="primary" label="AGENDA TU LLAMADA" />
+              <ChatwootButton variant="primary" label="ESCRÍBEME Y EMPEZAMOS" />
             </div>
 
           </div>

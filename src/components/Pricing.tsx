@@ -2,19 +2,20 @@
 
 import { useState, useEffect } from 'react'
 import { trackEvent } from './MetaPixel'
+import ChatwootButton from './ChatwootButton'
 
 type Viaje = 'agosto2026' | 'abril2027'
 type Metodo = 'contado' | 'cuotas'
 type Habitacion = 'compartida' | 'privada'
 
 const VIAJE_INFO: Record<Viaje, { label: string; fechas: string; cupos: number }> = {
-  agosto2026: { label: 'Agosto 2026', fechas: '1 – 14 de agosto, 2026', cupos: 6 },
+  agosto2026: { label: 'Agosto 2026', fechas: '1 – 14 de agosto, 2026', cupos: 4 },
   abril2027: { label: 'Abril 2027', fechas: '1 – 14 de abril, 2027', cupos: 8 },
 }
 
 const PRICES: Record<Metodo, number> = {
-  contado: 3500,
-  cuotas: 3800,
+  contado: 3199,
+  cuotas: 3499,
 }
 
 const HABITACION_EXTRA = 655
@@ -113,13 +114,35 @@ export default function Pricing({ variant = 'call' }: { variant?: 'call' | 'form
   const stepActive = (s: number) => step >= s
 
   return (
-    <section id="precio" className="pt-20 md:pt-28 pb-8 md:pb-10 relative z-10">
-      <div className="max-w-[1200px] mx-auto px-5 md:px-10">
+    <section id="precio" className="pt-20 md:pt-28 pb-8 md:pb-10 relative z-10 overflow-hidden">
+      {/* Gold wash overlay — subtle yellowish tint over the navy */}
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 pointer-events-none -z-10"
+        style={{
+          background:
+            'radial-gradient(ellipse at 50% 0%, rgba(212,168,83,0.10) 0%, rgba(212,168,83,0.04) 35%, transparent 70%)',
+        }}
+      />
+      {/* Diagonal line tramado — structured texture that breaks the flat background */}
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 pointer-events-none -z-10"
+        style={{
+          backgroundImage:
+            'repeating-linear-gradient(135deg, rgba(212,168,83,0.07) 0px, rgba(212,168,83,0.07) 1px, transparent 1px, transparent 9px)',
+          maskImage:
+            'radial-gradient(ellipse at 50% 40%, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.55) 50%, transparent 90%)',
+          WebkitMaskImage:
+            'radial-gradient(ellipse at 50% 40%, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.55) 50%, transparent 90%)',
+        }}
+      />
+      <div className="max-w-[1200px] mx-auto px-5 md:px-10 relative">
         <span className="block text-xs tracking-[0.2em] uppercase text-[var(--color-secondary)] mb-4">
           INVERSI&Oacute;N
         </span>
         <h2 className="text-2xl md:text-[2.5rem] leading-tight uppercase font-bold text-[var(--color-text)] mb-2 animate-initial:opacity-0 animate-initial:y-20 animate-inview:opacity-100 animate-inview:y-0 animate-duration-600 animate-ease-out animate-once">
-          PRECIO DEL VIAJE A VIETNAM Y CAMBOYA
+          &iquest;CU&Aacute;NTO CUESTA EL VIAJE A VIETNAM Y CAMBOYA?
         </h2>
         <p className="text-base md:text-lg tracking-wide uppercase text-[var(--color-accent)] mb-6">
           TODO INCLUIDO.
@@ -460,18 +483,16 @@ export default function Pricing({ variant = 'call' }: { variant?: 'call' | 'form
                     Reservar por WhatsApp
                   </a>
                 ) : (
-                  <a
-                    href="#reservar"
+                  <ChatwootButton
+                    variant="primary"
+                    label="Reservar mi cupo"
+                    className="w-full md:w-auto mb-6"
                     onClick={() => trackEvent('InitiateCheckout', {
                       value: totalPrice,
                       currency: 'USD',
                       num_items: 1,
                     })}
-                    className="inline-block w-full md:w-auto text-center px-10 py-4 text-sm font-bold uppercase tracking-[0.15em] transition-all duration-300 hover:brightness-110 mb-6"
-                    style={{ background: 'var(--color-accent)', color: 'var(--color-bg)' }}
-                  >
-                    Reservar mi cupo
-                  </a>
+                  />
                 )}
 
                 <div className="mb-6">

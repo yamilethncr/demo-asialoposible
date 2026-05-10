@@ -5,7 +5,12 @@ import { useEffect } from 'react'
 const CAL_LINK = 'katherine-molinares-angel/15min'
 
 const BASE_CLASSES =
-  'inline-block px-8 py-4 text-sm uppercase tracking-[0.1em] font-bold no-underline transition-all duration-500 hover:shadow-[0_0_20px_rgba(212,168,83,0.4)] cursor-pointer text-center'
+  'inline-block uppercase font-bold no-underline transition-all duration-500 hover:shadow-[0_0_20px_rgba(212,168,83,0.4)] cursor-pointer text-center'
+
+const SIZE_CLASSES = {
+  sm: 'px-4 py-2 text-[11px] tracking-[0.12em]',
+  md: 'px-8 py-4 text-sm tracking-[0.1em]',
+} as const
 
 const VARIANT_CLASSES = {
   primary:
@@ -18,12 +23,14 @@ type Props = {
   className?: string
   label?: string
   variant?: 'primary' | 'outline'
+  size?: 'sm' | 'md'
 }
 
 export default function CalBooking({
   className = '',
   label = 'AGENDA UNA LLAMADA CONMIGO',
   variant = 'outline',
+  size = 'md',
 }: Props) {
   useEffect(() => {
     const win = window as any
@@ -81,7 +88,7 @@ export default function CalBooking({
       data-cal-namespace="asialoposible"
       data-cal-link={CAL_LINK}
       data-cal-config='{"layout":"month_view","theme":"dark","locale":"es"}'
-      className={`${BASE_CLASSES} ${VARIANT_CLASSES[variant]} ${className}`}
+      className={`${BASE_CLASSES} ${SIZE_CLASSES[size]} ${VARIANT_CLASSES[variant]} ${className}`}
     >
       {label}
     </button>

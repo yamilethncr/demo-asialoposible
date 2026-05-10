@@ -1,5 +1,5 @@
 import SprayPaint from './SprayPaint'
-import CalBooking from './CalBooking'
+import ChatwootButton from './ChatwootButton'
 
 export default function Host({ variant = 'call' }: { variant?: 'call' | 'form' } = {}) {
   return (
@@ -51,16 +51,11 @@ export default function Host({ variant = 'call' }: { variant?: 'call' | 'form' }
               </p>
             </div>
 
-            {variant === 'call' ? (
-              <CalBooking className="mt-6 w-full md:w-auto" />
-            ) : (
-              <a
-                href="#reservar"
-                className="mt-6 w-full md:w-auto inline-block border border-[var(--color-accent)] bg-transparent text-[var(--color-accent)] px-8 py-4 text-sm uppercase tracking-[0.1em] font-bold no-underline transition-all duration-500 hover:bg-[var(--color-accent)] hover:text-[var(--color-bg)] hover:shadow-[0_0_20px_rgba(212,168,83,0.4)] text-center"
-              >
-                QUIERO M&Aacute;S INFORMACI&Oacute;N
-              </a>
-            )}
+            <ChatwootButton
+              variant="outline"
+              label={variant === 'call' ? 'ESCRÍBEME Y TE CUENTO MÁS' : 'QUIERO MÁS INFORMACIÓN'}
+              className="mt-6 w-full md:w-auto"
+            />
           </div>
         </div>
       </div>

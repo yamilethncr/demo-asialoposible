@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { usePathname } from 'next/navigation'
+import CalBooking from './CalBooking'
 
 const links = [
   { href: '/#recorrido', label: 'Itinerario' },
@@ -16,8 +16,6 @@ const links = [
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
-  const pathname = usePathname()
-  const reservarHref = pathname === '/inscribete' ? '#reservar' : '/#reservar'
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 50)
@@ -44,22 +42,22 @@ export default function Navbar() {
         </a>
 
         {/* Desktop links */}
-        <div className="hidden md:flex gap-8">
+        <div className="hidden md:flex items-center gap-8">
           {links.map((l) => (
             <a
               key={l.href}
               href={l.href}
-              className="text-[var(--color-text)] no-underline text-xs uppercase tracking-[0.1em] transition-colors duration-300 hover:text-[var(--color-accent)]"
+              className="text-[var(--color-text)] no-underline text-xs uppercase tracking-[0.1em] transition-colors duration-300 hover:text-[var(--color-accent)] leading-none"
             >
               {l.label}
             </a>
           ))}
-          <a
-            href={reservarHref}
-            className="text-[var(--color-accent)] no-underline text-xs uppercase tracking-[0.1em] font-black"
-          >
-            Reservar
-          </a>
+          <CalBooking
+            size="sm"
+            variant="primary"
+            label="Agenda llamada"
+            className="ml-2 leading-none"
+          />
         </div>
 
         {/* Mobile hamburger */}
@@ -101,13 +99,13 @@ export default function Navbar() {
                 {l.label}
               </a>
             ))}
-            <a
-              href={reservarHref}
-              onClick={() => setMenuOpen(false)}
-              className="text-[var(--color-accent)] no-underline text-sm uppercase tracking-[0.15em] font-black"
-            >
-              Reservar
-            </a>
+            <div onClick={() => setMenuOpen(false)}>
+              <CalBooking
+                size="md"
+                variant="primary"
+                label="Agenda llamada conmigo"
+              />
+            </div>
           </div>
         </div>
       )}
