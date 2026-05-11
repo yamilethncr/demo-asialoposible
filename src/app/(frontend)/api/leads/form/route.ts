@@ -85,8 +85,8 @@ export async function POST(req: Request) {
       }
     })(),
     (async () => {
-      const url = process.env.WHATSAPP_WEBHOOK_URL
-      const secret = process.env.WHATSAPP_WEBHOOK_SECRET
+      const url = process.env.WHATSAPP_WEBHOOK_URL?.trim()
+      const secret = process.env.WHATSAPP_WEBHOOK_SECRET?.trim()
       if (!url || !secret) return
       const res = await fetch(`${url}?secret=${encodeURIComponent(secret)}`, {
         method: 'POST',
