@@ -2,6 +2,7 @@
 
 import { useState, type ReactNode } from 'react'
 import ChatwootButton from './ChatwootButton'
+import ScrollLinkButton from './ScrollLinkButton'
 
 const faqs: { q: string; a: ReactNode }[] = [
   {
@@ -125,10 +126,11 @@ export default function FAQ({ variant = 'call' }: { variant?: 'call' | 'form' } 
           <p className="text-sm md:text-base text-[var(--color-secondary)] max-w-[440px] mx-auto mb-6">
             Katherine est&aacute; a una llamada de distancia. Resolvemos tus dudas personalmente.
           </p>
-          <ChatwootButton
-            variant="primary"
-            label={variant === 'call' ? 'ESCRÍBEME TUS DUDAS' : 'CUÉNTAME MÁS'}
-          />
+          {variant === 'call' ? (
+            <ChatwootButton variant="primary" label="ESCRÍBEME TUS DUDAS" />
+          ) : (
+            <ScrollLinkButton variant="primary" label="CUÉNTAME MÁS" />
+          )}
         </div>
       </div>
     </section>

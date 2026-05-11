@@ -3,6 +3,7 @@
 import { useState, useRef, useCallback } from 'react'
 import SprayPaint from './SprayPaint'
 import ChatwootButton from './ChatwootButton'
+import ScrollLinkButton from './ScrollLinkButton'
 
 const YOUTUBE_ID = 'ALipFoUcmXI'
 const YOUTUBE_EMBED_URL = `https://www.youtube.com/embed/${YOUTUBE_ID}?controls=0&modestbranding=1&rel=0&playsinline=1&loop=1&playlist=${YOUTUBE_ID}&autoplay=1`
@@ -142,7 +143,11 @@ export default function VideoShowcase({ variant = 'call' }: { variant?: 'call' |
 
         {/* Mini CTA */}
         <div className="mt-6">
-          <ChatwootButton variant="outline" label="RESERVAR MI CUPO" />
+          {variant === 'call' ? (
+            <ChatwootButton variant="outline" label="RESERVAR MI CUPO" />
+          ) : (
+            <ScrollLinkButton variant="outline" label="RESERVAR MI CUPO" />
+          )}
         </div>
       </div>
 

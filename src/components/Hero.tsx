@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from 'react'
 import SprayPaint from './SprayPaint'
 import ChatwootButton from './ChatwootButton'
+import ScrollLinkButton from './ScrollLinkButton'
 
 const bgImages = [
   'https://images.unsplash.com/photo-1528127269322-539801943592?q=80&w=1200&auto=format&fit=crop', // Halong Bay
@@ -121,10 +122,11 @@ export default function Hero({ variant = 'call' }: { variant?: 'call' | 'form' }
             </p>
           </div>
           <div className="md:col-span-2 flex md:justify-end items-start">
-            <ChatwootButton
-              variant="primary"
-              label={variant === 'call' ? 'ESCRÍBEME' : 'QUIERO MÁS INFORMACIÓN'}
-            />
+            {variant === 'call' ? (
+              <ChatwootButton variant="primary" label="ESCRÍBEME" />
+            ) : (
+              <ScrollLinkButton variant="primary" label="QUIERO MÁS INFORMACIÓN" />
+            )}
           </div>
         </div>
 

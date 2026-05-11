@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react'
 import { trackEvent } from './MetaPixel'
 import ChatwootButton from './ChatwootButton'
+import ScrollLinkButton from './ScrollLinkButton'
 
 type Viaje = 'agosto2026' | 'abril2027'
 type Metodo = 'contado' | 'cuotas'
@@ -483,7 +484,7 @@ export default function Pricing({ variant = 'call' }: { variant?: 'call' | 'form
                     Reservar por WhatsApp
                   </a>
                 ) : (
-                  <ChatwootButton
+                  <ScrollLinkButton
                     variant="primary"
                     label="Reservar mi cupo"
                     className="w-full md:w-auto mb-6"

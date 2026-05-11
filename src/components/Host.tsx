@@ -1,5 +1,6 @@
 import SprayPaint from './SprayPaint'
 import ChatwootButton from './ChatwootButton'
+import ScrollLinkButton from './ScrollLinkButton'
 
 export default function Host({ variant = 'call' }: { variant?: 'call' | 'form' } = {}) {
   return (
@@ -51,11 +52,19 @@ export default function Host({ variant = 'call' }: { variant?: 'call' | 'form' }
               </p>
             </div>
 
-            <ChatwootButton
-              variant="outline"
-              label={variant === 'call' ? 'ESCRÍBEME Y TE CUENTO MÁS' : 'QUIERO MÁS INFORMACIÓN'}
-              className="mt-6 w-full md:w-auto"
-            />
+            {variant === 'call' ? (
+              <ChatwootButton
+                variant="outline"
+                label="ESCRÍBEME Y TE CUENTO MÁS"
+                className="mt-6 w-full md:w-auto"
+              />
+            ) : (
+              <ScrollLinkButton
+                variant="outline"
+                label="QUIERO MÁS INFORMACIÓN"
+                className="mt-6 w-full md:w-auto"
+              />
+            )}
           </div>
         </div>
       </div>
