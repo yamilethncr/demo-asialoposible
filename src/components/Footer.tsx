@@ -11,6 +11,14 @@ export default function Footer() {
           <p>&copy; 2026 ASIALOPOSIBLE.NET</p>
         </div>
         <div className="text-[0.7rem] text-[var(--color-secondary)] uppercase tracking-[0.05em] md:text-right">
+          <a
+            href="https://wa.me/84934949756?text=Hola%20Katherine%2C%20me%20gustar%C3%ADa%20saber%20m%C3%A1s%20sobre%20Asia%20Lo%20Posible"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="block no-underline text-[var(--color-accent)] hover:underline transition-colors"
+          >
+            ESCR&Iacute;BEME AL WHATSAPP
+          </a>
           <a href="/terminos" className="block no-underline text-[var(--color-secondary)] hover:text-[var(--color-accent)] transition-colors">T&Eacute;RMINOS DE LA WEB</a>
           <a href="/terminos-viaje" className="block no-underline text-[var(--color-secondary)] hover:text-[var(--color-accent)] transition-colors">T&Eacute;RMINOS DEL VIAJE</a>
           <a href="/aviso-legal" className="block no-underline text-[var(--color-secondary)] hover:text-[var(--color-accent)] transition-colors">AVISO LEGAL</a>
