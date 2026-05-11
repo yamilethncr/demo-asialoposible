@@ -63,7 +63,7 @@ export async function POST(req: Request) {
     comentarios: data.comentarios ?? null,
   }
 
-  const [notionResult, resendResult] = await Promise.allSettled([
+  const [notionResult, resendResult, whatsappResult] = await Promise.allSettled([
     createLead(leadInput),
     (async () => {
       if (source === 'PrivateForm') {
@@ -83,6 +83,21 @@ export async function POST(req: Request) {
           personas,
         })
       }
+    })(),
+    (async () => {
+      const url = process.env.WHATSAPP_WEBHOOK_URL
+      const secret = process.env.WHATSAPP_WEBHOOK_SECRET
+      if (!url || !secret) return
+      const res = await fetch(`${url}?secret=${encodeURIComponent(secret)}`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          phone: data.telefono,
+          firstName,
+          template: 'form_lead_welcome',
+        }),
+      })
+      if (!res.ok) throw new Error(`WhatsApp webhook returned ${res.status}`)
     })(),
   ])
 
@@ -110,10 +125,15 @@ export async function POST(req: Request) {
     console.error('[/api/leads/form] Resend audience add failed:', resendResult.reason)
   }
 
+  if (whatsappResult.status === 'rejected') {
+    console.error('[/api/leads/form] WhatsApp send failed:', whatsappResult.reason)
+  }
+
   return NextResponse.json({
     ok: true,
     source,
     notion: notionResult.status === 'fulfilled' ? 'ok' : 'failed',
     resend: resendResult.status === 'fulfilled' ? 'ok' : 'failed',
+    whatsapp: whatsappResult.status === 'fulfilled' ? 'ok' : 'failed',
   })
 }
