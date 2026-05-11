@@ -29,7 +29,7 @@ export default function ChatwootButton({
     if (win.$chatwoot) {
       win.$chatwoot.toggle('open')
     } else {
-      window.location.href = 'https://wa.me/584248455010'
+      window.location.href = 'https://wa.me/84934949756'
     }
   }
 

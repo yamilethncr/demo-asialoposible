@@ -195,7 +195,7 @@ const organizationSchema = {
   contactPoint: {
     '@type': 'ContactPoint',
     contactType: 'reservations',
-    url: 'https://wa.me/584248455010',
+    url: 'https://wa.me/84934949756',
     availableLanguage: 'Spanish',
   },
 }

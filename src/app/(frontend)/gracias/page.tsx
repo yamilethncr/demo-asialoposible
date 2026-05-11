@@ -29,7 +29,7 @@ export default function Gracias() {
           <p className="text-sm md:text-base text-[var(--color-secondary)] mb-4 relative z-10 max-w-[440px] mx-auto leading-relaxed">
             Te llegará una confirmación por email con el enlace a la reunión. Si no la ves en unos minutos, revisa spam o{' '}
             <a
-              href="https://wa.me/584248455010"
+              href="https://wa.me/84934949756"
               target="_blank"
               rel="noopener noreferrer"
               className="text-[var(--color-accent)] underline decoration-[rgba(212,168,83,0.4)] underline-offset-4 hover:decoration-[var(--color-accent)] transition-colors"

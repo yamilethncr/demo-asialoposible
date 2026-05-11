@@ -469,7 +469,7 @@ export default function Pricing({ variant = 'call' }: { variant?: 'call' | 'form
 
                 {variant === 'call' ? (
                   <a
-                    href={`https://wa.me/584248455010?text=${waMessage}`}
+                    href={`https://wa.me/84934949756?text=${waMessage}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={() => trackEvent('InitiateCheckout', {

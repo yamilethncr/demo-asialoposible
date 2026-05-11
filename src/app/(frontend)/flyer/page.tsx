@@ -508,7 +508,7 @@ function CtaReserva() {
 
         {/* CTA button */}
         <a
-          href="https://wa.me/584248455010"
+          href="https://wa.me/84934949756"
           style={{
             display: 'inline-block',
             background: colors.gold,
@@ -525,7 +525,7 @@ function CtaReserva() {
           RESERVAR POR WHATSAPP
         </a>
         <p style={{ fontSize: 14, color: colors.muted, margin: '0 0 80px 0' }}>
-          wa.me/584248455010
+          wa.me/84934949756
         </p>
 
         {/* Social / contact */}
