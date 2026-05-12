@@ -21,6 +21,7 @@ export default function Footer() {
           </a>
           <a href="/terminos" className="block no-underline text-[var(--color-secondary)] hover:text-[var(--color-accent)] transition-colors">T&Eacute;RMINOS DE LA WEB</a>
           <a href="/terminos-viaje" className="block no-underline text-[var(--color-secondary)] hover:text-[var(--color-accent)] transition-colors">T&Eacute;RMINOS DEL VIAJE</a>
+          <a href="/politica-de-cancelacion" className="block no-underline text-[var(--color-secondary)] hover:text-[var(--color-accent)] transition-colors">POL&Iacute;TICA DE CANCELACI&Oacute;N</a>
           <a href="/aviso-legal" className="block no-underline text-[var(--color-secondary)] hover:text-[var(--color-accent)] transition-colors">AVISO LEGAL</a>
           <a href="/viajes-privados" className="block no-underline text-[var(--color-secondary)] hover:text-[var(--color-accent)] transition-colors">VIAJES PRIVADOS</a>
           <a href="/imprescindibles" className="block no-underline text-[var(--color-secondary)] hover:text-[var(--color-accent)] transition-colors">LOS IMPRESCINDIBLES</a>
