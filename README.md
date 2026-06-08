@@ -99,7 +99,7 @@ feature/*     ← tu trabajo. PR → development. Nunca PR directo a main.
 | Ambiente | Rama | Dominio |
 |---|---|---|
 | Production | `main` | [asialoposible.net](https://asialoposible.net) |
-| Preview | `development` | Ver Vercel dashboard (infra@innovaly.house) |
+| Preview | `development` | [asialoposible-git-development-innovalygroup.vercel.app](https://asialoposible-git-development-innovalygroup.vercel.app) |
 
 El proyecto está bajo la cuenta **infra@innovaly.house** en Vercel. Para acceder al dashboard, pedir acceso a David.
 
