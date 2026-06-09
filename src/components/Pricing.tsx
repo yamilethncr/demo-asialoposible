@@ -11,7 +11,7 @@ type Habitacion = 'compartida' | 'privada'
 
 const VIAJE_INFO: Record<Viaje, { label: string; fechas: string; cupos: number }> = {
   agosto2026: { label: 'Agosto 2026', fechas: '1 – 14 de agosto, 2026', cupos: 4 },
-  abril2027: { label: 'Abril 2027', fechas: '1 – 14 de abril, 2027', cupos: 8 },
+  abril2027: { label: 'Abril 2027', fechas: '23 de marzo – 5 de abril, 2027', cupos: 8 },
 }
 
 const PRICES: Record<Metodo, number> = {
@@ -199,7 +199,7 @@ export default function Pricing({ variant = 'call' }: { variant?: 'call' | 'form
                 }}
               >
                 <span className="block text-sm font-bold uppercase tracking-wide">Abril 2027</span>
-                <span className="block text-[11px] mt-1 opacity-70">1 &ndash; 14 de abril &middot; {VIAJE_INFO.abril2027.cupos} cupos</span>
+                <span className="block text-[11px] mt-1 opacity-70">23 mar &ndash; 5 abr &middot; {VIAJE_INFO.abril2027.cupos} cupos</span>
               </button>
             </div>
           </div>
