@@ -1,0 +1,23 @@
+# Credenciales / configuración local (¡NO subir!)
+.mcp.json
+.env
+.env.*
+*.local
+
+# Dependencias
+node_modules/
+
+# Logs y temporales
+*.log
+npm-debug.log*
+/tmp/
+*.tmp
+
+# Sistema operativo
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor
+.vscode/
+.idea/
