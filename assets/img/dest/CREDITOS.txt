@@ -1,0 +1,17 @@
+Créditos de imágenes de destinos (Openverse)
+
+dest-kioto.jpg | licencia: cc0 | autor: Hatsu Natsu | fuente: https://www.flickr.com/photos/133206585@N04/18667273028
+dest-halong.jpg | licencia: cc0 | autor: winninator | fuente: https://www.flickr.com/photos/8668973@N05/24193577780
+dest-angkor.jpg | licencia: cc0 | autor: Image Catalog | fuente: https://www.flickr.com/photos/132795455@N08/19146403798
+dest-bali.jpg | licencia: cc0 | autor: Rarioj | fuente: https://commons.wikimedia.org/w/index.php?curid=35014758
+dest-bangkok.jpg | licencia: cc0 | autor: Gary Lee Todd, Ph.D. | fuente: https://www.flickr.com/photos/101561334@N08/46115907001
+dest-hoian.jpg | licencia: cc0 | autor: null | fuente: https://www.rawpixel.com/image/3301982/free-photo-image-chinese-lantern-moon-asia
+dest-chiangmai.jpg | licencia: pdm | autor: chsyang | fuente: https://www.flickr.com/photos/77874836@N04/52415246625
+dest-tokio.jpg | licencia: pdm | autor: davidgsteadman | fuente: https://www.flickr.com/photos/90949166@N00/4275826097
+dest-luangprabang.jpg | licencia: pdm | autor: Raini4 | fuente: https://www.flickr.com/photos/53106173@N05/5338852727
+dest-siemreap.jpg | licencia: cc0 | autor: Dennis S. Hurd | fuente: https://www.flickr.com/photos/43296902@N00/4058065799
+
+-- Añadidos Top 10 editado --
+dest-seul.jpg | Seúl (Gyeongbokgung) | CC0 | Gary Lee Todd
+dest-granmuralla.jpg | Gran Muralla (Mutianyu) | CC0 | Nicolas Perrault III
+dest-jeju.jpg | Isla de Jeju | CC BY | nurpax  (REQUIERE atribución)
