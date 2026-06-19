@@ -419,6 +419,16 @@ h1,h2,h3,h4 { font-family: var(--font-display); font-weight: 600; font-style: it
 .acc-tag { display:inline-block; font-family:var(--font-mono); font-size:.62rem; letter-spacing:.1em; text-transform:uppercase;
   color:#8a6d2f; background:rgba(200,161,90,.14); border:1px solid rgba(200,161,90,.4); border-radius:999px; padding:.22rem .65rem; margin-bottom:.6rem; }
 
+/* ============ Próximos destinos: carrusel + acordeón ============= */
+.next-dest-wrap { display:grid; grid-template-columns: minmax(250px,.82fr) 1.18fr;
+  gap: clamp(1.4rem,3vw,2.6rem); align-items:start; }
+.next-dest-wrap .accordion { margin:0; max-width:none; }
+.next-dest-wrap .about-slider { position:sticky; top:96px; }
+@media (max-width:860px){
+  .next-dest-wrap { grid-template-columns:1fr; }
+  .next-dest-wrap .about-slider { position:static; max-width:420px; margin-inline:auto; }
+}
+
 /* ===================== Iconos (reemplazo de emojis) ============== */
 .emo { width:1.1em; height:1.1em; vertical-align:-.16em; stroke:var(--color-accent); fill:none;
   display:inline-block; flex:none; stroke-width:1.7; }
