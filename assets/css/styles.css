@@ -219,6 +219,34 @@ h1,h2,h3,h4 { font-family: var(--font-display); font-weight: 600; font-style: it
 .video__cap b { font-family: var(--font-display); font-size: 1.5rem; display:block; }
 .video__cap span { color: var(--color-secondary); font-size: .85rem; }
 
+/* ------------------- Carrete de videos (reels) -------------------- */
+.vid-wrap { position: relative; }
+.vid-nav { position:absolute; top:-3.9rem; right:0; display:flex; gap:.5rem; }
+.vid-nav button { width:42px; height:42px; border-radius:50%; border:1px solid rgba(200,161,90,.5);
+  background:transparent; color:var(--color-accent); cursor:pointer; display:grid; place-items:center; transition:.2s; }
+.vid-nav button:hover { background:var(--color-accent); color:#1E1E1E; }
+.vid-carousel { display:flex; gap:1rem; overflow-x:auto; scroll-snap-type:x mandatory; scroll-behavior:smooth;
+  padding-bottom:.4rem; scrollbar-width:none; }
+.vid-carousel::-webkit-scrollbar { display:none; }
+.vid-card { flex:0 0 auto; width:clamp(210px,23vw,270px); aspect-ratio:9/16; border:0; padding:0;
+  border-radius:var(--radius-lg); overflow:hidden; position:relative; scroll-snap-align:start; cursor:pointer;
+  isolation:isolate; box-shadow:var(--shadow); }
+.vid-card img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:-2; transition:transform .5s var(--ease); }
+.vid-card:hover img { transform:scale(1.06); }
+.vid-card::after { content:""; position:absolute; inset:0; z-index:-1;
+  background:linear-gradient(180deg, rgba(20,20,20,.05) 35%, rgba(20,20,20,.85) 100%); }
+.vid-card__play { position:absolute; inset:0; margin:auto; width:58px; height:58px; display:grid; place-items:center;
+  border-radius:50%; background:rgba(200,161,90,.92); color:#1E1E1E; box-shadow:var(--shadow-gold); transition:transform .3s var(--ease); }
+.vid-card:hover .vid-card__play { transform:scale(1.1); }
+.vid-card__title { position:absolute; left:1rem; right:1rem; bottom:1rem; font-family:var(--font-mono);
+  font-size:.7rem; letter-spacing:.14em; text-transform:uppercase; color:var(--color-accent); text-align:left; }
+/* Lightbox */
+.vid-modal { position:fixed; inset:0; z-index:300; display:none; place-items:center; background:rgba(8,8,8,.92); padding:1.2rem; }
+.vid-modal.open { display:grid; }
+.vid-modal__box { position:relative; width:min(400px,90vw); aspect-ratio:9/16; background:#000; border-radius:16px; overflow:hidden; box-shadow:var(--shadow); }
+.vid-modal__box iframe { position:absolute; inset:0; width:100%; height:100%; border:0; }
+.vid-modal__close { position:absolute; top:-3rem; right:-.2rem; background:none; border:0; color:#fff; font-size:2rem; line-height:1; cursor:pointer; }
+
 /* ------------------------- Top destinos --------------------------- */
 .dest-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px,1fr)); gap: 1.1rem; }
 .dest-card {
@@ -356,6 +384,9 @@ h1,h2,h3,h4 { font-family: var(--font-display); font-weight: 600; font-style: it
 .reality-item .rico { color:var(--color-accent); flex:none; font-weight:700; font-size:1.1rem; line-height:1.6; }
 .reality-item b { display:block; margin-bottom:.25rem; font-family:var(--font-main); }
 .reality-item p { color:var(--color-secondary); font-size:.92rem; margin:0; }
+.reality-item .rico svg { width:24px; height:24px; display:block; stroke:var(--color-accent); }
+.section--cream .reality-item { background:#fff; border-color:rgba(30,30,30,.08); box-shadow:0 10px 30px -18px rgba(30,30,30,.15); }
+.section--cream .reality-item p { color:#6A6760; }
 
 .next-card { display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:1.5rem;
   background:linear-gradient(160deg,var(--color-bg-2),#232323); border:1px solid rgba(200,161,90,.25);
