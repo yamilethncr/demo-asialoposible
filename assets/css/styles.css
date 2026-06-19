@@ -399,6 +399,24 @@ h1,h2,h3,h4 { font-family: var(--font-display); font-weight: 600; font-style: it
 .next-card .date b { font-family:var(--font-display); font-size:1.5rem; color:var(--color-accent); display:block; }
 .next-card .date span { font-size:.82rem; color:var(--color-secondary); }
 
+/* ===================== Acordeón (próximos destinos) ============== */
+.accordion { display:grid; gap:.8rem; max-width:860px; margin-inline:auto; }
+.acc-item { border:1px solid #E2DDD5; border-radius:14px; background:#fff; overflow:hidden; color:#1E1E1E;
+  box-shadow:0 10px 30px -22px rgba(30,30,30,.25); transition:border-color .25s; }
+.acc-item.open { border-color:rgba(200,161,90,.5); }
+.acc-head { width:100%; display:flex; align-items:center; justify-content:space-between; gap:1rem;
+  background:none; border:0; cursor:pointer; padding:1.1rem 1.3rem; text-align:left; font-family:var(--font-main); color:#1E1E1E; }
+.acc-head b { font-family:var(--font-display); font-style:italic; font-weight:600; font-size:1.3rem; display:block; line-height:1.15; }
+.acc-head small { color:#6A6760; font-size:.85rem; }
+.acc-head .acc-ico { transition:transform .25s var(--ease); color:var(--color-accent); flex:none; }
+.acc-item.open .acc-head .acc-ico { transform:rotate(180deg); }
+.acc-body { max-height:0; overflow:hidden; transition:max-height .35s var(--ease); }
+.acc-item.open .acc-body { max-height:340px; }
+.acc-body-inner { padding:0 1.3rem 1.3rem; }
+.acc-body-inner p { color:#4A463F; font-size:.95rem; margin-bottom:1rem; }
+.acc-tag { display:inline-block; font-family:var(--font-mono); font-size:.62rem; letter-spacing:.1em; text-transform:uppercase;
+  color:#8a6d2f; background:rgba(200,161,90,.14); border:1px solid rgba(200,161,90,.4); border-radius:999px; padding:.22rem .65rem; margin-bottom:.6rem; }
+
 /* ============================ Chatbot ============================ */
 .cb-toggle { position:fixed; right:1.2rem; bottom:1.2rem; z-index:400; width:60px; height:60px; border-radius:50%;
   background:var(--color-accent); color:#1E1E1E; border:0; cursor:pointer; display:grid; place-items:center;

@@ -129,6 +129,15 @@
     }
   }
 
+  // Acordeón (próximos destinos)
+  document.querySelectorAll('.acc-head').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var item = btn.closest('.acc-item');
+      var open = item.classList.toggle('open');
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+  });
+
   // Año dinámico en footer
   var y = document.querySelector('[data-year]');
   if (y) y.textContent = new Date().getFullYear();
