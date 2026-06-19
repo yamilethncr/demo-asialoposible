@@ -132,4 +132,138 @@
   // Año dinámico en footer
   var y = document.querySelector('[data-year]');
   if (y) y.textContent = new Date().getFullYear();
+
+  /* ===================== Chatbot de soporte ===================== */
+  (function chatbot() {
+    var WA = '84934949756';
+    var TAGS = {
+      serv: 'Atención al cliente · Interés en servicios',
+      faq:  'Dudas frecuentes',
+      sop:  'Soporte'
+    };
+    var FAQ = [
+      { q: '¿Cuánto cuesta el viaje?', a: 'El viaje grupal a Vietnam &amp; Camboya es <b>desde $3,200 USD por persona</b>. El precio varía según la fecha, la forma de pago y el tipo de habitación. ¿Quieres que un asesor te pase el detalle?' },
+      { q: '¿Cuándo son las próximas salidas?', a: 'Tenemos salidas confirmadas en <b>Agosto 2026</b> y <b>Abril 2027</b> para Vietnam &amp; Camboya. También diseñamos viajes privados en las fechas que tú elijas.' },
+      { q: '¿Qué incluye el viaje?', a: 'Hoteles 4-5★, crucero por la Bahía de Halong, vuelos internos, transporte privado, entradas, guía en español, e-SIM y más. No incluye vuelos internacionales ni visados (te ayudamos con ellos).' },
+      { q: '¿Es todo en español?', a: '¡Sí! Toda la planificación, el acompañamiento y los guías son <b>100% en español</b>.' },
+      { q: '¿Necesito visado?', a: 'Para Vietnam ~$70 USD y Camboya ~$30 USD. No están incluidos, pero te guiamos paso a paso para tramitarlos sin estrés.' },
+      { q: '¿Puedo pagar a plazos?', a: 'Sí, tenemos opciones de pago flexibles para que financies tu viaje con comodidad.' }
+    ];
+
+    var toggle = document.createElement('button');
+    toggle.className = 'cb-toggle';
+    toggle.setAttribute('aria-label', 'Abrir chat de ayuda');
+    toggle.innerHTML = '<svg class="cb-chat-ico" viewBox="0 0 24 24" fill="currentColor"><path d="M4 4h16a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H8l-4 4V6a2 2 0 0 1 2-2z"/></svg>' +
+      '<svg class="cb-close-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>';
+
+    var panel = document.createElement('div');
+    panel.className = 'cb-panel';
+    panel.innerHTML =
+      '<div class="cb-head"><span class="cb-avatar">A</span><div><b>Asia Lo Posible</b><br><small>Normalmente respondemos al instante</small></div></div>' +
+      '<div class="cb-body" id="cbBody"></div>' +
+      '<form class="cb-foot" id="cbForm"><input id="cbInput" type="text" placeholder="Escribe tu mensaje..." autocomplete="off"><button type="submit" aria-label="Enviar"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M2 21l21-9L2 3v7l15 2-15 2z"/></svg></button></form>';
+
+    document.body.appendChild(toggle);
+    document.body.appendChild(panel);
+
+    var body = panel.querySelector('#cbBody');
+    var form = panel.querySelector('#cbForm');
+    var input = panel.querySelector('#cbInput');
+    var started = false;
+
+    function scroll() { body.scrollTop = body.scrollHeight; }
+    function esc(s) { return s.replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+    function add(cls, html) { var d = document.createElement('div'); d.className = cls; d.innerHTML = html; body.appendChild(d); scroll(); return d; }
+    function bot(html) { return add('cb-msg bot', html); }
+    function usr(text) { return add('cb-msg user', esc(text)); }
+    function tag(t) { add('cb-tag', '🏷️ ' + t); }
+    function waUrl(t, msg) { return 'https://wa.me/' + WA + '?text=' + encodeURIComponent('[' + t + '] ' + msg); }
+    function quicks(items) {
+      var wrap = document.createElement('div'); wrap.className = 'cb-quicks';
+      items.forEach(function (it) {
+        var b = document.createElement('button'); b.className = 'cb-quick'; b.type = 'button'; b.innerHTML = it.label;
+        b.addEventListener('click', it.onClick); wrap.appendChild(b);
+      });
+      body.appendChild(wrap); scroll();
+    }
+    function waBtn(t, msg, label) {
+      var wrap = document.createElement('div'); wrap.className = 'cb-quicks';
+      var a = document.createElement('a'); a.className = 'cb-quick'; a.href = waUrl(t, msg); a.target = '_blank'; a.rel = 'noopener';
+      a.style.borderColor = 'rgba(200,161,90,.55)'; a.innerHTML = '💬 ' + (label || 'Continuar por WhatsApp');
+      wrap.appendChild(a); body.appendChild(wrap); scroll();
+    }
+
+    function start() {
+      bot('¡Hola! 👋 Soy el asistente de <b>Asia Lo Posible</b>. ¿En qué te puedo ayudar?');
+      quicks([
+        { label: '💼 Quiero info de un viaje', onClick: pathServ },
+        { label: '❓ Tengo una duda frecuente', onClick: pathFaq },
+        { label: '🛠️ Necesito soporte', onClick: pathSop }
+      ]);
+    }
+    function pathServ() {
+      usr('Quiero info de un viaje'); tag(TAGS.serv);
+      bot('¡Genial! ✨ ¿Qué estilo de viaje te interesa? Te paso con un asesor para darte todos los detalles.');
+      quicks([
+        { label: 'Viajes de Autor (grupal con nosotros)', onClick: function () { servDetail('Viajes de Autor'); } },
+        { label: 'Asia en Grupo (con nuestra red)', onClick: function () { servDetail('Asia en Grupo'); } },
+        { label: 'Sesión 1-a-1 (asesoría virtual)', onClick: function () { servDetail('una Sesión 1-a-1'); } },
+        { label: 'Itinerarios Listos (rutas descargables)', onClick: function () { servDetail('Itinerarios Listos'); } }
+      ]);
+    }
+    function servDetail(name) {
+      usr(name);
+      bot('¡Perfecto! Un asesor te dará toda la información sobre <b>' + name + '</b>. Pulsa para continuar por WhatsApp 👇');
+      waBtn(TAGS.serv, 'Hola, quiero información sobre ' + name + '.', 'Hablar con un asesor');
+    }
+    function pathFaq() {
+      usr('Tengo una duda frecuente'); tag(TAGS.faq);
+      bot('Estas son las preguntas más comunes. Toca la tuya:');
+      quicks(FAQ.map(function (f, i) { return { label: f.q, onClick: function () { faqAnswer(i); } }; }));
+    }
+    function faqAnswer(i) {
+      usr(FAQ[i].q); bot(FAQ[i].a);
+      quicks([
+        { label: 'Ver otra pregunta', onClick: pathFaq },
+        { label: 'Hablar con un asesor', onClick: function () { usr('Hablar con un asesor'); waBtn(TAGS.faq, 'Hola, tengo una duda sobre el viaje.', 'Continuar por WhatsApp'); } }
+      ]);
+    }
+    function pathSop() {
+      usr('Necesito soporte'); tag(TAGS.sop);
+      bot('Lamento el inconveniente 🙏. Cuéntame brevemente qué necesitas (un pago, una reserva, una duda técnica…) y te ayudamos enseguida.');
+      waBtn(TAGS.sop, 'Hola, necesito soporte con: ', 'Escribir a soporte');
+    }
+    function route(text) {
+      var t = text.toLowerCase();
+      if (/precio|costo|cuesta|cu[aá]nto|reserv|cotiz|disponib|fecha|salida|viaj|tour|cupo|pagar|plazo|itinerario/.test(t)) {
+        tag(TAGS.serv); bot('Te ayudo con eso. Te paso con un asesor para darte los detalles 👇'); waBtn(TAGS.serv, text, 'Hablar con un asesor'); return;
+      }
+      if (/visa|visado|incluye|idioma|espa[ñn]ol|seguro|vuelo|equipaje|clima|[ée]poca|hotel|comida/.test(t)) {
+        tag(TAGS.faq); bot('¡Buena pregunta! Mira nuestras dudas frecuentes o habla con un asesor:');
+        quicks([{ label: 'Ver dudas frecuentes', onClick: pathFaq }, { label: 'Hablar con un asesor', onClick: function () { waBtn(TAGS.faq, text, 'Continuar por WhatsApp'); } }]); return;
+      }
+      if (/problema|error|no funciona|falla|reembolso|cancel|urgente|soporte|ayuda/.test(t)) {
+        tag(TAGS.sop); bot('Vamos a resolverlo. Te paso con soporte 👇'); waBtn(TAGS.sop, text, 'Escribir a soporte'); return;
+      }
+      bot('Para ayudarte mejor, ¿tu consulta es sobre…?');
+      quicks([
+        { label: '💼 Info de un viaje', onClick: pathServ },
+        { label: '❓ Una duda frecuente', onClick: pathFaq },
+        { label: '🛠️ Soporte', onClick: pathSop }
+      ]);
+    }
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var text = input.value.trim(); if (!text) return;
+      usr(text); input.value = '';
+      setTimeout(function () { route(text); }, 250);
+    });
+    toggle.addEventListener('click', function () {
+      document.body.classList.toggle('cb-open');
+      var open = document.body.classList.contains('cb-open');
+      if (open && !started) { started = true; setTimeout(start, 200); }
+      if (open) setTimeout(function () { input.focus(); }, 300);
+    });
+  })();
 })();
