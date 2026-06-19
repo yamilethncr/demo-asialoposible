@@ -99,6 +99,36 @@
     }, 4000);
   });
 
+  // Carrete de videos + lightbox
+  var vidCar = document.getElementById('vidCarousel');
+  if (vidCar) {
+    document.querySelectorAll('.vid-nav button').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var dir = parseInt(btn.getAttribute('data-dir'), 10) || 1;
+        var card = vidCar.querySelector('.vid-card');
+        var step = card ? card.offsetWidth + 16 : 240;
+        vidCar.scrollBy({ left: dir * step * 1.3, behavior: 'smooth' });
+      });
+    });
+    var vModal = document.getElementById('vidModal');
+    var vFrame = vModal ? vModal.querySelector('iframe') : null;
+    var closeV = function () { if (vModal) vModal.classList.remove('open'); if (vFrame) vFrame.src = ''; };
+    vidCar.querySelectorAll('.vid-card').forEach(function (card) {
+      card.addEventListener('click', function () {
+        var id = card.getAttribute('data-yt');
+        if (!id || !vModal || !vFrame) return;
+        vFrame.src = 'https://www.youtube.com/embed/' + id + '?autoplay=1&rel=0&playsinline=1';
+        vModal.classList.add('open');
+      });
+    });
+    if (vModal) {
+      vModal.addEventListener('click', function (e) {
+        if (e.target === vModal || e.target.classList.contains('vid-modal__close')) closeV();
+      });
+      document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeV(); });
+    }
+  }
+
   // Año dinámico en footer
   var y = document.querySelector('[data-year]');
   if (y) y.textContent = new Date().getFullYear();
