@@ -334,6 +334,11 @@ h1,h2,h3,h4 { font-family: var(--font-display); font-weight: 600; font-style: it
 .about-photo { border-radius:var(--radius-lg); overflow:hidden; box-shadow:var(--shadow); aspect-ratio:4/5; }
 .about-photo img { width:100%; height:100%; object-fit:cover; }
 .about-photo figcaption { display:none; }
+/* Slider automático (crossfade en loop) */
+.about-slider { position: relative; }
+.about-slider .slide { position:absolute; inset:0; width:100%; height:100%; object-fit:cover;
+  opacity:0; transition: opacity 1.2s ease; }
+.about-slider .slide.active { opacity:1; }
 
 .way-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:1.2rem; }
 .way-card { background:var(--color-bg-2); border:1px solid rgba(255,255,255,.07); border-radius:var(--radius-lg);

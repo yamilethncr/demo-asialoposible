@@ -86,6 +86,19 @@
     }
   }
 
+  // Slider automático en loop (Sobre nosotros)
+  document.querySelectorAll('.about-slider').forEach(function (slider) {
+    var slides = slider.querySelectorAll('.slide');
+    if (slides.length < 2) return;
+    if (!slider.querySelector('.slide.active')) slides[0].classList.add('active');
+    var i = 0;
+    setInterval(function () {
+      slides[i].classList.remove('active');
+      i = (i + 1) % slides.length;
+      slides[i].classList.add('active');
+    }, 4000);
+  });
+
   // Año dinámico en footer
   var y = document.querySelector('[data-year]');
   if (y) y.textContent = new Date().getFullYear();
