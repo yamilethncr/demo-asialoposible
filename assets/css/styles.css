@@ -186,17 +186,19 @@ h1,h2,h3,h4 { font-family: var(--font-display); font-weight: 600; font-style: it
 .trip-card:hover img { transform: scale(1.06); }
 .trip-card::after { content:""; position:absolute; inset:0; z-index:-1;
   background: linear-gradient(180deg,
-    rgba(20,20,20,0) 0%,
-    rgba(20,20,20,.18) 28%,
-    rgba(20,20,20,.5) 48%,
-    rgba(20,20,20,.82) 68%,
-    rgba(20,20,20,.96) 100%); }
-.trip-card__body { padding: 1.8rem; text-shadow: 0 1px 18px rgba(0,0,0,.6); }
+    rgba(20,20,20,.32) 0%,
+    rgba(20,20,20,.1) 22%,
+    rgba(20,20,20,.4) 50%,
+    rgba(20,20,20,.8) 74%,
+    rgba(20,20,20,.97) 100%); }
+.trip-card__body { padding: 1.8rem 1.8rem 1.4rem; text-shadow: 0 1px 18px rgba(0,0,0,.7); }
+/* Recuadro/tag en la esquina superior derecha */
 .trip-card__tag {
-  display: inline-block; font-family: var(--font-mono); font-size: .68rem; letter-spacing: .16em;
-  text-transform: uppercase; color: #fff;
-  background: rgba(200,161,90,.22); backdrop-filter: blur(6px);
-  border: 1px solid rgba(200,161,90,.6); border-radius: 999px; padding: .35rem .85rem; margin-bottom: 1rem;
+  position: absolute; top: 1rem; right: 1rem; z-index: 2; margin: 0; max-width: calc(100% - 2rem);
+  font-family: var(--font-mono); font-size: .64rem; letter-spacing: .14em; line-height: 1.3;
+  text-transform: uppercase; color: #fff; text-align: right;
+  background: rgba(200,161,90,.3); backdrop-filter: blur(8px);
+  border: 1px solid rgba(200,161,90,.7); border-radius: 999px; padding: .4rem .85rem;
 }
 .trip-card h3 { font-size: 1.9rem; margin-bottom: .5rem; }
 .trip-card p { color: rgba(255,255,255,.92); font-size: .95rem; margin-bottom: 1.1rem; }
@@ -416,6 +418,12 @@ h1,h2,h3,h4 { font-family: var(--font-display); font-weight: 600; font-style: it
 .acc-body-inner p { color:#4A463F; font-size:.95rem; margin-bottom:1rem; }
 .acc-tag { display:inline-block; font-family:var(--font-mono); font-size:.62rem; letter-spacing:.1em; text-transform:uppercase;
   color:#8a6d2f; background:rgba(200,161,90,.14); border:1px solid rgba(200,161,90,.4); border-radius:999px; padding:.22rem .65rem; margin-bottom:.6rem; }
+
+/* ===================== Iconos (reemplazo de emojis) ============== */
+.emo { width:1.1em; height:1.1em; vertical-align:-.16em; stroke:var(--color-accent); fill:none;
+  display:inline-block; flex:none; stroke-width:1.7; }
+.announce .emo { stroke:#1E1E1E; }          /* barra dorada -> icono oscuro */
+h3 .emo, h4 .emo { margin-right:.15em; }     /* separación del título */
 
 /* ============================ Chatbot ============================ */
 .cb-toggle { position:fixed; right:1.2rem; bottom:1.2rem; z-index:400; width:60px; height:60px; border-radius:50%;
