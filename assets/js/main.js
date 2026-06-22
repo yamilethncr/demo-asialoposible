@@ -142,6 +142,38 @@
   var y = document.querySelector('[data-year]');
   if (y) y.textContent = new Date().getFullYear();
 
+  // Menú legal del footer (desplegable: Términos y condiciones)
+  var legalWraps = document.querySelectorAll('.footer__legal');
+  if (legalWraps.length) {
+    var closeLegal = function () {
+      legalWraps.forEach(function (w) {
+        w.classList.remove('open');
+        var b = w.querySelector('.footer__legal-toggle');
+        if (b) b.setAttribute('aria-expanded', 'false');
+      });
+    };
+    legalWraps.forEach(function (w) {
+      var btn = w.querySelector('.footer__legal-toggle');
+      if (!btn) return;
+      btn.addEventListener('click', function (e) {
+        e.stopPropagation();
+        var isOpen = w.classList.contains('open');
+        closeLegal();
+        if (!isOpen) { w.classList.add('open'); btn.setAttribute('aria-expanded', 'true'); }
+      });
+    });
+    document.addEventListener('click', function (e) {
+      legalWraps.forEach(function (w) {
+        if (w.classList.contains('open') && !w.contains(e.target)) {
+          w.classList.remove('open');
+          var b = w.querySelector('.footer__legal-toggle');
+          if (b) b.setAttribute('aria-expanded', 'false');
+        }
+      });
+    });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeLegal(); });
+  }
+
   /* ===================== Chatbot de soporte ===================== */
   (function chatbot() {
     var WA = '84934949756';
