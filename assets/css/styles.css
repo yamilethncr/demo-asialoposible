@@ -133,6 +133,17 @@ h1,h2,h3,h4 { font-family: var(--font-display); font-weight: 600; font-style: it
 .nav__links a:hover { color: var(--color-accent); }
 .nav__toggle { display: none; background: none; border: 0; color: #fff; cursor: pointer; flex-direction: column; gap: 5px; }
 .nav__toggle span { width: 26px; height: 2px; background: #fff; transition: .3s; }
+/* Desplegable de términos en el nav */
+.nav__dd { position: relative; }
+.nav__dd-toggle { display: inline-flex; align-items: center; gap: .35rem; background: none; border: 0; padding: 0; margin: 0; cursor: pointer; font-family: inherit; font-size: .9rem; color: rgba(255,255,255,.82); transition: color .2s; }
+.nav__dd-toggle:hover { color: var(--color-accent); }
+.nav__dd-toggle svg { width: 13px; height: 13px; transition: transform .25s ease; }
+.nav__dd.open .nav__dd-toggle { color: var(--color-accent); }
+.nav__dd.open .nav__dd-toggle svg { transform: rotate(180deg); }
+.nav__dd-menu { position: absolute; top: calc(100% + .8rem); right: 0; min-width: 210px; display: flex; flex-direction: column; padding: .45rem; background: rgba(30,30,30,.97); backdrop-filter: blur(14px); border: 1px solid rgba(255,255,255,.1); border-radius: 12px; box-shadow: 0 14px 34px rgba(0,0,0,.45); opacity: 0; visibility: hidden; transform: translateY(8px); transition: opacity .2s ease, transform .2s ease, visibility .2s ease; z-index: 120; }
+.nav__dd.open .nav__dd-menu { opacity: 1; visibility: visible; transform: translateY(0); }
+.nav__dd-menu a { display: block; padding: .55rem .65rem; border-radius: 8px; font-size: .85rem; color: rgba(255,255,255,.82); white-space: nowrap; }
+.nav__dd-menu a:hover { background: rgba(255,255,255,.06); color: var(--color-accent); }
 
 /* ------------------------------ Hero ------------------------------ */
 .hero {
@@ -497,6 +508,11 @@ h3 .emo, h4 .emo { margin-right:.15em; }     /* separación del título */
   .nav__links.open { transform: none; }
   .nav__links a { font-size: 1.1rem; }
   .nav__toggle { display: flex; z-index: 110; }
+  .nav__dd { width: 100%; }
+  .nav__dd-toggle { width: 100%; justify-content: space-between; font-size: 1.1rem; }
+  .nav__dd-menu { position: static; min-width: 0; display: none; opacity: 1; visibility: visible; transform: none; padding: .5rem 0 0 .9rem; background: none; backdrop-filter: none; border: 0; box-shadow: none; }
+  .nav__dd.open .nav__dd-menu { display: flex; }
+  .nav__dd-menu a { font-size: 1rem; padding: .45rem 0; }
   .contact-wrap { grid-template-columns: 1fr; }
   .split { grid-template-columns: 1fr; }
   .sticky-card { position: static; }

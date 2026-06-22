@@ -174,6 +174,38 @@
     document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeLegal(); });
   }
 
+  // Desplegable de términos en el nav superior
+  var navDds = document.querySelectorAll('.nav__dd');
+  if (navDds.length) {
+    var closeNavDd = function () {
+      navDds.forEach(function (w) {
+        w.classList.remove('open');
+        var b = w.querySelector('.nav__dd-toggle');
+        if (b) b.setAttribute('aria-expanded', 'false');
+      });
+    };
+    navDds.forEach(function (w) {
+      var btn = w.querySelector('.nav__dd-toggle');
+      if (!btn) return;
+      btn.addEventListener('click', function (e) {
+        e.stopPropagation();
+        var isOpen = w.classList.contains('open');
+        closeNavDd();
+        if (!isOpen) { w.classList.add('open'); btn.setAttribute('aria-expanded', 'true'); }
+      });
+    });
+    document.addEventListener('click', function (e) {
+      navDds.forEach(function (w) {
+        if (w.classList.contains('open') && !w.contains(e.target)) {
+          w.classList.remove('open');
+          var b = w.querySelector('.nav__dd-toggle');
+          if (b) b.setAttribute('aria-expanded', 'false');
+        }
+      });
+    });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeNavDd(); });
+  }
+
   /* ===================== Chatbot de soporte ===================== */
   (function chatbot() {
     var WA = '84934949756';
