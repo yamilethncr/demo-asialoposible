@@ -243,10 +243,8 @@ export default function Imprescindibles() {
               <span className="block text-xs tracking-[0.2em] uppercase text-[var(--color-secondary)] mb-4">
                 GU&Iacute;A DE PREPARACI&Oacute;N
               </span>
-              <h1 className="text-3xl md:text-[3.5rem] leading-[0.9] font-bold uppercase text-[var(--color-text)]">
-                LOS
-                <br />
-                IMPRESCINDIBLES
+              <h1 className="text-3xl md:text-[3.5rem] leading-[0.9] font-bold text-[var(--color-text)]">
+                Los imprescindibles
               </h1>
             </div>
             <div className="md:col-span-5">
@@ -265,7 +263,7 @@ export default function Imprescindibles() {
               <a
                 key={s.id}
                 href={`#${s.id}`}
-                className="text-[11px] tracking-[0.1em] uppercase px-3 py-1.5 border border-[rgba(212,168,83,0.15)] text-[var(--color-secondary)] no-underline transition-all duration-300 hover:border-[var(--color-accent)] hover:text-[var(--color-accent)]"
+                className="text-[11px] tracking-[0.1em] uppercase px-3 py-1.5 border border-[rgba(200,161,90,0.15)] text-[var(--color-secondary)] no-underline transition-all duration-300 hover:border-[var(--color-accent)] hover:text-[var(--color-accent)]"
               >
                 {s.title}
               </a>
@@ -293,8 +291,8 @@ export default function Imprescindibles() {
                   <div className={`md:col-span-5 ${!isEven ? 'md:order-2' : ''}`}>
                     <div className={`flex items-start gap-4 ${!isEven ? 'md:flex-row-reverse' : ''}`}>
                       <div
-                        className="shrink-0 w-16 h-16 flex items-center justify-center border border-[rgba(212,168,83,0.2)] relative"
-                        style={{ background: 'rgba(212,168,83,0.04)' }}
+                        className="shrink-0 w-16 h-16 flex items-center justify-center border border-[rgba(200,161,90,0.2)] relative"
+                        style={{ background: 'rgba(200,161,90,0.04)' }}
                       >
                         <Icon />
                         {/* Number badge */}
@@ -310,7 +308,7 @@ export default function Imprescindibles() {
                         </span>
                       </div>
                       <div>
-                        <h2 className="text-xl md:text-2xl font-bold uppercase text-[var(--color-text)] leading-tight">
+                        <h2 className="text-xl md:text-2xl font-bold text-[var(--color-text)] leading-tight">
                           {section.title}
                         </h2>
                         <p className="text-xs tracking-[0.1em] uppercase text-[var(--color-accent)] mt-1">
@@ -325,7 +323,7 @@ export default function Imprescindibles() {
                 {section.customContent ? (
                   section.customContent
                 ) : (
-                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px" style={{ background: 'rgba(212,168,83,0.08)' }}>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px" style={{ background: 'rgba(200,161,90,0.08)' }}>
                     {section.items.map((item, i) => (
                       <div
                         key={i}
@@ -354,7 +352,7 @@ export default function Imprescindibles() {
                     className="mt-4 px-5 py-3 flex items-center gap-3"
                     style={{
                       borderLeft: '2px solid var(--color-accent)',
-                      background: 'rgba(212,168,83,0.04)',
+                      background: 'rgba(200,161,90,0.04)',
                     }}
                   >
                     <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="var(--color-accent)" strokeWidth="1.5" strokeLinecap="round" className="shrink-0">
@@ -376,16 +374,16 @@ export default function Imprescindibles() {
       {/* Bottom CTA */}
       <div className="max-w-[1200px] mx-auto px-5 md:px-10 pb-20">
         <div
-          className="border border-[rgba(212,168,83,0.3)] p-10 md:p-16 text-center relative overflow-hidden"
-          style={{ background: 'rgba(212,168,83,0.04)' }}
+          className="border border-[rgba(200,161,90,0.3)] p-10 md:p-16 text-center relative overflow-hidden"
+          style={{ background: 'rgba(200,161,90,0.04)' }}
         >
           <div
             className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] pointer-events-none"
             style={{ background: 'var(--color-accent)', filter: 'blur(100px)', opacity: 0.08 }}
           />
 
-          <h3 className="text-xl md:text-2xl uppercase font-bold text-[var(--color-text)] mb-4 relative z-10">
-            &iquest;TIENES DUDAS?
+          <h3 className="text-xl md:text-2xl font-bold text-[var(--color-text)] mb-4 relative z-10">
+            &iquest;Tienes dudas?
           </h3>
           <p className="text-sm md:text-base text-[var(--color-secondary)] mb-8 max-w-[440px] mx-auto relative z-10">
             Si algo no est&aacute; en esta gu&iacute;a, cont&aacute;ctanos directamente. Estamos para ayudarte.

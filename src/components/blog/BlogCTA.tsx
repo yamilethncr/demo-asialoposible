@@ -3,8 +3,8 @@ import ChatwootButton from '../ChatwootButton'
 export default function BlogCTA() {
   return (
     <section
-      className="border border-[rgba(212,168,83,0.3)] p-8 md:p-12 text-center relative overflow-hidden mt-16"
-      style={{ background: 'rgba(212,168,83,0.02)' }}
+      className="border border-[rgba(200,161,90,0.3)] p-8 md:p-12 text-center relative overflow-hidden mt-16"
+      style={{ background: 'rgba(200,161,90,0.02)' }}
     >
       {/* Glow */}
       <div
@@ -19,8 +19,8 @@ export default function BlogCTA() {
       <span
         className="inline-block text-[0.65rem] tracking-[0.2em] uppercase px-3 py-1.5 font-bold mb-4 relative z-10"
         style={{
-          background: 'rgba(212,168,83,0.15)',
-          border: '1px solid rgba(212,168,83,0.4)',
+          background: 'rgba(200,161,90,0.15)',
+          border: '1px solid rgba(200,161,90,0.4)',
           color: 'var(--color-accent)',
         }}
       >

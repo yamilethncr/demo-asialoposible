@@ -10,12 +10,12 @@ export default function TerminosViaje() {
     <main className="min-h-screen py-20 px-5 md:px-10">
       <div className="max-w-[800px] mx-auto">
         <Link href="/" className="text-xs tracking-[0.2em] uppercase text-[var(--color-accent)] no-underline hover:underline mb-10 block">&larr; Volver al inicio</Link>
-        <h1 className="text-2xl md:text-4xl font-bold mb-8 uppercase">Términos y Condiciones del Viaje</h1>
+        <h1 className="text-2xl md:text-4xl font-bold mb-8">Términos y Condiciones del Viaje</h1>
         <p className="text-xs text-[var(--color-secondary)] mb-10">Última actualización: Mayo 2026 · Versión 1.0</p>
 
         <div className="space-y-8 text-[0.9rem] leading-relaxed text-[var(--color-secondary)]">
 
-          <section className="p-5" style={{ border: '1px solid rgba(212,168,83,0.3)', background: 'rgba(212,168,83,0.05)' }}>
+          <section className="p-5" style={{ border: '1px solid rgba(200,161,90,0.3)', background: 'rgba(200,161,90,0.05)' }}>
             <p className="mb-2"><strong className="text-[var(--color-text)]">Documento vinculante de firma electrónica.</strong> Al inscribirte recibirás estos Términos por DocuSeal, junto con la Política de Cancelación y el Waiver de Exoneración de Responsabilidad. <strong className="text-[var(--color-text)]">Pagar el depósito implica aceptación contractual vinculante</strong> y supone que has leído y comprendido los tres documentos.</p>
           </section>
 
@@ -52,16 +52,16 @@ export default function TerminosViaje() {
           <section>
             <h2 className="text-lg font-bold text-[var(--color-text)] mb-3">3. Política de Cancelación (Resumen)</h2>
             <p className="mb-3">La <Link href="/politica-de-cancelacion" className="text-[var(--color-accent)] underline hover:no-underline">Política de Cancelación completa</Link> se incorpora íntegramente a este contrato. Resumen:</p>
-            <div className="overflow-x-auto mb-4" style={{ border: '1px solid rgba(212,168,83,0.2)' }}>
+            <div className="overflow-x-auto mb-4" style={{ border: '1px solid rgba(200,161,90,0.2)' }}>
               <table className="w-full text-[0.85rem]">
                 <thead>
-                  <tr className="border-b" style={{ borderColor: 'rgba(212,168,83,0.2)' }}>
+                  <tr className="border-b" style={{ borderColor: 'rgba(200,161,90,0.2)' }}>
                     <th className="text-left p-3 text-[var(--color-text)] font-bold">Días antes de la salida</th>
                     <th className="text-left p-3 text-[var(--color-text)] font-bold">Reembolso sobre pagos adicionales</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr className="border-b" style={{ borderColor: 'rgba(212,168,83,0.1)' }}>
+                  <tr className="border-b" style={{ borderColor: 'rgba(200,161,90,0.1)' }}>
                     <td className="p-3">Entre 30 y 60 días</td>
                     <td className="p-3"><strong className="text-[var(--color-text)]">40%</strong></td>
                   </tr>

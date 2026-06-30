@@ -38,7 +38,7 @@ export default function Breadcrumbs({ items }: BreadcrumbsProps) {
           {items.map((item, index) => (
             <li key={item.href} className="flex items-center gap-2">
               {index > 0 && (
-                <span className="text-[rgba(212,168,83,0.3)]">/</span>
+                <span className="text-[rgba(200,161,90,0.3)]">/</span>
               )}
               {index === items.length - 1 ? (
                 <span className="text-[var(--color-text)]">{item.name}</span>

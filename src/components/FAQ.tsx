@@ -86,7 +86,7 @@ export default function FAQ({ variant = 'call' }: { variant?: 'call' | 'form' } 
                 <div
                   key={i}
                   className="cursor-pointer"
-                  style={{ borderBottom: '1px solid rgba(212,168,83,0.1)' }}
+                  style={{ borderBottom: '1px solid rgba(200,161,90,0.1)' }}
                   onClick={() => setOpenIndex(isOpen ? null : i)}
                 >
                   <div className="flex justify-between items-center py-5 md:py-6">

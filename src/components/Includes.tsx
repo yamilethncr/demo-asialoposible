@@ -40,9 +40,9 @@ export default function Includes() {
               {items.map((item, i) => (
                 <li
                   key={i}
-                  className={`flex justify-between items-center py-4 md:py-5 px-4 md:px-5 transition-colors duration-300 hover:bg-[rgba(212,168,83,0.05)] ${item.highlight ? 'bg-[rgba(212,168,83,0.08)]' : ''} animate-hover:x-2 animate-duration-200 animate-ease-out`}
+                  className={`flex justify-between items-center py-4 md:py-5 px-4 md:px-5 transition-colors duration-300 hover:bg-[rgba(200,161,90,0.05)] ${item.highlight ? 'bg-[rgba(200,161,90,0.08)]' : ''} animate-hover:x-2 animate-duration-200 animate-ease-out`}
                   style={{
-                    borderBottom: '1px solid rgba(212,168,83,0.15)',
+                    borderBottom: '1px solid rgba(200,161,90,0.15)',
                     ...(item.highlight ? { borderLeft: '2px solid var(--color-accent)' } : {}),
                   }}
                 >

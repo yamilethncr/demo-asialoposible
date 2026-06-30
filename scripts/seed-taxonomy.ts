@@ -16,6 +16,9 @@ const categories = [
   { name: 'Destinos del Sudeste Asiático', slug: 'destinos-sudeste-asiatico', description: 'Explora los destinos más fascinantes del Sudeste Asiático', metaTitle: 'Destinos del Sudeste Asiático en Español', metaDescription: 'Los mejores destinos del Sudeste Asiático explicados en español por quien vive en Asia.' },
   { name: 'Consejos de Viaje', slug: 'consejos-de-viaje', description: 'Tips prácticos para viajar a Asia sin complicaciones', metaTitle: 'Consejos para Viajar a Asia en Español', metaDescription: 'Tips prácticos de viaje, logística, presupuesto y preparación para tu viaje a Asia.' },
   { name: 'Gastronomía', slug: 'gastronomia', description: 'La comida del Sudeste Asiático, plato a plato', metaTitle: 'Gastronomía Asiática en Español', metaDescription: 'Descubre la comida de Vietnam y Camboya: platos típicos, mercados y clases de cocina.' },
+  { name: 'Japón', slug: 'japon', description: 'Guías de Japón: templos, ciudades y cultura', metaTitle: 'Japón — Guías de Viaje en Español', metaDescription: 'Kioto, Tokio y más. Guías de Japón en español para viajeros hispanohablantes.' },
+  { name: 'Corea del Sur', slug: 'corea-del-sur', description: 'Guías de Corea del Sur: Seúl, Jeju y cultura', metaTitle: 'Corea del Sur — Guías de Viaje en Español', metaDescription: 'Seúl, la isla de Jeju y más. Guías de Corea del Sur en español.' },
+  { name: 'China', slug: 'china', description: 'Guías de China: Pekín, la Gran Muralla y más', metaTitle: 'China — Guías de Viaje en Español', metaDescription: 'La Gran Muralla, Pekín y más. Guías de China en español para viajeros.' },
 ]
 
 const tags = [

@@ -10,7 +10,7 @@ export default function Privacidad() {
     <main className="min-h-screen py-20 px-5 md:px-10">
       <div className="max-w-[800px] mx-auto">
         <Link href="/" className="text-xs tracking-[0.2em] uppercase text-[var(--color-accent)] no-underline hover:underline mb-10 block">&larr; Volver al inicio</Link>
-        <h1 className="text-2xl md:text-4xl font-bold mb-8 uppercase">Política de Privacidad</h1>
+        <h1 className="text-2xl md:text-4xl font-bold mb-8">Política de Privacidad</h1>
         <p className="text-xs text-[var(--color-secondary)] mb-10">Última actualización: Mayo 2026 · Versión 1.0</p>
 
         <div className="space-y-8 text-[0.9rem] leading-relaxed text-[var(--color-secondary)]">

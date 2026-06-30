@@ -18,7 +18,7 @@ export default function CategoryFilter({ categories, activeSlug }: CategoryFilte
         className={`inline-block px-4 py-2 text-[0.7rem] uppercase tracking-[0.15em] font-bold no-underline border transition-all duration-300 ${
           !activeSlug
             ? 'border-[var(--color-accent)] bg-[var(--color-accent)] text-[var(--color-bg)]'
-            : 'border-[rgba(212,168,83,0.2)] text-[var(--color-secondary)] hover:border-[var(--color-accent)] hover:text-[var(--color-accent)]'
+            : 'border-[rgba(200,161,90,0.2)] text-[var(--color-secondary)] hover:border-[var(--color-accent)] hover:text-[var(--color-accent)]'
         }`}
       >
         Todos
@@ -31,7 +31,7 @@ export default function CategoryFilter({ categories, activeSlug }: CategoryFilte
           className={`inline-block px-4 py-2 text-[0.7rem] uppercase tracking-[0.15em] font-bold no-underline border transition-all duration-300 ${
             activeSlug === cat.slug
               ? 'border-[var(--color-accent)] bg-[var(--color-accent)] text-[var(--color-bg)]'
-              : 'border-[rgba(212,168,83,0.2)] text-[var(--color-secondary)] hover:border-[var(--color-accent)] hover:text-[var(--color-accent)]'
+              : 'border-[rgba(200,161,90,0.2)] text-[var(--color-secondary)] hover:border-[var(--color-accent)] hover:text-[var(--color-accent)]'
           }`}
         >
           {cat.name}

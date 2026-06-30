@@ -1,114 +1,98 @@
 'use client'
 
-import { useState, useEffect } from 'react'
-import CalBooking from './CalBooking'
+import { useState, useEffect, useRef } from 'react'
 
-const links = [
-  { href: '/#recorrido', label: 'Itinerario' },
-  { href: '/#katherine', label: 'Katherine' },
-  { href: '/#incluye', label: 'Detalles' },
-  { href: '/#precio', label: 'Precio' },
-  { href: '/viajes-privados', label: 'Viaje Privado' },
-  { href: '/imprescindibles', label: 'Imprescindibles' },
-  { href: '/blog', label: 'Blog' },
+const LEGAL_LINKS = [
+  { href: '/terminos', label: 'Términos de la web' },
+  { href: '/terminos-viaje', label: 'Términos de los viajes' },
+  { href: '/privacidad', label: 'Política de privacidad' },
+  { href: '/aviso-legal', label: 'Aviso Legal' },
+  { href: '/politica-de-cancelacion', label: 'Política de cancelación' },
 ]
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
+  const [ddOpen, setDdOpen] = useState(false)
+  const ddRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 50)
-    window.addEventListener('scroll', onScroll)
+    const onScroll = () => setScrolled(window.scrollY > 40)
+    onScroll()
+    window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
+  useEffect(() => {
+    const onDocClick = (e: MouseEvent) => {
+      if (ddRef.current && !ddRef.current.contains(e.target as Node)) setDdOpen(false)
+    }
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        setDdOpen(false)
+        setMenuOpen(false)
+      }
+    }
+    document.addEventListener('click', onDocClick)
+    document.addEventListener('keydown', onKey)
+    return () => {
+      document.removeEventListener('click', onDocClick)
+      document.removeEventListener('keydown', onKey)
+    }
+  }, [])
+
+  const closeMenu = () => setMenuOpen(false)
+
   return (
-    <nav
-      className="fixed w-full z-[100] transition-all duration-500"
-      style={{
-        top: 'var(--banner-offset, 0px)',
-        padding: scrolled ? '20px 0' : '40px 0',
-        background: scrolled
-          ? 'rgba(10,15,30,0.95)'
-          : 'linear-gradient(to bottom, rgba(10,15,30,0.9), transparent)',
-        backdropFilter: scrolled ? 'blur(12px)' : 'none',
-      }}
-    >
-      <div className="max-w-[1200px] mx-auto px-5 md:px-10 flex justify-between items-center">
-        <a href="/" className="font-black tracking-[0.1em] uppercase text-[var(--color-accent)]">
-          Asia Lo Posible{' '}
-          <sup className="text-[var(--color-secondary)]">26</sup>
-        </a>
+    <header className={`nav${scrolled ? ' scrolled' : ''}`}>
+      <a href="/" className="nav__brand" aria-label="Asia Lo Posible — inicio">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src="/img/logo.png" alt="Asia Lo Posible" className="nav__logo" />
+      </a>
 
-        {/* Desktop links */}
-        <div className="hidden md:flex items-center gap-8">
-          {links.map((l) => (
-            <a
-              key={l.href}
-              href={l.href}
-              className="text-[var(--color-text)] no-underline text-xs uppercase tracking-[0.1em] transition-colors duration-300 hover:text-[var(--color-accent)] leading-none"
-            >
-              {l.label}
-            </a>
-          ))}
-          <CalBooking
-            size="sm"
-            variant="primary"
-            label="Agenda llamada"
-            className="ml-2 leading-none"
-          />
-        </div>
+      <nav className={`nav__links${menuOpen ? ' open' : ''}`} aria-label="Principal">
+        <a href="/sobre-nosotros" onClick={closeMenu}>Sobre nosotros</a>
+        <a href="/#tours" onClick={closeMenu}>Tours</a>
+        <a href="/#viajes" onClick={closeMenu}>Estilos de viaje</a>
+        <a href="/blog" onClick={closeMenu}>Blog</a>
+        <a href="/#contacto" onClick={closeMenu}>Contacto</a>
 
-        {/* Mobile hamburger */}
-        <button
-          className="md:hidden flex flex-col gap-1.5 bg-transparent border-none cursor-pointer"
-          onClick={() => setMenuOpen(!menuOpen)}
-          aria-label="Menu"
-        >
-          <span
-            className="block w-6 h-[2px] bg-[var(--color-accent)] transition-all duration-300"
-            style={{
-              transform: menuOpen ? 'rotate(45deg) translateY(5px)' : 'none',
+        <div className={`nav__dd${ddOpen ? ' open' : ''}`} ref={ddRef}>
+          <button
+            className="nav__dd-toggle"
+            type="button"
+            aria-expanded={ddOpen}
+            aria-haspopup="true"
+            onClick={(e) => {
+              e.stopPropagation()
+              setDdOpen((v) => !v)
             }}
-          />
-          <span
-            className="block w-6 h-[2px] bg-[var(--color-accent)] transition-all duration-300"
-            style={{ opacity: menuOpen ? 0 : 1 }}
-          />
-          <span
-            className="block w-6 h-[2px] bg-[var(--color-accent)] transition-all duration-300"
-            style={{
-              transform: menuOpen ? 'rotate(-45deg) translateY(-5px)' : 'none',
-            }}
-          />
-        </button>
-      </div>
-
-      {/* Mobile menu */}
-      {menuOpen && (
-        <div className="md:hidden absolute top-full left-0 w-full bg-[rgba(10,15,30,0.98)] backdrop-blur-lg border-t border-[rgba(212,168,83,0.1)]">
-          <div className="flex flex-col items-center py-8 gap-6">
-            {links.map((l) => (
-              <a
-                key={l.href}
-                href={l.href}
-                onClick={() => setMenuOpen(false)}
-                className="text-[var(--color-text)] no-underline text-sm uppercase tracking-[0.15em] transition-colors duration-300 hover:text-[var(--color-accent)]"
-              >
+          >
+            Términos y condiciones
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M6 9l6 6 6-6" />
+            </svg>
+          </button>
+          <div className="nav__dd-menu" role="menu">
+            {LEGAL_LINKS.map((l) => (
+              <a key={l.href} href={l.href} role="menuitem" onClick={closeMenu}>
                 {l.label}
               </a>
             ))}
-            <div onClick={() => setMenuOpen(false)}>
-              <CalBooking
-                size="md"
-                variant="primary"
-                label="Agenda llamada conmigo"
-              />
-            </div>
           </div>
         </div>
-      )}
-    </nav>
+
+        <a href="/#contacto" className="btn" onClick={closeMenu}>Reservar</a>
+      </nav>
+
+      <button
+        className="nav__toggle"
+        aria-label="Abrir menú"
+        aria-expanded={menuOpen}
+        onClick={() => setMenuOpen((v) => !v)}
+      >
+        <span /><span /><span />
+      </button>
+    </header>
   )
 }

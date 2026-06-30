@@ -10,7 +10,7 @@ export default function PoliticaDeCancelacion() {
     <main className="min-h-screen py-20 px-5 md:px-10">
       <div className="max-w-[800px] mx-auto">
         <Link href="/" className="text-xs tracking-[0.2em] uppercase text-[var(--color-accent)] no-underline hover:underline mb-10 block">&larr; Volver al inicio</Link>
-        <h1 className="text-2xl md:text-4xl font-bold mb-8 uppercase">Política de Cancelación y Reembolsos</h1>
+        <h1 className="text-2xl md:text-4xl font-bold mb-8">Política de Cancelación y Reembolsos</h1>
         <p className="text-xs text-[var(--color-secondary)] mb-10">Última actualización: Mayo 2026 · Versión 1.0</p>
 
         <div className="space-y-8 text-[0.9rem] leading-relaxed text-[var(--color-secondary)]">
@@ -40,16 +40,16 @@ export default function PoliticaDeCancelacion() {
           <section>
             <h2 className="text-lg font-bold text-[var(--color-text)] mb-3">4. Escala de Reembolso (sobre pagos adicionales al depósito)</h2>
             <p className="mb-4">Si tras pagar el depósito el Cliente realizó pagos adicionales (saldo o cuotas), aplica esta escala sobre dichos pagos adicionales. El depósito (30%) nunca es reembolsable.</p>
-            <div className="overflow-x-auto mb-4" style={{ border: '1px solid rgba(212,168,83,0.2)' }}>
+            <div className="overflow-x-auto mb-4" style={{ border: '1px solid rgba(200,161,90,0.2)' }}>
               <table className="w-full text-[0.85rem]">
                 <thead>
-                  <tr className="border-b" style={{ borderColor: 'rgba(212,168,83,0.2)' }}>
+                  <tr className="border-b" style={{ borderColor: 'rgba(200,161,90,0.2)' }}>
                     <th className="text-left p-3 text-[var(--color-text)] font-bold">Días antes de la salida</th>
                     <th className="text-left p-3 text-[var(--color-text)] font-bold">Reembolso sobre pagos adicionales</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr className="border-b" style={{ borderColor: 'rgba(212,168,83,0.1)' }}>
+                  <tr className="border-b" style={{ borderColor: 'rgba(200,161,90,0.1)' }}>
                     <td className="p-3">Entre 30 y 60 días</td>
                     <td className="p-3"><strong className="text-[var(--color-text)]">40%</strong> del monto pagado por encima del depósito</td>
                   </tr>

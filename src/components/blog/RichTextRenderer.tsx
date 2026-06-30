@@ -36,7 +36,7 @@ function renderFormatted(text: string, format: number): React.ReactNode {
   if (format & 2) node = <em>{node}</em>
   if (format & 4) node = <s>{node}</s>
   if (format & 8) node = <u>{node}</u>
-  if (format & 16) node = <code className="bg-[rgba(212,168,83,0.1)] text-[var(--color-accent)] px-1.5 py-0.5 text-[0.9em] rounded-sm" style={{ fontFamily: 'var(--font-monospace)' }}>{node}</code>
+  if (format & 16) node = <code className="bg-[rgba(200,161,90,0.1)] text-[var(--color-accent)] px-1.5 py-0.5 text-[0.9em] rounded-sm" style={{ fontFamily: 'var(--font-monospace)' }}>{node}</code>
   return node
 }
 
@@ -56,7 +56,7 @@ function renderNode(node: LexicalNode, index: number): React.ReactNode {
           href={node.fields?.url || node.url || '#'}
           target={node.fields?.newTab ? '_blank' : undefined}
           rel={node.fields?.newTab ? 'noopener noreferrer' : undefined}
-          className="text-[var(--color-accent)] underline decoration-[rgba(212,168,83,0.3)] underline-offset-4 transition-colors duration-300 hover:decoration-[var(--color-accent)]"
+          className="text-[var(--color-accent)] underline decoration-[rgba(200,161,90,0.3)] underline-offset-4 transition-colors duration-300 hover:decoration-[var(--color-accent)]"
         >
           {children}
         </a>
@@ -132,7 +132,7 @@ function renderNode(node: LexicalNode, index: number): React.ReactNode {
       if (!src) return null
       return (
         <figure key={index} className="my-10">
-          <div className="relative aspect-video overflow-hidden border border-[rgba(212,168,83,0.1)]">
+          <div className="relative aspect-video overflow-hidden border border-[rgba(200,161,90,0.1)]">
             <Image
               src={src}
               alt={alt}
@@ -155,7 +155,7 @@ function renderNode(node: LexicalNode, index: number): React.ReactNode {
         <hr
           key={index}
           className="my-12 border-none h-px"
-          style={{ background: 'rgba(212,168,83,0.2)' }}
+          style={{ background: 'rgba(200,161,90,0.2)' }}
         />
       )
 

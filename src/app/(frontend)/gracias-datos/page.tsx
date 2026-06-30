@@ -12,8 +12,8 @@ export default function GraciasDatos() {
       <GraciasDatosTracker />
       <section className="min-h-screen flex items-center justify-center px-5 py-20">
         <div
-          className="max-w-[600px] text-center border border-[rgba(212,168,83,0.3)] p-10 md:p-12 relative overflow-hidden"
-          style={{ background: 'rgba(212,168,83,0.04)' }}
+          className="max-w-[600px] text-center border border-[rgba(200,161,90,0.3)] p-10 md:p-12 relative overflow-hidden"
+          style={{ background: 'rgba(200,161,90,0.04)' }}
         >
           <div
             className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] pointer-events-none"
@@ -21,7 +21,7 @@ export default function GraciasDatos() {
           />
           <span
             className="inline-block text-xs tracking-[0.2em] uppercase px-4 py-2 font-bold mb-6 relative z-10"
-            style={{ background: 'rgba(212,168,83,0.15)', border: '1px solid rgba(212,168,83,0.4)', color: 'var(--color-accent)' }}
+            style={{ background: 'rgba(200,161,90,0.15)', border: '1px solid rgba(200,161,90,0.4)', color: 'var(--color-accent)' }}
           >
             &#10003; DATOS RECIBIDOS
           </span>
@@ -37,7 +37,7 @@ export default function GraciasDatos() {
               href="https://wa.me/84934949756"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-[var(--color-accent)] underline decoration-[rgba(212,168,83,0.4)] underline-offset-4 hover:decoration-[var(--color-accent)] transition-colors"
+              className="text-[var(--color-accent)] underline decoration-[rgba(200,161,90,0.4)] underline-offset-4 hover:decoration-[var(--color-accent)] transition-colors"
             >
               escr&iacute;benos por WhatsApp
             </a>
@@ -45,7 +45,7 @@ export default function GraciasDatos() {
           </p>
           <a
             href="/"
-            className="inline-block border border-[var(--color-accent)] bg-transparent text-[var(--color-accent)] px-8 py-4 text-sm uppercase tracking-[0.1em] font-bold no-underline transition-all duration-300 hover:bg-[var(--color-accent)] hover:text-[var(--color-bg)] hover:shadow-[0_0_20px_rgba(212,168,83,0.4)] relative z-10"
+            className="inline-block border border-[var(--color-accent)] bg-transparent text-[var(--color-accent)] px-8 py-4 text-sm uppercase tracking-[0.1em] font-bold no-underline transition-all duration-300 hover:bg-[var(--color-accent)] hover:text-[var(--color-bg)] hover:shadow-[0_0_20px_rgba(200,161,90,0.4)] relative z-10"
           >
             VOLVER AL INICIO
           </a>

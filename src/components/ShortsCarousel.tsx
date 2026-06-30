@@ -19,7 +19,7 @@ function PlayButton() {
         width: 52,
         height: 52,
         border: '2px solid var(--color-accent)',
-        background: 'rgba(10,15,30,0.6)',
+        background: 'rgba(30,30,30,0.6)',
         backdropFilter: 'blur(4px)',
         animation: 'pulse-glow 2s ease-in-out infinite',
       }}
@@ -50,7 +50,7 @@ function ShortCard({
         className="relative overflow-hidden group"
         style={{
           aspectRatio: '9/16',
-          border: '1px solid rgba(212,168,83,0.2)',
+          border: '1px solid rgba(200,161,90,0.2)',
         }}
       >
         {isPlaying ? (
@@ -80,7 +80,7 @@ function ShortCard({
             {/* Bottom gradient + label */}
             <div
               className="absolute bottom-0 left-0 right-0 p-4 pt-12"
-              style={{ background: 'linear-gradient(to top, rgba(10,15,30,0.9), transparent)' }}
+              style={{ background: 'linear-gradient(to top, rgba(30,30,30,0.9), transparent)' }}
             >
               <span className="text-[10px] tracking-[0.15em] uppercase font-bold text-[var(--color-accent)]">
                 {label}
@@ -141,14 +141,14 @@ export default function ShortsCarousel() {
           <div className={`hidden gap-3 ${canScroll ? 'md:flex' : ''}`}>
             <button
               onClick={() => scroll('left')}
-              className="w-10 h-10 flex items-center justify-center border border-[rgba(212,168,83,0.3)] text-[var(--color-accent)] transition-all duration-300 hover:bg-[var(--color-accent)] hover:text-[var(--color-bg)] cursor-pointer bg-transparent"
+              className="w-10 h-10 flex items-center justify-center border border-[rgba(200,161,90,0.3)] text-[var(--color-accent)] transition-all duration-300 hover:bg-[var(--color-accent)] hover:text-[var(--color-bg)] cursor-pointer bg-transparent"
               aria-label="Anterior"
             >
               &#8592;
             </button>
             <button
               onClick={() => scroll('right')}
-              className="w-10 h-10 flex items-center justify-center border border-[rgba(212,168,83,0.3)] text-[var(--color-accent)] transition-all duration-300 hover:bg-[var(--color-accent)] hover:text-[var(--color-bg)] cursor-pointer bg-transparent"
+              className="w-10 h-10 flex items-center justify-center border border-[rgba(200,161,90,0.3)] text-[var(--color-accent)] transition-all duration-300 hover:bg-[var(--color-accent)] hover:text-[var(--color-bg)] cursor-pointer bg-transparent"
               aria-label="Siguiente"
             >
               &#8594;

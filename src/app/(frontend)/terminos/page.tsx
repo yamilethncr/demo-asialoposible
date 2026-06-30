@@ -10,12 +10,12 @@ export default function Terminos() {
     <main className="min-h-screen py-20 px-5 md:px-10">
       <div className="max-w-[800px] mx-auto">
         <Link href="/" className="text-xs tracking-[0.2em] uppercase text-[var(--color-accent)] no-underline hover:underline mb-10 block">&larr; Volver al inicio</Link>
-        <h1 className="text-2xl md:text-4xl font-bold mb-8 uppercase">Términos de la Web</h1>
+        <h1 className="text-2xl md:text-4xl font-bold mb-8">Términos de la Web</h1>
         <p className="text-xs text-[var(--color-secondary)] mb-10">Última actualización: Mayo 2026</p>
 
         <div className="space-y-8 text-[0.9rem] leading-relaxed text-[var(--color-secondary)]">
 
-          <section className="p-5" style={{ border: '1px solid rgba(212,168,83,0.3)', background: 'rgba(212,168,83,0.05)' }}>
+          <section className="p-5" style={{ border: '1px solid rgba(200,161,90,0.3)', background: 'rgba(200,161,90,0.05)' }}>
             <p><strong className="text-[var(--color-text)]">Importante.</strong> Estos son los términos de uso del sitio web. <strong className="text-[var(--color-text)]">Comprar un viaje requiere aceptar separadamente</strong> los <Link href="/terminos-viaje" className="text-[var(--color-accent)] underline hover:no-underline">Términos y Condiciones del Viaje</Link>, la <Link href="/politica-de-cancelacion" className="text-[var(--color-accent)] underline hover:no-underline">Política de Cancelación</Link> y el Waiver de Exoneración de Responsabilidad, que se firman vía DocuSeal al pagar el depósito.</p>
           </section>
 

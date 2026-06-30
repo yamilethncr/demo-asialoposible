@@ -60,119 +60,142 @@ export default function ContactForm() {
     }
   }
 
-  const inputClass =
-    'w-full px-4 py-3 text-sm bg-transparent border border-[rgba(212,168,83,0.2)] text-[var(--color-text)] placeholder:text-[var(--color-secondary)] placeholder:opacity-50 outline-none transition-colors focus:border-[var(--color-accent)]'
-
-  const selectClass =
-    'w-full px-4 py-3 text-sm bg-transparent border border-[rgba(212,168,83,0.2)] text-[var(--color-text)] outline-none transition-colors focus:border-[var(--color-accent)] appearance-none cursor-pointer'
-
   return (
-    <form onSubmit={handleSubmit} className="flex flex-col gap-3">
-      <p className="text-xs tracking-[0.2em] uppercase text-[var(--color-accent)] mb-1">
-        COMPLETA TUS DATOS
-      </p>
-
-      <input type="text" name="nombre" autoComplete="name" placeholder="Nombre" required value={nombre} onChange={(e) => setNombre(e.target.value)} className={inputClass} />
-
-      <div
-        className="phone-input-dark w-full"
-        style={{
-          '--react-international-phone-background-color': 'transparent',
-          '--react-international-phone-text-color': 'var(--color-text)',
-          '--react-international-phone-border-color': 'rgba(212,168,83,0.2)',
-          '--react-international-phone-height': '44px',
-          '--react-international-phone-font-size': '14px',
-          '--react-international-phone-border-radius': '0px',
-          '--react-international-phone-country-selector-background-color-hover': 'rgba(212,168,83,0.1)',
-          '--react-international-phone-dropdown-item-background-color-hover': 'rgba(212,168,83,0.1)',
-          '--react-international-phone-selected-dropdown-item-background-color': 'rgba(212,168,83,0.15)',
-          '--react-international-phone-dropdown-background-color': '#0A0F1E',
-          '--react-international-phone-dropdown-item-text-color': 'var(--color-text)',
-          '--react-international-phone-dropdown-item-dial-code-color': 'var(--color-secondary)',
-        } as React.CSSProperties}
-      >
-        <PhoneInput
-          defaultCountry="ve"
-          value={telefono}
-          onChange={(phone) => {
-            setTelefono(phone)
-            if (phoneError) setPhoneError(false)
-          }}
-          forceDialCode
-          placeholder="WhatsApp (obligatorio)"
-          inputProps={{
-            name: 'telefono',
-            autoComplete: 'tel',
-            required: true,
-            'aria-invalid': phoneError,
-          }}
-          countrySelectorStyleProps={{
-            buttonClassName: 'phone-country-btn',
-          }}
-          inputClassName="phone-number-input"
-          style={{ width: '100%' }}
+    <form className="contact-card reveal" onSubmit={handleSubmit}>
+      <div className="field">
+        <label htmlFor="cf-nombre">Nombre</label>
+        <input
+          id="cf-nombre"
+          type="text"
+          name="nombre"
+          autoComplete="name"
+          placeholder="Tu nombre"
+          required
+          value={nombre}
+          onChange={(e) => setNombre(e.target.value)}
         />
       </div>
-      {phoneError && (
-        <p className="text-xs -mt-1" style={{ color: '#B85C5C' }}>
-          Ingresa tu n&uacute;mero de WhatsApp completo para que Katherine pueda contactarte.
-        </p>
-      )}
 
-      <input type="email" name="email" autoComplete="email" placeholder="Correo electrónico" required value={email} onChange={(e) => setEmail(e.target.value)} className={inputClass} />
+      <div className="field">
+        <label htmlFor="cf-telefono">WhatsApp</label>
+        <div
+          className="phone-input-dark"
+          style={
+            {
+              '--react-international-phone-background-color': 'transparent',
+              '--react-international-phone-text-color': 'var(--color-text)',
+              '--react-international-phone-border-color': 'rgba(255,255,255,0.12)',
+              '--react-international-phone-height': '46px',
+              '--react-international-phone-font-size': '15px',
+              '--react-international-phone-border-radius': '10px',
+              '--react-international-phone-country-selector-background-color-hover': 'rgba(200,161,90,0.1)',
+              '--react-international-phone-dropdown-item-background-color-hover': 'rgba(200,161,90,0.1)',
+              '--react-international-phone-selected-dropdown-item-background-color': 'rgba(200,161,90,0.15)',
+              '--react-international-phone-dropdown-background-color': '#292929',
+              '--react-international-phone-dropdown-item-text-color': 'var(--color-text)',
+              '--react-international-phone-dropdown-item-dial-code-color': 'var(--color-secondary)',
+            } as React.CSSProperties
+          }
+        >
+          <PhoneInput
+            defaultCountry="ve"
+            value={telefono}
+            onChange={(phone) => {
+              setTelefono(phone)
+              if (phoneError) setPhoneError(false)
+            }}
+            forceDialCode
+            placeholder="WhatsApp (obligatorio)"
+            inputProps={{
+              id: 'cf-telefono',
+              name: 'telefono',
+              autoComplete: 'tel',
+              required: true,
+              'aria-invalid': phoneError,
+            }}
+            style={{ width: '100%' }}
+          />
+        </div>
+        {phoneError && (
+          <p className="text-xs" style={{ color: '#E07A5F', marginTop: '.4rem' }}>
+            Ingresa tu número de WhatsApp completo para que Katherine pueda contactarte.
+          </p>
+        )}
+      </div>
 
-      <div className="grid grid-cols-2 gap-3">
+      <div className="field">
+        <label htmlFor="cf-email">Correo electrónico</label>
         <input
-          type="number"
-          name="personas"
-          placeholder="N.º de personas"
-          min="1"
-          max="10"
+          id="cf-email"
+          type="email"
+          name="email"
+          autoComplete="email"
+          placeholder="tu@correo.com"
           required
-          value={personas}
-          onChange={(e) => setPersonas(e.target.value)}
-          className={inputClass}
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
         />
-        <div className="relative">
+      </div>
+
+      <div className="field" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
+        <div>
+          <label htmlFor="cf-personas">N.º de personas</label>
+          <input
+            id="cf-personas"
+            type="number"
+            name="personas"
+            placeholder="¿Cuántos viajan?"
+            min="1"
+            max="10"
+            required
+            value={personas}
+            onChange={(e) => setPersonas(e.target.value)}
+          />
+        </div>
+        <div>
+          <label htmlFor="cf-fecha">¿Qué viaje te interesa?</label>
           <select
+            id="cf-fecha"
             name="fecha"
             value={fecha}
             onChange={(e) => setFecha(e.target.value)}
-            className={selectClass}
             required
-            style={{ color: fecha ? 'var(--color-text)' : 'var(--color-secondary)', opacity: fecha ? 1 : 0.5 }}
           >
-            <option value="" disabled>Fecha de inter&eacute;s</option>
-            <option value="agosto2026">Agosto 2026</option>
-            <option value="abril2027">Abril 2027</option>
+            <option value="" disabled>
+              Elige una opción
+            </option>
+            <option value="agosto2026">Vietnam &amp; Camboya — Agosto 2026</option>
+            <option value="abril2027">Vietnam &amp; Camboya — Abril 2027</option>
             <option value="ambas">Ambas fechas</option>
-            <option value="privado">Viaje privado (a tu medida)</option>
-            <option value="otro">Otro</option>
+            <option value="privado">Viaje privado / a medida</option>
+            <option value="otro">Otro destino de Asia</option>
           </select>
-          <span className="absolute right-3 top-1/2 -translate-y-1/2 text-[var(--color-secondary)] pointer-events-none text-xs">&#9660;</span>
         </div>
       </div>
 
-      <textarea
-        name="comentarios"
-        placeholder="Comentarios o preguntas (opcional)"
-        rows={3}
-        value={comentarios}
-        onChange={(e) => setComentarios(e.target.value)}
-        className={`${inputClass} resize-none`}
-      />
+      <div className="field">
+        <label htmlFor="cf-comentarios">Cuéntame tu idea</label>
+        <textarea
+          id="cf-comentarios"
+          name="comentarios"
+          placeholder="Fechas aproximadas, nº de personas, qué te gustaría vivir..."
+          value={comentarios}
+          onChange={(e) => setComentarios(e.target.value)}
+        />
+      </div>
 
       <button
         type="submit"
         disabled={status === 'sending'}
-        className="w-full min-h-[52px] px-6 py-3 text-sm uppercase tracking-[0.1em] font-bold cursor-pointer border border-[var(--color-accent)] bg-[var(--color-accent)] text-[var(--color-bg)] transition-all duration-300 hover:shadow-[0_0_20px_rgba(212,168,83,0.4)] hover:bg-transparent hover:text-[var(--color-accent)] disabled:opacity-50 flex items-center justify-center"
+        className="btn btn--lg"
+        style={{ width: '100%', justifyContent: 'center' }}
       >
-        {status === 'sending' ? 'ENVIANDO...' : 'M\u00c1NDAME TODA LA INFORMACI\u00d3N'}
+        {status === 'sending' ? 'Enviando…' : 'Mándame toda la información'}
       </button>
 
       {status === 'error' && (
-        <p className="text-xs text-center" style={{ color: '#B85C5C' }}>
-          Error. Int&eacute;ntalo de nuevo o escr&iacute;benos por WhatsApp.
+        <p className="text-xs" style={{ color: '#E07A5F', textAlign: 'center', marginTop: '.6rem' }}>
+          Error. Inténtalo de nuevo o escríbenos por WhatsApp.
         </p>
       )}
     </form>

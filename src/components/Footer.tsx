@@ -1,47 +1,107 @@
-import SprayPaint from './SprayPaint'
+'use client'
+
+import { useState, useEffect, useRef } from 'react'
+
+const LEGAL_LINKS = [
+  { href: '/terminos', label: 'Términos de la web' },
+  { href: '/terminos-viaje', label: 'Términos de los viajes' },
+  { href: '/privacidad', label: 'Política de privacidad' },
+  { href: '/aviso-legal', label: 'Aviso Legal' },
+  { href: '/politica-de-cancelacion', label: 'Política de cancelación' },
+]
 
 export default function Footer() {
+  const [legalOpen, setLegalOpen] = useState(false)
+  const legalRef = useRef<HTMLDivElement>(null)
+  const year = 2026
+
+  useEffect(() => {
+    const onDocClick = (e: MouseEvent) => {
+      if (legalRef.current && !legalRef.current.contains(e.target as Node)) setLegalOpen(false)
+    }
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setLegalOpen(false)
+    }
+    document.addEventListener('click', onDocClick)
+    document.addEventListener('keydown', onKey)
+    return () => {
+      document.removeEventListener('click', onDocClick)
+      document.removeEventListener('keydown', onKey)
+    }
+  }, [])
+
   return (
-    <footer
-      className="pt-16 md:pt-20 pb-8 md:pb-10 relative"
-      style={{ borderTop: '1px solid rgba(212,168,83,0.1)' }}
-    >
-      <div className="max-w-[1200px] mx-auto px-5 md:px-10 grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div className="text-[0.7rem] text-[var(--color-secondary)] uppercase tracking-[0.05em]">
-          <p>&copy; 2026 ASIALOPOSIBLE.NET</p>
+    <footer className="footer">
+      <div className="container">
+        <div className="footer__grid">
+          <div className="footer__brand">
+            <a href="/" className="nav__brand" aria-label="Asia Lo Posible — inicio">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/img/logo.png" alt="Asia Lo Posible" className="footer__logo" />
+            </a>
+            <p>
+              Viajes boutique a Asia en español. Salidas grupales, itinerarios curados y viajes a
+              medida. Así se vive Asia.
+            </p>
+          </div>
+          <div>
+            <h4>Viajes</h4>
+            <a href="/viajes/vietnam-camboya">Vietnam &amp; Camboya</a>
+            <a href="/viajes-privados">Viaje privado</a>
+            <a href="/#tours">Tours</a>
+            <a href="/imprescindibles">Los imprescindibles</a>
+            <a href="/blog">Blog</a>
+          </div>
+          <div>
+            <h4>Contacto</h4>
+            <a href="https://wa.me/84934949756" target="_blank" rel="noopener">
+              WhatsApp +84 934 949 756
+            </a>
+            <a href="https://instagram.com/kathmolinares" target="_blank" rel="noopener">
+              Instagram @kathmolinares
+            </a>
+            <a href="/#contacto">Formulario de contacto</a>
+          </div>
         </div>
-        <div className="text-[0.7rem] text-[var(--color-secondary)] uppercase tracking-[0.05em] md:text-right">
-          <a
-            href="https://wa.me/84934949756?text=Hola%20Katherine%2C%20me%20gustar%C3%ADa%20saber%20m%C3%A1s%20sobre%20Asia%20Lo%20Posible"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="block no-underline text-[var(--color-accent)] hover:underline transition-colors"
-          >
-            ESCR&Iacute;BEME AL WHATSAPP
-          </a>
-          <a href="/terminos" className="block no-underline text-[var(--color-secondary)] hover:text-[var(--color-accent)] transition-colors">T&Eacute;RMINOS DE LA WEB</a>
-          <a href="/terminos-viaje" className="block no-underline text-[var(--color-secondary)] hover:text-[var(--color-accent)] transition-colors">T&Eacute;RMINOS DEL VIAJE</a>
-          <a href="/politica-de-cancelacion" className="block no-underline text-[var(--color-secondary)] hover:text-[var(--color-accent)] transition-colors">POL&Iacute;TICA DE CANCELACI&Oacute;N</a>
-          <a href="/aviso-legal" className="block no-underline text-[var(--color-secondary)] hover:text-[var(--color-accent)] transition-colors">AVISO LEGAL</a>
-          <a href="/viajes-privados" className="block no-underline text-[var(--color-secondary)] hover:text-[var(--color-accent)] transition-colors">VIAJES PRIVADOS</a>
-          <a href="/imprescindibles" className="block no-underline text-[var(--color-secondary)] hover:text-[var(--color-accent)] transition-colors">LOS IMPRESCINDIBLES</a>
-          <a href="/blog" className="block no-underline text-[var(--color-secondary)] hover:text-[var(--color-accent)] transition-colors">BLOG</a>
-          <a href="/privacidad" className="block no-underline text-[var(--color-secondary)] hover:text-[var(--color-accent)] transition-colors">POL&Iacute;TICA DE PRIVACIDAD</a>
-          <p className="mt-4 opacity-60">
-            <a href="https://pondhorizons.xyz/" target="_blank" rel="noopener noreferrer" className="no-underline text-[var(--color-accent)] hover:underline">DESARROLLADO POR POND HORIZONS LLC</a>
-          </p>
+        <div className="footer__bottom">
+          <span>
+            © {year} Asia Lo Posible ·{' '}
+            <a
+              href="https://pondhorizons.xyz/"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ display: 'inline', color: 'var(--color-secondary)' }}
+            >
+              Desarrollado por Pond Horizons LLC
+            </a>
+          </span>
+          <span>Hecho con cariño desde Vietnam 🇻🇳</span>
+          <div className={`footer__legal${legalOpen ? ' open' : ''}`} ref={legalRef}>
+            <button
+              className="footer__legal-toggle"
+              type="button"
+              aria-expanded={legalOpen}
+              aria-haspopup="true"
+              onClick={(e) => {
+                e.stopPropagation()
+                setLegalOpen((v) => !v)
+              }}
+            >
+              Términos y condiciones
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M6 9l6 6 6-6" />
+              </svg>
+            </button>
+            <div className="footer__legal-menu" role="menu">
+              {LEGAL_LINKS.map((l) => (
+                <a key={l.href} href={l.href} role="menuitem">
+                  {l.label}
+                </a>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
-
-      <SprayPaint
-        className="w-[600px] h-[600px]"
-        style={{
-          bottom: '-150px',
-          right: '-150px',
-          filter: 'blur(80px)',
-        }}
-        shape="blob2"
-      />
     </footer>
   )
 }

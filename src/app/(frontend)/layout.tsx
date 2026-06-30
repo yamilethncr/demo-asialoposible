@@ -1,20 +1,23 @@
 import type { Metadata } from 'next'
 import Script from 'next/script'
-import { Playfair_Display, DM_Sans, Space_Mono } from 'next/font/google'
+import { Cormorant_Garamond, DM_Sans, Space_Mono } from 'next/font/google'
 import { Agentation } from 'agentation'
-import PageLoader from '@/components/PageLoader'
+import ScrollReveal from '@/components/ScrollReveal'
 import '../globals.css'
 
-const playfair = Playfair_Display({
+// Display: Cormorant Garamond (serif editorial — regla de oro: minúsculas en cursiva)
+const cormorant = Cormorant_Garamond({
   subsets: ['latin'],
-  weight: ['400', '700', '900'],
+  weight: ['400', '500', '600', '700'],
+  style: ['normal', 'italic'],
   variable: '--ff-heading',
   display: 'swap',
 })
 
+// Body: DM Sans (sustituye a Satoshi de la marca, que no está en Google Fonts; mismo registro humanista)
 const dmSans = DM_Sans({
   subsets: ['latin'],
-  weight: ['400', '500', '700'],
+  weight: ['400', '500', '600', '700'],
   variable: '--ff-body',
   display: 'swap',
 })
@@ -59,17 +62,17 @@ export const metadata: Metadata = {
 
 export default function FrontendLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="es" className={`${playfair.variable} ${dmSans.variable} ${spaceMono.variable} antialiased`}>
+    <html lang="es" className={`${cormorant.variable} ${dmSans.variable} ${spaceMono.variable} antialiased`}>
       <head>
         <Script id="gtm" strategy="afterInteractive">
           {`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-59VR7PF3');`}
         </Script>
-        <Script id="chatwoot" strategy="afterInteractive">
+        <Script id="chatwoot" strategy="lazyOnload">
           {`(function(d,t){var BASE_URL="https://app.chatwoot.com";var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.src=BASE_URL+"/packs/js/sdk.js";g.async=true;s.parentNode.insertBefore(g,s);g.onload=function(){window.chatwootSDK.run({websiteToken:'N95FffcWk8DMPX51pdBqrCom',baseUrl:BASE_URL})}})(document,"script");`}
         </Script>
       </head>
       <body>
-        <PageLoader />
+        <ScrollReveal />
         <noscript>
           <iframe
             src="https://www.googletagmanager.com/ns.html?id=GTM-59VR7PF3"

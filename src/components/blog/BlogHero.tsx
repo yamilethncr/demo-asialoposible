@@ -50,19 +50,19 @@ export default function BlogHero({
             style={{ animation: 'kenburns 20s ease-in-out infinite alternate' }}
           />
         ) : (
-          <div className="w-full h-full bg-gradient-to-br from-[#0A0F1E] to-[#1a1f3e]" />
+          <div className="w-full h-full bg-gradient-to-br from-[#1E1E1E] to-[#1a1f3e]" />
         )}
-        <div className="absolute inset-0 bg-gradient-to-t from-[var(--color-bg)] via-[rgba(10,15,30,0.5)] to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[var(--color-bg)] via-[rgba(30,30,30,0.5)] to-transparent" />
       </div>
 
       {/* Content */}
       <div className="relative z-10 max-w-[1200px] mx-auto px-5 md:px-10 pb-12 md:pb-16 w-full">
         <a
           href={`/blog/categoria/${category.slug}`}
-          className="inline-block text-[0.65rem] uppercase tracking-[0.15em] font-bold px-3 py-1.5 mb-6 no-underline transition-colors duration-300 hover:bg-[rgba(212,168,83,0.25)]"
+          className="inline-block text-[0.65rem] uppercase tracking-[0.15em] font-bold px-3 py-1.5 mb-6 no-underline transition-colors duration-300 hover:bg-[rgba(200,161,90,0.25)]"
           style={{
-            background: 'rgba(212,168,83,0.15)',
-            border: '1px solid rgba(212,168,83,0.3)',
+            background: 'rgba(200,161,90,0.15)',
+            border: '1px solid rgba(200,161,90,0.3)',
             color: 'var(--color-accent)',
           }}
         >
@@ -78,11 +78,11 @@ export default function BlogHero({
 
         <div className="flex flex-wrap items-center gap-4 text-[0.75rem] text-[var(--color-secondary)] uppercase tracking-[0.1em]">
           <span>Por {author.name}</span>
-          <span className="text-[rgba(212,168,83,0.3)]">&middot;</span>
+          <span className="text-[rgba(200,161,90,0.3)]">&middot;</span>
           <time dateTime={publishedDate}>{date}</time>
           {readingTime && (
             <>
-              <span className="text-[rgba(212,168,83,0.3)]">&middot;</span>
+              <span className="text-[rgba(200,161,90,0.3)]">&middot;</span>
               <span>{readingTime} min lectura</span>
             </>
           )}

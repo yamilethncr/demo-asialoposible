@@ -17,7 +17,7 @@ function GoldPlayButton({ size = 48 }: { size?: number }) {
         width: size,
         height: size,
         border: '2px solid var(--color-accent)',
-        background: 'rgba(10,15,30,0.6)',
+        background: 'rgba(30,30,30,0.6)',
         animation: 'pulse-glow 2s ease-in-out infinite',
       }}
     >
@@ -96,7 +96,7 @@ export default function VideoShowcase({ variant = 'call' }: { variant?: 'call' |
           <div
             className="relative w-full h-full overflow-hidden"
             style={{
-              border: '1px solid rgba(212,168,83,0.3)',
+              border: '1px solid rgba(200,161,90,0.3)',
             }}
           >
             {isPlaying ? (
