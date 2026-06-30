@@ -15,7 +15,7 @@ const CARDS = [
     title: 'Viajes de Autor',
     body: 'Recorre Asia con nosotros. Nuestras rutas estrella: te acompañamos en persona para vivir Asia desde adentro, cuidando cada detalle.',
     priceSmall: 'Boutique',
-    priceBig: 'Máx. 12 p',
+    priceBig: 'Máx. 15 p',
     cta: 'Ver más',
     external: false,
   },

@@ -38,7 +38,7 @@ const WAYS = [
     num: '01',
     title: 'Viajes de Autor: recorre Asia con nosotros',
     body: 'Nuestras rutas estrella. Te acompañamos en persona para vivir Asia desde adentro, cuidando cada detalle.',
-    chip: 'Boutique · máx. 12 personas',
+    chip: 'Boutique · máx. 15 personas',
   },
   {
     num: '02',

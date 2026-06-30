@@ -101,10 +101,10 @@ export default async function BlogPage({ searchParams }: { searchParams: SearchP
         </span>
 
         <h1
-          className="text-3xl sm:text-4xl md:text-5xl uppercase mb-4"
-          style={{ fontFamily: 'var(--font-display)', letterSpacing: '0.06em' }}
+          className="text-3xl sm:text-4xl md:text-5xl mb-4"
+          style={{ fontFamily: 'var(--font-display)' }}
         >
-          VIAJES POR ASIA EN ESPA&Ntilde;OL
+          Viajes por Asia en espa&ntilde;ol
         </h1>
 
         <p className="text-sm md:text-base text-[var(--color-secondary)] max-w-[500px] mx-auto">

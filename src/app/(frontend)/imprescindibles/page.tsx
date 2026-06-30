@@ -243,10 +243,8 @@ export default function Imprescindibles() {
               <span className="block text-xs tracking-[0.2em] uppercase text-[var(--color-secondary)] mb-4">
                 GU&Iacute;A DE PREPARACI&Oacute;N
               </span>
-              <h1 className="text-3xl md:text-[3.5rem] leading-[0.9] font-bold uppercase text-[var(--color-text)]">
-                LOS
-                <br />
-                IMPRESCINDIBLES
+              <h1 className="text-3xl md:text-[3.5rem] leading-[0.9] font-bold text-[var(--color-text)]">
+                Los imprescindibles
               </h1>
             </div>
             <div className="md:col-span-5">
@@ -310,7 +308,7 @@ export default function Imprescindibles() {
                         </span>
                       </div>
                       <div>
-                        <h2 className="text-xl md:text-2xl font-bold uppercase text-[var(--color-text)] leading-tight">
+                        <h2 className="text-xl md:text-2xl font-bold text-[var(--color-text)] leading-tight">
                           {section.title}
                         </h2>
                         <p className="text-xs tracking-[0.1em] uppercase text-[var(--color-accent)] mt-1">
@@ -384,8 +382,8 @@ export default function Imprescindibles() {
             style={{ background: 'var(--color-accent)', filter: 'blur(100px)', opacity: 0.08 }}
           />
 
-          <h3 className="text-xl md:text-2xl uppercase font-bold text-[var(--color-text)] mb-4 relative z-10">
-            &iquest;TIENES DUDAS?
+          <h3 className="text-xl md:text-2xl font-bold text-[var(--color-text)] mb-4 relative z-10">
+            &iquest;Tienes dudas?
           </h3>
           <p className="text-sm md:text-base text-[var(--color-secondary)] mb-8 max-w-[440px] mx-auto relative z-10">
             Si algo no est&aacute; en esta gu&iacute;a, cont&aacute;ctanos directamente. Estamos para ayudarte.

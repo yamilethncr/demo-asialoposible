@@ -27,6 +27,7 @@ export default function HeroVideo() {
 
   return (
     <video className="hero__video" autoPlay muted playsInline loop preload="metadata" poster={POSTER}>
+      <source src="/video/hero-asia.webm" type="video/webm" />
       <source src="/video/hero-asia.mp4" type="video/mp4" />
     </video>
   )
