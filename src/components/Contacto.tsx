@@ -1,4 +1,5 @@
 import ContactForm from './ContactForm'
+import CalBooking from './CalBooking'
 
 /**
  * Sección de contacto del home. El formulario muerto del demo se sustituye por
@@ -40,6 +41,13 @@ export default function Contacto() {
                 <small style={{ color: 'var(--color-secondary)' }}>@kathmolinares</small>
               </span>
             </a>
+          </div>
+
+          <div style={{ marginTop: '1.8rem' }}>
+            <p style={{ color: 'var(--color-secondary)', fontSize: '.95rem', marginBottom: '.8rem' }}>
+              ¿Prefieres que hablemos? Agenda una videollamada y resolvemos todo.
+            </p>
+            <CalBooking variant="outline" size="md" label="Agenda una llamada conmigo" />
           </div>
         </div>
 
