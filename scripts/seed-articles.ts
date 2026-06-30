@@ -21,6 +21,7 @@ interface Frontmatter {
   excerpt: string
   category: string
   tags: string[]
+  publishDate?: string
 }
 
 function parseFrontmatter(content: string): { frontmatter: Frontmatter; body: string } {
@@ -104,6 +105,13 @@ async function seed() {
     'bahia-de-halong-guia-completa.md',
     'que-ver-en-vietnam.md',
     'viaje-vietnam-camboya-14-dias.md',
+    // Artículos portados del rediseño v2 (demo de Yamileth)
+    'mejor-epoca-viajar-vietnam.md',
+    'que-ver-en-camboya-angkor.md',
+    'mejores-hoteles-hanoi.md',
+    'mejores-rutas-sudeste-asiatico.md',
+    'guia-gastronomica-vietnam.md',
+    'viajar-asia-en-espanol.md',
   ]
 
   for (const file of files) {
@@ -158,7 +166,10 @@ async function seed() {
         tags: tagIds,
         author: authorId,
         status: 'published',
-        publishedDate: new Date().toISOString(),
+        // Escalonar fechas (regla CLAUDE.md): usa publishDate del frontmatter si existe
+        publishedDate: frontmatter.publishDate
+          ? new Date(frontmatter.publishDate).toISOString()
+          : new Date().toISOString(),
         seo: {
           metaTitle: frontmatter.metaTitle,
           metaDescription: frontmatter.metaDescription,
