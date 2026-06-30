@@ -2,162 +2,181 @@ import type { Metadata } from 'next'
 import { getPayload } from 'payload'
 import config from '@payload-config'
 import Script from 'next/script'
-import BlogCard from '@/components/blog/BlogCard'
-import CategoryFilter from '@/components/blog/CategoryFilter'
 import Pagination from '@/components/blog/Pagination'
 
 export const revalidate = 60
 
 export const metadata: Metadata = {
-  title: 'Blog de Viajes a Asia en Español | Asia Lo Posible',
-  description: 'Guías, consejos y experiencias de viaje por Vietnam, Camboya y el Sudeste Asiático. Todo en español, por viajeros que conocen Asia de verdad.',
+  title: 'Blog de viajes a Asia | Tips, guías y rutas',
+  description:
+    'Guías y tips para viajar a Asia: mejor época para Vietnam, qué ver en Camboya, mejores hoteles en Hanói y rutas por el Sudeste Asiático. Consejos de quien vive aquí.',
   openGraph: {
-    title: 'Blog de Viajes a Asia en Español',
-    description: 'Guías, consejos y experiencias de viaje por Vietnam, Camboya y el Sudeste Asiático.',
+    title: 'Blog de viajes a Asia | Asia Lo Posible',
+    description: 'Tips, guías y rutas para viajar mejor por Asia.',
     url: 'https://asialoposible.net/blog',
     siteName: 'Asia Lo Posible',
     locale: 'es_LA',
     type: 'website',
-    images: [
-      {
-        url: 'https://asialoposible.net/api/media/file/hoi-an-1200x630.png',
-        width: 1200,
-        height: 630,
-        alt: 'Blog de viajes por Asia en español — Asia Lo Posible',
-      },
-    ],
+    images: [{ url: '/og-asialoposible.jpg', width: 1200, height: 630, alt: 'Blog de viajes por Asia en español — Asia Lo Posible' }],
   },
-  alternates: {
-    canonical: '/blog',
-  },
+  alternates: { canonical: '/blog' },
 }
 
 const POSTS_PER_PAGE = 12
+
+// "Nuestro Top 10 de Asia" — sección de Yamileth (guía boutique). Imágenes en public/img/dest/.
+const TOP10 = [
+  { rank: '01', name: 'Bahía de Ha Long', desc: 'Vietnam · islas de piedra caliza', img: 'dest-halong' },
+  { rank: '02', name: 'Siem Reap & Angkor', desc: 'Camboya · templos de Angkor Wat', img: 'dest-angkor' },
+  { rank: '03', name: 'Chiang Mai', desc: 'Tailandia · templos y montañas', img: 'dest-chiangmai' },
+  { rank: '04', name: 'Luang Prabang', desc: 'Laos · monjes y río Mekong', img: 'dest-luangprabang' },
+  { rank: '05', name: 'Hoi An', desc: 'Vietnam · ciudad de los faroles', img: 'dest-hoian' },
+  { rank: '06', name: 'Kioto', desc: 'Japón · geishas y toriis', img: 'dest-kioto' },
+  { rank: '07', name: 'Seúl', desc: 'Corea del Sur · palacios y K-pop', img: 'dest-seul' },
+  { rank: '08', name: 'Tokio', desc: 'Japón · neón y megalópolis', img: 'dest-tokio' },
+  { rank: '09', name: 'Pekín & Gran Muralla', desc: 'China · historia milenaria', img: 'dest-granmuralla' },
+  { rank: '10', name: 'Isla de Jeju', desc: 'Corea del Sur · isla volcánica', img: 'dest-jeju' },
+]
+
+type Post = {
+  id: string
+  title: string
+  slug: string
+  excerpt?: string
+  readingTime?: number
+  category?: { name?: string } | null
+  featuredImage?: { url?: string; alt?: string; sizes?: { card?: { url?: string } } } | null
+}
 
 type SearchParams = Promise<{ page?: string }>
 
 export default async function BlogPage({ searchParams }: { searchParams: SearchParams }) {
   const { page: pageParam } = await searchParams
   const currentPage = Number(pageParam) || 1
-  const payload = await getPayload({ config })
 
-  const [postsResult, categoriesResult] = await Promise.all([
-    payload.find({
+  let posts: Post[] = []
+  let totalPages = 1
+  try {
+    const payload = await getPayload({ config })
+    const res = await payload.find({
       collection: 'posts',
       where: { status: { equals: 'published' } },
       sort: '-publishedDate',
       limit: POSTS_PER_PAGE,
       page: currentPage,
       depth: 2,
-    }),
-    payload.find({
-      collection: 'categories',
-      limit: 100,
-      sort: 'name',
-    }),
-  ])
+    })
+    posts = res.docs as unknown as Post[]
+    totalPages = res.totalPages
+  } catch {
+    posts = []
+  }
 
-  const posts = postsResult.docs
-  const totalPages = postsResult.totalPages
-  const categories = categoriesResult.docs
-
-  const collectionSchema = {
+  const blogSchema = {
     '@context': 'https://schema.org',
-    '@type': 'CollectionPage',
-    name: 'Blog de Viajes a Asia en Español',
-    description: 'Guías, consejos y experiencias de viaje por Vietnam, Camboya y el Sudeste Asiático.',
+    '@type': 'Blog',
+    name: 'Blog de viajes a Asia — Asia Lo Posible',
+    description:
+      'Guías y tips para viajar a Asia en español: mejor época, qué ver, dónde dormir, rutas y gastronomía.',
     url: 'https://asialoposible.net/blog',
-    mainEntity: {
-      '@type': 'ItemList',
-      itemListElement: posts.map((post: any, i: number) => ({
-        '@type': 'ListItem',
-        position: i + 1,
-        url: `https://asialoposible.net/blog/${post.slug}`,
-        name: post.title,
-      })),
-    },
+    inLanguage: 'es',
+    publisher: { '@type': 'Organization', name: 'Asia Lo Posible', url: 'https://asialoposible.net' },
+    blogPost: posts.map((p) => ({
+      '@type': 'BlogPosting',
+      headline: p.title,
+      url: `https://asialoposible.net/blog/${p.slug}`,
+    })),
   }
 
   return (
     <>
-      <Script
-        id="collection-schema"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(collectionSchema) }}
-      />
+      <Script id="blog-schema" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(blogSchema) }} />
 
-      <div className="max-w-[1200px] mx-auto px-5 md:px-10 py-12 md:py-20">
-      {/* Header */}
-      <div className="text-center mb-16">
-        <span
-          className="inline-block text-[0.65rem] tracking-[0.2em] uppercase px-3 py-1.5 font-bold mb-6"
-          style={{
-            background: 'rgba(200,161,90,0.15)',
-            border: '1px solid rgba(200,161,90,0.3)',
-            color: 'var(--color-accent)',
-          }}
-        >
-          BLOG
-        </span>
+      <section className="section">
+        <div className="container">
+          <div className="section-head reveal">
+            <p className="breadcrumb">
+              <a href="/">Inicio</a> › Blog
+            </p>
+            <p className="eyebrow">Blog de viajes</p>
+            <h1 className="h2">Tips, guías y rutas para tu Asia</h1>
+            <p className="lead">
+              Todo lo que aprendí viviendo aquí, para que tú viajes mejor, gastes mejor y disfrutes
+              más.
+            </p>
+          </div>
 
-        <h1
-          className="text-3xl sm:text-4xl md:text-5xl mb-4"
-          style={{ fontFamily: 'var(--font-display)' }}
-        >
-          Viajes por Asia en espa&ntilde;ol
-        </h1>
+          <div className="section-head reveal" style={{ marginTop: '2.5rem' }}>
+            <h2 className="h2">Guías y artículos</h2>
+          </div>
 
-        <p className="text-sm md:text-base text-[var(--color-secondary)] max-w-[500px] mx-auto">
-          Gu&iacute;as, consejos y experiencias para tu viaje al Sudeste Asi&aacute;tico. Todo en espa&ntilde;ol.
-        </p>
-      </div>
+          {posts.length > 0 ? (
+            <div className="blog-grid">
+              {posts.map((p) => {
+                const img = p.featuredImage?.sizes?.card?.url || p.featuredImage?.url || ''
+                return (
+                  <a className="post-card reveal" href={`/blog/${p.slug}`} key={p.id}>
+                    <div className="post-card__img">
+                      {img && (
+                        // eslint-disable-next-line @next/next/no-img-element
+                        <img src={img} alt={p.featuredImage?.alt || p.title} loading="lazy" />
+                      )}
+                    </div>
+                    <div className="post-card__body">
+                      {p.category?.name && <span className="post-card__cat">{p.category.name}</span>}
+                      <h3>{p.title}</h3>
+                      {p.excerpt && <p>{p.excerpt}</p>}
+                      {p.readingTime ? (
+                        <span className="post-card__meta">{p.readingTime} min de lectura</span>
+                      ) : null}
+                    </div>
+                  </a>
+                )
+              })}
+            </div>
+          ) : (
+            <p className="lead">Próximamente publicaremos nuevos artículos.</p>
+          )}
 
-      {/* Category filter */}
-      <CategoryFilter
-        categories={categories.map((c) => {
-          const cat = c as unknown as { name: string; slug: string }
-          return { name: cat.name, slug: cat.slug }
-        })}
-      />
+          {totalPages > 1 && (
+            <Pagination currentPage={currentPage} totalPages={totalPages} basePath="/blog" />
+          )}
 
-      {/* Posts grid */}
-      {posts.length > 0 ? (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {posts.map((post) => {
-            const p = post as unknown as {
-              id: string
-              title: string
-              slug: string
-              excerpt: string
-              featuredImage: { url: string; alt: string; sizes?: { card?: { url: string } } }
-              category: { name: string; slug: string }
-              publishedDate: string
-              readingTime?: number
-            }
-            return (
-              <BlogCard
-                key={p.id}
-                title={p.title}
-                slug={p.slug}
-                excerpt={p.excerpt}
-                featuredImage={p.featuredImage}
-                category={p.category}
-                publishedDate={p.publishedDate}
-                readingTime={p.readingTime}
-              />
-            )
-          })}
+          {/* ===================== NUESTRO TOP 10 ===================== */}
+          <div className="section-head reveal" id="top10" style={{ marginTop: '4.5rem' }}>
+            <p className="eyebrow">Guía boutique</p>
+            <h2 className="h2">Nuestro Top 10 de Asia</h2>
+            <p className="lead">
+              Los 10 lugares que recomendamos vivir al menos una vez. Cada uno, con su mejor época y
+              su porqué.
+            </p>
+          </div>
+          <div className="dest-grid">
+            {TOP10.map((d) => (
+              <a className="dest-card reveal" href="/#viajes" key={d.rank}>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src={`/img/dest/${d.img}.jpg`} alt={`${d.name} — ${d.desc}`} loading="lazy" />
+                <span className="dest-card__rank">{d.rank}</span>
+                <div className="dest-card__body">
+                  <h3>{d.name}</h3>
+                  <span>{d.desc}</span>
+                </div>
+              </a>
+            ))}
+          </div>
+
+          {/* ===================== CTA ===================== */}
+          <div className="section-head center reveal" style={{ margin: '4rem auto 0' }}>
+            <h2 className="h2" style={{ fontSize: 'clamp(1.6rem,3vw,2.3rem)' }}>
+              ¿Quieres vivir Asia, no solo leerla?
+            </h2>
+            <p className="lead">Te llevamos. Salidas grupales en español o tu viaje a medida.</p>
+            <a href="/#viajes" className="btn btn--lg" style={{ marginTop: '1.2rem' }}>
+              Ver nuestros viajes
+            </a>
+          </div>
         </div>
-      ) : (
-        <div className="text-center py-20">
-          <p className="text-[var(--color-secondary)] text-sm uppercase tracking-[0.1em]">
-            Pr&oacute;ximamente publicaremos nuevos art&iacute;culos.
-          </p>
-        </div>
-      )}
-
-      <Pagination currentPage={currentPage} totalPages={totalPages} basePath="/blog" />
-    </div>
+      </section>
     </>
   )
 }
