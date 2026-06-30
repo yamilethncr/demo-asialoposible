@@ -2,7 +2,7 @@
 title: "Las mejores rutas para recorrer el Sudeste Asiático (2026)"
 slug: mejores-rutas-sudeste-asiatico
 metaTitle: "Las mejores rutas para recorrer el Sudeste Asiático (2026)"
-metaDescription: "Rutas por el Sudeste Asiático de 2 a 4 semanas: cómo combinar Vietnam, Camboya, Tailandia y Laos sin agobios, con itinerarios sugeridos y consejos de logís"
+metaDescription: "Rutas por el Sudeste Asiático de 2 a 4 semanas: cómo combinar Vietnam, Camboya, Tailandia y Laos sin agobios, con itinerarios sugeridos y consejos de…"
 excerpt: "Rutas por el Sudeste Asiático de 2 a 4 semanas: cómo combinar Vietnam, Camboya, Tailandia y Laos sin agobios, con itinerarios sugeridos y consejos de logística."
 category: Destinos del Sudeste Asiático
 tags:

@@ -2,8 +2,8 @@
 title: "Qué comer en Vietnam: guía gastronómica del Norte, Centro y Sur"
 slug: guia-gastronomica-vietnam
 metaTitle: "Qué comer en Vietnam: guía gastronómica del Norte, Centro…"
-metaDescription: "Guía gastronómica de Vietnam: qué comer en el Norte (phở, bún chả), el Centro (bún bò Huế, cao lầu) y el Sur (bánh xèo, cơm tấm). Platos imperdibles y cons"
-excerpt: "Guía gastronómica de Vietnam: qué comer en el Norte (phở, bún chả), el Centro (bún bò Huế, cao lầu) y el Sur (bánh xèo, cơm tấm). Platos imperdibles y consejos para comer street food sin riesgos."
+metaDescription: "Guía gastronómica de Vietnam: qué comer en el Norte (phở, bún chả), el Centro (bún bò Huế, cao lầu) y el Sur (bánh xèo, cơm tấm). Platos imperdibles y…"
+excerpt: "Guía gastronómica de Vietnam: qué comer en el Norte (phở, bún chả), el Centro (bún bò Huế, cao lầu) y el Sur (bánh xèo, cơm tấm). Platos imperdibles y consejos…"
 category: Gastronomía
 tags:
   - Hoi An

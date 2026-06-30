@@ -112,6 +112,17 @@ async function seed() {
     'mejores-rutas-sudeste-asiatico.md',
     'guia-gastronomica-vietnam.md',
     'viajar-asia-en-espanol.md',
+    // Top 10 — guías por destino (demo de Yamileth)
+    'bahia-de-ha-long.md',
+    'siem-reap-angkor.md',
+    'chiang-mai.md',
+    'luang-prabang.md',
+    'hoi-an.md',
+    'kioto.md',
+    'seul.md',
+    'tokio.md',
+    'pekin-gran-muralla.md',
+    'isla-de-jeju.md',
   ]
 
   for (const file of files) {

@@ -2,7 +2,7 @@
 title: "Qué ver en Camboya: guía de Angkor Wat (2026)"
 slug: que-ver-en-camboya-angkor
 metaTitle: "Qué ver en Camboya: guía de Angkor Wat (2026)"
-metaDescription: "Guía para visitar Angkor Wat y Camboya: qué templos ver, qué pase comprar, horarios, el mejor lugar para el amanecer y cuántos días necesitas en Siem Reap."
+metaDescription: "Guía para visitar Angkor Wat y Camboya: qué templos ver, qué pase comprar, horarios, el mejor lugar para el amanecer y cuántos días necesitas en Siem…"
 excerpt: "Guía para visitar Angkor Wat y Camboya: qué templos ver, qué pase comprar, horarios, el mejor lugar para el amanecer y cuántos días necesitas en Siem Reap."
 category: Camboya
 tags:

@@ -2,7 +2,7 @@
 title: "Mejor época para viajar a Vietnam, mes a mes (2026)"
 slug: mejor-epoca-viajar-vietnam
 metaTitle: "Mejor época para viajar a Vietnam, mes a mes (2026)"
-metaDescription: "¿Cuál es la mejor época para viajar a Vietnam? Guía mes a mes del clima por regiones (norte, centro y sur), temporada alta y cuándo encontrar mejores preci"
+metaDescription: "¿Cuál es la mejor época para viajar a Vietnam? Guía mes a mes del clima por regiones (norte, centro y sur), temporada alta y cuándo encontrar mejores…"
 excerpt: "¿Cuál es la mejor época para viajar a Vietnam? Guía mes a mes del clima por regiones (norte, centro y sur), temporada alta y cuándo encontrar mejores precios."
 category: Consejos de Viaje
 tags:

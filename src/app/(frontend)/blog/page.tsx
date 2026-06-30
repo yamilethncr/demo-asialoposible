@@ -26,16 +26,16 @@ const POSTS_PER_PAGE = 12
 
 // "Nuestro Top 10 de Asia" — sección de Yamileth (guía boutique). Imágenes en public/img/dest/.
 const TOP10 = [
-  { rank: '01', name: 'Bahía de Ha Long', desc: 'Vietnam · islas de piedra caliza', img: 'dest-halong' },
-  { rank: '02', name: 'Siem Reap & Angkor', desc: 'Camboya · templos de Angkor Wat', img: 'dest-angkor' },
-  { rank: '03', name: 'Chiang Mai', desc: 'Tailandia · templos y montañas', img: 'dest-chiangmai' },
-  { rank: '04', name: 'Luang Prabang', desc: 'Laos · monjes y río Mekong', img: 'dest-luangprabang' },
-  { rank: '05', name: 'Hoi An', desc: 'Vietnam · ciudad de los faroles', img: 'dest-hoian' },
-  { rank: '06', name: 'Kioto', desc: 'Japón · geishas y toriis', img: 'dest-kioto' },
-  { rank: '07', name: 'Seúl', desc: 'Corea del Sur · palacios y K-pop', img: 'dest-seul' },
-  { rank: '08', name: 'Tokio', desc: 'Japón · neón y megalópolis', img: 'dest-tokio' },
-  { rank: '09', name: 'Pekín & Gran Muralla', desc: 'China · historia milenaria', img: 'dest-granmuralla' },
-  { rank: '10', name: 'Isla de Jeju', desc: 'Corea del Sur · isla volcánica', img: 'dest-jeju' },
+  { rank: '01', name: 'Bahía de Ha Long', desc: 'Vietnam · islas de piedra caliza', img: 'dest-halong', slug: 'bahia-de-ha-long' },
+  { rank: '02', name: 'Siem Reap & Angkor', desc: 'Camboya · templos de Angkor Wat', img: 'dest-angkor', slug: 'siem-reap-angkor' },
+  { rank: '03', name: 'Chiang Mai', desc: 'Tailandia · templos y montañas', img: 'dest-chiangmai', slug: 'chiang-mai' },
+  { rank: '04', name: 'Luang Prabang', desc: 'Laos · monjes y río Mekong', img: 'dest-luangprabang', slug: 'luang-prabang' },
+  { rank: '05', name: 'Hoi An', desc: 'Vietnam · ciudad de los faroles', img: 'dest-hoian', slug: 'hoi-an' },
+  { rank: '06', name: 'Kioto', desc: 'Japón · geishas y toriis', img: 'dest-kioto', slug: 'kioto' },
+  { rank: '07', name: 'Seúl', desc: 'Corea del Sur · palacios y K-pop', img: 'dest-seul', slug: 'seul' },
+  { rank: '08', name: 'Tokio', desc: 'Japón · neón y megalópolis', img: 'dest-tokio', slug: 'tokio' },
+  { rank: '09', name: 'Pekín & Gran Muralla', desc: 'China · historia milenaria', img: 'dest-granmuralla', slug: 'pekin-gran-muralla' },
+  { rank: '10', name: 'Isla de Jeju', desc: 'Corea del Sur · isla volcánica', img: 'dest-jeju', slug: 'isla-de-jeju' },
 ]
 
 type Post = {
@@ -116,12 +116,12 @@ export default async function BlogPage({ searchParams }: { searchParams: SearchP
                 const img = p.featuredImage?.sizes?.card?.url || p.featuredImage?.url || ''
                 return (
                   <a className="post-card reveal" href={`/blog/${p.slug}`} key={p.id}>
-                    <div className="post-card__img">
-                      {img && (
-                        // eslint-disable-next-line @next/next/no-img-element
+                    {img && (
+                      <div className="post-card__img">
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
                         <img src={img} alt={p.featuredImage?.alt || p.title} loading="lazy" />
-                      )}
-                    </div>
+                      </div>
+                    )}
                     <div className="post-card__body">
                       {p.category?.name && <span className="post-card__cat">{p.category.name}</span>}
                       <h3>{p.title}</h3>
@@ -147,13 +147,13 @@ export default async function BlogPage({ searchParams }: { searchParams: SearchP
             <p className="eyebrow">Guía boutique</p>
             <h2 className="h2">Nuestro Top 10 de Asia</h2>
             <p className="lead">
-              Los 10 lugares que recomendamos vivir al menos una vez. Cada uno, con su mejor época y
-              su porqué.
+              Los 10 lugares que recomendamos vivir al menos una vez. Toca cada uno para leer su
+              guía con las mejores recomendaciones y datos clave.
             </p>
           </div>
           <div className="dest-grid">
             {TOP10.map((d) => (
-              <a className="dest-card reveal" href="/#viajes" key={d.rank}>
+              <a className="dest-card reveal" href={`/blog/${d.slug}`} key={d.rank}>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img src={`/img/dest/${d.img}.jpg`} alt={`${d.name} — ${d.desc}`} loading="lazy" />
                 <span className="dest-card__rank">{d.rank}</span>

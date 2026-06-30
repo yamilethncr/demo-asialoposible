@@ -2,8 +2,8 @@
 title: "Por qué viajar a Asia en español es tan difícil (y cómo lo cambiamos)"
 slug: viajar-asia-en-espanol
 metaTitle: "Por qué viajar a Asia en español es tan difícil (y cómo l…"
-metaDescription: "Planear un viaje a Asia en español es una odisea: información desactualizada, traducciones que dan miedo y agencias caras. Te contamos por qué y cómo Asia "
-excerpt: "Planear un viaje a Asia en español es una odisea: información desactualizada, traducciones que dan miedo y agencias caras. Te contamos por qué y cómo Asia Lo Posible elimina la barrera del idioma."
+metaDescription: "Planear un viaje a Asia en español es una odisea: información desactualizada, traducciones que dan miedo y agencias caras. Te contamos por qué y cómo…"
+excerpt: "Planear un viaje a Asia en español es una odisea: información desactualizada, traducciones que dan miedo y agencias caras. Te contamos por qué y cómo Asia Lo…"
 category: Consejos de Viaje
 tags:
   - Viaje organizado

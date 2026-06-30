@@ -2,7 +2,7 @@
 title: "Los mejores hoteles en Hanói por zona y presupuesto (2026)"
 slug: mejores-hoteles-hanoi
 metaTitle: "Los mejores hoteles en Hanói por zona y presupuesto (2026)"
-metaDescription: "Dónde alojarse en Hanói: las mejores zonas para dormir y hoteles del lujo al boutique con encanto, según tu presupuesto. Guía práctica de quien vive en Vie"
+metaDescription: "Dónde alojarse en Hanói: las mejores zonas para dormir y hoteles del lujo al boutique con encanto, según tu presupuesto. Guía práctica de quien vive en…"
 excerpt: "Dónde alojarse en Hanói: las mejores zonas para dormir y hoteles del lujo al boutique con encanto, según tu presupuesto. Guía práctica de quien vive en Vietnam."
 category: Vietnam
 tags:
