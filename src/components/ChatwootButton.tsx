@@ -1,7 +1,7 @@
 'use client'
 
 const BASE_CLASSES =
-  'inline-block px-8 py-4 text-sm uppercase tracking-[0.1em] font-bold no-underline transition-all duration-500 hover:shadow-[0_0_20px_rgba(212,168,83,0.4)] cursor-pointer text-center'
+  'inline-block px-8 py-4 text-sm uppercase tracking-[0.1em] font-bold no-underline transition-all duration-500 hover:shadow-[0_0_20px_rgba(200, 161, 90,0.4)] cursor-pointer text-center'
 
 const VARIANT_CLASSES = {
   primary:

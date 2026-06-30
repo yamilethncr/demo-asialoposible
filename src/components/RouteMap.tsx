@@ -137,8 +137,8 @@ export default function RouteMap() {
           {/* Map */}
           <div className="lg:col-span-7 relative">
             <div
-              className="relative w-full border border-[rgba(212,168,83,0.15)]"
-              style={{ background: 'rgba(10,15,30,0.6)' }}
+              className="relative w-full border border-[rgba(200, 161, 90,0.15)]"
+              style={{ background: 'rgba(30, 30, 30,0.6)' }}
             >
               <svg
                 viewBox="60 40 300 380"
@@ -157,8 +157,8 @@ export default function RouteMap() {
                       L225,225 L222,215 L220,205 L218,195 L225,180
                       L235,165 L240,150 L245,135 L248,120 L250,105
                       L245,90 L238,78 L230,60`}
-                  fill="rgba(212,168,83,0.06)"
-                  stroke="rgba(212,168,83,0.2)"
+                  fill="rgba(200, 161, 90,0.06)"
+                  stroke="rgba(200, 161, 90,0.2)"
                   strokeWidth="1"
                   className="transition-all duration-1000"
                   style={{
@@ -175,8 +175,8 @@ export default function RouteMap() {
                       L218,365 L200,370 L180,368 L160,362 L142,355
                       L128,345 L118,332 L112,318 L110,305 L112,292
                       L120,280`}
-                  fill="rgba(212,168,83,0.04)"
-                  stroke="rgba(212,168,83,0.15)"
+                  fill="rgba(200, 161, 90,0.04)"
+                  stroke="rgba(200, 161, 90,0.15)"
                   strokeWidth="1"
                   className="transition-all duration-1000"
                   style={{
@@ -189,7 +189,7 @@ export default function RouteMap() {
                 <text
                   x="258"
                   y="185"
-                  fill="rgba(212,168,83,0.12)"
+                  fill="rgba(200, 161, 90,0.12)"
                   fontSize="14"
                   fontWeight="900"
                   letterSpacing="0.15em"
@@ -202,7 +202,7 @@ export default function RouteMap() {
                 <text
                   x="170"
                   y="335"
-                  fill="rgba(212,168,83,0.1)"
+                  fill="rgba(200, 161, 90,0.1)"
                   fontSize="11"
                   fontWeight="900"
                   letterSpacing="0.15em"
@@ -230,7 +230,7 @@ export default function RouteMap() {
                       y1={from.y}
                       x2={to.x}
                       y2={to.y}
-                      stroke="rgba(212,168,83,0.3)"
+                      stroke="rgba(200, 161, 90,0.3)"
                       strokeWidth={isFlight ? '1' : '1.5'}
                       strokeDasharray={isFlight ? '4 4' : '2 4'}
                       className="transition-all duration-700"
@@ -351,7 +351,7 @@ export default function RouteMap() {
                         cy={city.y}
                         r="7"
                         fill="var(--color-bg)"
-                        stroke="rgba(212,168,83,0.3)"
+                        stroke="rgba(200, 161, 90,0.3)"
                         strokeWidth="0.5"
                       />
                       <text
@@ -391,11 +391,11 @@ export default function RouteMap() {
           <div className="lg:col-span-5">
             {/* Active city detail card — hidden on mobile when no city selected */}
             <div
-              className={`border border-[rgba(212,168,83,0.2)] p-6 md:p-8 mb-6 transition-all duration-500 relative overflow-hidden ${activeCityData ? '' : 'hidden lg:block'}`}
+              className={`border border-[rgba(200, 161, 90,0.2)] p-6 md:p-8 mb-6 transition-all duration-500 relative overflow-hidden ${activeCityData ? '' : 'hidden lg:block'}`}
               style={{
                 background: activeCityData
-                  ? 'rgba(212,168,83,0.05)'
-                  : 'rgba(10,15,30,0.4)',
+                  ? 'rgba(200, 161, 90,0.05)'
+                  : 'rgba(30, 30, 30,0.4)',
                 minHeight: activeCityData ? undefined : '180px',
               }}
             >
@@ -441,9 +441,9 @@ export default function RouteMap() {
                 return (
                   <div key={city.id}>
                     <button
-                      className="w-full text-left flex items-center gap-4 py-4 px-4 transition-all duration-300 cursor-pointer border-b border-[rgba(212,168,83,0.08)]"
+                      className="w-full text-left flex items-center gap-4 py-4 px-4 transition-all duration-300 cursor-pointer border-b border-[rgba(200, 161, 90,0.08)]"
                       style={{
-                        background: isActive ? 'rgba(212,168,83,0.08)' : 'transparent',
+                        background: isActive ? 'rgba(200, 161, 90,0.08)' : 'transparent',
                         borderLeft: isActive
                           ? '2px solid var(--color-accent)'
                           : '2px solid transparent',
@@ -456,7 +456,7 @@ export default function RouteMap() {
                         className="flex items-center justify-center w-7 h-7 text-[11px] font-bold font-mono shrink-0 transition-all duration-300"
                         style={{
                           border: '1px solid',
-                          borderColor: isActive ? 'var(--color-accent)' : 'rgba(212,168,83,0.2)',
+                          borderColor: isActive ? 'var(--color-accent)' : 'rgba(200, 161, 90,0.2)',
                           background: isActive ? 'var(--color-accent)' : 'transparent',
                           color: isActive ? 'var(--color-bg)' : 'var(--color-secondary)',
                         }}

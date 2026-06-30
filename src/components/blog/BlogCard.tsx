@@ -37,7 +37,7 @@ export default function BlogCard({
   })
 
   return (
-    <article className="group relative overflow-hidden border border-[rgba(212,168,83,0.15)] transition-all duration-500 hover:border-[rgba(212,168,83,0.4)] hover:shadow-[0_0_30px_rgba(212,168,83,0.08)]">
+    <article className="group relative overflow-hidden border border-[rgba(200, 161, 90,0.15)] transition-all duration-500 hover:border-[rgba(200, 161, 90,0.4)] hover:shadow-[0_0_30px_rgba(200, 161, 90,0.08)]">
       <Link href={`/blog/${slug}`} className="no-underline block">
         {/* Image */}
         <div className="relative aspect-[3/2] overflow-hidden">
@@ -50,7 +50,7 @@ export default function BlogCard({
               className="object-cover transition-transform duration-700 group-hover:scale-105"
             />
           ) : (
-            <div className="w-full h-full bg-gradient-to-br from-[#0A0F1E] to-[#1a1f3e]" />
+            <div className="w-full h-full bg-gradient-to-br from-[#1E1E1E] to-[#1a1f3e]" />
           )}
           <div className="absolute inset-0 bg-gradient-to-t from-[var(--color-bg)] via-transparent to-transparent opacity-60" />
 
@@ -58,8 +58,8 @@ export default function BlogCard({
           <span
             className="absolute top-4 left-4 text-[0.65rem] uppercase tracking-[0.15em] font-bold px-3 py-1.5 z-10"
             style={{
-              background: 'rgba(212,168,83,0.15)',
-              border: '1px solid rgba(212,168,83,0.3)',
+              background: 'rgba(200, 161, 90,0.15)',
+              border: '1px solid rgba(200, 161, 90,0.3)',
               color: 'var(--color-accent)',
             }}
           >
@@ -73,7 +73,7 @@ export default function BlogCard({
             <time dateTime={publishedDate}>{date}</time>
             {readingTime && (
               <>
-                <span className="text-[rgba(212,168,83,0.3)]">&middot;</span>
+                <span className="text-[rgba(200, 161, 90,0.3)]">&middot;</span>
                 <span>{readingTime} min lectura</span>
               </>
             )}

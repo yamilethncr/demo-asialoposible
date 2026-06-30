@@ -21,7 +21,7 @@ export default function PageLoader() {
     <div
       className="fixed inset-0 z-[9999] flex items-center justify-center"
       style={{
-        backgroundColor: '#0A0F1E',
+        backgroundColor: '#1E1E1E',
         opacity: fadeOut ? 0 : 1,
         transform: fadeOut ? 'scale(1.05)' : 'scale(1)',
         transition: 'opacity 0.6s ease, transform 0.6s ease',
@@ -35,7 +35,7 @@ export default function PageLoader() {
           style={{
             width: '180px',
             height: '180px',
-            border: '1px solid #D4A853',
+            border: '1px solid #C8A15A',
             borderRadius: '50%',
             borderTopColor: 'transparent',
             animation: 'pageloader-spin 1.4s linear infinite',
@@ -47,7 +47,7 @@ export default function PageLoader() {
           style={{
             width: '200px',
             height: '200px',
-            border: '1px solid rgba(212, 168, 83, 0.3)',
+            border: '1px solid rgba(200, 161, 90, 0.3)',
             borderRadius: '50%',
             borderBottomColor: 'transparent',
             animation: 'pageloader-spin-reverse 2s linear infinite',
@@ -56,7 +56,7 @@ export default function PageLoader() {
         {/* Brand text */}
         <span
           style={{
-            color: '#D4A853',
+            color: '#C8A15A',
             fontSize: '14px',
             fontWeight: 500,
             letterSpacing: '0.2em',

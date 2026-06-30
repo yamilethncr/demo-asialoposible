@@ -5,7 +5,7 @@ import { useEffect } from 'react'
 const CAL_LINK = 'katherine-molinares-angel/15min'
 
 const BASE_CLASSES =
-  'inline-block uppercase font-bold no-underline transition-all duration-500 hover:shadow-[0_0_20px_rgba(212,168,83,0.4)] cursor-pointer text-center'
+  'inline-block uppercase font-bold no-underline transition-all duration-500 hover:shadow-[0_0_20px_rgba(200, 161, 90,0.4)] cursor-pointer text-center'
 
 const SIZE_CLASSES = {
   sm: 'px-4 py-2 text-[11px] tracking-[0.12em]',
@@ -68,7 +68,7 @@ export default function CalBooking({
     win.Cal('init', 'asialoposible', { origin: 'https://cal.com' })
     win.Cal.ns.asialoposible('ui', {
       theme: 'dark',
-      cssVarsPerTheme: { dark: { 'cal-brand': '#D4A853' } },
+      cssVarsPerTheme: { dark: { 'cal-brand': '#C8A15A' } },
       hideEventTypeDetails: false,
       layout: 'month_view',
       locale: 'es',

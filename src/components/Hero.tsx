@@ -1,157 +1,43 @@
-'use client'
-
-import { useState, useEffect, useRef } from 'react'
-import SprayPaint from './SprayPaint'
-import ChatwootButton from './ChatwootButton'
-import ScrollLinkButton from './ScrollLinkButton'
-
-const bgImages = [
-  'https://images.unsplash.com/photo-1528127269322-539801943592?q=80&w=1200&auto=format&fit=crop', // Halong Bay
-  'https://images.unsplash.com/photo-1557750255-c76072a7aad1?q=80&w=1200&auto=format&fit=crop', // Hoi An lanterns
-  'https://images.unsplash.com/photo-1760442936485-b26b087c2030?q=80&w=1200&auto=format&fit=crop', // Angkor Wat temple
-  'https://images.unsplash.com/photo-1504457047772-27faf1c00561?q=80&w=1200&auto=format&fit=crop', // Vietnam rice fields
-  'https://images.unsplash.com/photo-1559592413-7cec4d0cae2b?q=80&w=1200&auto=format&fit=crop', // Vietnam boats river
-]
-
-export default function Hero({ variant = 'call' }: { variant?: 'call' | 'form' } = {}) {
-  const [current, setCurrent] = useState(0)
-  const [loadedImages, setLoadedImages] = useState<Set<number>>(new Set([0]))
-  const prevRef = useRef(0)
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrent((prev) => {
-        const next = (prev + 1) % bgImages.length
-        // Preload next image
-        const upcoming = (next + 1) % bgImages.length
-        setLoadedImages((loaded) => new Set([...loaded, next, upcoming]))
-        prevRef.current = prev
-        return next
-      })
-    }, 6000)
-    return () => clearInterval(timer)
-  }, [])
-
+/**
+ * Hero del home (estilo agencia boutique). Video de fondo en loop (autoplay muted).
+ * El H1 de marca es "Así se vive Asia."; la keyword principal vive en el meta title
+ * y en la money page /viajes/vietnam-camboya. Ver guard SEO en el plan.
+ */
+export default function Hero() {
   return (
-    <header className="h-screen flex items-center relative overflow-hidden">
-      {/* Background image carousel with Ken Burns — only render loaded images */}
-      {bgImages.map((img, i) => {
-        if (!loadedImages.has(i)) return null
-        return (
-          <div
-            key={i}
-            className="absolute top-0 left-0 w-full h-full z-0 transition-opacity duration-[2000ms]"
-            style={{
-              backgroundImage: `url('${img}')`,
-              backgroundSize: 'cover',
-              backgroundPosition: 'center',
-              opacity: i === current ? 0.7 : 0,
-              filter: 'saturate(0.8)',
-              animation: i === current ? 'kenburns 12s ease-in-out forwards' : 'none',
-            }}
-          />
-        )
-      })}
-      {/* Overlay gradient */}
-      <div
-        className="absolute top-0 left-0 w-full h-full z-[1]"
-        style={{
-          background:
-            'linear-gradient(to bottom, rgba(10,15,30,0.6) 0%, rgba(10,15,30,0.3) 45%, rgba(10,15,30,0.7) 85%, var(--color-bg) 100%)',
-        }}
-      />
-
-      <SprayPaint
-        className="top-[5%] left-[15%] w-[700px] h-[700px]"
-        style={{ animation: 'pulse-smoke 10s infinite alternate' }}
-        shape="blob1"
-      />
-
-      <div className="max-w-[1200px] mx-auto px-5 md:px-10 z-10 w-full">
-        <span
-          className="inline-block text-xs tracking-[0.2em] uppercase mb-4 px-4 py-2 font-bold"
-          style={{
-            background: 'rgba(212,168,83,0.15)',
-            border: '1px solid rgba(212,168,83,0.4)',
-            color: 'var(--color-accent)',
-            textShadow: '0 1px 8px rgba(0,0,0,0.4)',
-          }}
+    <section className="hero">
+      <div className="hero__bg">
+        <video
+          className="hero__video"
+          autoPlay
+          muted
+          playsInline
+          loop
+          preload="auto"
+          poster="/hotels/hoian-delicacy.jpg"
         >
-          PR&Oacute;XIMAS SALIDAS &mdash; AGOSTO 2026 &amp; ABRIL 2027
-        </span>
-
-        <h1
-          className="text-[3rem] sm:text-[4.5rem] md:text-[6rem] leading-[0.85] tracking-tight relative z-[2] text-white"
-          style={{ textShadow: '0 2px 40px rgba(0,0,0,0.8)' }}
-        >
-          VIAJE A VIETNAM
-          <br />
-          {' '}
-          <span
-            className="text-[var(--color-accent)] italic"
-            style={{ fontFamily: 'var(--font-monospace)' }}
-          >
-            &amp;
-          </span>{' '}
-          CAMBOYA
-        </h1>
-
-        <p
-          className="text-lg md:text-2xl tracking-[0.3em] uppercase mt-4 font-normal"
-          style={{ color: 'rgba(255,255,255,0.75)' }}
-        >
-          EN ESPA&Ntilde;OL
-        </p>
-
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-6 mt-10">
-          <div className="hidden md:block md:col-span-6" />
-          <div className="md:col-span-4">
-            <p
-              className="text-[0.85rem] leading-snug tracking-wide max-w-[400px] uppercase"
-              style={{
-                color: 'rgba(255,255,255,0.92)',
-                textShadow: '0 1px 12px rgba(0,0,0,0.5)',
-                background: 'rgba(10,15,30,0.6)',
-                padding: '16px',
-                backdropFilter: 'blur(4px)',
-                borderLeft: '2px solid var(--color-accent)',
-                textAlign: 'justify',
-              }}
-            >
-              14 d&iacute;as. 6 destinos. Un grupo exclusivo de solo 10 personas. Hoteles 4 y 5 estrellas, crucero de lujo en la Bah&iacute;a de Halong, todo incluido. Dise&ntilde;ado y acompa&ntilde;ado por Katherine Molinares, venezolana que vive en Vietnam.
-            </p>
-          </div>
-          <div className="md:col-span-2 flex md:justify-end items-start">
-            {variant === 'call' ? (
-              <ChatwootButton variant="primary" label="ESCRÍBEME" />
-            ) : (
-              <ScrollLinkButton variant="primary" label="QUIERO MÁS INFORMACIÓN" />
-            )}
-          </div>
-        </div>
-
-        {/* Scribble SVG */}
-        <svg
-          className="absolute hidden md:block opacity-60"
-          style={{
-            bottom: '25%',
-            right: '15%',
-            width: '240px',
-            height: '120px',
-            stroke: 'var(--color-accent)',
-            strokeWidth: 1.5,
-            fill: 'none',
-            strokeDasharray: 1000,
-            strokeDashoffset: 1000,
-            animation: 'draw 3s forwards',
-            zIndex: 5,
-          }}
-          viewBox="0 0 200 100"
-        >
-          <path d="M10,50 Q50,10 90,50 T180,50" />
-          <path d="M20,60 L170,40" strokeWidth="2" strokeOpacity="0.3" />
-        </svg>
+          <source src="/video/hero-asia.mp4" type="video/mp4" />
+        </video>
       </div>
-    </header>
+      <div className="container hero__inner">
+        <p className="eyebrow">Viajes boutique a Asia · En español</p>
+        <h1 className="display">Así se vive Asia.</h1>
+        <p className="lead">
+          Asia siempre estuvo en tu lista. Y no era falta de ganas — era no saber por dónde
+          empezar. Nosotros lo resolvemos: tú solo viajas.
+        </p>
+        <div className="hero__cta">
+          <a href="#viajes" className="btn btn--lg">Descubre tu viaje</a>
+          <a
+            href="https://wa.me/84934949756"
+            className="btn btn--ghost btn--lg"
+            target="_blank"
+            rel="noopener"
+          >
+            Escríbenos al WhatsApp
+          </a>
+        </div>
+      </div>
+    </section>
   )
 }

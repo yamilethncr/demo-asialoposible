@@ -160,8 +160,8 @@ export default async function CategoryPage({
         <span
           className="inline-block text-[0.65rem] tracking-[0.2em] uppercase px-3 py-1.5 font-bold mb-6"
           style={{
-            background: 'rgba(212,168,83,0.15)',
-            border: '1px solid rgba(212,168,83,0.3)',
+            background: 'rgba(200, 161, 90,0.15)',
+            border: '1px solid rgba(200, 161, 90,0.3)',
             color: 'var(--color-accent)',
           }}
         >

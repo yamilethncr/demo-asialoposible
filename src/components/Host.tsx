@@ -1,71 +1,69 @@
-import SprayPaint from './SprayPaint'
-import ChatwootButton from './ChatwootButton'
-import ScrollLinkButton from './ScrollLinkButton'
-
-export default function Host({ variant = 'call' }: { variant?: 'call' | 'form' } = {}) {
+/**
+ * "Sobre Katherine" — bio de la fundadora (sección de marca). Foto localizada en /img.
+ */
+export default function Host() {
   return (
-    <section id="katherine" className="pt-10 md:pt-14 pb-24 md:pb-36 relative z-10">
-      <div className="max-w-[1200px] mx-auto px-5 md:px-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-center">
-          {/* Image */}
-          <a href="https://www.instagram.com/kathmolinares" target="_blank" rel="noopener noreferrer" className="relative border border-[rgba(212,168,83,0.2)] overflow-hidden block cursor-pointer group">
-            <div className="aspect-[3/4] bg-[#161C2D] relative">
-              <img
-                src="https://katherinemolinares.com/_next/image?url=%2Fkatherine-molinares.jpg&w=640&q=75"
-                alt="Katherine Molinares"
-                className="w-full h-full object-cover block transition-all duration-700 group-hover:brightness-100"
-                style={{ filter: 'grayscale(0.3) contrast(110%) brightness(0.8)' }}
-              />
-            </div>
-            <SprayPaint
-              className="w-[350px] h-[350px]"
-              style={{ bottom: '-80px', left: '-80px', opacity: 0.2 }}
-              shape="circle"
-            />
+    <section className="section" id="sobre-mi">
+      <div className="container contact-wrap">
+        <div
+          className="reveal"
+          style={{
+            borderRadius: 'var(--radius-lg)',
+            overflow: 'hidden',
+            boxShadow: 'var(--shadow)',
+            aspectRatio: '4 / 5',
+          }}
+        >
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/img/katherine-molinares.jpg"
+            alt="Katherine Molinares, fundadora de Asia Lo Posible"
+            style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+          />
+        </div>
+        <div className="reveal">
+          <p className="eyebrow">Detrás de la marca</p>
+          <h2 className="h2">
+            Hola, soy Katherine{' '}
+            <svg className="emo" viewBox="0 0 24 24" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+              <path d="M12 3l1.7 5.3L19 10l-5.3 1.7L12 17l-1.7-5.3L5 10l5.3-1.7z" />
+              <path d="M19 14l.6 1.9 1.9.6-1.9.6L19 19l-.6-1.9-1.9-.6z" />
+            </svg>
+          </h2>
+          <p className="lead">
+            Periodista venezolana, creadora de contenido y una mente inquieta que siempre ha creído
+            que la vida se mide en experiencias. Mi historia con la organización y la logística no
+            empezó ayer: soy la fundadora y sigo liderando On Stage Producciones en Venezuela, una
+            empresa con la que creamos y coordinamos momentos inolvidables. Mi pasión por entender
+            el mundo, sus historias y sus dinámicas me llevó a Madrid a hacer un máster, un paso
+            clave que expandió mi visión global.
+          </p>
+          <p style={{ color: 'var(--color-secondary)', margin: '1rem 0' }}>
+            Hoy, mi base está en Da Nang, Vietnam, donde vivo desde hace más de dos años. Pero mi
+            brújula no se detiene aquí: he recorrido 10 países de Asia, sumergiéndome en sus
+            culturas, probando sus sabores y construyendo una red de confianza sobre el terreno.
+          </p>
+          <p style={{ margin: '1rem 0' }}>
+            <em className="text-accent">
+              Asia Lo Posible nació de una idea simple: diseñar el viaje que yo le haría a alguien
+              que quiero.
+            </em>
+          </p>
+          <p style={{ color: 'var(--color-secondary)', margin: '1rem 0 1.6rem' }}>
+            Al unir mi experiencia activa en producción, mi ojo periodístico y mi vida en el
+            continente, el resultado es un viaje impecable. Conozco a los proveedores cara a cara,
+            hablo tu idioma y entiendo lo que busca un viajero exigente. Por eso, cada hotel, cada
+            ruta y cada detalle está pensado para que tú solo te dediques a vivir Asia, con la
+            seguridad de que nada queda a la improvisación.
+          </p>
+          <a
+            href="https://instagram.com/kathmolinares"
+            target="_blank"
+            rel="noopener"
+            className="btn btn--ghost"
+          >
+            Sígueme en @kathmolinares
           </a>
-
-          {/* Bio */}
-          <div>
-            <span className="block text-xs tracking-[0.2em] uppercase text-[var(--color-secondary)] mb-4">
-              LA ANFITRIONA
-            </span>
-            <h2 className="text-3xl md:text-[2.5rem] leading-tight uppercase font-bold text-[var(--color-text)] mb-6">
-              KATHERINE
-              <br />
-              MOLINARES
-            </h2>
-            <p className="text-base md:text-lg leading-relaxed text-[var(--color-text)] mb-6 max-w-[440px]">
-              Periodista venezolana y creadora de contenido con casi dos a&ntilde;os viviendo en Vietnam y recorriendo Asia de punta a punta. Lleg&oacute; a este continente sin saber el idioma, sin conocer a nadie, y con la misma incertidumbre que siente cualquier latinoamericano que mira el mapa del sudeste asi&aacute;tico por primera vez.
-            </p>
-            <p className="text-sm md:text-base leading-relaxed text-[var(--color-secondary)] max-w-[440px] mb-8">
-              Este viaje organizado a Vietnam y Camboya no es un tour de cat&aacute;logo. Es el viaje que yo le har&iacute;a a alguien que quiero que tenga la mejor experiencia posible en el Sudeste Asi&aacute;tico. Con un equipo local: gu&iacute;a vietnamita en espa&ntilde;ol, operador tur&iacute;stico licenciado y todo resuelto antes de que hagas tu maleta.
-            </p>
-            <div
-              className="pl-5"
-              style={{ borderLeft: '2px solid var(--color-accent)' }}
-            >
-              <a href="https://www.instagram.com/kathmolinares" target="_blank" rel="noopener noreferrer" className="text-xs tracking-[0.2em] uppercase font-black text-[var(--color-accent)] mb-0 no-underline hover:underline">
-                @KATHMOLINARES
-              </a>
-              <p className="text-xs tracking-[0.1em] uppercase text-[var(--color-secondary)] mt-1">
-                Periodista &middot; Organizadora de eventos &middot; Creadora de contenido
-              </p>
-            </div>
-
-            {variant === 'call' ? (
-              <ChatwootButton
-                variant="outline"
-                label="ESCRÍBEME Y TE CUENTO MÁS"
-                className="mt-6 w-full md:w-auto"
-              />
-            ) : (
-              <ScrollLinkButton
-                variant="outline"
-                label="QUIERO MÁS INFORMACIÓN"
-                className="mt-6 w-full md:w-auto"
-              />
-            )}
-          </div>
         </div>
       </div>
     </section>
