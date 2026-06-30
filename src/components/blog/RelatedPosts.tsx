@@ -27,7 +27,7 @@ export default function RelatedPosts({ posts }: RelatedPostsProps) {
   if (posts.length === 0) return null
 
   return (
-    <section className="mt-20 pt-16 border-t border-[rgba(200, 161, 90,0.1)]">
+    <section className="mt-20 pt-16 border-t border-[rgba(200,161,90,0.1)]">
       <h2
         className="text-xl md:text-2xl uppercase mb-10 text-center"
         style={{ fontFamily: 'var(--font-display)', letterSpacing: '0.06em' }}

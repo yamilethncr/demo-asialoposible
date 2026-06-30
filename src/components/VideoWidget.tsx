@@ -13,7 +13,7 @@ function GoldPlayButton({ size = 48 }: { size?: number }) {
         width: size,
         height: size,
         border: '2px solid var(--color-accent)',
-        background: 'rgba(30, 30, 30,0.6)',
+        background: 'rgba(30,30,30,0.6)',
         animation: 'pulse-glow 2s ease-in-out infinite',
       }}
     >
@@ -120,8 +120,8 @@ export default function VideoWidget() {
         style={{
           width: `${thumbWidth}px`,
           height: `${thumbHeight}px`,
-          border: '1px solid rgba(200, 161, 90,0.4)',
-          boxShadow: '0 0 20px rgba(200, 161, 90,0.15)',
+          border: '1px solid rgba(200,161,90,0.4)',
+          boxShadow: '0 0 20px rgba(200,161,90,0.15)',
           overflow: 'hidden',
           opacity: isMobile ? 0.6 : 1,
         }}
@@ -131,7 +131,7 @@ export default function VideoWidget() {
           alt="Video de Katherine en Asia"
           className="w-full h-full object-cover"
         />
-        <div className="absolute inset-0 flex items-center justify-center bg-[rgba(30, 30, 30,0.3)]">
+        <div className="absolute inset-0 flex items-center justify-center bg-[rgba(30,30,30,0.3)]">
           <GoldPlayButton size={isMobile ? 22 : 28} />
         </div>
         <button
@@ -142,7 +142,7 @@ export default function VideoWidget() {
             right: isMobile ? '2px' : '4px',
             width: isMobile ? '16px' : '20px',
             height: isMobile ? '16px' : '20px',
-            background: 'rgba(30, 30, 30,0.7)',
+            background: 'rgba(30,30,30,0.7)',
             borderRadius: '50%',
             border: 'none',
             fontSize: isMobile ? '8px' : '10px',

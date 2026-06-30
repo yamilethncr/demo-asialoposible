@@ -40,16 +40,16 @@ export default function PoliticaDeCancelacion() {
           <section>
             <h2 className="text-lg font-bold text-[var(--color-text)] mb-3">4. Escala de Reembolso (sobre pagos adicionales al depósito)</h2>
             <p className="mb-4">Si tras pagar el depósito el Cliente realizó pagos adicionales (saldo o cuotas), aplica esta escala sobre dichos pagos adicionales. El depósito (30%) nunca es reembolsable.</p>
-            <div className="overflow-x-auto mb-4" style={{ border: '1px solid rgba(200, 161, 90,0.2)' }}>
+            <div className="overflow-x-auto mb-4" style={{ border: '1px solid rgba(200,161,90,0.2)' }}>
               <table className="w-full text-[0.85rem]">
                 <thead>
-                  <tr className="border-b" style={{ borderColor: 'rgba(200, 161, 90,0.2)' }}>
+                  <tr className="border-b" style={{ borderColor: 'rgba(200,161,90,0.2)' }}>
                     <th className="text-left p-3 text-[var(--color-text)] font-bold">Días antes de la salida</th>
                     <th className="text-left p-3 text-[var(--color-text)] font-bold">Reembolso sobre pagos adicionales</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr className="border-b" style={{ borderColor: 'rgba(200, 161, 90,0.1)' }}>
+                  <tr className="border-b" style={{ borderColor: 'rgba(200,161,90,0.1)' }}>
                     <td className="p-3">Entre 30 y 60 días</td>
                     <td className="p-3"><strong className="text-[var(--color-text)]">40%</strong> del monto pagado por encima del depósito</td>
                   </tr>

@@ -16,7 +16,7 @@ export default function Pagination({ currentPage, totalPages, basePath }: Pagina
       {currentPage > 1 && (
         <Link
           href={currentPage === 2 ? basePath : `${basePath}?page=${currentPage - 1}`}
-          className="inline-flex items-center justify-center w-10 h-10 border border-[rgba(200, 161, 90,0.2)] text-[var(--color-secondary)] no-underline text-sm transition-all duration-300 hover:border-[var(--color-accent)] hover:text-[var(--color-accent)]"
+          className="inline-flex items-center justify-center w-10 h-10 border border-[rgba(200,161,90,0.2)] text-[var(--color-secondary)] no-underline text-sm transition-all duration-300 hover:border-[var(--color-accent)] hover:text-[var(--color-accent)]"
           aria-label="Página anterior"
         >
           &larr;
@@ -30,7 +30,7 @@ export default function Pagination({ currentPage, totalPages, basePath }: Pagina
           className={`inline-flex items-center justify-center w-10 h-10 border text-sm no-underline transition-all duration-300 ${
             page === currentPage
               ? 'border-[var(--color-accent)] bg-[var(--color-accent)] text-[var(--color-bg)] font-bold'
-              : 'border-[rgba(200, 161, 90,0.2)] text-[var(--color-secondary)] hover:border-[var(--color-accent)] hover:text-[var(--color-accent)]'
+              : 'border-[rgba(200,161,90,0.2)] text-[var(--color-secondary)] hover:border-[var(--color-accent)] hover:text-[var(--color-accent)]'
           }`}
           aria-current={page === currentPage ? 'page' : undefined}
         >
@@ -41,7 +41,7 @@ export default function Pagination({ currentPage, totalPages, basePath }: Pagina
       {currentPage < totalPages && (
         <Link
           href={`${basePath}?page=${currentPage + 1}`}
-          className="inline-flex items-center justify-center w-10 h-10 border border-[rgba(200, 161, 90,0.2)] text-[var(--color-secondary)] no-underline text-sm transition-all duration-300 hover:border-[var(--color-accent)] hover:text-[var(--color-accent)]"
+          className="inline-flex items-center justify-center w-10 h-10 border border-[rgba(200,161,90,0.2)] text-[var(--color-secondary)] no-underline text-sm transition-all duration-300 hover:border-[var(--color-accent)] hover:text-[var(--color-accent)]"
           aria-label="Página siguiente"
         >
           &rarr;

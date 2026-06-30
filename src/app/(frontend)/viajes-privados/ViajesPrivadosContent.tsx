@@ -94,7 +94,7 @@ export default function ViajesPrivadosContent() {
           className="absolute inset-0"
           style={{
             background:
-              'linear-gradient(to bottom, rgba(30, 30, 30,0.7) 0%, rgba(30, 30, 30,0.9) 70%, var(--color-bg) 100%)',
+              'linear-gradient(to bottom, rgba(30,30,30,0.7) 0%, rgba(30,30,30,0.9) 70%, var(--color-bg) 100%)',
           }}
         />
 
@@ -158,7 +158,7 @@ export default function ViajesPrivadosContent() {
                   style={{
                     borderBottom:
                       i < steps.length - 1
-                        ? '1px solid rgba(200, 161, 90,0.1)'
+                        ? '1px solid rgba(200,161,90,0.1)'
                         : 'none',
                   }}
                 >
@@ -216,7 +216,7 @@ export default function ViajesPrivadosContent() {
                     key={item}
                     className="flex items-start gap-4 py-4 animate-hover:x-2 animate-duration-200 animate-ease-out"
                     style={{
-                      borderBottom: '1px solid rgba(200, 161, 90,0.08)',
+                      borderBottom: '1px solid rgba(200,161,90,0.08)',
                     }}
                   >
                     <span className="text-[var(--color-accent)] text-sm mt-0.5 shrink-0">
@@ -260,8 +260,8 @@ export default function ViajesPrivadosContent() {
             {trustCards.map((card) => (
               <div
                 key={card.title}
-                className="border border-[rgba(200, 161, 90,0.15)] p-8 relative overflow-hidden animate-initial:opacity-0 animate-initial:y-20 animate-inview:opacity-100 animate-inview:y-0 animate-duration-600 animate-ease-out animate-once"
-                style={{ background: 'rgba(200, 161, 90,0.02)' }}
+                className="border border-[rgba(200,161,90,0.15)] p-8 relative overflow-hidden animate-initial:opacity-0 animate-initial:y-20 animate-inview:opacity-100 animate-inview:y-0 animate-duration-600 animate-ease-out animate-once"
+                style={{ background: 'rgba(200,161,90,0.02)' }}
               >
                 <span
                   className="block text-4xl md:text-5xl font-bold mb-4"
@@ -288,8 +288,8 @@ export default function ViajesPrivadosContent() {
       <section className="pt-16 md:pt-20 pb-20 md:pb-28 relative z-10">
         <div className="max-w-[1200px] mx-auto px-5 md:px-10">
           <div
-            className="border border-[rgba(200, 161, 90,0.2)] p-8 md:p-16 relative overflow-hidden animate-initial:opacity-0 animate-initial:scale-95 animate-inview:opacity-100 animate-inview:scale-100 animate-duration-700 animate-ease-out animate-once"
-            style={{ background: 'rgba(200, 161, 90,0.03)' }}
+            className="border border-[rgba(200,161,90,0.2)] p-8 md:p-16 relative overflow-hidden animate-initial:opacity-0 animate-initial:scale-95 animate-inview:opacity-100 animate-inview:scale-100 animate-duration-700 animate-ease-out animate-once"
+            style={{ background: 'rgba(200,161,90,0.03)' }}
           >
             <div
               className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] pointer-events-none"
@@ -351,8 +351,8 @@ export default function ViajesPrivadosContent() {
       <section className="pt-8 md:pt-12 pb-32 md:pb-40 relative z-10">
         <div className="max-w-[1200px] mx-auto px-5 md:px-10">
           <div
-            className="border border-[rgba(200, 161, 90,0.3)] p-10 md:p-20 text-center relative overflow-hidden"
-            style={{ background: 'rgba(200, 161, 90,0.02)' }}
+            className="border border-[rgba(200,161,90,0.3)] p-10 md:p-20 text-center relative overflow-hidden"
+            style={{ background: 'rgba(200,161,90,0.02)' }}
           >
             {/* Glow */}
             <div

@@ -235,7 +235,7 @@ export default async function BlogPostPage({ params }: { params: Params }) {
         <RichTextRenderer content={post.content} />
 
         {/* Share */}
-        <div className="mt-12 pt-8 border-t border-[rgba(200, 161, 90,0.1)]">
+        <div className="mt-12 pt-8 border-t border-[rgba(200,161,90,0.1)]">
           <ShareButtons url={postUrl} title={post.title} />
         </div>
 

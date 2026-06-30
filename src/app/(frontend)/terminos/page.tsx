@@ -15,7 +15,7 @@ export default function Terminos() {
 
         <div className="space-y-8 text-[0.9rem] leading-relaxed text-[var(--color-secondary)]">
 
-          <section className="p-5" style={{ border: '1px solid rgba(200, 161, 90,0.3)', background: 'rgba(200, 161, 90,0.05)' }}>
+          <section className="p-5" style={{ border: '1px solid rgba(200,161,90,0.3)', background: 'rgba(200,161,90,0.05)' }}>
             <p><strong className="text-[var(--color-text)]">Importante.</strong> Estos son los términos de uso del sitio web. <strong className="text-[var(--color-text)]">Comprar un viaje requiere aceptar separadamente</strong> los <Link href="/terminos-viaje" className="text-[var(--color-accent)] underline hover:no-underline">Términos y Condiciones del Viaje</Link>, la <Link href="/politica-de-cancelacion" className="text-[var(--color-accent)] underline hover:no-underline">Política de Cancelación</Link> y el Waiver de Exoneración de Responsabilidad, que se firman vía DocuSeal al pagar el depósito.</p>
           </section>
 

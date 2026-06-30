@@ -122,7 +122,7 @@ export default function Pricing({ variant = 'call' }: { variant?: 'call' | 'form
         className="absolute inset-0 pointer-events-none -z-10"
         style={{
           background:
-            'radial-gradient(ellipse at 50% 0%, rgba(200, 161, 90,0.10) 0%, rgba(200, 161, 90,0.04) 35%, transparent 70%)',
+            'radial-gradient(ellipse at 50% 0%, rgba(200,161,90,0.10) 0%, rgba(200,161,90,0.04) 35%, transparent 70%)',
         }}
       />
       {/* Diagonal line tramado — structured texture that breaks the flat background */}
@@ -131,7 +131,7 @@ export default function Pricing({ variant = 'call' }: { variant?: 'call' | 'form
         className="absolute inset-0 pointer-events-none -z-10"
         style={{
           backgroundImage:
-            'repeating-linear-gradient(135deg, rgba(200, 161, 90,0.07) 0px, rgba(200, 161, 90,0.07) 1px, transparent 1px, transparent 9px)',
+            'repeating-linear-gradient(135deg, rgba(200,161,90,0.07) 0px, rgba(200,161,90,0.07) 1px, transparent 1px, transparent 9px)',
           maskImage:
             'radial-gradient(ellipse at 50% 40%, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.55) 50%, transparent 90%)',
           WebkitMaskImage:
@@ -161,7 +161,7 @@ export default function Pricing({ variant = 'call' }: { variant?: 'call' | 'form
                 className="flex items-center justify-center w-8 h-8 text-xs font-bold shrink-0 transition-all duration-300"
                 style={{
                   border: '1px solid',
-                  borderColor: stepActive(1) ? 'var(--color-accent)' : 'rgba(200, 161, 90,0.2)',
+                  borderColor: stepActive(1) ? 'var(--color-accent)' : 'rgba(200,161,90,0.2)',
                   background: stepDone(1) ? 'var(--color-accent)' : 'transparent',
                   color: stepDone(1) ? 'var(--color-bg)' : stepActive(1) ? 'var(--color-accent)' : 'var(--color-secondary)',
                 }}
@@ -181,8 +181,8 @@ export default function Pricing({ variant = 'call' }: { variant?: 'call' | 'form
                 onClick={() => handleViaje('agosto2026')}
                 className="px-4 py-4 text-left transition-all duration-300 cursor-pointer"
                 style={{
-                  border: viaje === 'agosto2026' ? '1px solid var(--color-accent)' : '1px solid rgba(200, 161, 90,0.15)',
-                  background: viaje === 'agosto2026' ? 'rgba(200, 161, 90,0.1)' : 'transparent',
+                  border: viaje === 'agosto2026' ? '1px solid var(--color-accent)' : '1px solid rgba(200,161,90,0.15)',
+                  background: viaje === 'agosto2026' ? 'rgba(200,161,90,0.1)' : 'transparent',
                   color: viaje === 'agosto2026' ? 'var(--color-accent)' : 'var(--color-secondary)',
                 }}
               >
@@ -193,8 +193,8 @@ export default function Pricing({ variant = 'call' }: { variant?: 'call' | 'form
                 onClick={() => handleViaje('abril2027')}
                 className="px-4 py-4 text-left transition-all duration-300 cursor-pointer"
                 style={{
-                  border: viaje === 'abril2027' ? '1px solid var(--color-accent)' : '1px solid rgba(200, 161, 90,0.15)',
-                  background: viaje === 'abril2027' ? 'rgba(200, 161, 90,0.1)' : 'transparent',
+                  border: viaje === 'abril2027' ? '1px solid var(--color-accent)' : '1px solid rgba(200,161,90,0.15)',
+                  background: viaje === 'abril2027' ? 'rgba(200,161,90,0.1)' : 'transparent',
                   color: viaje === 'abril2027' ? 'var(--color-accent)' : 'var(--color-secondary)',
                 }}
               >
@@ -214,7 +214,7 @@ export default function Pricing({ variant = 'call' }: { variant?: 'call' | 'form
                 className="flex items-center justify-center w-8 h-8 text-xs font-bold shrink-0 transition-all duration-300"
                 style={{
                   border: '1px solid',
-                  borderColor: stepActive(2) ? 'var(--color-accent)' : 'rgba(200, 161, 90,0.2)',
+                  borderColor: stepActive(2) ? 'var(--color-accent)' : 'rgba(200,161,90,0.2)',
                   background: stepDone(2) ? 'var(--color-accent)' : 'transparent',
                   color: stepDone(2) ? 'var(--color-bg)' : stepActive(2) ? 'var(--color-accent)' : 'var(--color-secondary)',
                 }}
@@ -234,8 +234,8 @@ export default function Pricing({ variant = 'call' }: { variant?: 'call' | 'form
                 onClick={() => handleMetodo('contado')}
                 className="px-4 py-4 text-left transition-all duration-300 cursor-pointer"
                 style={{
-                  border: metodo === 'contado' ? '1px solid var(--color-accent)' : '1px solid rgba(200, 161, 90,0.15)',
-                  background: metodo === 'contado' ? 'rgba(200, 161, 90,0.1)' : 'transparent',
+                  border: metodo === 'contado' ? '1px solid var(--color-accent)' : '1px solid rgba(200,161,90,0.15)',
+                  background: metodo === 'contado' ? 'rgba(200,161,90,0.1)' : 'transparent',
                   color: metodo === 'contado' ? 'var(--color-accent)' : 'var(--color-secondary)',
                 }}
               >
@@ -246,8 +246,8 @@ export default function Pricing({ variant = 'call' }: { variant?: 'call' | 'form
                 onClick={() => handleMetodo('cuotas')}
                 className="px-4 py-4 text-left transition-all duration-300 cursor-pointer"
                 style={{
-                  border: metodo === 'cuotas' ? '1px solid var(--color-accent)' : '1px solid rgba(200, 161, 90,0.15)',
-                  background: metodo === 'cuotas' ? 'rgba(200, 161, 90,0.1)' : 'transparent',
+                  border: metodo === 'cuotas' ? '1px solid var(--color-accent)' : '1px solid rgba(200,161,90,0.15)',
+                  background: metodo === 'cuotas' ? 'rgba(200,161,90,0.1)' : 'transparent',
                   color: metodo === 'cuotas' ? 'var(--color-accent)' : 'var(--color-secondary)',
                 }}
               >
@@ -269,7 +269,7 @@ export default function Pricing({ variant = 'call' }: { variant?: 'call' | 'form
                 className="flex items-center justify-center w-8 h-8 text-xs font-bold shrink-0 transition-all duration-300"
                 style={{
                   border: '1px solid',
-                  borderColor: stepActive(3) ? 'var(--color-accent)' : 'rgba(200, 161, 90,0.2)',
+                  borderColor: stepActive(3) ? 'var(--color-accent)' : 'rgba(200,161,90,0.2)',
                   background: stepDone(3) ? 'var(--color-accent)' : 'transparent',
                   color: stepDone(3) ? 'var(--color-bg)' : stepActive(3) ? 'var(--color-accent)' : 'var(--color-secondary)',
                 }}
@@ -286,8 +286,8 @@ export default function Pricing({ variant = 'call' }: { variant?: 'call' | 'form
                 onClick={() => handleHabitacion('compartida')}
                 className="px-4 py-4 text-left transition-all duration-300 cursor-pointer"
                 style={{
-                  border: habitacion === 'compartida' ? '1px solid var(--color-accent)' : '1px solid rgba(200, 161, 90,0.15)',
-                  background: habitacion === 'compartida' ? 'rgba(200, 161, 90,0.1)' : 'transparent',
+                  border: habitacion === 'compartida' ? '1px solid var(--color-accent)' : '1px solid rgba(200,161,90,0.15)',
+                  background: habitacion === 'compartida' ? 'rgba(200,161,90,0.1)' : 'transparent',
                   color: habitacion === 'compartida' ? 'var(--color-accent)' : 'var(--color-secondary)',
                 }}
               >
@@ -298,8 +298,8 @@ export default function Pricing({ variant = 'call' }: { variant?: 'call' | 'form
                 onClick={() => handleHabitacion('privada')}
                 className="px-4 py-4 text-left transition-all duration-300 cursor-pointer"
                 style={{
-                  border: habitacion === 'privada' ? '1px solid var(--color-accent)' : '1px solid rgba(200, 161, 90,0.15)',
-                  background: habitacion === 'privada' ? 'rgba(200, 161, 90,0.1)' : 'transparent',
+                  border: habitacion === 'privada' ? '1px solid var(--color-accent)' : '1px solid rgba(200,161,90,0.15)',
+                  background: habitacion === 'privada' ? 'rgba(200,161,90,0.1)' : 'transparent',
                   color: habitacion === 'privada' ? 'var(--color-accent)' : 'var(--color-secondary)',
                 }}
               >
@@ -328,7 +328,7 @@ export default function Pricing({ variant = 'call' }: { variant?: 'call' | 'form
                 <div className={`grid grid-cols-1 ${metodo === 'cuotas' ? 'md:grid-cols-2' : ''} gap-6 mb-6`}>
                   <div
                     className="border border-[var(--color-accent)] p-8 relative overflow-hidden"
-                    style={{ background: 'rgba(200, 161, 90,0.05)' }}
+                    style={{ background: 'rgba(200,161,90,0.05)' }}
                   >
                     <div
                       className="absolute top-0 right-0 w-[200px] h-[200px] pointer-events-none"
@@ -359,7 +359,7 @@ export default function Pricing({ variant = 'call' }: { variant?: 'call' | 'form
                   </div>
 
                   {metodo === 'cuotas' && (
-                    <div className="border border-[rgba(200, 161, 90,0.2)] p-8" style={{ background: 'rgba(139,115,85,0.04)' }}>
+                    <div className="border border-[rgba(200,161,90,0.2)] p-8" style={{ background: 'rgba(139,115,85,0.04)' }}>
                       <span className="block text-xs tracking-[0.2em] uppercase text-[var(--color-secondary)] mb-4">
                         Desglose
                       </span>
@@ -368,7 +368,7 @@ export default function Pricing({ variant = 'call' }: { variant?: 'call' | 'form
                           <span className="text-sm text-[var(--color-secondary)]">Reserva (30%)</span>
                           <span className="text-lg font-bold text-[var(--color-text)] font-mono">${formatUSD(reserva)}</span>
                         </div>
-                        <div className="h-px w-full" style={{ background: 'rgba(200, 161, 90,0.1)' }} />
+                        <div className="h-px w-full" style={{ background: 'rgba(200,161,90,0.1)' }} />
                         <div className="flex justify-between items-baseline">
                           <span className="text-sm text-[var(--color-secondary)]">
                             Saldo restante ({numCuotas} cuotas)
@@ -377,7 +377,7 @@ export default function Pricing({ variant = 'call' }: { variant?: 'call' | 'form
                         </div>
                         {habitacion === 'privada' && (
                           <>
-                            <div className="h-px w-full" style={{ background: 'rgba(200, 161, 90,0.1)' }} />
+                            <div className="h-px w-full" style={{ background: 'rgba(200,161,90,0.1)' }} />
                             <div className="flex justify-between items-baseline">
                               <span className="text-xs text-[var(--color-secondary)]">Incluye suplemento individual</span>
                               <span className="text-sm text-[var(--color-secondary)] font-mono">+$655</span>
@@ -391,8 +391,8 @@ export default function Pricing({ variant = 'call' }: { variant?: 'call' | 'form
 
                 {metodo === 'cuotas' && (
                   <div
-                    className="border border-[rgba(200, 161, 90,0.2)] p-6 md:p-8 mb-6"
-                    style={{ background: 'rgba(200, 161, 90,0.03)' }}
+                    className="border border-[rgba(200,161,90,0.2)] p-6 md:p-8 mb-6"
+                    style={{ background: 'rgba(200,161,90,0.03)' }}
                   >
                     <span className="block text-xs tracking-[0.2em] uppercase text-[var(--color-accent)] mb-5">
                       Cronograma de Pagos &middot; {viajeLabel}
@@ -400,7 +400,7 @@ export default function Pricing({ variant = 'call' }: { variant?: 'call' | 'form
 
                     <div
                       className="hidden md:grid grid-cols-12 gap-2 pb-3 mb-3 text-[11px] uppercase tracking-wide text-[var(--color-secondary)]"
-                      style={{ borderBottom: '1px solid rgba(200, 161, 90,0.15)' }}
+                      style={{ borderBottom: '1px solid rgba(200,161,90,0.15)' }}
                     >
                       <div className="col-span-3">Mes</div>
                       <div className="col-span-3">Concepto</div>
@@ -412,7 +412,7 @@ export default function Pricing({ variant = 'call' }: { variant?: 'call' | 'form
                       <div
                         key={i}
                         className="grid grid-cols-1 md:grid-cols-12 gap-1 md:gap-2 py-3 items-baseline"
-                        style={{ borderBottom: i < cronograma.length - 1 ? '1px solid rgba(200, 161, 90,0.08)' : 'none' }}
+                        style={{ borderBottom: i < cronograma.length - 1 ? '1px solid rgba(200,161,90,0.08)' : 'none' }}
                       >
                         <div className="md:col-span-3">
                           <span className="text-sm font-bold text-[var(--color-text)]">{row.mes}</span>
@@ -438,7 +438,7 @@ export default function Pricing({ variant = 'call' }: { variant?: 'call' | 'form
 
                     <div
                       className="grid grid-cols-1 md:grid-cols-12 gap-1 md:gap-2 pt-4 mt-3 items-baseline"
-                      style={{ borderTop: '1px solid rgba(200, 161, 90,0.3)' }}
+                      style={{ borderTop: '1px solid rgba(200,161,90,0.3)' }}
                     >
                       <div className="md:col-span-3">
                         <span className="text-sm font-bold uppercase text-[var(--color-accent)]">Total</span>
@@ -543,7 +543,7 @@ export default function Pricing({ variant = 'call' }: { variant?: 'call' | 'form
                       <div
                         key={method.label}
                         className="flex items-center gap-1.5 px-3 py-1.5 text-[var(--color-secondary)] transition-colors hover:text-[var(--color-accent)]"
-                        style={{ border: '1px solid rgba(200, 161, 90,0.12)', background: 'rgba(200, 161, 90,0.03)' }}
+                        style={{ border: '1px solid rgba(200,161,90,0.12)', background: 'rgba(200,161,90,0.03)' }}
                       >
                         {method.icon}
                         <span className="text-[11px] uppercase tracking-wide">{method.label}</span>

@@ -7,7 +7,7 @@ import AboutSlider from '@/components/AboutSlider'
 export const metadata: Metadata = {
   title: 'Sobre nosotros | Asia Lo Posible — viajes a Asia en español',
   description:
-    'Somos dos venezolanos viviendo en Vietnam. Creamos Asia Lo Posible para darte la guía amable y actualizada que nos hubiese encantado tener: viajes guiados, asesorías y rutas listas, en tu idioma.',
+    'Dos venezolanos viviendo en Vietnam te guían para vivir Asia en español, sin estrés: viajes guiados, asesorías 1-a-1 y rutas listas para viajar a tu aire.',
   openGraph: {
     title: 'Sobre nosotros | Asia Lo Posible',
     description:

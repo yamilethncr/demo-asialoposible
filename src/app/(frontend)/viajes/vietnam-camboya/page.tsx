@@ -7,7 +7,7 @@ import VietnamCamboyaTrip from '@/components/VietnamCamboyaTrip'
 export const metadata: Metadata = {
   title: 'Viaje a Vietnam y Camboya en español | 14 días',
   description:
-    'Viaje grupal a Vietnam y Camboya en español: 14 días, 6 destinos, grupo máximo de 10. Hanói, crucero por la Bahía de Halong, Hoi An y Angkor Wat. Hoteles 4-5★. Desde $3,200 USD.',
+    'Viaje organizado a Vietnam y Camboya en español: 14 días, grupo máx. 10. Bahía de Halong, Hoi An y Angkor Wat. Hoteles 4-5★ todo incluido desde $3,200.',
   openGraph: {
     title: 'Viaje a Vietnam y Camboya en español | 14 días',
     description:
@@ -27,6 +27,7 @@ const touristTripSchema = {
   name: 'Viaje a Vietnam y Camboya en Español — 14 Días Todo Incluido',
   description:
     '14 días por Vietnam y Camboya: Hanói, Bahía de Halong, Hue, Da Nang, Hoi An y Siem Reap (Angkor Wat). Grupo máximo de 10 personas, todo en español.',
+  image: 'https://asialoposible.net/og-asialoposible.jpg',
   touristType: 'Spanish-speaking travelers',
   itinerary: {
     '@type': 'ItemList',
@@ -62,6 +63,7 @@ const eventSchema = {
   endDate: '2026-08-14',
   eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
   eventStatus: 'https://schema.org/EventScheduled',
+  image: 'https://asialoposible.net/og-asialoposible.jpg',
   organizer: { '@type': 'Person', name: 'Katherine Molinares', url: 'https://asialoposible.net' },
   location: {
     '@type': 'Place',
@@ -83,7 +85,7 @@ const breadcrumbSchema = {
   '@type': 'BreadcrumbList',
   itemListElement: [
     { '@type': 'ListItem', position: 1, name: 'Inicio', item: 'https://asialoposible.net' },
-    { '@type': 'ListItem', position: 2, name: 'Viajes', item: 'https://asialoposible.net/#viajes' },
+    { '@type': 'ListItem', position: 2, name: 'Viajes', item: 'https://asialoposible.net/#tours' },
     {
       '@type': 'ListItem',
       position: 3,

@@ -144,7 +144,7 @@ export default function Itinerary() {
           Todo resuelto. 0 gestiones por tu cuenta.
         </p>
 
-        <div className="border-t border-[rgba(200, 161, 90,0.1)]">
+        <div className="border-t border-[rgba(200,161,90,0.1)]">
           {itinerary.map((day, i) => {
             const isOpen = openIndex === i
             return (
@@ -154,12 +154,12 @@ export default function Itinerary() {
                 style={{
                   borderColor: day.highlight || isOpen
                     ? 'var(--color-accent)'
-                    : 'rgba(200, 161, 90,0.1)',
+                    : 'rgba(200,161,90,0.1)',
                   background:
                     day.highlight
-                      ? 'rgba(200, 161, 90,0.1)'
+                      ? 'rgba(200,161,90,0.1)'
                       : isOpen
-                        ? 'rgba(200, 161, 90,0.05)'
+                        ? 'rgba(200,161,90,0.05)'
                         : 'transparent',
                 }}
                 onClick={() => setOpenIndex(isOpen ? null : i)}

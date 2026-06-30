@@ -37,7 +37,7 @@ export default function PasswordGate({ children }: { children: React.ReactNode }
           autoFocus
           className="w-full bg-transparent text-center text-sm tracking-[0.15em] uppercase py-4 outline-none transition-colors duration-300"
           style={{
-            border: `1px solid ${error ? '#ff4444' : 'rgba(200, 161, 90,0.3)'}`,
+            border: `1px solid ${error ? '#ff4444' : 'rgba(200,161,90,0.3)'}`,
             color: 'var(--color-text)',
             caretColor: 'var(--color-accent)',
           }}

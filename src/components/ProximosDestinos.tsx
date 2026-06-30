@@ -95,6 +95,7 @@ export default function ProximosDestinos() {
                   className="acc-head"
                   type="button"
                   aria-expanded={isOpen}
+                  aria-controls={`acc-panel-${i}`}
                   onClick={() => setOpen(isOpen ? -1 : i)}
                 >
                   <span>
@@ -105,7 +106,7 @@ export default function ProximosDestinos() {
                     <path d="M6 9l6 6 6-6" />
                   </svg>
                 </button>
-                <div className="acc-body">
+                <div className="acc-body" id={`acc-panel-${i}`} role="region" inert={!isOpen}>
                   <div className="acc-body-inner">
                     <span className="acc-tag">{it.tag}</span>
                     <p>{it.body}</p>

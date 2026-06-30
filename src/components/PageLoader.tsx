@@ -47,7 +47,7 @@ export default function PageLoader() {
           style={{
             width: '200px',
             height: '200px',
-            border: '1px solid rgba(200, 161, 90, 0.3)',
+            border: '1px solid rgba(200,161,90, 0.3)',
             borderRadius: '50%',
             borderBottomColor: 'transparent',
             animation: 'pageloader-spin-reverse 2s linear infinite',

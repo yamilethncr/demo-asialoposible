@@ -88,7 +88,7 @@ export default function TimezoneSelector() {
             style={{
               background: selected === i ? 'var(--color-accent)' : 'transparent',
               color: selected === i ? 'var(--color-bg)' : 'var(--color-secondary)',
-              borderColor: selected === i ? 'var(--color-accent)' : 'rgba(200, 161, 90,0.15)',
+              borderColor: selected === i ? 'var(--color-accent)' : 'rgba(200,161,90,0.15)',
             }}
           >
             {c.label}
@@ -99,7 +99,7 @@ export default function TimezoneSelector() {
       {/* Clock comparison */}
       <div
         className="p-5 md:p-6"
-        style={{ background: 'rgba(200, 161, 90,0.04)', border: '1px solid rgba(200, 161, 90,0.1)' }}
+        style={{ background: 'rgba(200,161,90,0.04)', border: '1px solid rgba(200,161,90,0.1)' }}
       >
         <div className="flex items-center justify-center gap-4 md:gap-8 flex-wrap">
           {/* Local clock */}
@@ -142,7 +142,7 @@ export default function TimezoneSelector() {
 
         {/* Seasonal note */}
         {country.offsets.length > 1 && (
-          <div className="mt-4 pt-3 text-center" style={{ borderTop: '1px solid rgba(200, 161, 90,0.1)' }}>
+          <div className="mt-4 pt-3 text-center" style={{ borderTop: '1px solid rgba(200,161,90,0.1)' }}>
             <p className="text-[11px] text-[var(--color-secondary)]">
               {country.offsets.map((o, i) => (
                 <span key={o.label}>

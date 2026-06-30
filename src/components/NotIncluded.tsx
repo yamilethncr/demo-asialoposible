@@ -43,7 +43,7 @@ export default function NotIncluded() {
             <div
               key={i}
               className="py-4 md:py-5"
-              style={{ borderBottom: '1px solid rgba(200, 161, 90,0.1)' }}
+              style={{ borderBottom: '1px solid rgba(200,161,90,0.1)' }}
             >
               <div className="flex items-start gap-3">
                 <span className="text-[var(--color-secondary)] shrink-0 mt-0.5">✕</span>

@@ -11,8 +11,8 @@ export default function CTAFinal({ variant = 'call' }: { variant?: 'call' | 'for
     <section id="reservar" className="pt-8 md:pt-12 pb-32 md:pb-40 relative z-10">
       <div className="max-w-[1200px] mx-auto px-5 md:px-10">
         <div
-          className="border border-[rgba(200, 161, 90,0.3)] p-10 md:p-20 text-center relative overflow-hidden"
-          style={{ background: 'rgba(200, 161, 90,0.02)' }}
+          className="border border-[rgba(200,161,90,0.3)] p-10 md:p-20 text-center relative overflow-hidden"
+          style={{ background: 'rgba(200,161,90,0.02)' }}
         >
           {/* Glow */}
           <div
@@ -27,8 +27,8 @@ export default function CTAFinal({ variant = 'call' }: { variant?: 'call' | 'for
           <span
             className="inline-block text-xs tracking-[0.2em] uppercase px-4 py-2 font-bold mb-6 relative z-10"
             style={{
-              background: 'rgba(200, 161, 90,0.15)',
-              border: '1px solid rgba(200, 161, 90,0.4)',
+              background: 'rgba(200,161,90,0.15)',
+              border: '1px solid rgba(200,161,90,0.4)',
               color: 'var(--color-accent)',
             }}
           >

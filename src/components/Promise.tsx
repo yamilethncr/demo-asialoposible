@@ -3,8 +3,8 @@ export default function Promise() {
     <section className="pt-8 md:pt-12 pb-24 md:pb-36 relative z-10">
       <div className="max-w-[1200px] mx-auto px-5 md:px-10">
         <div
-          className="border border-[rgba(200, 161, 90,0.2)] p-8 md:p-16 relative overflow-hidden animate-initial:opacity-0 animate-initial:scale-95 animate-inview:opacity-100 animate-inview:scale-100 animate-duration-700 animate-ease-out animate-once"
-          style={{ background: 'rgba(200, 161, 90,0.03)' }}
+          className="border border-[rgba(200,161,90,0.2)] p-8 md:p-16 relative overflow-hidden animate-initial:opacity-0 animate-initial:scale-95 animate-inview:opacity-100 animate-inview:scale-100 animate-duration-700 animate-ease-out animate-once"
+          style={{ background: 'rgba(200,161,90,0.03)' }}
         >
           {/* Glow */}
           <div

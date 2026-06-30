@@ -1,5 +1,8 @@
+import HeroVideo from './HeroVideo'
+
 /**
- * Hero del home (estilo agencia boutique). Video de fondo en loop (autoplay muted).
+ * Hero del home (estilo agencia boutique). Video de fondo en loop (autoplay muted),
+ * que respeta prefers-reduced-motion vía HeroVideo (client).
  * El H1 de marca es "Así se vive Asia."; la keyword principal vive en el meta title
  * y en la money page /viajes/vietnam-camboya. Ver guard SEO en el plan.
  */
@@ -7,17 +10,7 @@ export default function Hero() {
   return (
     <section className="hero">
       <div className="hero__bg">
-        <video
-          className="hero__video"
-          autoPlay
-          muted
-          playsInline
-          loop
-          preload="auto"
-          poster="/hotels/hoian-delicacy.jpg"
-        >
-          <source src="/video/hero-asia.mp4" type="video/mp4" />
-        </video>
+        <HeroVideo />
       </div>
       <div className="container hero__inner">
         <p className="eyebrow">Viajes boutique a Asia · En español</p>

@@ -71,6 +71,10 @@
   .nav__brand, .upper-serif { font-style: normal; text-transform: uppercase; }
 }
 
+/* Regla de oro: cualquier heading en MAYÚSCULAS (incl. utilidad .uppercase heredada
+   de páginas migradas) va en Cormorant recto, nunca cursiva. */
+h1.uppercase, h2.uppercase, h3.uppercase, h4.uppercase { font-style: normal; }
+
 /* ====== Clases de utilidad del sistema (fuera de @layer base para mayor especificidad) ====== */
 .eyebrow {
   font-family: var(--font-mono);
@@ -93,6 +97,9 @@
 .section-head { max-width: 720px; margin-bottom: clamp(2rem,4vw,3.5rem); }
 .section-head.center { margin-inline: auto; text-align: center; }
 .section--cream .lead { color: #6A6760; }
+/* Contraste AA: el oro #C8A15A sobre crema no cumple; usar oro oscurecido para texto pequeño */
+.section--cream .eyebrow,
+.section--cream .post-card__cat { color: #8a6d2f; }
 .grid { display: grid; gap: var(--gap); }
 
 /* ----------------------------- Botones ---------------------------- */
@@ -330,7 +337,7 @@
 /* ----------------------------- Footer ----------------------------- */
 .footer { background: #121212; padding-block: 3.5rem 2rem; border-top: 1px solid rgba(255,255,255,.06); }
 .footer__grid { display:grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 2.5rem; margin-bottom: 2.5rem; }
-.footer h4 { font-family: var(--font-main); font-size:.8rem; letter-spacing:.16em; text-transform:uppercase; color: var(--color-secondary); margin-bottom:1.1rem; }
+.footer h4 { font-family: var(--font-main); font-style: normal; font-size:.8rem; letter-spacing:.16em; text-transform:uppercase; color: var(--color-secondary); margin-bottom:1.1rem; }
 .footer a { color: rgba(255,255,255,.75); font-size:.92rem; display:block; padding:.25rem 0; }
 .footer a:hover { color: var(--color-accent); }
 .footer__brand p { color: var(--color-secondary); font-size:.92rem; margin-top:.8rem; max-width: 34ch; }
@@ -364,7 +371,7 @@
 .prose ul li::before { content:"›"; position:absolute; left:.2rem; color: var(--color-accent); font-weight:700; }
 .itinerary { display:grid; gap:1rem; counter-reset: day; }
 .itin-day { background: var(--color-bg-2); border:1px solid rgba(255,255,255,.07); border-radius: var(--radius); padding:1.3rem 1.5rem; }
-.itin-day h4 { font-family: var(--font-main); font-size:1.05rem; margin-bottom:.3rem; }
+.itin-day h3 { font-family: var(--font-main); font-style: normal; font-size:1.05rem; margin-bottom:.3rem; }
 .itin-day .daytag { font-family: var(--font-mono); font-size:.72rem; letter-spacing:.12em; color: var(--color-accent); text-transform:uppercase; }
 .itin-day p { color: var(--color-secondary); font-size:.92rem; margin-top:.4rem; }
 .sticky-card {
@@ -489,6 +496,39 @@ h3 .emo, h4 .emo { margin-right:.15em; }
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
+}
+
+/* --------------------------- Responsive --------------------------- */
+@media (max-width: 900px) {
+  .nav__links {
+    position: fixed; inset: 0 0 0 auto; width: min(80vw, 320px); flex-direction: column;
+    align-items: flex-start; justify-content: center; gap: 1.4rem; padding: 2rem;
+    background: rgba(30,30,30,.97); backdrop-filter: blur(16px); transform: translateX(100%);
+    transition: transform .35s var(--ease);
+  }
+  .nav__links.open { transform: none; }
+  .nav__links a { font-size: 1.1rem; }
+  .nav__toggle { display: flex; z-index: 110; }
+  .nav__dd { width: 100%; }
+  .nav__dd-toggle { width: 100%; justify-content: space-between; font-size: 1.1rem; }
+  .nav__dd-menu { position: static; min-width: 0; display: none; opacity: 1; visibility: visible; transform: none; padding: .5rem 0 0 .9rem; background: none; backdrop-filter: none; border: 0; box-shadow: none; }
+  .nav__dd.open .nav__dd-menu { display: flex; }
+  .nav__dd-menu a { font-size: 1rem; padding: .45rem 0; }
+  .contact-wrap { grid-template-columns: 1fr; }
+  .split { grid-template-columns: 1fr; }
+  .sticky-card { position: static; }
+  .footer__grid { grid-template-columns: 1fr 1fr; }
+  .incl-grid { grid-template-columns: 1fr; gap: 1.4rem; }
+}
+@media (max-width: 600px) {
+  .announce { font-size: .6rem; letter-spacing: .05em; }
+}
+@media (max-width: 540px) {
+  .footer__grid { grid-template-columns: 1fr; }
+  .hero__meta { gap: 1.2rem 1.8rem; }
+}
+@media (max-width: 380px) {
+  .announce { font-size: .52rem; letter-spacing: .03em; gap: .25rem; }
 }
 
 /* Scrollbar */

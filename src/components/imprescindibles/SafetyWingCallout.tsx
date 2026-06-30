@@ -3,8 +3,8 @@ export default function SafetyWingCallout() {
     <div
       className="mt-4 p-5 md:p-6"
       style={{
-        border: '1px solid rgba(200, 161, 90,0.3)',
-        background: 'rgba(200, 161, 90,0.06)',
+        border: '1px solid rgba(200,161,90,0.3)',
+        background: 'rgba(200,161,90,0.06)',
       }}
     >
       <div className="flex items-start gap-4">

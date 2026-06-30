@@ -71,7 +71,7 @@ export default function Hotels() {
               href={h.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="border border-[rgba(200, 161, 90,0.15)] overflow-hidden transition-all duration-400 hover:border-[var(--color-accent)] group block no-underline cursor-pointer"
+              className="border border-[rgba(200,161,90,0.15)] overflow-hidden transition-all duration-400 hover:border-[var(--color-accent)] group block no-underline cursor-pointer"
             >
               <div className="relative h-48 overflow-hidden">
                 <Image
@@ -87,7 +87,7 @@ export default function Hotels() {
                   className="absolute inset-0"
                   style={{ background: 'linear-gradient(to top, var(--color-bg) 0%, transparent 50%)' }}
                 />
-                <span className="absolute top-3 left-3 text-[10px] tracking-[0.15em] uppercase px-2 py-1 font-bold text-[var(--color-accent)]" style={{ background: 'rgba(30, 30, 30,0.8)', backdropFilter: 'blur(4px)' }}>
+                <span className="absolute top-3 left-3 text-[10px] tracking-[0.15em] uppercase px-2 py-1 font-bold text-[var(--color-accent)]" style={{ background: 'rgba(30,30,30,0.8)', backdropFilter: 'blur(4px)' }}>
                   {h.city}
                 </span>
               </div>

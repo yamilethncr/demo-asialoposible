@@ -14,6 +14,7 @@ const REELS = [
 
 export default function VideoReels() {
   const carRef = useRef<HTMLDivElement>(null)
+  const closeRef = useRef<HTMLButtonElement>(null)
   const [openId, setOpenId] = useState<string | null>(null)
 
   useEffect(() => {
@@ -23,6 +24,11 @@ export default function VideoReels() {
     document.addEventListener('keydown', onKey)
     return () => document.removeEventListener('keydown', onKey)
   }, [])
+
+  // Mover el foco al botón de cerrar al abrir el lightbox (a11y diálogo modal)
+  useEffect(() => {
+    if (openId) closeRef.current?.focus()
+  }, [openId])
 
   const scroll = (dir: number) => {
     const car = carRef.current
@@ -79,12 +85,15 @@ export default function VideoReels() {
       <div
         className={`vid-modal${openId ? ' open' : ''}`}
         aria-hidden={!openId}
+        role="dialog"
+        aria-modal="true"
+        aria-label="Reproductor de video"
         onClick={(e) => {
           if (e.target === e.currentTarget) setOpenId(null)
         }}
       >
         <div className="vid-modal__box">
-          <button className="vid-modal__close" type="button" aria-label="Cerrar" onClick={() => setOpenId(null)}>
+          <button ref={closeRef} className="vid-modal__close" type="button" aria-label="Cerrar" onClick={() => setOpenId(null)}>
             ×
           </button>
           {openId && (

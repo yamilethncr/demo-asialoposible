@@ -12,7 +12,7 @@ const ITINERARY = [
   { tag: 'Día 6–7 · Vietnam', title: 'Hue imperial', body: 'La antigua capital imperial: la Ciudadela, las tumbas reales y la historia viva del país a orillas del Río de los Perfumes.' },
   { tag: 'Día 8 · Vietnam', title: 'Da Nang & Ba Na Hills', body: 'El famoso Puente Dorado sostenido por dos manos gigantes y sesión de fotografía profesional incluida.' },
   { tag: 'Días 9–10 · Vietnam', title: 'Hoi An, ciudad de los faroles', body: 'Casco antiguo Patrimonio de la Humanidad, faroles de colores al anochecer y una clase de cocina vietnamita para llevarte Asia en el paladar.' },
-  { tag: 'Días 11–14 · Camboya', title: 'Siem Reap & Angkor', body: 'Amanecer en Angkor Wat, los rostros de Bayón, el templo-jungla de Ta Prohm, Banteay Srei y la vida flotante del Lago Tonle Sap.' },
+  { tag: 'Días 11–14 · Camboya', title: 'Siem Reap & Angkor Wat', body: 'Amanecer en Angkor Wat, los rostros de Bayón, el templo-jungla de Ta Prohm, Banteay Srei y la vida flotante del Lago Tonle Sap.' },
 ]
 
 const HOTELS = [
@@ -54,7 +54,7 @@ export default function VietnamCamboyaTrip() {
         <img src="/hotels/indochine-cruise.jpg" alt="Crucero de lujo en la Bahía de Halong, Vietnam" />
         <div className="container">
           <p className="breadcrumb">
-            <a href="/">Inicio</a> › <a href="/#viajes">Viajes</a> › Vietnam &amp; Camboya
+            <a href="/">Inicio</a> › <a href="/#tours">Viajes</a> › Vietnam &amp; Camboya
           </p>
           <p className="eyebrow">Viaje conmigo · Salida grupal en español</p>
           <h1 className="display" style={{ fontSize: 'clamp(2.4rem,6vw,4.4rem)' }}>
@@ -92,7 +92,7 @@ export default function VietnamCamboyaTrip() {
                 {ITINERARY.map((d) => (
                   <div className="itin-day reveal" key={d.title}>
                     <span className="daytag">{d.tag}</span>
-                    <h4>{d.title}</h4>
+                    <h3>{d.title}</h3>
                     <p>{d.body}</p>
                   </div>
                 ))}
@@ -147,6 +147,9 @@ export default function VietnamCamboyaTrip() {
           {/* Sidebar precio */}
           <aside>
             <div className="sticky-card reveal">
+              <h2 style={{ fontSize: '1.35rem', marginBottom: '.5rem' }}>
+                Precio del viaje a Vietnam y Camboya
+              </h2>
               <p className="eyebrow">Desde</p>
               <p className="price">
                 $3,200 <small>USD / persona</small>
