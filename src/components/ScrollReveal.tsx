@@ -4,16 +4,14 @@ import { useEffect } from 'react'
 
 /**
  * Observa los elementos `.reveal` y les añade `.in` al entrar en viewport.
+ * Usa IntersectionObserver para los que ya existen + MutationObserver para los que
+ * llegan después (server components async en streaming, navegación cliente).
  * Replica el comportamiento de reveal del sitio de Yamileth (assets/js/main.js).
- * Montar una vez en el layout de (frontend).
  */
 export default function ScrollReveal() {
   useEffect(() => {
-    const reveals = document.querySelectorAll<HTMLElement>('.reveal')
-    if (!reveals.length) return
-
     if (!('IntersectionObserver' in window)) {
-      reveals.forEach((el) => el.classList.add('in'))
+      document.querySelectorAll<HTMLElement>('.reveal').forEach((el) => el.classList.add('in'))
       return
     }
 
@@ -29,8 +27,20 @@ export default function ScrollReveal() {
       { threshold: 0.12 },
     )
 
-    reveals.forEach((el) => io.observe(el))
-    return () => io.disconnect()
+    const observeAll = () => {
+      document.querySelectorAll<HTMLElement>('.reveal:not(.in)').forEach((el) => io.observe(el))
+    }
+
+    observeAll()
+
+    // Captura contenido añadido después (streaming de server components / navegación SPA)
+    const mo = new MutationObserver(() => observeAll())
+    mo.observe(document.body, { childList: true, subtree: true })
+
+    return () => {
+      io.disconnect()
+      mo.disconnect()
+    }
   }, [])
 
   return null
