@@ -15,7 +15,7 @@ export default function PromoBanner() {
       >
         <path d="M12 22a6 6 0 0 0 6-6c0-4-3-6-4-9-1.5 1.5-1.7 3.2-3 4-1-1-1-2.5-1-4-2.2 1.8-4 4.2-4 9a6 6 0 0 0 6 6z" />
       </svg>
-      Agosto 2026: 4 cupos · Abril 2027: 8 cupos
+      Vietnam &amp; Camboya · 23 marzo – 5 abril 2027 · Salida confirmada, cupos limitados
     </div>
   )
 }

@@ -198,16 +198,12 @@ export default function SobreNosotrosPage() {
             <div>
               <h3 style={{ fontSize: '1.7rem' }}>Vietnam &amp; Camboya</h3>
               <p style={{ color: 'var(--color-secondary)', marginTop: '.3rem' }}>
-                14 días · 6 destinos · grupo boutique en español
+                15 días · 9 destinos · grupo boutique en español
               </p>
               <div className="dates" style={{ marginTop: '1.2rem' }}>
                 <div className="date">
-                  <b>Agosto 2026</b>
-                  <span>4 cupos disponibles</span>
-                </div>
-                <div className="date">
-                  <b>Abril 2027</b>
-                  <span>8 cupos disponibles</span>
+                  <b>23 marzo – 5 abril 2027</b>
+                  <span>Salida confirmada</span>
                 </div>
               </div>
             </div>

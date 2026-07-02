@@ -397,6 +397,41 @@ h1.uppercase, h2.uppercase, h3.uppercase, h4.uppercase { font-style: normal; }
 .hotel figcaption b { font-family:var(--font-display); font-size:1.05rem; display:block; }
 .hotel figcaption span { font-size:.8rem; color:var(--color-secondary); }
 
+/* ----------------------- Itinerario detallado ---------------------- */
+.itin-detail { display:grid; gap:.8rem; margin: 1.2rem 0 1.6rem; }
+.itin-detail details { background: var(--color-bg-2); border:1px solid rgba(255,255,255,.07); border-radius: var(--radius); overflow:hidden; }
+.itin-detail details[open] { border-color: rgba(200,161,90,.35); }
+.itin-detail summary { cursor:pointer; padding:1.1rem 1.4rem; display:flex; align-items:center; justify-content:space-between; gap:1rem; list-style:none; }
+.itin-detail summary::-webkit-details-marker { display:none; }
+.itin-detail summary .daytag { font-family: var(--font-mono); font-size:.7rem; letter-spacing:.12em; color: var(--color-accent); text-transform:uppercase; display:block; margin-bottom:.25rem; }
+.itin-detail summary b { font-family: var(--font-main); font-style:normal; font-size:1.02rem; display:block; }
+.itin-detail summary .chev { transition: transform .25s var(--ease); flex:none; color: var(--color-accent); }
+.itin-detail details[open] summary .chev { transform: rotate(180deg); }
+.itin-detail .detail-body { padding: 0 1.4rem 1.3rem; }
+.itin-detail .detail-meta { font-family: var(--font-mono); font-size:.68rem; letter-spacing:.08em; text-transform:uppercase; color: rgba(255,255,255,.45); margin-bottom:.8rem; display:block; }
+.itin-detail .detail-body p { color: var(--color-secondary); font-size:.92rem; line-height:1.65; margin-bottom:.9rem; }
+.itin-detail .detail-body p:last-child { margin-bottom:0; }
+.itin-detail .detail-body .callout { margin: .3rem 0 .9rem; }
+
+/* ------------------------- Tabla de hoteles ------------------------- */
+.hotel-table-wrap { overflow-x:auto; margin: 1.4rem 0 1rem; border-radius: var(--radius); border:1px solid rgba(255,255,255,.07); }
+.hotel-table { width:100%; border-collapse:collapse; min-width:760px; font-size:.85rem; }
+.hotel-table th, .hotel-table td { padding:.9rem 1rem; text-align:left; vertical-align:top; border-bottom:1px solid rgba(255,255,255,.07); }
+.hotel-table th { background: var(--color-bg-2); font-family: var(--font-mono); font-size:.68rem; letter-spacing:.1em; text-transform:uppercase; color: var(--color-accent); }
+.hotel-table td { color: var(--color-secondary); }
+.hotel-table tr:last-child td { border-bottom:0; }
+.hotel-table td.city { color: var(--color-text); font-family: var(--font-display); font-size:1.02rem; white-space:nowrap; }
+.hotel-table .htl a { color: var(--color-text); font-weight:600; text-decoration:none; border-bottom:1px solid rgba(200,161,90,.4); }
+.hotel-table .htl a:hover { color: var(--color-accent); }
+.hotel-table .htl small { display:block; color: var(--color-secondary); font-size:.78rem; margin-top:.2rem; }
+
+/* -------------------------- Tiers de precio ------------------------- */
+.price-tiers { display:grid; gap:.6rem; margin: 1rem 0 1.2rem; }
+.price-tier { display:flex; align-items:baseline; justify-content:space-between; gap:1rem; padding:.8rem 1rem; border:1px solid rgba(255,255,255,.08); border-radius: var(--radius); background: rgba(255,255,255,.02); }
+.price-tier .tier-name { font-family: var(--font-mono); font-size:.7rem; letter-spacing:.1em; text-transform:uppercase; color: var(--color-secondary); }
+.price-tier .tier-price { font-family: var(--font-display); font-size:1.25rem; color: var(--color-accent); }
+.price-tier .tier-price small { font-family: var(--font-main); font-size:.68rem; color: var(--color-secondary); }
+
 /* ---------------------------- Artículo ---------------------------- */
 .article { max-width: 760px; margin-inline:auto; }
 .article .prose p { font-size: 1.08rem; }

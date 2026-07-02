@@ -29,13 +29,13 @@ export default function ToursDisponibles() {
               <span className="trip-card__tag">Viajes de Autor · Grupal</span>
               <h3>Vietnam &amp; Camboya</h3>
               <p>
-                14 días · 6 destinos. Hanói, crucero por la Bahía de Halong, Hue, Da Nang, Hoi An y
-                los templos de Angkor. Todo en español.
+                15 días · 9 destinos. Hanói, Mai Chau, Pu Luong, Ninh Binh, crucero por la Bahía de
+                Halong, Hue, Hoi An, Ho Chi Minh y los templos de Angkor. Todo en español.
               </p>
               <div className="trip-card__foot">
                 <span className="trip-card__price">
-                  <small>Salidas</small>
-                  <b>Ago 2026 · Abr 2027</b>
+                  <small>Salida</small>
+                  <b>23 mar – 5 abr 2027</b>
                 </span>
                 <span className="link-arrow">
                   Ver itinerario <span>→</span>
