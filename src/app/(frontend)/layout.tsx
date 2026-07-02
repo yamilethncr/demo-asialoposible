@@ -2,7 +2,6 @@ import type { Metadata } from 'next'
 import Script from 'next/script'
 import { Cormorant_Garamond, DM_Sans, Space_Mono } from 'next/font/google'
 import { Agentation } from 'agentation'
-import ScrollReveal from '@/components/ScrollReveal'
 import '../globals.css'
 
 // Display: Cormorant Garamond (serif editorial — regla de oro: minúsculas en cursiva)
@@ -72,7 +71,6 @@ export default function FrontendLayout({ children }: { children: React.ReactNode
         </Script>
       </head>
       <body>
-        <ScrollReveal />
         <noscript>
           <iframe
             src="https://www.googletagmanager.com/ns.html?id=GTM-59VR7PF3"

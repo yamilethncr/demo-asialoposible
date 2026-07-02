@@ -510,8 +510,8 @@ h1.uppercase, h2.uppercase, h3.uppercase, h4.uppercase { font-style: normal; }
 h3 .emo, h4 .emo { margin-right:.15em; }
 
 /* --------------------------- Animaciones -------------------------- */
-.reveal { opacity:0; transform: translateY(24px); transition: opacity .7s var(--ease), transform .7s var(--ease); }
-.reveal.in { opacity:1; transform:none; }
+/* Efecto fade-in-on-scroll desactivado: el contenido .reveal es visible de inmediato. */
+.reveal { opacity:1; transform:none; }
 
 /* Itinerary expand animation (componente existente) */
 @keyframes expandContent { from { max-height: 0; opacity: 0; } to { max-height: 500px; opacity: 1; } }
@@ -524,7 +524,6 @@ h3 .emo, h4 .emo { margin-right:.15em; }
 @keyframes pageloader-spin-reverse { from { transform: rotate(360deg); } to { transform: rotate(0deg); } }
 
 @media (prefers-reduced-motion: reduce) {
-  .reveal { opacity:1; transform:none; transition:none; }
   html { scroll-behavior: auto; }
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
